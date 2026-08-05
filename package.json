@@ -5,6 +5,7 @@
   "packageManager": "pnpm@10.28.1",
   "scripts": {
     "dev": "pnpm --filter @optimus/web dev",
+    "prebuild": "pnpm -w -r --filter \"@optimus/*\" build",
     "build": "pnpm --filter @optimus/web build",
     "lint": "pnpm --filter @optimus/web lint",
     "start": "pnpm --filter @optimus/web start"
@@ -12,5 +13,8 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "devDependencies": {
+    "typescript": "^5.3.0"
+  }
 }
