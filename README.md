@@ -1,33 +1,28 @@
-# optimus-the-ai-platform-to-bu
+# Optimus monorepo
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [v0](https://v0.app).
+This repository is organized as a pnpm workspace monorepo.
 
-## Built with v0
+## Applications
 
-This repository is linked to a [v0](https://v0.app) project. You can continue developing by visiting the link below -- start new chats to make changes, and v0 will push commits directly to this repo. Every merge to `main` will automatically deploy.
+- `apps/web` — the existing Optimus landing page deployed on Vercel.
+- `apps/coder` — placeholder for a future second application. No Coder backend, services, engine, or server dependencies are included.
 
-[Continue working on v0 →](https://v0.app/chat/projects/prj_Nq6f8XdMHg5QNWd5PN0iJj0J5FMi)
+## Packages
 
-## Getting Started
+- `packages/ui` — shared UI package placeholder.
+- `packages/config` — shared configuration package placeholder.
+- `packages/types` — shared type package placeholder.
+- `packages/utils` — shared utility package placeholder.
 
-First, run the development server:
+## Scripts
+
+Run commands from the repository root:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
 pnpm dev
+pnpm build
+pnpm lint
+pnpm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-## Learn More
-
-To learn more, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [v0 Documentation](https://v0.app/docs) - learn about v0 and how to use it.
+The root scripts delegate to `@optimus/web`, so the deployed project remains the existing web application.
