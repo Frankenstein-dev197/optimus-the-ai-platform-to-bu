@@ -6,7 +6,9 @@ settings:
 
 importers:
 
-  .:
+  .: {}
+
+  apps/web:
     dependencies:
       '@hookform/resolvers':
         specifier: ^3.10.0
@@ -207,6 +209,14 @@ importers:
       typescript:
         specifier: ^5
         version: 5.9.3
+
+  packages/config: {}
+
+  packages/types: {}
+
+  packages/ui: {}
+
+  packages/utils: {}
 
 packages:
 
