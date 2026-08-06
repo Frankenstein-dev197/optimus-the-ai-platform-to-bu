@@ -216,6 +216,9 @@ importers:
 
   packages/api:
     dependencies:
+      '@optimus/auth':
+        specifier: workspace:^
+        version: link:../auth
       '@optimus/git':
         specifier: workspace:^
         version: link:../git

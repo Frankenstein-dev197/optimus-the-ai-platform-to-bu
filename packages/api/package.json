@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@optimus/git": "workspace:^",
+    "@optimus/auth": "workspace:^",
     "typescript": "^5.3.0"
   }
 }
