@@ -54,6 +54,11 @@ export class OptimusSDKClient implements IOptimusAPI {
     this.apiKey = config.apiKey;
   }
 
+  /** Permet de mettre à jour dynamiquement le jeton lors des connexions SSO */
+  setToken(token: string): void {
+    this.token = token;
+  }
+
   // --- INTERCEPTEURS & MIDDLEWARES ---
 
   /** Enregistre un nouvel intercepteur de requêtes (middleware) */
