@@ -12,6 +12,21 @@ importers:
         specifier: ^5.3.0
         version: 5.9.3
 
+  apps/platform:
+    dependencies:
+      '@optimus/api':
+        specifier: workspace:^
+        version: link:../../packages/api
+      '@optimus/auth':
+        specifier: workspace:^
+        version: link:../../packages/auth
+      '@optimus/git':
+        specifier: workspace:^
+        version: link:../../packages/git
+      typescript:
+        specifier: ^5.3.0
+        version: 5.9.3
+
   apps/web:
     dependencies:
       '@hookform/resolvers':

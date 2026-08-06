@@ -1,0 +1,16 @@
+{
+  "name": "@optimus/platform",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@optimus/api": "workspace:^",
+    "@optimus/auth": "workspace:^",
+    "@optimus/git": "workspace:^",
+    "typescript": "^5.3.0"
+  }
+}
