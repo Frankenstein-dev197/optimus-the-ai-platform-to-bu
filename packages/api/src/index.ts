@@ -10,7 +10,7 @@ export * from "./audit";
 export * from "./billing";
 export * from "./plugins";
 
-export { OptimusOrganization, OptimusTeam } from "@optimus/auth";
+export type { OptimusOrganization, OptimusTeam } from "@optimus/auth";
 
 // --- INTERFACE CONTRACTUELLE DE L'API REST CENTRALE (IOptimusAPI) ---
 
