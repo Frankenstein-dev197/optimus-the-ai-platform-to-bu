@@ -14,12 +14,13 @@ L'objectif est de faire de cette application (nom de code technique : `apps/code
 4. [Architecture SSO Détaillée (apps/web ⟷ Optimus Dev)](#4-architecture-sso-détaillée-appsweb--optimus-dev)
 5. [Couche d'Abstraction API : packages/api ou packages/sdk](#5-couche-dabstraction-api--packagesapi-ou-packagessdk)
 6. [Services Développeur Optimus (Optimus Developer Services)](#6-services-développeur-optimus-optimus-developer-services)
-7. [Intégration au Monorepo Optimus](#7-intégration-au-monorepo-optimus)
-8. [Architecture Extensible pour les Services IA d'Optimus](#8-architecture-extensible-pour-les-services-ia-doptimus)
-9. [Stratégie de Rebranding & White-Labeling](#9-stratégie-de-rebranding--white-labeling)
-10. [Conformité avec la Licence AGPL-3.0 (Analyse Prudente)](#10-conformité-avec-la-licence-agpl-30-analyse-prudente)
-11. [Plan de Migration Étape par Étape (Progressif & sans Interruption)](#11-plan-de-migration-étape-par-étape-progressif--sans-interruption)
-12. [Justification et Avantages par rapport aux Alternatives](#12-justification-et-avantages-par-rapport-aux-alternatives)
+7. [Intégration des Fournisseurs Git & Plateforme de Développement (Git Providers & Developer Platform Integration)](#7-intégration-des-fournisseurs-git--plateforme-de-développement-git-providers--developer-platform-integration)
+8. [Intégration au Monorepo Optimus](#8-intégration-au-monorepo-optimus)
+9. [Architecture Extensible pour les Services IA d'Optimus](#9-architecture-extensible-pour-les-services-ia-doptimus)
+10. [Stratégie de Rebranding & White-Labeling](#10-stratégie-de-rebranding--white-labeling)
+11. [Conformité avec la Licence AGPL-3.0 (Analyse Prudente)](#11-conformité-avec-la-licence-agpl-30-analyse-prudente)
+12. [Plan de Migration Étape par Étape (Progressif & sans Interruption)](#12-plan-de-migration-étape-par-étape-progressif--sans-interruption)
+13. [Justification et Avantages par rapport aux Alternatives](#13-justification-et-avantages-par-rapport-aux-alternatives)
 
 ---
 
@@ -85,7 +86,7 @@ Pour surmonter cela, nous allons séparer de façon stricte l'interface utilisat
                   └────────────────────────┘    └────────────────────────┘
 ```
 
-#### A. Le Frontend (`apps/coder`) déployé sur Vercel
+#### A. Le Frontend (`apps/coder`) deployed on Vercel
 L'interface sera isolée sous forme d'application autonome. Elle sera compilée de manière statique (SSG) ou gérée sous forme de SPA hébergée sur Vercel. Toutes ses requêtes réseau seront redirigées vers le moteur backend.
 
 #### B. Le Moteur (`Optimus Engine` - Backend Go) déployé indépendamment
@@ -249,21 +250,6 @@ export class OptimusAPIClient {
 
 Pour s'imposer comme une plateforme incontournable pour les équipes d'ingénierie, **Optimus Dev** propose une suite complète de **Services Développeur**. Ces fonctionnalités seront directement intégrées à l'interface d'administration de l'application et exposées via notre couche d'abstraction de données.
 
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│                      Console Optimus Developer                         │
-│                                                                        │
-│  ┌───────────────────────┐  ┌───────────────────┐  ┌────────────────┐  │
-│  │   Gestion des Clés    │  │   Documentation   │  │   Console de   │  │
-│  │   (API Key Manager)   │  │    OpenAPI v3     │  │   Test d'API   │  │
-│  └───────────────────────┘  └───────────────────┘  └────────────────┘  │
-│  ┌───────────────────────┐  ┌───────────────────┐  ┌────────────────┐  │
-│  │ Quotas & Facturation  │  │ Logs de Requêtes  │  │  SDK Officiels │  │
-│  │    (Usage billing)    │  │  (Audit Trails)   │  │  & Exemples    │  │
-│  └───────────────────────┘  └───────────────────┘  └────────────────┘  │
-└────────────────────────────────────────────────────────────────────────┘
-```
-
 ### 6.1 Gestion des Clés API (Création, Rotation, Révocation)
 Les développeurs et les systèmes automatisés (pipelines CI/CD, outils tiers) peuvent s'authentifier de manière sécurisée auprès de la plateforme :
 - **Création** : Génération de clés d'API hautement sécurisées (ex. préfixées par `opt_dev_...`) associées à des permissions fines basées sur des rôles (RBAC). Chaque clé dispose d'un nom descriptif et d'une date d'expiration optionnelle.
@@ -294,15 +280,206 @@ Pour accélérer le démarrage des développeurs, nous fournissons des ressource
 
 ---
 
-## 7. Intégration au Monorepo Optimus
+## 7. Intégration des Fournisseurs Git & Plateforme de Développement (Git Providers & Developer Platform Integration)
+
+Pour devenir une plateforme de développement de bout en bout, **Optimus Dev** s'intègre de manière transparente avec l'écosystème Git mondial. Cette section détaille l'architecture permettant d'unifier l'authentification, les données et l'infrastructure de développement autour de Git.
+
+### 7.1 Architecture de Connecteurs Découplés : `packages/git`
+Pour éviter de coupler notre interface utilisateur ou notre logique d'affaires à un fournisseur Git spécifique, nous concevons un package de connecteurs unifié : **`packages/git`** (ou **`packages/integrations`**).
+
+Ce package définit une interface de contrat standard (`GitProviderAdapter`) que chaque adaptateur de fournisseur doit implémenter.
+
+```
+                      ┌────────────────────────────────────────┐
+                      │              packages/api              │
+                      └───────────────────┬────────────────────┘
+                                          │ (Appels de haut niveau)
+                                          ▼
+                      ┌────────────────────────────────────────┐
+                      │              packages/git              │
+                      │  - Routage vers l'adaptateur actif     │
+                      │  - Gestionnaire d'authentification Oauth│
+                      └───────────────────┬────────────────────┘
+                                          │
+                  ┌───────────────────────┼───────────────────────┐
+                  ▼                       ▼                       ▼
+       ┌────────────────────┐  ┌────────────────────┐  ┌────────────────────┐
+       │   GitHub Adapter   │  │   GitLab Adapter   │  │   Gitea Adapter    │
+       │  (GitHub Rest v3)  │  │  (GitLab REST v4)  │  │   (Gitea Client)   │
+       └────────────────────┘  └────────────────────┘  └────────────────────┘
+```
+
+#### Définition du Contrat d'Adaptateur (`packages/git/src/types.ts`)
+```typescript
+export interface GitRepository {
+  id: string;
+  name: string;
+  fullName: string;
+  url: string;
+  defaultBranch: string;
+  isPrivate: boolean;
+  owner: string;
+}
+
+export interface GitPullRequest {
+  id: string;
+  number: number;
+  title: string;
+  sourceBranch: string;
+  targetBranch: string;
+  status: 'open' | 'closed' | 'merged';
+  author: string;
+  url: string;
+}
+
+export interface GitProviderAdapter {
+  providerId: string; // 'github' | 'gitlab' | 'gitea' | 'bitbucket'
+
+  // Authentification et Comptes
+  getAuthUrl(redirectUri: string): string;
+  exchangeCodeForToken(code: string, redirectUri: string): Promise<string>;
+
+  // Gestion des dépôts
+  listRepositories(token: string): Promise<GitRepository[]>;
+  createRepository(token: string, name: string, isPrivate: boolean): Promise<GitRepository>;
+  forkRepository(token: string, fullName: string): Promise<GitRepository>;
+
+  // Management des branches et Pull Requests
+  listBranches(token: string, repoFullName: string): Promise<string[]>;
+  listPullRequests(token: string, repoFullName: string): Promise<GitPullRequest[]>;
+  createPullRequest(token: string, repoFullName: string, title: string, head: string, base: string): Promise<GitPullRequest>;
+
+  // Webhooks et Événements
+  setupWebhook(token: string, repoFullName: string, payloadUrl: string, secret: string): Promise<void>;
+}
+```
+
+#### Ajout Dynamique de Nouveaux Fournisseurs (Évolutivité Totale)
+Pour ajouter un nouveau fournisseur Git dans le futur (ex. Azure DevOps ou un nouveau service Git hébergé en interne) :
+1. Implémenter l'interface `GitProviderAdapter` pour ce fournisseur au sein de `packages/git`.
+2. Déclarer le nouvel adaptateur dans la configuration du registre de `packages/git`.
+3. **Le frontend d'Optimus Dev s'adapte automatiquement sans aucune modification** : il interroge l'API pour récupérer la liste des fournisseurs pris en charge et construit dynamiquement les boutons d'association et les menus d'import.
+
+---
+
+### 7.2 Authentification Multi-Fournisseurs & Synchronisation
+- **OAuth Multi-Comptes** : Un utilisateur unique d'Optimus peut associer un ou plusieurs comptes de différents fournisseurs Git (ex. son compte GitHub personnel, son compte GitLab professionnel, et une instance privée Gitea).
+- **Stockage Chiffré des Jetons** : Les jetons OAuth (Access Tokens et Refresh Tokens) sont chiffrés au repos (via AES-256-GCM) dans le backend d'Optimus. Ils ne sont jamais exposés au frontend et sont injectés dynamiquement lors des requêtes inter-plateformes effectuées par l'API Gateway d'Optimus.
+- **Import Automatique** : Depuis son tableau de bord, l'utilisateur voit s'afficher la liste consolidée de tous ses dépôts (publics et privés) à travers tous ses fournisseurs associés. L'import d'un projet dans Optimus se fait en 1 clic.
+
+---
+
+### 7.3 Opérations Git Intégrées et Gestion des PR/MR
+L'ensemble du cycle de développement Git peut être piloté directement depuis l'interface visuelle d'**Optimus Dev** :
+- **Clonage, Fork et Création** : Les formulaires d'Optimus Dev permettent de créer un dépôt vide directement chez le fournisseur Git, de forker un projet de référence de l'entreprise, ou d'initialiser une synchronisation de branches.
+- **Gestion des Pull Requests / Merge Requests** :
+  - Visualisation des PR/MR actives associées au projet directement sur l'interface d'Optimus Dev.
+  - Création d'une nouvelle PR/MR à la fin d'une session de codage en saisissant simplement le titre et les branches de départ et d'arrivée.
+  - Raccordement aux contrôles d'accès : les actions d'écriture Git héritent des droits OAuth de l'utilisateur.
+
+---
+
+### 7.4 Synchronisation des Webhooks, Événements et Pipelines CI/CD
+- **Abonnement aux Événements** : Lors de l'import d'un dépôt, Optimus enregistre automatiquement un Webhook chez le fournisseur Git.
+- **Traitement en Temps Réel** : Les événements (ex. `push`, `pull_request_created`, `issue_comment`) sont capturés par le récepteur de webhooks d'Optimus Dev Engine pour :
+  - Mettre à jour l'état de synchronisation des workspaces.
+  - Déclencher des notifications aux collaborateurs via WebSocket.
+  - Mettre à jour l'index de recherche de code.
+- **Déclenchement CI/CD** : Optimus Dev s'interface avec les outils de CI/CD existants (GitHub Actions, GitLab CI, Jenkins). Par exemple, la réussite d'un pipeline de tests CI/CD peut automatiquement autoriser la mise en veille ou le redémarrage automatique d'un espace de travail de validation.
+
+---
+
+### 7.5 Lancement de Workspace en 1 Clic (Git URL Protocol)
+Nous mettons en place un protocole d'infrastructure dynamique pour démarrer instantanément un environnement de développement à partir d'un dépôt Git :
+- **Structure de l'URL** : `https://dev.optimus.dev/launch?repo=https://github.com/my-org/my-project&branch=feature-abc`
+- **Mécanisme interne** :
+  1. Optimus détecte le dépôt Git et recherche un template Terraform correspondant (ex. s'il s'agit d'un projet Node.js, il sélectionne automatiquement le template de conteneur d'environnement NodeJS de l'entreprise).
+  2. L'espace de travail est provisionné en arrière-plan.
+  3. Dès que le container ou la machine virtuelle démarre, l'agent exécute automatiquement un clone du dépôt et bascule sur la branche spécifiée.
+  4. L'utilisateur est connecté et peut coder en moins de 30 secondes.
+
+---
+
+### 7.6 Synergies de Plateforme (SSO, SDK, IA et Plugins)
+- **Raccordement SSO** : L'accès aux API des fournisseurs Git est conditionné par la validation du SSO Optimus. Si un utilisateur se déconnecte d'Optimus, l'accès à ses jetons Git est immédiatement suspendu.
+- **SDK `packages/api`** : Expose de manière unifiée toutes les fonctions de gestion Git aux clients web, mobiles et d'administration.
+- **Assistants IA d'Optimus** :
+  - L'assistant IA tire profit des jetons Git de l'utilisateur pour lire le contexte des Pull Requests, suggérer des correctifs, ou rédiger automatiquement des messages de validation (commit messages).
+  - Il peut générer de nouveaux fichiers directement dans l'espace de travail de l'utilisateur et pousser automatiquement les modifications après validation visuelle.
+- **Système de Plugins** : Permet à des outils de développement tiers (ex. des extensions d'analyse de code, des scanners de sécurité) de s'enregistrer pour écouter les flux de webhooks Git centralisés par Optimus Dev.
+
+---
+
+### 7.7 Feuille de Route d'Évolution à Long Terme (Developer Portal Vision)
+
+Pour s'affirmer comme l'outil ultime de l'ingénieur, **Optimus Dev** intégrera progressivement les fonctionnalités d'un portail développeur complet directement utilisable dans le navigateur.
+
+```
+┌────────────────────────────────────────────────────────────────────────┐
+│                        Optimus Dev Portal (Long-term)                  │
+│                                                                        │
+│  ┌───────────────────────┐  ┌───────────────────┐  ┌────────────────┐  │
+│  │ Navigateur de Fichiers│  │  Éditeur Web      │  │ Visualiseur de │  │
+│  │      Git Intégré      │  │  Léger (Monaco)   │  │   Commits/Diff │  │
+│  └───────────────────────┘  └───────────────────┘  └────────────────┘  │
+│  ┌───────────────────────┐  ┌───────────────────┐  ┌────────────────┐  │
+│  │   Moteur de Recherche │  │   Marketplace de  │  │   Système de   │  │
+│  │     Global de Code    │  │Templates & Starters│ │    Plugins     │  │
+│  └───────────────────────┘  └───────────────────┘  └────────────────┘  │
+└────────────────────────────────────────────────────────────────────────┘
+```
+
+#### A. Navigateur de Fichiers, Visionneur de Commits & Comparateur de Diff
+- **Exploration à la volée** : Un explorateur de fichiers Git haute performance permettant de naviguer dans l'arborescence des dépôts importés sans nécessiter le démarrage complet d'un espace de travail (calcul à la demande).
+- **Historique interactif** : Un graphe de commits coloré, un navigateur de branches et de tags pour visualiser les fusions et l'évolution du code.
+- **Comparateur de Diff visuel** : Un moteur de comparaison côte-à-côte ou en ligne pour réviser les modifications avant de créer une Pull Request.
+
+#### B. Éditeur de Code Léger dans le Navigateur (Web IDE)
+- **Monaco Editor intégré** : Intégration de l'éditeur Monaco (le cœur de VS Code) directement dans la console d'Optimus Dev.
+- **Quick-fixes & modifications rapides** : Permet d'effectuer des modifications rapides (ex. corriger un bug critique, éditer un fichier de configuration, mettre à jour la documentation) de manière instantanée, directement depuis le portail web, sans latence de démarrage de machine virtuelle.
+
+#### C. Moteur de Recherche Global de Code
+- **Indexation performante** : Mise en place d'un indexeur léger (basé sur Elasticsearch ou Zoekt) analysant les dépôts Git importés.
+- **Recherche instantanée** : Possibilité de rechercher une fonction, une classe ou un mot-clé de configuration à travers toutes les organisations et tous les dépôts de l'entreprise en une fraction de seconde, avec filtrage par langage ou par auteur.
+
+#### D. Tableau de Bord des Projets (Projects Dashboard)
+- **Vue d'ensemble centralisée** : Un guichet unique affichant l'ensemble des dépôts actifs de l'équipe, leur état de build CI/CD, les Pull Requests nécessitant une revue, et les espaces de travail en cours d'exécution correspondants.
+
+#### E. Marketplace de Templates, de Starters et Système de Plugins
+- **Starters validés** : Un catalogue de templates de démarrage prêts à l'emploi (ex. "Boilerplate Next.js + Tailwind", "Microservice NestJS de production") configurés selon les standards de sécurité de l'entreprise.
+- **Système de plugins extensibles** : Une API d'extension permettant aux développeurs d'ajouter des outils tiers à leur environnement de développement (ex. intégration de linters, de tableaux de bord Jira, ou d'outils d'évaluation de la performance).
+
+---
+
+### 7.8 Choix Techniques Recommandés, Avantages et Limites
+
+#### Choix Techniques Recommandés
+1. **Bibliothèque de manipulation Git (Backend)** : Utilisation de **go-git** (implémentation Go pure de Git) au niveau du moteur d'exécution, éliminant le besoin de dépendre du binaire système git et facilitant la conteneurisation.
+2. **Éditeur de code (Frontend)** : Intégration de **@monaco-editor/react** pour l'éditeur web léger, offrant l'autocomplétion TypeScript et la coloration syntaxique prêtes à l'emploi.
+3. **Moteur d'indexation de code** : Utilisation d'un service léger comme **OpenSearch** ou de fonctionnalités intégrées de recherche vectorielle (Vector Search) via notre orchestrateur IA pour combiner recherche textuelle et compréhension sémantique du code.
+
+#### Avantages de cette Architecture
+- **Découplage Absolu** : La logique Git est isolée dans `packages/git`. L'interface graphique est légère et ne gère aucune complexité réseau.
+- **Expérience Développeur unifiée** : Réduction drastique de la fatigue de décision et du temps de configuration ("Onboarding") pour les nouveaux ingénieurs.
+- **Économie de ressources d'infrastructure** : Les développeurs parcourent et modifient le code sans consommer de ressources de calcul (workspaces) coûteuses pour les tâches simples.
+
+#### Limites à Anticiper et Mesures d'Atténuation
+- **Limites de taux d'API des Fournisseurs (Rate Limiting)** : Les API comme celles de GitHub ont des quotas d'appels stricts.
+  - *Atténuation* : Mise en place d'un cache Redis intermédiaire dans l'API Gateway d'Optimus et utilisation exclusive de webhooks pour les notifications événementielles de mise à jour au lieu d'un scrutation permanente (polling).
+- **Gestion des gros dépôts (Monorepos géants)** : Le clonage ou l'indexation de dépôts de plusieurs gigaoctets peut saturer les disques du serveur ou ralentir le navigateur de fichiers.
+  - *Atténuation* : Utilisation systématique du clonage partiel ou superficiel (Sparse Checkout / Shallow Clone `--depth 1`) pour l'exploration de fichiers et le calcul des diffs.
+
+---
+
+## 8. Intégration au Monorepo Optimus
 
 Pour que `apps/coder` devienne une partie intégrante de la suite Optimus, elle doit consommer et partager des ressources communes.
 
-### 7.1 Alignement des Configurations
+### 8.1 Alignement des Configurations
 - **`packages/config`** : Centralisation des configurations ESLint, Prettier, TypeScript, et règles de build pour uniformiser les normes de code entre la Landing page et l'application Dev.
 - **`packages/utils`** : Partage d'utilitaires de formatage de données, de gestion des dates, de validation de données (Zod), et d'instances de requêtes HTTP configurées pour gérer les redirections d'API de manière transparente.
 
-### 7.2 Partage Progressive du Design System (`packages/ui`)
+### 8.2 Partage Progressif du Design System (`packages/ui`)
 Actuellement, les composants UI de Coder utilisent Material UI (MUI). Le design system d'Optimus utilise Tailwind CSS et des composants d'interface légers et rapides.
 - **Étape 1 (Compatibilité temporaire)** : Garder MUI au sein de `apps/coder` pour ne pas casser l'interface utilisateur existante.
 - **Étape 2 (Partage de thème)** : Injecter les couleurs et variables de marque d'Optimus dans le thème MUI afin de garantir une harmonie visuelle instantanée.
@@ -310,11 +487,11 @@ Actuellement, les composants UI de Coder utilisent Material UI (MUI). Le design 
 
 ---
 
-## 8. Architecture Extensible pour les Services IA d'Optimus
+## 9. Architecture Extensible pour les Services IA d'Optimus
 
 Optimus a pour vocation d'intégrer des fonctionnalités d'Intelligence Artificielle de pointe (agents de codage, chat d'assistance, orchestrateur de tâches et plugins). L'architecture d'**Optimus Dev** est conçue dès le départ pour accueillir et orchestrer ces services.
 
-### 8.1 Intégration des Composants IA dans l'Architecture
+### 9.1 Intégration des Composants IA dans l'Architecture
 
 L'architecture s'articule autour d'un **Orchestrateur IA** central, communiquant avec des agents déployés au plus près du code de l'utilisateur.
 
@@ -350,7 +527,7 @@ L'architecture s'articule autour d'un **Orchestrateur IA** central, communiquant
                             └─────────────────────────────┘
 ```
 
-### 8.2 Rôle des Composants IA
+### 9.2 Rôle des Composants IA
 
 1. **Optimus AI Orchestrateur (Backend)** :
    Ce service centralisé gère la file d'attente des requêtes IA, la sélection des modèles LLM (OpenAI, Anthropic, serveurs d'inférence locaux), la gestion du contexte utilisateur, et le routage des commandes. Il est totalement indépendant du moteur de provisioning de Coder, ce qui élimine les goulots d'étranglement.
@@ -367,35 +544,35 @@ L'architecture s'articule autour d'un **Orchestrateur IA** central, communiquant
 
 ---
 
-## 9. Stratégie de Rebranding & White-Labeling
+## 10. Stratégie de Rebranding & White-Labeling
 
 Pour faire d'**Optimus Dev** un produit propre, tout élément visuel ou textuel faisant référence à Coder doit être remplacé.
 
-### 9.1 Identité Visuelle
+### 10.1 Identité Visuelle
 - **Logos & Iconographie** : Remplacement de tous les fichiers SVG du logo Coder (dans le dossier `static/` ou les composants React) par le logo officiel d'Optimus (en variantes claire et sombre).
 - **Thème Graphique** : Ajustement de la palette de couleurs d'Emotion/MUI pour adopter les teintes de la charte graphique d'Optimus (le dégradé sombre, les violets/bleus néon et les gris foncés visibles sur la landing page d'Optimus).
 - **Favicon & Métadonnées** : Mise à jour des favicons dans `index.html` et ajustement des balises Meta pour le SEO.
 
-### 9.2 Textes et Naming
+### 10.2 Textes et Naming
 - **Remplacement textuel** : Script automatisé combiné à des revues manuelles pour renommer "Coder", "Coder Enterprise", "Coder Host" en "Optimus Dev", "Plateforme Optimus" ou "Serveur Optimus" selon le contexte.
 - **Console d'Administration & Titres** : Modification des titres de page (`document.title`), des entêtes de courriels de notification et des formulaires d'invitation.
 - **Documentation et Aide** : Réécriture de la section d'aide et de la documentation utilisateur accessible depuis le menu d'aide de l'interface pour pointer vers les ressources d'Optimus.
 
 ---
 
-## 10. Conformité avec la Licence AGPL-3.0 (Analyse Prudente)
+## 11. Conformité avec la Licence AGPL-3.0 (Analyse Prudente)
 
-Coder est distribué sous la licence **GNU Affero General Public License v3.0 (AGPL-3.0)**. L'AGPL-3.0 est une licence "copyleft" forte, conçue spécifiquement pour garantir que le code source des logiciels exécutés sur le réseau reste accessible aux utilisateurs finaux de ce réseau.
+Coder est distribué sous la licence **GNU Affero General Public License v3.0 (AGPL-3.0)**. L'AGPL-3.0 is une licence "copyleft" forte, conçue spécifiquement pour garantir que le code source des logiciels exécutés sur le réseau reste accessible aux utilisateurs finaux de ce réseau.
 
 Il est impératif d'adopter une posture juridique rigoureuse et prudente : **le simple fait de séparer physiquement le frontend du backend ou de restructurer le monorepo ne suffit pas à éliminer de manière automatique et magique l'ensemble des obligations liées à la licence AGPL-3.0.**
 
-### 10.1 Limites du Découplage et Risques de Contamination (Copyleft)
+### 11.1 Limites du Découplage et Risques de Contamination (Copyleft)
 1. **La "Dépendance Intime" et les dérivés** :
    Si le frontend (`apps/coder`) ou notre SDK personnalisé (`packages/api`) est si étroitement lié au moteur Coder qu'il ne peut fonctionner sans lui, les tribunaux ou les audits de propriété intellectuelle pourraient considérer l'ensemble de l'application ou du SDK comme une "œuvre dérivée" de Coder. Dans ce cas, la totalité de cette œuvre (y compris nos ajouts et intégrations) pourrait être assujettie à l'obligation de divulgation sous licence AGPL-3.0.
 2. **Le Déploiement SaaS et l'Interaction Réseau** :
    Tant qu'un utilisateur interagit avec une version modifiée du moteur d'origine Coder à travers un réseau, les clauses de l'AGPL-3.0 imposent de donner à cet utilisateur un accès direct au code source de la version modifiée du moteur. Le masquage ou le rebranding d'interface ne modifie pas cette obligation légale fondamentale.
 
-### 10.2 Stratégie de Conformité Recommandée d'un Point de Vue Légal
+### 11.2 Stratégie de Conformité Recommandée d'un Point de Vue Légal
 Afin d'assurer une sécurité juridique totale pour Optimus, nous établissons les garde-fous stricts suivants :
 
 1. **Transparence et Code Source Ouvert pour le "Core"** :
@@ -409,7 +586,7 @@ Afin d'assurer une sécurité juridique totale pour Optimus, nous établissons l
 
 ---
 
-## 11. Plan de Migration Étape par Étape (Progressif & sans Interruption)
+## 12. Plan de Migration Étape par Étape (Progressif & sans Interruption)
 
 Voici la feuille de route pas-à-pas pour mener à bien cette intégration de façon fluide, sans casser l'expérience utilisateur actuelle ni introduire de régressions.
 
@@ -428,26 +605,33 @@ Voici la feuille de route pas-à-pas pour mener à bien cette intégration de fa
   - Importer `@optimus/api` au sein de `apps/coder`.
 - **Validation** : Vérifier que le build de `packages/api` génère correctement les définitions TypeScript (`.d.ts`) et que l'interface de `apps/coder` les consomme sans erreur de typage.
 
-### Étape 4 : Intégration du Système SSO
+### Étape 4 : Création du Connecteur Git Partagé (`packages/git`)
+- **Action** :
+  - Déclarer la structure de `packages/git`.
+  - Implémenter l'interface générique `GitProviderAdapter` et déployer l'adaptateur GitHub de référence.
+  - Raccorder `@optimus/git` à `@optimus/api` pour exposer la récupération des dépôts et la création de webhooks.
+- **Validation** : Compiler avec succès le package de connecteurs et exécuter des tests unitaires de simulation de requêtage Git.
+
+### Étape 5 : Intégration du Système SSO
 - **Action** :
   - Configurer les cookies d'authentification sur le domaine partagé `.optimus.dev`.
   - Intégrer l'échange et la validation des jetons de session au démarrage de l'application dans le composant `<RequireAuth>` d'Optimus Dev.
 - **Validation** : S'assurer qu'un utilisateur connecté sur `apps/web` est automatiquement reconnu par le SDK d'Optimus Dev lors de la redirection vers `apps/coder`.
 
-### Étape 5 : Préparation de la Couche d'Extension pour l'IA d'Optimus
+### Étape 6 : Préparation de la Couche d'Extension pour l'IA d'Optimus
 - **Action** :
   - Déclarer les interfaces d'API et les structures d'échange réseau dédiées aux fonctionnalités d'IA (Chat, exécution de commandes de codage) au sein de `packages/api`.
   - Intégrer la structure visuelle de la Sidebar Chat au sein de la disposition générale (`DashboardLayout`) de `apps/coder` en utilisant les composants de `@optimus/ui`.
 - **Validation** : S'assurer que l'interface utilisateur s'affiche correctement, avec le composant de chat IA désactivé ou affiché en mode simulation (mock) si les services IA ne sont pas démarrés.
 
-### Étape 6 : Rebranding Visuel & White-Labeling Complet
+### Étape 7 : Rebranding Visuel & White-Labeling Complet
 - **Action** :
   - Remplacer l'ensemble des logos Coder par les logos Optimus.
   - Modifier le fichier de thème Emotion (`apps/coder/src/theme/*`) pour appliquer la charte graphique d'Optimus.
   - Exécuter un script de remplacement textuel global pour substituer toutes les occurrences de "Coder" par "Optimus Dev" ou "Optimus" dans l'UI.
 - **Validation** : Revue approfondie de l'ensemble des pages d'administration pour s'assurer qu'aucune mention de la marque Coder ne subsiste pour l'utilisateur final.
 
-### Étape 7 : Implémentation des Services Développeur
+### Étape 8 : Implémentation des Services Développeur
 - **Action** :
   - Concevoir les écrans et formulaires d'administration des clés d'API (génération, rotation, révocation).
   - Déployer l'interface Swagger UI/Redoc dans l'application pour afficher la documentation interactive des API.
@@ -455,7 +639,7 @@ Voici la feuille de route pas-à-pas pour mener à bien cette intégration de fa
   - Connecter les graphiques de consommation de ressources et de quotas dans le tableau de bord utilisateur.
 - **Validation** : S'assurer que l'ensemble des écrans du portail développeur se chargent sans latence et s'intègrent esthétiquement dans le design system.
 
-### Étape 8 : Validation Légale, Télémétrie & Déploiement de Test
+### Étape 9 : Validation Légale, Télémétrie & Déploiement de Test
 - **Action** :
   - Ajouter la section d'aide et les mentions de licence obligatoires de Coder et de l'AGPL-3.0 dans le footer de l'application d'administration.
   - Déployer l'interface d'Optimus Dev sur Vercel à chaque commit, et le binaire d'Optimus Dev Engine (Go) sur une infrastructure de test isolée.
@@ -464,7 +648,7 @@ Voici la feuille de route pas-à-pas pour mener à bien cette intégration de fa
 
 ---
 
-## 12. Justification et Avantages par rapport aux Alternatives
+## 13. Justification et Avantages par rapport aux Alternatives
 
 | Critère / Alternative | Intégration en Iframe | Monolithe couplé (tout-en-un) | Notre Architecture (Monorepo découplé Vercel) |
 | :--- | :--- | :--- | :--- |
@@ -472,6 +656,7 @@ Voici la feuille de route pas-à-pas pour mener à bien cette intégration de fa
 | **Hébergement & Déploiement** | Facile mais limité. | Complexe et coûteux (nécessite d'héberger le frontend lourd sur des serveurs applicatifs coûteux). | **Optimale** (Le frontend statique ultra-rapide est servi gratuitement et instantanément par Vercel Edge). |
 | **Résilience du Système** | Dépend de l'Iframe externe. | Fragile (si l'interface sature, le moteur Terraform ou WireGuard peut ralentir). | **Maximale** (Le moteur est totalement isolé et s'exécute sur des serveurs optimisés pour le calcul et le réseau). |
 | **Évolutivité de l'IA** | Impossible d'intégrer l'IA dans l'Iframe de manière sécurisée. | Très complexe à intégrer au sein du serveur monolithique en Go. | **Simplifiée** (L'Orchestrateur IA d'Optimus s'intègre via la couche d'abstraction et discute directement avec les daemons agents). |
+| **Intégrations Git** | Closes et limitées aux fonctionnalités d'Iframe d'origine. | Difficiles à modifier car soudées au moteur principal. | **Totale & Extensible** (Structure d'adaptateurs découplée et partagée via le SDK `packages/api`). |
 | **Services Développeurs** | Compliqués à intégrer car cloisonnés dans l'Iframe. | Lourds à gérer et surchargent le binaire Go. | **Parfaitement intégrés** (Les services développeurs, la gestion des clés, la doc interactive et la facturation sont natifs au SDK `@optimus/api`). |
 | **Conformité Licence** | Floue. | Oblige à rendre l'ensemble du système public (y compris la landing page si couplée). | **Maîtrisée & Sécurisée** (Séparation claire des responsabilités, conformité AGPL-3.0 totale et isolation stricte du code commercial d'Optimus). |
 
@@ -479,10 +664,10 @@ Voici la feuille de route pas-à-pas pour mener à bien cette intégration de fa
 
 ## Conclusion et Prochaines Étapes
 
-Cette architecture de monorepo découplée offre **le meilleur des deux mondes** : la puissance brute et la flexibilité réseau du moteur Go de Coder d'un côté, et la rapidité, la sécurité et la simplicité de déploiement de l'écosystème Vercel/React de l'autre, tout en préparant la plateforme à l'intégration future de nos fonctionnalités IA et de nos services développeurs sous une marque unique, **Optimus Dev**.
+Cette architecture de monorepo découplée offre **le meilleur des deux mondes** : la puissance brute et la flexibilité réseau du moteur Go de Coder d'un côté, et la rapidité, la sécurité et la simplicité de déploiement de l'écosystème Vercel/React de l'autre, tout en préparant la plateforme à l'intégration future de nos fonctionnalités d'IA, de nos intégrations Git multi-plateformes, et de nos services développeurs sous une marque unique, **Optimus Dev**.
 
 ### Décisions requises pour démarrer :
-1. **Validation de l'Architecture SSO, SDK et Services Développeur** : Valisez-vous la mise en place de la couche d'abstraction `packages/api` et les fonctionnalités de la console développeur ?
+1. **Validation de la Nouvelle Section Git** : Validez-vous la conception du package de connecteurs `packages/git` et l'architecture d'intégration de plateformes Git (GitHub, GitLab, Gitea) ?
 2. **Repository source** : Pouvez-vous nous confirmer l'accès au dépôt spécifique ou si nous devons débuter l'arborescence de `apps/coder` directement à partir du dépôt de base open-source de Coder ?
 3. **Identité de marque** : Disposez-vous des éléments graphiques d'Optimus (SVG du logo, code hexadécimal des couleurs) à intégrer dans le thème ?
 
