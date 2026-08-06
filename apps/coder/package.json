@@ -12,6 +12,7 @@
     "@optimus/api": "workspace:^",
     "@optimus/auth": "workspace:^",
     "@optimus/sdk": "workspace:^",
+    "@optimus/git": "workspace:^",
     "@optimus/ui": "workspace:^",
     "@optimus/utils": "workspace:^",
     "next": "16.0.10",

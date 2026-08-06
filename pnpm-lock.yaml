@@ -20,6 +20,9 @@ importers:
       '@optimus/auth':
         specifier: workspace:^
         version: link:../../packages/auth
+      '@optimus/git':
+        specifier: workspace:^
+        version: link:../../packages/git
       '@optimus/sdk':
         specifier: workspace:^
         version: link:../../packages/sdk
