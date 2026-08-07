@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "react-query";
 import { toast } from "sonner";
 import { getErrorDetail, getErrorMessage } from "#/api/errors";
 import {
@@ -40,13 +40,13 @@ const AppearanceSettingsPage: FC = () => {
 		toast.promise(mutation, {
 			loading: "Updating appearance settings...",
 			success: "Appearance settings updated successfully.",
-			error: (e) => (
-                                                <div>
-                                                        <div>getErrorMessage(
-					e</div>
-                                                        <div>getErrorDetail(e)</div>
-                                                </div>
-                                        ),
+			error: (error) => ({
+				message: getErrorMessage(
+					error,
+					"Failed to update appearance settings.",
+				),
+				description: getErrorDetail(error),
+			}),
 		});
 	};
 

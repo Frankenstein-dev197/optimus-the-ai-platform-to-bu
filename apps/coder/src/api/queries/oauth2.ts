@@ -1,4 +1,4 @@
-import type { QueryClient } from "@tanstack/react-query";
+import type { QueryClient } from "react-query";
 import { API } from "#/api/api";
 import type * as TypesGen from "#/api/typesGenerated";
 
@@ -103,9 +103,7 @@ export const postAppSecret = (queryClient: QueryClient) => {
 
 export const deleteAppSecret = (queryClient: QueryClient) => {
 	return {
-		mutationFn: (vars: { appId: string; secretId: string }) => {
-			return API.deleteOAuth2ProviderAppSecret(vars.appId, vars.secretId);
-	}
+		mutationFn: ({ appId, secretId }: { appId: string; secretId: string }) =>
 			API.deleteOAuth2ProviderAppSecret(appId, secretId),
 		onSuccess: async (_: unknown, { appId }: { appId: string }) => {
 			await queryClient.invalidateQueries({

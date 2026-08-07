@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useNavigate, useParams } from "react-router";
 import { toast } from "sonner";
 import { getErrorDetail, getErrorMessage } from "#/api/errors";
@@ -78,24 +78,24 @@ const CreateEditRolePage: FC = () => {
 							? {
 									loading: `Updating custom role "${data.name}"...`,
 									success: `Custom role "${data.name}" updated successfully.`,
-									error: (e) => (
-                                                <div>
-                                                        <div>getErrorMessage(
-											e</div>
-                                                        <div>getErrorDetail(e)</div>
-                                                </div>
-                                        ),
+									error: (error) => ({
+										message: getErrorMessage(
+											error,
+											`Failed to update custom role "${data.name}".`,
+										),
+										description: getErrorDetail(error),
+									}),
 								}
 							: {
 									loading: `Creating custom role "${data.name}"...`,
 									success: `Custom role "${data.name}" created successfully.`,
-									error: (e) => (
-                                                <div>
-                                                        <div>getErrorMessage(
-											e</div>
-                                                        <div>getErrorDetail(e)</div>
-                                                </div>
-                                        ),
+									error: (error) => ({
+										message: getErrorMessage(
+											error,
+											`Failed to create custom role "${data.name}".`,
+										),
+										description: getErrorDetail(error),
+									}),
 								},
 					);
 				}}

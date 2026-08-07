@@ -6,7 +6,7 @@ import {
 	useMemo,
 	useState,
 } from "react";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import { toast } from "sonner";
 import { getErrorDetail } from "#/api/errors";
 import { groupAIBudget, groupsForUser } from "#/api/queries/groups";
@@ -229,7 +229,7 @@ const BudgetSummary: FC<BudgetProps> = ({
  */
 const ReadOnlyBudget: FC<BudgetProps> = (props) => (
 	<p className="m-0 text-sm text-content-secondary">
-		<BudgetSummary {...props} /> To update this limit, contact a Coder
+		<BudgetSummary {...props} /> To update this limit, contact a Optimus IDE Collab
 		administrator.
 	</p>
 );
@@ -320,12 +320,10 @@ const OverrideForm: FC<OverrideFormProps> = ({
 		toast.promise(mutation, {
 			loading: `${removing ? "Removing" : "Updating"} AI budget override for "${user.username}"...`,
 			success: `AI budget override for "${user.username}" ${removing ? "removed" : "updated"} successfully.`,
-			error: (e) => (
-                                                <div>
-                                                        <div>`Failed to ${removing ? "remove" : "update"} AI budget override for "${user.username}".`</div>
-                                                        <div>getErrorDetail(e)</div>
-                                                </div>
-                                        ),
+			error: (error) => ({
+				message: `Failed to ${removing ? "remove" : "update"} AI budget override for "${user.username}".`,
+				description: getErrorDetail(error),
+			}),
 		});
 		try {
 			await mutation;

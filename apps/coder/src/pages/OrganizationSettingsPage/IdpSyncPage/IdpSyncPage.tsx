@@ -1,5 +1,5 @@
 import { type FC, useEffect, useState } from "react";
-import { useMutation, useQueries, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueries, useQuery, useQueryClient } from "react-query";
 import { useParams, useSearchParams } from "react-router";
 import { toast } from "sonner";
 import { getErrorDetail, getErrorMessage } from "#/api/errors";
@@ -132,7 +132,7 @@ const IdpSyncPage: FC = () => {
 				{!isIdpSyncEnabled ? (
 					<PaywallPremium
 						message="IdP Sync"
-						description="Configure group and role mappings to manage permissions outside of Coder. You need a Premium license to use this feature."
+						description="Configure group and role mappings to manage permissions outside of Optimus IDE Collab. You need a Premium license to use this feature."
 						documentationLink={docs("/admin/users/idp-sync")}
 						canViewPremium={permissions.viewAllLicenses}
 					/>
@@ -154,13 +154,13 @@ const IdpSyncPage: FC = () => {
 							toast.promise(mutation, {
 								loading: "Updating IdP group sync settings...",
 								success: "IdP group sync settings updated.",
-								error: (e) => (
-                                                <div>
-                                                        <div>getErrorMessage(
-										e</div>
-                                                        <div>getErrorDetail(e)</div>
-                                                </div>
-                                        ),
+								error: (error) => ({
+									message: getErrorMessage(
+										error,
+										"Failed to update IdP group sync settings.",
+									),
+									description: getErrorDetail(error),
+								}),
 							});
 						}}
 						onSubmitRoleSyncSettings={async (data) => {
