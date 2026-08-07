@@ -1,6 +1,6 @@
-# Plan de Migration et d'Architecture : Intégration de Coder (Optimus Dev)
+# Plan de Migration et d'Architecture : Intégration de Optimus Dev (Optimus Dev)
 
-Ce document présente l'analyse architecturale complète et le plan détaillé pour intégrer la plateforme de développement cloud open source **Coder** en tant que deuxième application officielle au sein du monorepo **Optimus**.
+Ce document présente l'analyse architecturale complète et le plan détaillé pour intégrer la plateforme de développement cloud open source **Optimus Dev** en tant que deuxième application officielle au sein du monorepo **Optimus**.
 
 L'objectif est de faire de cette application (nom de code technique : `apps/coder`, nom public officiel : **Optimus Dev**) une extension naturelle et fluide de l'écosystème Optimus, tout en assurant un découplage total entre le moteur backend et l'interface frontend pour permettre des déploiements optimisés (Vercel pour le frontend, infrastructure dédiée pour le moteur backend).
 
@@ -9,7 +9,7 @@ L'objectif est de faire de cette application (nom de code technique : `apps/code
 ## Sommaire
 
 1. [Clarification de la Nomenclature (apps/coder vs Optimus Dev)](#1-clarification-de-la-nomenclature-appscoder-vs-optimus-dev)
-2. [Analyse de l'Architecture de Coder](#2-analyse-de-larchitecture-de-coder)
+2. [Analyse de l'Architecture de Optimus Dev](#2-analyse-de-larchitecture-de-coder)
 3. [Stratégie de Découplage (Frontend Vercel & Backend Dédié)](#3-stratégie-de-découplage-frontend-vercel--backend-dédié)
 4. [Architecture SSO Détaillée (apps/web ⟷ Optimus Dev)](#4-architecture-sso-détaillée-appsweb--optimus-dev)
 5. [Couche d'Abstraction API : packages/api ou packages/sdk](#5-couche-dabstraction-api--packagesapi-ou-packagessdk)
@@ -29,16 +29,16 @@ L'objectif est de faire de cette application (nom de code technique : `apps/code
 Pour éviter toute confusion tout au long du cycle de développement et de maintenance du projet, nous établissons une distinction claire entre les désignations techniques et publiques :
 
 - **`apps/coder` (Nom Technique de Répertoire)** : C'est le nom de code physique du dossier au sein du monorepo pnpm. Conserver cette appellation dans la structure du code permet d'identifier immédiatement l'origine technologique de la base de code, de faciliter la traçabilité des imports de commits amonts (upstreams), et de maintenir une correspondance directe avec la documentation d'architecture d'origine.
-- **Optimus Dev (Nom Public de Produit)** : C'est le nom de marque exclusif présenté à l'utilisateur final. Aucun client ou développeur externe ne verra de référence à "Coder" ou "apps/coder" dans l'interface de production. Toutes les interfaces graphiques, logos, documentations d'utilisation, domaines d'accès (ex. `dev.optimus.dev` ou `optimus.dev/dev`) et communications utiliseront exclusivement la marque **Optimus Dev**.
+- **Optimus Dev (Nom Public de Produit)** : C'est le nom de marque exclusif présenté à l'utilisateur final. Aucun client ou développeur externe ne verra de référence à "Optimus Dev" ou "apps/coder" dans l'interface de production. Toutes les interfaces graphiques, logos, documentations d'utilisation, domaines d'accès (ex. `dev.optimus.dev` ou `optimus.dev/dev`) et communications utiliseront exclusivement la marque **Optimus Dev**.
 
 ---
 
-## 2. Analyse de l'Architecture de Coder
+## 2. Analyse de l'Architecture de Optimus Dev
 
-Pour réussir l'intégration d'une plateforme complexe comme Coder, il est essentiel d'en comprendre la structure actuelle.
+Pour réussir l'intégration d'une plateforme complexe comme Optimus Dev, il est essentiel d'en comprendre la structure actuelle.
 
 ### 2.1 Le Backend / Moteur (Go)
-Le backend de Coder est un binaire unique et autonome écrit en **Go**. Il assure de multiples rôles critiques :
+Le backend de Optimus Dev est un binaire unique et autonome écrit en **Go**. Il assure de multiples rôles critiques :
 - **Serveur de API/REST & WebSocket** : Point d'entrée pour toutes les actions de configuration et d'interactivité.
 - **Moteur de Provisioning (Terraform)** : Gestion du cycle de vie des espaces de travail (workspaces) sur AWS, GCP, Azure, Kubernetes, Docker, etc.
 - **Coordination réseau (WireGuard®)** : Établissement de connexions de bout en bout hautement sécurisées et chiffrées entre l'utilisateur local, le serveur, et les agents s'exécutant dans les espaces de travail.
@@ -46,7 +46,7 @@ Le backend de Coder est un binaire unique et autonome écrit en **Go**. Il assur
 - **Service de fichiers statiques** : Par défaut, le binaire Go compile et sert directement l'interface React compilée.
 
 ### 2.2 Le Frontend / Interface (SPA React)
-L'interface utilisateur de Coder est une Single Page Application (SPA) située dans le répertoire `site/` du dépôt d'origine :
+L'interface utilisateur de Optimus Dev est une Single Page Application (SPA) située dans le répertoire `site/` du dépôt d'origine :
 - **Framework** : React avec TypeScript.
 - **Gestionnaire de build** : Vite.
 - **Styles & UI** : Material UI v5 (MUI) associé à Emotion CSS.
@@ -60,7 +60,7 @@ L'interface utilisateur de Coder est une Single Page Application (SPA) située d
 ## 3. Stratégie de Découplage (Frontend Vercel & Backend Dédié)
 
 ### 3.1 Le Problème du Découplage sur Vercel
-Vercel est une plateforme conçue pour le serverless et la distribution de contenus statiques à la périphérie (Edge). Le moteur de Coder **ne peut pas** être exécuté au sein de fonctions serverless Vercel car il requiert :
+Vercel est une plateforme conçue pour le serverless et la distribution de contenus statiques à la périphérie (Edge). Le moteur de Optimus Dev **ne peut pas** être exécuté au sein de fonctions serverless Vercel car il requiert :
 1. Des connexions réseau TCP/UDP persistantes à long terme (tunnels WireGuard).
 2. L'exécution de processus d'arrière-plan durables (moteur Terraform, agents en écoute).
 3. Des connexions WebSocket hautement interactives et persistantes (terminaux Web intégrés, SSH sur navigateur).
@@ -139,8 +139,8 @@ Nous proposons une architecture SSO basée sur un **domaine parent partagé** (e
    Lorsque l'utilisateur clique sur "Accéder à mes espaces de travail", il est redirigé vers `https://dev.optimus.dev`. Le navigateur transmet automatiquement le cookie de session partagé `.optimus.dev`.
 3. **Validation & Échange de Jeton par l'API Gateway** :
    Le frontend d'Optimus Dev intercepte le cookie et effectue une requête silencieuse vers l'endpoint d'authentification d'Optimus Dev Engine. Le moteur backend d'Optimus Dev valide le cookie auprès du serveur d'authentification central d'Optimus (Identity Provider - IdP).
-4. **Génération de Session Locale Coder** :
-   Une fois validé, Optimus Dev Engine génère une session utilisateur interne Coder et retourne un token JWT local ou un cookie d'API dédié à l'application `apps/coder`. L'utilisateur accède instantanément à ses espaces de travail sans aucune friction.
+4. **Génération de Session Locale Optimus Dev** :
+   Une fois validé, Optimus Dev Engine génère une session utilisateur interne Optimus Dev et retourne un token JWT local ou un cookie d'API dédié à l'application `apps/coder`. L'utilisateur accède instantanément à ses espaces de travail sans aucune friction.
 5. **Gestion du Logout Unifié (Single Sign-Out)** :
    Une déconnexion initiée depuis n'importe quelle application (`apps/web` ou `apps/coder`) détruira le cookie global `.optimus.dev` et enverra une requête d'invalidation (back-channel logout) à l'API Gateway d'Optimus Dev Engine pour révoquer immédiatement la session locale.
 
@@ -148,7 +148,7 @@ Nous proposons une architecture SSO basée sur un **domaine parent partagé** (e
 
 ## 5. Couche d'Abstraction API : packages/api ou packages/sdk
 
-Pour découpler définitivement le frontend (`apps/coder`) des spécificités techniques et de la structure interne des API de Coder, nous allons introduire un nouveau package partagé dans le monorepo : **`packages/api`** (ou **`packages/sdk`**).
+Pour découpler définitivement le frontend (`apps/coder`) des spécificités techniques et de la structure interne des API de Optimus Dev, nous allons introduire un nouveau package partagé dans le monorepo : **`packages/api`** (ou **`packages/sdk`**).
 
 ### 5.1 Rôle de la Couche d'Abstraction
 Cette couche d'abstraction agit comme une interface de médiation (un pattern "Adapter") entre le code d'interface graphique et les services de communication réels.
@@ -173,9 +173,9 @@ Cette couche d'abstraction agit comme une interface de médiation (un pattern "A
                                ▼
      ┌─────────────────────────┴─────────────────────────┐
      │                                                   │
-     ▼ (Adaptateur Coder)                                ▼ (Adaptateur Services IA)
+     ▼ (Adaptateur Optimus Dev)                                ▼ (Adaptateur Services IA)
 ┌──────────────────────────────┐                   ┌─────────────────────────────┐
-│       Coder Client API       │                   │     Optimus AI Services     │
+│       Optimus Dev Client API       │                   │     Optimus AI Services     │
 │   (Appels REST engine Go)    │                   │   (Agents, Orchestrateur)   │
 └──────────────────────────────┘                   └─────────────────────────────┘
 ```
@@ -210,7 +210,7 @@ export class OptimusAPIClient {
 
   // Abstraction de la récupération des workspaces
   async getWorkspaces(): Promise<OptimusWorkspace[]> {
-    // Appel interne à l'API du moteur Coder et conversion (mapping) vers le modèle unifié d'Optimus
+    // Appel interne à l'API du moteur Optimus Dev et conversion (mapping) vers le modèle unifié d'Optimus
     const response = await this.axiosInstance.get('/api/v2/workspaces');
     return response.data.map((w: any) => this.mapToOptimusWorkspace(w));
   }
@@ -480,7 +480,7 @@ Pour que `apps/coder` devienne une partie intégrante de la suite Optimus, elle 
 - **`packages/utils`** : Partage d'utilitaires de formatage de données, de gestion des dates, de validation de données (Zod), et d'instances de requêtes HTTP configurées pour gérer les redirections d'API de manière transparente.
 
 ### 8.2 Partage Progressif du Design System (`packages/ui`)
-Actuellement, les composants UI de Coder utilisent Material UI (MUI). Le design system d'Optimus utilise Tailwind CSS et des composants d'interface légers et rapides.
+Actuellement, les composants UI de Optimus Dev utilisent Material UI (MUI). Le design system d'Optimus utilise Tailwind CSS et des composants d'interface légers et rapides.
 - **Étape 1 (Compatibilité temporaire)** : Garder MUI au sein de `apps/coder` pour ne pas casser l'interface utilisateur existante.
 - **Étape 2 (Partage de thème)** : Injecter les couleurs et variables de marque d'Optimus dans le thème MUI afin de garantir une harmonie visuelle instantanée.
 - **Étape 3 (Migration progressive)** : Remplacer un à un les composants MUI complexes par des composants partagés basés sur Tailwind, importés directement de `packages/ui` (ex. boutons, barres de navigation, modales, spinners).
@@ -510,7 +510,7 @@ L'architecture s'articule autour d'un **Orchestrateur IA** central, communiquant
                    Requêtes Workspaces  │              │ Requêtes IA & Chat
                                         ▼              ▼
                             ┌──────────────┐    ┌────────────────────────┐
-                            │  Coder Go    │    │     Optimus AI         │
+                            │  Optimus Dev Go    │    │     Optimus AI         │
                             │  Engine      │    │    Orchestrateur       │
                             └──────┬───────┘    └──────┬──────────┬──────┘
                                    │                   │          │
@@ -530,7 +530,7 @@ L'architecture s'articule autour d'un **Orchestrateur IA** central, communiquant
 ### 9.2 Rôle des Composants IA
 
 1. **Optimus AI Orchestrateur (Backend)** :
-   Ce service centralisé gère la file d'attente des requêtes IA, la sélection des modèles LLM (OpenAI, Anthropic, serveurs d'inférence locaux), la gestion du contexte utilisateur, et le routage des commandes. Il est totalement indépendant du moteur de provisioning de Coder, ce qui élimine les goulots d'étranglement.
+   Ce service centralisé gère la file d'attente des requêtes IA, la sélection des modèles LLM (OpenAI, Anthropic, serveurs d'inférence locaux), la gestion du contexte utilisateur, et le routage des commandes. Il est totalement indépendant du moteur de provisioning de Optimus Dev, ce qui élimine les goulots d'étranglement.
 2. **Agent d'Exécution IA Local** :
    Chaque espace de travail (container Docker, VM Kubernetes) exécute un daemon d'agent d'exécution. Cet agent reçoit des commandes structurées de l'Orchestrateur IA central via un canal sécurisé pour :
    - Analyser et modifier l'arborescence de fichiers du projet.
@@ -546,15 +546,15 @@ L'architecture s'articule autour d'un **Orchestrateur IA** central, communiquant
 
 ## 10. Stratégie de Rebranding & White-Labeling
 
-Pour faire d'**Optimus Dev** un produit propre, tout élément visuel ou textuel faisant référence à Coder doit être remplacé.
+Pour faire d'**Optimus Dev** un produit propre, tout élément visuel ou textuel faisant référence à Optimus Dev doit être remplacé.
 
 ### 10.1 Identité Visuelle
-- **Logos & Iconographie** : Remplacement de tous les fichiers SVG du logo Coder (dans le dossier `static/` ou les composants React) par le logo officiel d'Optimus (en variantes claire et sombre).
+- **Logos & Iconographie** : Remplacement de tous les fichiers SVG du logo Optimus Dev (dans le dossier `static/` ou les composants React) par le logo officiel d'Optimus (en variantes claire et sombre).
 - **Thème Graphique** : Ajustement de la palette de couleurs d'Emotion/MUI pour adopter les teintes de la charte graphique d'Optimus (le dégradé sombre, les violets/bleus néon et les gris foncés visibles sur la landing page d'Optimus).
 - **Favicon & Métadonnées** : Mise à jour des favicons dans `index.html` et ajustement des balises Meta pour le SEO.
 
 ### 10.2 Textes et Naming
-- **Remplacement textuel** : Script automatisé combiné à des revues manuelles pour renommer "Coder", "Coder Enterprise", "Coder Host" en "Optimus Dev", "Plateforme Optimus" ou "Serveur Optimus" selon le contexte.
+- **Remplacement textuel** : Script automatisé combiné à des revues manuelles pour renommer "Optimus Dev", "Optimus Dev Enterprise", "Optimus Dev Host" en "Optimus Dev", "Plateforme Optimus" ou "Serveur Optimus" selon le contexte.
 - **Console d'Administration & Titres** : Modification des titres de page (`document.title`), des entêtes de courriels de notification et des formulaires d'invitation.
 - **Documentation et Aide** : Réécriture de la section d'aide et de la documentation utilisateur accessible depuis le menu d'aide de l'interface pour pointer vers les ressources d'Optimus.
 
@@ -562,21 +562,21 @@ Pour faire d'**Optimus Dev** un produit propre, tout élément visuel ou textuel
 
 ## 11. Conformité avec la Licence AGPL-3.0 (Analyse Prudente)
 
-Coder est distribué sous la licence **GNU Affero General Public License v3.0 (AGPL-3.0)**. L'AGPL-3.0 is une licence "copyleft" forte, conçue spécifiquement pour garantir que le code source des logiciels exécutés sur le réseau reste accessible aux utilisateurs finaux de ce réseau.
+Optimus Dev est distribué sous la licence **GNU Affero General Public License v3.0 (AGPL-3.0)**. L'AGPL-3.0 is une licence "copyleft" forte, conçue spécifiquement pour garantir que le code source des logiciels exécutés sur le réseau reste accessible aux utilisateurs finaux de ce réseau.
 
 Il est impératif d'adopter une posture juridique rigoureuse et prudente : **le simple fait de séparer physiquement le frontend du backend ou de restructurer le monorepo ne suffit pas à éliminer de manière automatique et magique l'ensemble des obligations liées à la licence AGPL-3.0.**
 
 ### 11.1 Limites du Découplage et Risques de Contamination (Copyleft)
 1. **La "Dépendance Intime" et les dérivés** :
-   Si le frontend (`apps/coder`) ou notre SDK personnalisé (`packages/api`) est si étroitement lié au moteur Coder qu'il ne peut fonctionner sans lui, les tribunaux ou les audits de propriété intellectuelle pourraient considérer l'ensemble de l'application ou du SDK comme une "œuvre dérivée" de Coder. Dans ce cas, la totalité de cette œuvre (y compris nos ajouts et intégrations) pourrait être assujettie à l'obligation de divulgation sous licence AGPL-3.0.
+   Si le frontend (`apps/coder`) ou notre SDK personnalisé (`packages/api`) est si étroitement lié au moteur Optimus Dev qu'il ne peut fonctionner sans lui, les tribunaux ou les audits de propriété intellectuelle pourraient considérer l'ensemble de l'application ou du SDK comme une "œuvre dérivée" de Optimus Dev. Dans ce cas, la totalité de cette œuvre (y compris nos ajouts et intégrations) pourrait être assujettie à l'obligation de divulgation sous licence AGPL-3.0.
 2. **Le Déploiement SaaS et l'Interaction Réseau** :
-   Tant qu'un utilisateur interagit avec une version modifiée du moteur d'origine Coder à travers un réseau, les clauses de l'AGPL-3.0 imposent de donner à cet utilisateur un accès direct au code source de la version modifiée du moteur. Le masquage ou le rebranding d'interface ne modifie pas cette obligation légale fondamentale.
+   Tant qu'un utilisateur interagit avec une version modifiée du moteur d'origine Optimus Dev à travers un réseau, les clauses de l'AGPL-3.0 imposent de donner à cet utilisateur un accès direct au code source de la version modifiée du moteur. Le masquage ou le rebranding d'interface ne modifie pas cette obligation légale fondamentale.
 
 ### 11.2 Stratégie de Conformité Recommandée d'un Point de Vue Légal
 Afin d'assurer une sécurité juridique totale pour Optimus, nous établissons les garde-fous stricts suivants :
 
 1. **Transparence et Code Source Ouvert pour le "Core"** :
-   Toutes les modifications directes apportées au moteur Coder (correctifs de bugs, intégrations de bas niveau, optimisations réseau, rebranding de l'API) seront publiées de façon transparente sur un dépôt GitHub public (par exemple, un fork d'Optimus nommé `optimus-dev-engine`). Cela écarte d'emblée toute accusation de violation de l'AGPL-3.0.
+   Toutes les modifications directes apportées au moteur Optimus Dev (correctifs de bugs, intégrations de bas niveau, optimisations réseau, rebranding de l'API) seront publiées de façon transparente sur un dépôt GitHub public (par exemple, un fork d'Optimus nommé `optimus-dev-engine`). Cela écarte d'emblée toute accusation de violation de l'AGPL-3.0.
 2. **Isolation Hermétique des Modules Propriétaires d'Optimus** :
    Pour s'assurer que notre logique métier exclusive d'Optimus (moteur de facturation Stripe, télémétrie commerciale, bases de données de nos clients, orchestrateurs IA propriétaires) reste 100 % fermée et protégée :
    - **Pas d'import direct de code** : Aucun module sous licence AGPL-3.0 ne doit être importé directement dans un fichier de logique commerciale propriétaire.
@@ -590,8 +590,8 @@ Afin d'assurer une sécurité juridique totale pour Optimus, nous établissons l
 
 Voici la feuille de route pas-à-pas pour mener à bien cette intégration de façon fluide, sans casser l'expérience utilisateur actuelle ni introduire de régressions.
 
-### Étape 1 : Importation des Sources Frontend de Coder
-- **Action** : Créer l'arborescence de l'application `apps/coder` en maintenant la base de code d'origine de Coder dans ce répertoire pour assurer la traçabilité technique.
+### Étape 1 : Importation des Sources Frontend de Optimus Dev
+- **Action** : Créer l'arborescence de l'application `apps/coder` en maintenant la base de code d'origine de Optimus Dev dans ce répertoire pour assurer la traçabilité technique.
 - **Validation** : Raccorder l'application à `package.json` et `pnpm-workspace.yaml` au niveau de la racine. S'assurer que `pnpm install` installe correctement les dépendances et résout les types.
 
 ### Étape 2 : Configuration du Build et Intégration Turbopack / Turbo
@@ -601,7 +601,7 @@ Voici la feuille de route pas-à-pas pour mener à bien cette intégration de fa
 ### Étape 3 : Création et Raccordement du Package d'Abstraction API (`packages/api`)
 - **Action** :
   - Créer l'arborescence de `packages/api` dans le monorepo.
-  - Extraire et centraliser la logique de requêtage d'API au sein de ce SDK partagé sous forme d'interfaces génériques et découplées de l'implémentation de Coder.
+  - Extraire et centraliser la logique de requêtage d'API au sein de ce SDK partagé sous forme d'interfaces génériques et découplées de l'implémentation de Optimus Dev.
   - Importer `@optimus/api` au sein de `apps/coder`.
 - **Validation** : Vérifier que le build de `packages/api` génère correctement les définitions TypeScript (`.d.ts`) et que l'interface de `apps/coder` les consomme sans erreur de typage.
 
@@ -626,10 +626,10 @@ Voici la feuille de route pas-à-pas pour mener à bien cette intégration de fa
 
 ### Étape 7 : Rebranding Visuel & White-Labeling Complet
 - **Action** :
-  - Remplacer l'ensemble des logos Coder par les logos Optimus.
+  - Remplacer l'ensemble des logos Optimus Dev par les logos Optimus.
   - Modifier le fichier de thème Emotion (`apps/coder/src/theme/*`) pour appliquer la charte graphique d'Optimus.
-  - Exécuter un script de remplacement textuel global pour substituer toutes les occurrences de "Coder" par "Optimus Dev" ou "Optimus" dans l'UI.
-- **Validation** : Revue approfondie de l'ensemble des pages d'administration pour s'assurer qu'aucune mention de la marque Coder ne subsiste pour l'utilisateur final.
+  - Exécuter un script de remplacement textuel global pour substituer toutes les occurrences de "Optimus Dev" par "Optimus Dev" ou "Optimus" dans l'UI.
+- **Validation** : Revue approfondie de l'ensemble des pages d'administration pour s'assurer qu'aucune mention de la marque Optimus Dev ne subsiste pour l'utilisateur final.
 
 ### Étape 8 : Implémentation des Services Développeur
 - **Action** :
@@ -641,7 +641,7 @@ Voici la feuille de route pas-à-pas pour mener à bien cette intégration de fa
 
 ### Étape 9 : Validation Légale, Télémétrie & Déploiement de Test
 - **Action** :
-  - Ajouter la section d'aide et les mentions de licence obligatoires de Coder et de l'AGPL-3.0 dans le footer de l'application d'administration.
+  - Ajouter la section d'aide et les mentions de licence obligatoires de Optimus Dev et de l'AGPL-3.0 dans le footer de l'application d'administration.
   - Déployer l'interface d'Optimus Dev sur Vercel à chaque commit, et le binaire d'Optimus Dev Engine (Go) sur une infrastructure de test isolée.
   - Lancer un audit de conformité de licence automatisé (FOSSA/Snyk) pour s'assurer de l'absence de liaisons statiques interdites.
 - **Validation** : Lancement d'un test d'intégration grandeur nature (création d'un espace de travail, démarrage réussi, ouverture du terminal interactif et tunnel d'un port en direct).
@@ -664,11 +664,11 @@ Voici la feuille de route pas-à-pas pour mener à bien cette intégration de fa
 
 ## Conclusion et Prochaines Étapes
 
-Cette architecture de monorepo découplée offre **le meilleur des deux mondes** : la puissance brute et la flexibilité réseau du moteur Go de Coder d'un côté, et la rapidité, la sécurité et la simplicité de déploiement de l'écosystème Vercel/React de l'autre, tout en préparant la plateforme à l'intégration future de nos fonctionnalités d'IA, de nos intégrations Git multi-plateformes, et de nos services développeurs sous une marque unique, **Optimus Dev**.
+Cette architecture de monorepo découplée offre **le meilleur des deux mondes** : la puissance brute et la flexibilité réseau du moteur Go de Optimus Dev d'un côté, et la rapidité, la sécurité et la simplicité de déploiement de l'écosystème Vercel/React de l'autre, tout en préparant la plateforme à l'intégration future de nos fonctionnalités d'IA, de nos intégrations Git multi-plateformes, et de nos services développeurs sous une marque unique, **Optimus Dev**.
 
 ### Décisions requises pour démarrer :
 1. **Validation de la Nouvelle Section Git** : Validez-vous la conception du package de connecteurs `packages/git` et l'architecture d'intégration de plateformes Git (GitHub, GitLab, Gitea) ?
-2. **Repository source** : Pouvez-vous nous confirmer l'accès au dépôt spécifique ou si nous devons débuter l'arborescence de `apps/coder` directement à partir du dépôt de base open-source de Coder ?
+2. **Repository source** : Pouvez-vous nous confirmer l'accès au dépôt spécifique ou si nous devons débuter l'arborescence de `apps/coder` directement à partir du dépôt de base open-source de Optimus Dev ?
 3. **Identité de marque** : Disposez-vous des éléments graphiques d'Optimus (SVG du logo, code hexadécimal des couleurs) à intégrer dans le thème ?
 
 Une fois ces points confirmés, nous serons prêts à passer à l'**Étape 1** du plan de migration de manière totalement autonome !

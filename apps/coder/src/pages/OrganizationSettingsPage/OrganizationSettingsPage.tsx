@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useNavigate } from "react-router";
 import { toast } from "sonner";
 import { getErrorDetail, getErrorMessage } from "#/api/errors";
@@ -75,12 +75,10 @@ const OrganizationSettingsPage: FC = () => {
 		toast.promise(mutation, {
 			loading: "Updating workspace sharing settings...",
 			success: sharingUpdatedToastLabels[value],
-			error: (e) => (
-                                                <div>
-                                                        <div>"Failed to update workspace sharing settings."</div>
-                                                        <div>getErrorDetail(e)</div>
-                                                </div>
-                                        ),
+			error: (error) => ({
+				message: "Failed to update workspace sharing settings.",
+				description: getErrorDetail(error),
+			}),
 		});
 	};
 

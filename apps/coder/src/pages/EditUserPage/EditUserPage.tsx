@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useNavigate, useParams } from "react-router";
 import { toast } from "sonner";
 import { getErrorDetail, getErrorMessage } from "#/api/errors";
@@ -50,13 +50,13 @@ const EditUserPage: FC = () => {
 		toast.promise(mutation, {
 			loading: `Saving user "${values.username}"…`,
 			success: `User "${values.username}" updated successfully.`,
-			error: (e) => (
-                                                <div>
-                                                        <div>getErrorMessage(
-					e</div>
-                                                        <div>getErrorDetail(e)</div>
-                                                </div>
-                                        ),
+			error: (e) => ({
+				message: getErrorMessage(
+					e,
+					`Failed to update user "${values.username}".`,
+				),
+				description: getErrorDetail(e),
+			}),
 		});
 	};
 

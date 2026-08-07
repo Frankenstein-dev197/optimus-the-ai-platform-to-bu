@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "react-query";
 import { toast } from "sonner";
 import { API } from "#/api/api";
 import { getErrorDetail } from "#/api/errors";
@@ -55,12 +55,10 @@ export const CancelJobConfirmationDialog: FC<
 				toast.promise(mutation, {
 					loading: `Canceling provisioner job "${job.id}"...`,
 					success: `Provisioner job "${job.id}" canceled successfully.`,
-					error: (e) => (
-                                                <div>
-                                                        <div>`Failed to cancel provisioner job "${job.id}".`</div>
-                                                        <div>getErrorDetail(e)</div>
-                                                </div>
-                                        ),
+					error: (error) => ({
+						message: `Failed to cancel provisioner job "${job.id}".`,
+						description: getErrorDetail(error),
+					}),
 				});
 			}}
 		/>

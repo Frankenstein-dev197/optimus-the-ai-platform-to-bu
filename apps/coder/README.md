@@ -1,5 +1,35 @@
-# Coder app placeholder
+# Optimus Dev Frontend
 
-This directory is reserved for a future Coder application integration.
+**Optimus Dev** is a self-hosted platform for cloud development environments and AI coding agents.
 
-Do not add Coder backend, services, engine, or server-side deployment dependencies here until the application is intentionally integrated.
+This is the frontend application (React + Vite + Tailwind) for Optimus Dev.
+
+## Architecture
+
+```
+Optimus Dev Frontend
+    ↓
+Optimus API (packages/api)
+    ↓
+Optimus Engine (Backend Go)
+```
+
+## Scripts
+
+```bash
+# Development
+pnpm dev
+
+# Build
+pnpm build
+
+# Type Check
+pnpm lint:types
+
+# Tests
+pnpm test
+```
+
+## License
+
+AGPL-3.0

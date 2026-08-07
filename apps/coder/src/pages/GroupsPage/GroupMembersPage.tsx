@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import { EllipsisVerticalIcon, UserPlusIcon } from "lucide-react";
 import { type FC, useEffect, useState } from "react";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useOutletContext } from "react-router";
 import { toast } from "sonner";
 import { getErrorDetail, getErrorMessage } from "#/api/errors";
@@ -216,12 +216,10 @@ const GroupMembersPage: FC = () => {
 										toast.promise(mutation, {
 											loading: `Removing member "${member.username}" from "${groupData.name}"...`,
 											success: `Member "${member.username}" has been removed from "${groupData.name}" successfully.`,
-											error: (e) => (
-                                                <div>
-                                                        <div>`Failed to remove member "${member.username}" from "${groupData.name}".`</div>
-                                                        <div>getErrorDetail(e)</div>
-                                                </div>
-                                        ),
+											error: (error) => ({
+												message: `Failed to remove member "${member.username}" from "${groupData.name}".`,
+												description: getErrorDetail(error),
+											}),
 										});
 									}}
 								/>

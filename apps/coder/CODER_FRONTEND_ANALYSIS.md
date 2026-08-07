@@ -1,12 +1,12 @@
-# Analyse d'Intégration et d'Adaptation : Frontend Coder vers Optimus Dev
+# Analyse d'Intégration et d'Adaptation : Frontend Optimus Dev vers Optimus Dev
 
-Ce document présente l'analyse approfondie du frontend open source de la plateforme **Coder** (v2) et détaille notre stratégie technique pour l'adapter et l'intégrer de manière transparente comme deuxième application officielle au sein du monorepo **Optimus** sous le nom public d'**Optimus Dev** (`apps/coder`).
+Ce document présente l'analyse approfondie du frontend open source de la plateforme **Optimus Dev** (v2) et détaille notre stratégie technique pour l'adapter et l'intégrer de manière transparente comme deuxième application officielle au sein du monorepo **Optimus** sous le nom public d'**Optimus Dev** (`apps/coder`).
 
 ---
 
-## 1. Analyse de la Structure du Frontend Coder Original
+## 1. Analyse de la Structure du Frontend Optimus Dev Original
 
-La base de code d'origine de l'interface utilisateur de Coder (située dans le dossier `site/` du projet Coder) repose sur une architecture Single Page Application (SPA) classique et robuste :
+La base de code d'origine de l'interface utilisateur de Optimus Dev (située dans le dossier `site/` du projet Optimus Dev) repose sur une architecture Single Page Application (SPA) classique et robuste :
 
 ### 1.1 Stack Technique Identifiée
 - **Framework UI** : React (v18) écrit exclusivement en TypeScript.
@@ -17,7 +17,7 @@ La base de code d'origine de l'interface utilisateur de Coder (située dans le d
 - **Gestionnaire de Build** : Vite servant l'application de manière autonome (SPA statique).
 - **Tests** : Vitest pour les tests unitaires et d'intégration, Playwright pour les tests fonctionnels de bout en bout (E2E) exécutés contre une base de données de test réelle.
 
-### 1.2 Structure des Répertoires Coder (`site/`)
+### 1.2 Structure des Répertoires Optimus Dev (`site/`)
 ```
 site/
  ├── src/
@@ -26,7 +26,7 @@ site/
  │    │    └── queries/    # Requêtes et mutations TanStack Query
  │    ├── components/      # Composants atomiques réutilisables sans logique métier
  │    ├── hooks/           # Hooks personnalisés transversaux
- │    ├── modules/         # Composants et logiques spécifiques à Coder (ex: Provisioner, Terminal)
+ │    ├── modules/         # Composants et logiques spécifiques à Optimus Dev (ex: Provisioner, Terminal)
  │    ├── pages/           # Pages de premier niveau (Workspaces, Users, Templates, Settings)
  │    ├── theme/           # Configuration du thème Material UI
  │    └── util/            # Fonctions utilitaires génériques
@@ -46,12 +46,12 @@ Pour intégrer cette application dans le monorepo **Optimus** tout en garantissa
 - **La structure de l'agent terminal (Web Terminal)** : Les composants hautement interactifs (comme xterm.js pour le terminal web et le tunneling de port) sont conservés car essentiels à l'interactivité de la plateforme de développement.
 
 ### 2.2 Ce qui est ADAPTÉ
-- **Le Thème Graphique (MUI + Emotion)** : Le thème de Coder doit être adapté pour refléter l'identité visuelle d'**Optimus Dev**. Les palettes de couleurs (violets néon, bleus, neutres très sombres d'Optimus) seront injectées dans le `ThemeProvider` de MUI.
+- **Le Thème Graphique (MUI + Emotion)** : Le thème de Optimus Dev doit être adapté pour refléter l'identité visuelle d'**Optimus Dev**. Les palettes de couleurs (violets néon, bleus, neutres très sombres d'Optimus) seront injectées dans le `ThemeProvider` de MUI.
 - **La Gestion du Routage** : Migration de l'application vers l'**App Router de Next.js** utilisé par le monorepo Optimus. La structure des routes passera d'un fichier de routage statique `react-router` à une arborescence de fichiers Next.js (`app/dashboard`, `app/workspaces`, `app/projects`, etc.), ce qui améliore les performances et permet une intégration SSO plus fluide.
 
 ### 2.3 Ce qui est REMPLACÉ
-- **Les appels directs aux API Coder (Remplacement Majeur)** : **INTERDICTION** d'effectuer des requêtes directes à l'API de Coder. Tout appel réseau doit être remplacé par des appels passant exclusivement par notre SDK unifié **`@optimus/sdk`** (qui consomme les contrats de `@optimus/api`). Cela garantit que l'interface frontend d'Optimus Dev est totalement découplée du moteur backend Coder.
-- **L'Authentification (Remplacement Majeur)** : Le module d'authentification de Coder est remplacé par l'authentification SSO unifiée d'**`@optimus/auth`**. La session de l'utilisateur connecté sur la landing page d'Optimus (`apps/web`) est automatiquement propagée à l'application Optimus Dev (`apps/coder`) via le système de cookies SSO partagés.
+- **Les appels directs aux API Optimus Dev (Remplacement Majeur)** : **INTERDICTION** d'effectuer des requêtes directes à l'API de Optimus Dev. Tout appel réseau doit être remplacé par des appels passant exclusivement par notre SDK unifié **`@optimus/sdk`** (qui consomme les contrats de `@optimus/api`). Cela garantit que l'interface frontend d'Optimus Dev est totalement découplée du moteur backend Optimus Dev.
+- **L'Authentification (Remplacement Majeur)** : Le module d'authentification de Optimus Dev est remplacé par l'authentification SSO unifiée d'**`@optimus/auth`**. La session de l'utilisateur connecté sur la landing page d'Optimus (`apps/web`) est automatiquement propagée à l'application Optimus Dev (`apps/coder`) via le système de cookies SSO partagés.
 - **Les composants UI Génériques** : Remplacement des composants MUI simples (boutons, cartes simples, modales de confirmation) par des composants hautement optimisés issus de notre package commun **`@optimus/ui`**, réduisant le poids de l'application et harmonisant l'interface.
 
 ### 2.4 Ce qui est SUPPRIMÉ
@@ -94,7 +94,7 @@ Pour intégrer cette application dans le monorepo **Optimus** tout en garantissa
 
 ## 4. Stratégie de Rebranding Complet
 
-La marque "Coder" ou toute autre marque associée d'origine (comme "code-server") doit disparaître complètement au profit d'**Optimus Dev** :
+La marque "Optimus Dev" ou toute autre marque associée d'origine (comme "code-server") doit disparaître complètement au profit d'**Optimus Dev** :
 
 | Élément d'origine | Remplacement par Optimus Dev | Méthode d'adaptation |
 | :--- | :--- | :--- |
