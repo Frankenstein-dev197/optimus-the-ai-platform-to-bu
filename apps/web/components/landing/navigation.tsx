@@ -11,6 +11,11 @@ const navLinks = [
   { name: "Pricing", href: "#pricing" },
 ];
 
+// Optimus Dev URL - configure this via NEXT_PUBLIC_OPTIMUS_DEV_URL environment variable
+const getOptimusDevUrl = () => {
+  return process.env.NEXT_PUBLIC_OPTIMUS_DEV_URL || "https://dev.optimus-ide-collabidecollab.com";
+};
+
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -22,6 +27,8 @@ export function Navigation() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const optimusDevUrl = getOptimusDevUrl();
 
   return (
     <header
@@ -65,15 +72,20 @@ export function Navigation() {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-4">
-            <a href="#" className={`text-foreground/70 hover:text-foreground transition-all duration-500 ${isScrolled ? "text-xs" : "text-sm"}`}>
+            <a 
+              href={`${optimusDevUrl}/login`} 
+              className={`text-foreground/70 hover:text-foreground transition-all duration-500 ${isScrolled ? "text-xs" : "text-sm"}`}
+            >
               Sign in
             </a>
-            <Button
-              size="sm"
-              className={`bg-foreground hover:bg-foreground/90 text-background rounded-full transition-all duration-500 ${isScrolled ? "px-4 h-8 text-xs" : "px-6"}`}
-            >
-              Start creating
-            </Button>
+            <a href={`${optimusDevUrl}/login`}>
+              <Button
+                size="sm"
+                className={`bg-foreground hover:bg-foreground/90 text-background rounded-full transition-all duration-500 ${isScrolled ? "px-4 h-8 text-xs" : "px-6"}`}
+              >
+                Start creating
+              </Button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -129,19 +141,29 @@ export function Navigation() {
           }`}
           style={{ transitionDelay: isMobileMenuOpen ? "300ms" : "0ms" }}
           >
-            <Button 
-              variant="outline" 
-              className="flex-1 rounded-full h-14 text-base"
+            <a 
+              href={`${optimusDevUrl}/login`} 
+              className="flex-1"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Sign in
-            </Button>
-            <Button 
-              className="flex-1 bg-foreground text-background rounded-full h-14 text-base"
+              <Button 
+                variant="outline" 
+                className="w-full rounded-full h-14 text-base"
+              >
+                Sign in
+              </Button>
+            </a>
+            <a 
+              href={`${optimusDevUrl}/login`}
+              className="flex-1"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Start creating
-            </Button>
+              <Button 
+                className="w-full bg-foreground text-background rounded-full h-14 text-base"
+              >
+                Start creating
+              </Button>
+            </a>
           </div>
         </div>
       </div>
