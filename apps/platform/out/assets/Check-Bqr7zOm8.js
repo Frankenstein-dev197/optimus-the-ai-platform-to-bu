@@ -1,0 +1,1 @@
+import{t as e}from"./cn-CcU7hTTa.js";import{i as t}from"./emotion-Gs6oPiCL.js";import{t as n}from"./check-DMUPhhQk.js";var r=({className:r,...i})=>t(n,{className:e(`animate-in fade-in-0 zoom-in-[0.8] duration-300`,r),...i});export{r as t};

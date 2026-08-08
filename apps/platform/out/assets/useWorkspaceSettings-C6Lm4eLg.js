@@ -1,0 +1,1 @@
+import{o as e}from"./rolldown-runtime-DAXXjFlN.js";import{P as t}from"./mui-Cl_E9pOk.js";var n=e(t()),r=(0,n.createContext)(void 0);function i(){let e=(0,n.useContext)(r);if(!e)throw Error(`This hook can only be used from a workspace settings page`);return e}export{i as n,r as t};

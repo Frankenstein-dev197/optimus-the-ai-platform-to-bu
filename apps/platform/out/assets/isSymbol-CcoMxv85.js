@@ -1,0 +1,1 @@
+import{t as e}from"./rolldown-runtime-DAXXjFlN.js";import{n as t,t as n}from"./isObjectLike-BApRvuuJ.js";var r=e(((e,r)=>{var i=t(),a=n(),o=`[object Symbol]`;function s(e){return typeof e==`symbol`||a(e)&&i(e)==o}r.exports=s}));export{r as t};

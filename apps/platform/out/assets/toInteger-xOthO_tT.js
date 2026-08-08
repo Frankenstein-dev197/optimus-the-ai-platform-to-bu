@@ -1,0 +1,1 @@
+import{t as e}from"./rolldown-runtime-DAXXjFlN.js";import{t}from"./toNumber-DpY3ZP7d.js";var n=e(((e,n)=>{var r=t(),i=1/0,a=17976931348623157e292;function o(e){return e?(e=r(e),e===i||e===-i?(e<0?-1:1)*a:e===e?e:0):e===0?e:0}n.exports=o})),r=e(((e,t)=>{var r=n();function i(e){var t=r(e),n=t%1;return t===t?n?t-n:t:0}t.exports=i}));export{n,r as t};

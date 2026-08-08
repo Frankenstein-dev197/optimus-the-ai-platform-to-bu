@@ -1,0 +1,1 @@
+import{d as e,i as t}from"./workspace-B9Iez5Ms.js";function n(t){return e(t).flatMap(e=>e.apps.map(t=>({...t,agent:e})))}function r(e,n,r){let i=t(e,n);if(!i)return;let a=i.apps.find(e=>e.id===r);if(a)return{...a,agent:i}}export{n,r as t};

@@ -1,0 +1,1 @@
+import{O as e,t}from"./api-CEfiC5C8.js";import{t as n}from"./util-D_K8GU8P.js";var r=[`experiments`],i=e=>n({metadata:e,queryKey:r,queryFn:()=>t.getExperiments()}),a=()=>({queryKey:[`availableExperiments`],queryFn:async()=>t.getAvailableExperiments()}),o=t=>e.includes(t);export{i as n,o as r,a as t};

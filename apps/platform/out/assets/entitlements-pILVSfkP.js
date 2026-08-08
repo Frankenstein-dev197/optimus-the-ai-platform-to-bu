@@ -1,0 +1,1 @@
+import{t as e}from"./api-CEfiC5C8.js";import{t}from"./util-D_K8GU8P.js";var n=[`entitlements`],r=r=>t({metadata:r,queryKey:n,queryFn:()=>e.getEntitlements()}),i=t=>({mutationFn:e.refreshEntitlements,onSuccess:async()=>{await t.invalidateQueries({queryKey:n})}});export{i as n,r as t};

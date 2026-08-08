@@ -1,0 +1,1 @@
+import{Z as e}from"./radix-ui-BltpLS8E.js";import{t}from"./cn-CcU7hTTa.js";import{i as n}from"./emotion-Gs6oPiCL.js";import{t as r}from"./dist-DiDikc8X.js";var i=r(`text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70`),a=({className:r,...a})=>n(e,{className:t(i(),r),...a});export{a as t};

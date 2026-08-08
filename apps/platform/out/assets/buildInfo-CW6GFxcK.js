@@ -1,0 +1,1 @@
+var e,t=()=>{if(e)return e;let t=document.querySelector(`meta[property=build-info]`)?.getAttribute(`content`);if(t)try{e=JSON.parse(t)}catch{return}return e},n=e=>{if(!e)return;let t=e.version;if(t.includes(`-devel`)||t===`v0.0.0`)return`devel`;if(t.includes(`-rc.`))return`rc`};export{t as n,n as t};

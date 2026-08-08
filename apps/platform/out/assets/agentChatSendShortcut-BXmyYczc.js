@@ -1,0 +1,1 @@
+var e=`enter`,t=`modifier_enter`;function n(n,r){return n||(r?t:e)}export{t as n,n as r,e as t};

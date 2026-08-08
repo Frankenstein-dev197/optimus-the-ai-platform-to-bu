@@ -1,0 +1,1 @@
+import{i as e}from"./emotion-Gs6oPiCL.js";import{i as t}from"./externalImages-BeuHqurH.js";import{n}from"./appearance-BkQEUI7K.js";var r=({style:r,alt:i=``,...a})=>{let{externalImages:o}=n();return e(`img`,{alt:i,style:{...t(o,a.src),...r},...a})};export{r as t};

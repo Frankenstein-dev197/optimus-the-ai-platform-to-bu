@@ -1,0 +1,1 @@
+import{n as e,o as t}from"./useDashboard-Cx7yX3nC.js";var n=()=>{let{entitlements:n}=e();return t(n)};export{n as t};

@@ -1,0 +1,1 @@
+var e=(...e)=>[...e,`Optimus IDE Collab`].filter(Boolean).join(` - `);export{e as t};

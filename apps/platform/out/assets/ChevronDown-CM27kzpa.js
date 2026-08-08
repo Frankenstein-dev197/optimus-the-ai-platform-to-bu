@@ -1,0 +1,1 @@
+import{t as e}from"./cn-CcU7hTTa.js";import{i as t}from"./emotion-Gs6oPiCL.js";import{t as n}from"./chevron-down-7gyZOCYc.js";var r=({open:r,className:i,...a})=>t(n,{className:e(`transition-transform`,r===void 0?`group-data-[state=open]:rotate-180`:r&&`rotate-180`,i),...a});export{r as t};

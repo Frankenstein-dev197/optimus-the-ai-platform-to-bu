@@ -1,0 +1,1 @@
+import{t as e}from"./rolldown-runtime-DAXXjFlN.js";import{c as t}from"./_isIndex-24WJf3zz.js";import{o as n}from"./_toKey-Cj40ahdg.js";var r=e(((e,r)=>{var i=n(),a=t(),o=Object.prototype.hasOwnProperty;function s(e,t,n){var r=e[t];(!(o.call(e,t)&&a(r,n))||n===void 0&&!(t in e))&&i(e,t,n)}r.exports=s}));export{r as t};

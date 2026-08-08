@@ -1,0 +1,1 @@
+import{a as e,i as t}from"./emotion-Gs6oPiCL.js";import{t as n}from"./Margins-53Jk-Rtb.js";import{i as r,r as i,t as a}from"./PageHeader-D7nZyMOx.js";var o=({title:o,detail:s,children:c,size:l=`small`})=>e(n,{size:l,children:[e(a,{className:`pb-6`,children:[t(r,{children:o}),s&&t(i,{children:s})]}),t(`div`,{children:c})]});export{o as t};

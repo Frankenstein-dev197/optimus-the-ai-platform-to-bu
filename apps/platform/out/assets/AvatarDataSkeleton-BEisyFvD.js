@@ -1,0 +1,1 @@
+import{a as e,i as t}from"./emotion-Gs6oPiCL.js";import{t as n}from"./Skeleton-FaCxl8EN.js";var r=()=>e(`div`,{className:`flex items-center gap-3 w-full`,children:[t(n,{className:`size-10 rounded-sm shrink-0`}),e(`div`,{className:`flex flex-col w-full`,children:[t(n,{variant:`text`,width:100}),t(n,{variant:`text`,width:60})]})]});export{r as t};

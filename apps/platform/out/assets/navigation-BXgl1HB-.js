@@ -1,0 +1,1 @@
+import{o as e}from"./rolldown-runtime-DAXXjFlN.js";import{P as t}from"./mui-Cl_E9pOk.js";import{n}from"./useDashboard-Cx7yX3nC.js";var r=e(t());function i(){let e=n();return(0,r.useCallback)(t=>t(e),[e])}var a=(e,t)=>n=>n.showOrganizations?`/templates/${e}/${t}`:`/templates/${t}`;export{i as n,a as t};
