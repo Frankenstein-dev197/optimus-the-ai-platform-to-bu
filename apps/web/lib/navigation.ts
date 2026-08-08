@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 
+// URL de fallback vers l'URL Vercel temporaire d'Optimus Dev
+const OPTIMUS_DEV_FALLBACK_URL = "https://optimus-mznkwim09-coumbassaabdoulaye98-3018s-projects.vercel.app";
+
 /**
  * Retourne l'URL officielle ou dynamique de l'application Optimus Dev.
  * Utilisable dans un contexte non-React (comme les scripts ou configurations).
@@ -20,7 +23,7 @@ export function getOptimusDevUrl(): string {
     }
   }
 
-  return "https://dev.optimus.dev";
+  return OPTIMUS_DEV_FALLBACK_URL;
 }
 
 /**
@@ -34,7 +37,7 @@ export function useOptimusDevUrl(): string {
     if (typeof process !== "undefined" && process.env.NODE_ENV === "development") {
       return "http://localhost:5173";
     }
-    return "https://dev.optimus.dev";
+    return OPTIMUS_DEV_FALLBACK_URL;
   });
 
   useEffect(() => {
@@ -46,7 +49,7 @@ export function useOptimusDevUrl(): string {
       if (hostname === "localhost" || hostname === "127.0.0.1") {
         setUrl("http://localhost:5173");
       } else {
-        setUrl("https://dev.optimus.dev");
+        setUrl(OPTIMUS_DEV_FALLBACK_URL);
       }
     }
   }, []);
