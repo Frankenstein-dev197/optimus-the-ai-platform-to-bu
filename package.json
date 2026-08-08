@@ -5,14 +5,22 @@
   "packageManager": "pnpm@10.28.1",
   "scripts": {
     "dev": "pnpm --filter @optimus/web dev",
+    "dev:platform": "pnpm --filter @optimus-ide-collab/optimus-dev dev",
+    "dev:api": "pnpm --filter @optimus/api-service dev",
     "prebuild": "pnpm -w -r --filter \"@optimus/*\" build",
     "build": "pnpm --filter @optimus/web build",
+    "build:platform": "pnpm --filter @optimus-ide-collab/optimus-dev build",
+    "build:api": "pnpm --filter @optimus/api-service build",
     "lint": "pnpm --filter @optimus/web lint",
-    "start": "pnpm --filter @optimus/web start"
+    "lint:platform": "pnpm --filter @optimus-ide-collab/optimus-dev lint",
+    "lint:api": "pnpm --filter @optimus/api-service lint",
+    "start": "pnpm --filter @optimus/web start",
+    "start:api": "pnpm --filter @optimus/api-service start"
   },
   "workspaces": [
     "apps/*",
-    "packages/*"
+    "packages/*",
+    "services/*"
   ],
   "devDependencies": {
     "typescript": "^5.3.0"
