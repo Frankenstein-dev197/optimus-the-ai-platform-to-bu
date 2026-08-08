@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ArrowRight, Check } from "lucide-react";
+import { useOptimusDevUrl } from "@/lib/navigation";
 
 const plans = [
   {
@@ -55,6 +56,7 @@ const plans = [
 
 export function PricingSection() {
   const [isAnnual, setIsAnnual] = useState(true);
+  const optimusDevUrl = useOptimusDevUrl();
 
   return (
     <section id="pricing" className="relative py-32 lg:py-40 border-t border-foreground/10">
@@ -156,16 +158,30 @@ export function PricingSection() {
               </ul>
 
               {/* CTA */}
-              <button
-                className={`w-full py-4 flex items-center justify-center gap-2 text-sm font-medium transition-all group ${
-                  plan.popular
-                    ? "bg-foreground text-primary-foreground hover:bg-foreground/90"
-                    : "border border-foreground/20 text-foreground hover:border-foreground hover:bg-foreground/5"
-                }`}
-              >
-                {plan.cta}
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </button>
+              {plan.cta === "Contact sales" ? (
+                <button
+                  className={`w-full py-4 flex items-center justify-center gap-2 text-sm font-medium transition-all group ${
+                    plan.popular
+                      ? "bg-foreground text-primary-foreground hover:bg-foreground/90"
+                      : "border border-foreground/20 text-foreground hover:border-foreground hover:bg-foreground/5"
+                  }`}
+                >
+                  {plan.cta}
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </button>
+              ) : (
+                <a
+                  href={`${optimusDevUrl}/workspaces`}
+                  className={`w-full py-4 flex items-center justify-center gap-2 text-sm font-medium transition-all group ${
+                    plan.popular
+                      ? "bg-foreground text-primary-foreground hover:bg-foreground/90"
+                      : "border border-foreground/20 text-foreground hover:border-foreground hover:bg-foreground/5"
+                  }`}
+                >
+                  {plan.cta}
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </a>
+              )}
             </div>
           ))}
         </div>

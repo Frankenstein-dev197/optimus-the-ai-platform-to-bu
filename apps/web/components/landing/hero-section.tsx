@@ -4,12 +4,14 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { AnimatedSphere } from "./animated-sphere";
+import { useOptimusDevUrl } from "@/lib/navigation";
 
 const words = ["create", "build", "scale", "ship"];
 
 export function HeroSection() {
   const [isVisible, setIsVisible] = useState(false);
   const [wordIndex, setWordIndex] = useState(0);
+  const optimusDevUrl = useOptimusDevUrl();
 
   useEffect(() => {
     setIsVisible(true);
@@ -119,11 +121,14 @@ export function HeroSection() {
             }`}
           >
             <Button 
+              asChild
               size="lg" 
               className="bg-foreground hover:bg-foreground/90 text-background px-8 h-14 text-base rounded-full group"
             >
-              Start free trial
-              <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+              <a href={`${optimusDevUrl}/workspaces`}>
+                Start free trial
+                <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+              </a>
             </Button>
             <Button 
               size="lg" 
