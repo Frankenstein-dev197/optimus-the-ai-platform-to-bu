@@ -2,7 +2,6 @@
   "name": "optimus-monorepo",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "pnpm@10.28.1",
   "scripts": {
     "dev": "pnpm --filter @optimus/web dev",
     "dev:platform": "pnpm --filter @optimus-ide-collab/optimus-dev dev",
