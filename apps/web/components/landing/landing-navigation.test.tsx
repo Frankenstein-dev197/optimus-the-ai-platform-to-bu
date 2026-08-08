@@ -38,12 +38,14 @@ describe("Navigation Utility", () => {
 
   it("devrait retourner localhost en mode développement", () => {
     delete process.env.NEXT_PUBLIC_OPTIMUS_DEV_URL;
+    // @ts-ignore
     process.env.NODE_ENV = "development";
     expect(getOptimusDevUrl()).toBe("http://localhost:5173");
   });
 
   it("devrait retourner localhost si window.location.hostname est localhost", () => {
     delete process.env.NEXT_PUBLIC_OPTIMUS_DEV_URL;
+    // @ts-ignore
     process.env.NODE_ENV = "production";
     // Sous jsdom, window.location.hostname est 'localhost' par défaut
     expect(getOptimusDevUrl()).toBe("http://localhost:5173");
