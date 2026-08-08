@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import { useOptimusDevUrl } from "@/lib/navigation";
 
 const navLinks = [
   { name: "Features", href: "#features" },
@@ -14,6 +15,7 @@ const navLinks = [
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const optimusDevUrl = useOptimusDevUrl();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -65,14 +67,15 @@ export function Navigation() {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-4">
-            <a href="#" className={`text-foreground/70 hover:text-foreground transition-all duration-500 ${isScrolled ? "text-xs" : "text-sm"}`}>
+            <a href={`${optimusDevUrl}/login`} className={`text-foreground/70 hover:text-foreground transition-all duration-500 ${isScrolled ? "text-xs" : "text-sm"}`}>
               Sign in
             </a>
             <Button
+              asChild
               size="sm"
               className={`bg-foreground hover:bg-foreground/90 text-background rounded-full transition-all duration-500 ${isScrolled ? "px-4 h-8 text-xs" : "px-6"}`}
             >
-              Start creating
+              <a href={`${optimusDevUrl}/workspaces`}>Start creating</a>
             </Button>
           </div>
 
@@ -130,17 +133,21 @@ export function Navigation() {
           style={{ transitionDelay: isMobileMenuOpen ? "300ms" : "0ms" }}
           >
             <Button 
+              asChild
               variant="outline" 
               className="flex-1 rounded-full h-14 text-base"
-              onClick={() => setIsMobileMenuOpen(false)}
             >
-              Sign in
+              <a href={`${optimusDevUrl}/login`} onClick={() => setIsMobileMenuOpen(false)}>
+                Sign in
+              </a>
             </Button>
             <Button 
+              asChild
               className="flex-1 bg-foreground text-background rounded-full h-14 text-base"
-              onClick={() => setIsMobileMenuOpen(false)}
             >
-              Start creating
+              <a href={`${optimusDevUrl}/workspaces`} onClick={() => setIsMobileMenuOpen(false)}>
+                Start creating
+              </a>
             </Button>
           </div>
         </div>
