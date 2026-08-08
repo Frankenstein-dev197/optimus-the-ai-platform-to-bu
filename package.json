@@ -22,6 +22,12 @@
     "packages/*",
     "services/*"
   ],
+  "pnpm": {
+    "overrides": {
+      "@types/react": "^19",
+      "@types/react-dom": "^19"
+    }
+  },
   "devDependencies": {
     "typescript": "^5.3.0"
   }
