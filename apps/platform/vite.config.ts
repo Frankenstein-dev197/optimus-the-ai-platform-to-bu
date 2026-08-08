@@ -1,10 +1,11 @@
 import { defineConfig } from 'vite'
+import { resolve } from 'path'
 
 export default defineConfig({
   resolve: {
     alias: {
-      // noVNC compatibility fix - use core/rfb-polyfill instead of core/rfb
-      '@novnc/novnc/core/rfb': '@novnc/novnc/core/rfb-polyfill.js',
+      // Mock noVNC core/rfb to avoid build errors
+      '@novnc/novnc/core/rfb': resolve(__dirname, 'src/__mocks__/novnc-rfb.ts'),
     },
   },
   optimizeDeps: {
@@ -13,6 +14,9 @@ export default defineConfig({
   build: {
     commonjsOptions: {
       transformMixedEsModules: true,
+    },
+    rollupOptions: {
+      external: ['@novnc/novnc'],
     },
   },
 })
