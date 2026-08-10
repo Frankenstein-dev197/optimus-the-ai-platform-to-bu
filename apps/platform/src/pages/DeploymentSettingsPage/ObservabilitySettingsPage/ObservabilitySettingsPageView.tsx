@@ -68,7 +68,7 @@ export const ObservabilitySettingsPageView: FC<
 						Monitoring
 					</SettingsHeaderTitle>
 					<SettingsHeaderDescription>
-						Monitoring your Optimus IDE Collab application with logs and metrics.
+						Monitoring your Optimus application with logs and metrics.
 					</SettingsHeaderDescription>
 				</SettingsHeader>
 

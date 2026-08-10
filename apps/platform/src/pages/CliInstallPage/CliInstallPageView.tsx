@@ -16,7 +16,7 @@ export const CliInstallPageView: FC<CliInstallPageViewProps> = ({ origin }) => {
 				"flex flex-1 flex-col items-center justify-center",
 			)}
 		>
-			<Welcome>Install the Optimus IDE Collab CLI</Welcome>
+			<Welcome>Install the Optimus CLI</Welcome>
 
 			<p className="pb-2 text-center text-base leading-[1.4] text-content-secondary">
 				Copy the command below and{" "}
@@ -38,7 +38,7 @@ export const CliInstallPageView: FC<CliInstallPageViewProps> = ({ origin }) => {
 				</RouterLink>
 			</div>
 			<div className="mt-6 text-xs text-content-secondary">
-				&copy; {new Date().getFullYear()} Optimus IDE Collab Technologies, Inc.
+				&copy; {new Date().getFullYear()} Optimus Technologies, Inc.
 			</div>
 		</div>
 	);

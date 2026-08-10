@@ -121,7 +121,7 @@ export const TaskApps: FC<TaskAppsProps> = ({ task, workspace }) => {
 
 					<span className="text-content-secondary text-sm">
 						<Link
-							href={docs("/ai-optimus-ide-collab/tasks")}
+							href={docs("/ai-coder/tasks")}
 							target="_blank"
 							rel="noreferrer"
 						>

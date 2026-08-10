@@ -6,10 +6,10 @@ import {
 } from "../api";
 import { license, users } from "../constants";
 import { login, requiresLicense } from "../helpers";
-import { beforeOptimus IDE CollabTest } from "../hooks";
+import { beforeCoderTest } from "../hooks";
 
 test.beforeEach(async ({ page }) => {
-	beforeOptimus IDE CollabTest(page);
+	beforeCoderTest(page);
 });
 
 type AdminSetting = (typeof adminSettings)[number];

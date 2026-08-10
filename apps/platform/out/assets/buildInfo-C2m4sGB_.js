@@ -1,1 +1,0 @@
-import{t as e}from"./api-CEfiC5C8.js";import{t}from"./util-D_K8GU8P.js";var n=[`buildInfo`],r=r=>t({metadata:r,queryKey:n,queryFn:()=>e.getBuildInfo()});export{r as t};

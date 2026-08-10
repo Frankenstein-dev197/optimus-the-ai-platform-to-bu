@@ -8,7 +8,7 @@ import { TableEmpty } from "#/components/TableEmpty/TableEmpty";
 import { TemplateExampleCard } from "#/modules/templates/TemplateExampleCard/TemplateExampleCard";
 import { docs } from "#/utils/docs";
 
-// Those are from https://github.com/optimus-ide-collab/optimus-ide-collab/tree/main/examples/templates
+// Those are from https://github.com/coder/coder/tree/main/examples/templates
 const featuredExampleIds = [
 	"quickstart",
 	"docker",
@@ -99,8 +99,8 @@ export const EmptyTemplates: FC<EmptyTemplatesProps> = ({
 	return (
 		<TableEmpty
 			message="Create a Template"
-			description="Contact your Optimus IDE Collab administrator to create a template. You can share the code below."
-			cta={<CodeExample secret={false} code="optimus-ide-collab templates init" />}
+			description="Contact your Optimus administrator to create a template. You can share the code below."
+			cta={<CodeExample secret={false} code="coder templates init" />}
 		/>
 	);
 };

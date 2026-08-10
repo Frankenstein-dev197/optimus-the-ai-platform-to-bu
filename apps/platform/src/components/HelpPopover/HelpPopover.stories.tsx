@@ -18,10 +18,10 @@ const meta: Meta<typeof HelpPopover> = {
 					A template is a common configuration for your team&apos;s workspaces.
 				</HelpPopoverText>
 				<HelpPopoverLinksGroup>
-					<HelpPopoverLink href="https://github.com/optimus-ide-collab/optimus-ide-collab/">
+					<HelpPopoverLink href="https://github.com/coder/coder/">
 						Creating a template
 					</HelpPopoverLink>
-					<HelpPopoverLink href="https://github.com/optimus-ide-collab/optimus-ide-collab/">
+					<HelpPopoverLink href="https://github.com/coder/coder/">
 						Updating a template
 					</HelpPopoverLink>
 				</HelpPopoverLinksGroup>

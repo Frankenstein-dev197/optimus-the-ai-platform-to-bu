@@ -85,10 +85,10 @@ const ProvidersPageView: React.FC<ProvidersPageViewProps> = ({
 				<SettingsHeaderTitle>Providers</SettingsHeaderTitle>
 				<SettingsHeaderDescription>
 					Connect third-party services like OpenAI, Anthropic, or Amazon
-					Bedrock. Providers configured here power Optimus IDE Collab Agents, AI Gateway, and
-					other capabilities such as APIs, CLI or IDEs that use LLMs. By
+					Bedrock. Providers configured here power Optimus Agents, AI Gateway,
+					and other capabilities such as APIs, CLI or IDEs that use LLMs. By
 					default, users can supply their own keys for any provider.{" "}
-					<Link href={docs("/ai-optimus-ide-collab/ai-gateway/setup#configure-providers")}>
+					<Link href={docs("/ai-coder/ai-gateway/setup#configure-providers")}>
 						View docs
 					</Link>
 				</SettingsHeaderDescription>

@@ -476,7 +476,7 @@ describe("providerFormValuesToCreate", () => {
 
 		it("keeps the region so the backend recognises the Bedrock provider when access keys are omitted", () => {
 			// The backend treats Region as a configuration signal
-			// (optimus-ide-collabsdk.AIProviderBedrockSettings.IsConfigured), so omitting
+			// (codersdk.AIProviderBedrockSettings.IsConfigured), so omitting
 			// the keys must not also strip the region; otherwise the request
 			// would fail with "type=bedrock requires bedrock settings".
 			const req = providerFormValuesToCreate({

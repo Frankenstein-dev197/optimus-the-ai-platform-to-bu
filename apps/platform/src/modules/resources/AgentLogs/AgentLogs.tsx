@@ -13,7 +13,7 @@ import { cn } from "#/utils/cn";
 import { AGENT_LOG_LINE_HEIGHT, AgentLogLine } from "./AgentLogLine";
 
 // Fallback log used in places where we must always have a valid log source.
-// We need this to support deployments that were made before `optimus-ide-collab_script` was
+// We need this to support deployments that were made before `coder_script` was
 // created and that haven't restarted their agents yet
 const fallbackLog: WorkspaceAgentLogSource = {
 	created_at: "",
@@ -169,7 +169,7 @@ export const AgentLogs: React.FC<AgentLogsProps> = ({
 							continue to be written to the database. Logs will continue to be
 							written to the{" "}
 							<span className="font-mono bg-surface-tertiary rounded-md px-1.5 py-0.5">
-								/tmp/optimus-ide-collab-startup-script.log
+								/tmp/coder-startup-script.log
 							</span>{" "}
 							file in the workspace.
 						</p>

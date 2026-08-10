@@ -122,7 +122,7 @@ export const OAuth2AppForm: FC<OAuth2AppFormProps> = ({
 				<FormField
 					field={getFieldHelpers("name")}
 					label="Name"
-					description="The name of your Optimus IDE Collab app."
+					description="The name of your Optimus app."
 					disabled={formDisabled}
 					onChange={onChangeTrimmed(form)}
 					autoFocus

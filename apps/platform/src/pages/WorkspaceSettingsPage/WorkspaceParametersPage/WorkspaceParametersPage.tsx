@@ -280,9 +280,9 @@ const WorkspaceParametersPage: FC = () => {
 									<CircleHelpIcon className="size-icon-xs text-content-secondary" />
 								</TooltipTrigger>
 								<TooltipContent className="max-w-xs text-sm">
-									Dynamic Parameters enhances Optimus IDE Collab's existing parameter system
-									with real-time validation, conditional parameter behavior, and
-									richer input types.
+									Dynamic Parameters enhances Optimus's existing parameter
+									system with real-time validation, conditional parameter
+									behavior, and richer input types.
 									<br />
 									<Link
 										href={docs(

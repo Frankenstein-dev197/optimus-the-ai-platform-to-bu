@@ -2,10 +2,10 @@ import { expect, test } from "@playwright/test";
 import { createUser, getCurrentOrgId, setupApiCalls } from "../../api";
 import { defaultOrganizationName, users } from "../../constants";
 import { login, requiresLicense } from "../../helpers";
-import { beforeOptimus IDE CollabTest } from "../../hooks";
+import { beforeCoderTest } from "../../hooks";
 
 test.beforeEach(async ({ page }) => {
-	beforeOptimus IDE CollabTest(page);
+	beforeCoderTest(page);
 	await login(page, users.userAdmin);
 });
 
@@ -28,11 +28,11 @@ test(`Every user should be automatically added to the default '${DEFAULT_GROUP_N
 	await page.goto(`${baseURL}/organizations/${orgName}/groups`, {
 		waitUntil: "domcontentloaded",
 	});
-	await expect(page).toHaveTitle("Groups - Optimus IDE Collab");
+	await expect(page).toHaveTitle("Groups - Coder");
 
 	const groupRow = page.getByText(DEFAULT_GROUP_NAME);
 	await groupRow.click();
-	await expect(page).toHaveTitle(`${DEFAULT_GROUP_NAME} - Optimus IDE Collab`);
+	await expect(page).toHaveTitle(`${DEFAULT_GROUP_NAME} - Coder`);
 
 	for (const user of users) {
 		await expect(page.getByRole("row", { name: user.username })).toBeVisible();

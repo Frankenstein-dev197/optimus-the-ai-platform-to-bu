@@ -17,12 +17,12 @@ export const WithFormatting: Story = {
 
 export const WithLink: Story = {
 	args: {
-		children: "Read the [documentation](https://optimus-ide-collabidecollab.com/docs).",
+		children: "Read the [documentation](https://coder.com/docs).",
 	},
 };
 
 export const WithCode: Story = {
 	args: {
-		children: "Run `optimus-ide-collab templates push` to publish your template.",
+		children: "Run `coder templates push` to publish your template.",
 	},
 };

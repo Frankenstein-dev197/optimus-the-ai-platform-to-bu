@@ -20,7 +20,7 @@ export const connectionTypeToFriendlyName = (type: ConnectionType): string => {
 };
 
 // connectionTypeIsWeb returns true for connection types reported by
-// optimus-ide-collabd from an HTTP request. These carry `web_info` (user, IP, user
+// coderd from an HTTP request. These carry `web_info` (user, IP, user
 // agent, HTTP status code) rather than agent-reported `ssh_info`, and
 // are not necessarily browser connections (tunnels are typically
 // established by the CLI or an IDE extension).

@@ -107,7 +107,7 @@ const bedrockInvokeModelBaseUrl = (region: string) =>
 const bedrockMantleBaseUrl = (region: string) =>
 	`https://bedrock-mantle.${region}.api.aws/anthropic`;
 
-// Bedrock model defaults mirror optimus-ide-collabsdk/deployment.go's
+// Bedrock model defaults mirror codersdk/deployment.go's
 // aiGatewayBedrockModel and aiGatewayBedrockSmallFastModel defaults
 // so the create form lands on the same models the env-seeded path
 // uses. Update both sides together when AWS publishes new model IDs.
@@ -659,7 +659,7 @@ export const ProviderForm: FC<ProviderFormProps> = ({
 							environment (IAM role, instance profile, AWS_PROFILE).{" "}
 							<DocsLink
 								size="sm"
-								href={docs("/ai-optimus-ide-collab/ai-gateway/providers#amazon-bedrock")}
+								href={docs("/ai-coder/ai-gateway/providers#amazon-bedrock")}
 								target="_blank"
 								rel="noreferrer"
 							>

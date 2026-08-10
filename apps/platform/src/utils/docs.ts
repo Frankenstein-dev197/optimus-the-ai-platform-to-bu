@@ -1,7 +1,7 @@
 import { getStaticBuildInfo } from "./buildInfo";
 
 function defaultDocsUrl(): string {
-	const docsUrl = "https://optimus-ide-collabidecollab.com/docs";
+	const docsUrl = "https://coder.com/docs";
 	// If we can get the specific version, we want to include that in default docs URL.
 	let version = getStaticBuildInfo()?.version;
 	if (!version) {

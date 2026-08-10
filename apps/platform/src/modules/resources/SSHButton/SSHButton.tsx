@@ -51,7 +51,7 @@ export const AgentSSHButton: FC<AgentSSHButtonProps> = ({
 					<div className="flex flex-col gap-1 mt-3">
 						<SSHStep
 							helpText="Configure SSH hosts on machine:"
-							codeExample="optimus-ide-collab config-ssh"
+							codeExample="coder config-ssh"
 						/>
 						<SSHStep
 							helpText="Connect to the agent:"
@@ -61,7 +61,7 @@ export const AgentSSHButton: FC<AgentSSHButtonProps> = ({
 				</ol>
 
 				<HelpPopoverLinksGroup>
-					<HelpPopoverLink href="/install">Install Optimus IDE Collab CLI</HelpPopoverLink>
+					<HelpPopoverLink href="/install">Install Optimus CLI</HelpPopoverLink>
 					<HelpPopoverLink href={docs("/user-guides/workspace-access/vscode")}>
 						Connect via VS Code Remote SSH
 					</HelpPopoverLink>
@@ -71,7 +71,7 @@ export const AgentSSHButton: FC<AgentSSHButtonProps> = ({
 						Connect via JetBrains IDEs
 					</HelpPopoverLink>
 					<HelpPopoverLink href={docs("/user-guides/desktop")}>
-						Connect via Optimus IDE Collab Desktop
+						Connect via Optimus Desktop
 					</HelpPopoverLink>
 					<HelpPopoverLink href={docs("/user-guides/workspace-access#ssh")}>
 						SSH configuration

@@ -313,7 +313,7 @@ export const TerminalProviderDisabledError: Story = {
 			streamError: {
 				kind: "provider_disabled",
 				message:
-					"The OpenAI provider has been disabled. Contact your Optimus IDE Collab administrator.",
+					"The OpenAI provider has been disabled. Contact your Optimus administrator.",
 				provider: "openai",
 				retryable: false,
 				statusCode: 503,
@@ -327,7 +327,7 @@ export const TerminalProviderDisabledError: Story = {
 		).toBeVisible();
 		expect(
 			canvas.getByText(
-				/the openai provider has been disabled.*contact your optimus-ide-collab administrator/i,
+				/the openai provider has been disabled.*contact your coder administrator/i,
 			),
 		).toBeVisible();
 		expect(canvas.getByText(/^HTTP 503$/)).toBeVisible();

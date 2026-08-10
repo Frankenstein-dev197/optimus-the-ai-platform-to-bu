@@ -30,17 +30,17 @@ describe("useResourcesNav", () => {
 			{
 				...MockWorkspaceResource,
 				type: "docker_container",
-				name: "optimus-ide-collab_python",
+				name: "coder_python",
 			},
 			{
 				...MockWorkspaceResource,
 				type: "docker_container",
-				name: "optimus-ide-collab_java",
+				name: "coder_java",
 			},
 			{
 				...MockWorkspaceResource,
 				type: "docker_image",
-				name: "optimus-ide-collab_image_python",
+				name: "coder_image_python",
 				agents: [],
 			},
 		];
@@ -63,17 +63,17 @@ describe("useResourcesNav", () => {
 			{
 				...MockWorkspaceResource,
 				type: "docker_container",
-				name: "optimus-ide-collab_python",
+				name: "coder_python",
 			},
 			{
 				...MockWorkspaceResource,
 				type: "docker_container",
-				name: "optimus-ide-collab_java",
+				name: "coder_java",
 			},
 			{
 				...MockWorkspaceResource,
 				type: "docker_image",
-				name: "optimus-ide-collab_image_python",
+				name: "coder_image_python",
 				agents: [],
 			},
 		];
@@ -100,7 +100,7 @@ describe("useResourcesNav", () => {
 			{
 				...MockWorkspaceResource,
 				type: "docker_image",
-				name: "optimus-ide-collab_image_python",
+				name: "coder_image_python",
 				agents: [],
 			},
 		];
@@ -130,17 +130,17 @@ describe("useResourcesNav", () => {
 			{
 				...MockWorkspaceResource,
 				type: "docker_container",
-				name: "optimus-ide-collab_python",
+				name: "coder_python",
 			},
 			{
 				...MockWorkspaceResource,
 				type: "docker_container",
-				name: "optimus-ide-collab_java",
+				name: "coder_java",
 			},
 			{
 				...MockWorkspaceResource,
 				type: "docker_image",
-				name: "optimus-ide-collab_image_python",
+				name: "coder_image_python",
 				agents: [],
 			},
 		];

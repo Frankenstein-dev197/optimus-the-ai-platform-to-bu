@@ -30,7 +30,7 @@ export const TemplateUpload: FC<TemplateUploadProps> = ({
 			>
 				<RouterLink to="/starter-templates">starter templates</RouterLink>
 			</Link>{" "}
-			to get started with Optimus IDE Collab.
+			to get started with Optimus.
 		</>
 	);
 

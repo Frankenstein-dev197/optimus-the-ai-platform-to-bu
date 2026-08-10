@@ -6,7 +6,7 @@ import {
 	type InstructionsPageViewProps,
 } from "./InstructionsPageView";
 
-const mockDefaultSystemPrompt = "You are Optimus IDE Collab, an AI coding assistant.";
+const mockDefaultSystemPrompt = "You are Optimus, an AI coding assistant.";
 const saveOrder: string[] = [];
 
 const baseArgs: InstructionsPageViewProps = {
@@ -54,7 +54,7 @@ export const AdminWithDefaultToggleOn: Story = {
 		const body = within(canvasElement.ownerDocument.body);
 
 		const toggle = await canvas.findByRole("switch", {
-			name: "Include Optimus IDE Collab Agents default system prompt",
+			name: "Include Optimus Agents default system prompt",
 		});
 		expect(toggle).toBeChecked();
 		const promptInput = await canvas.findByDisplayValue(
@@ -94,7 +94,7 @@ export const AdminWithDefaultToggleOff: Story = {
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
 		const toggle = await canvas.findByRole("switch", {
-			name: "Include Optimus IDE Collab Agents default system prompt",
+			name: "Include Optimus Agents default system prompt",
 		});
 		expect(toggle).not.toBeChecked();
 		expect(
@@ -159,7 +159,7 @@ export const SavesSystemPrompt: Story = {
 		await userEvent.type(textarea, "Always explain tradeoffs first.");
 		await userEvent.click(
 			canvas.getByRole("switch", {
-				name: "Include Optimus IDE Collab Agents default system prompt",
+				name: "Include Optimus Agents default system prompt",
 			}),
 		);
 

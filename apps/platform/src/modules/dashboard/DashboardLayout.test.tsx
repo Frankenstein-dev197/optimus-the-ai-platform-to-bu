@@ -55,13 +55,13 @@ const renderDashboardLayout = async ({
 	await waitForLoaderToBeRemoved();
 };
 
-test("Show the new Optimus IDE Collab version notification", async () => {
+test("Show the new Optimus version notification", async () => {
 	server.use(
 		http.get("/api/v2/updatecheck", () => {
 			return HttpResponse.json({
 				current: false,
 				version: "v0.12.9",
-				url: "https://github.com/optimus-ide-collab/optimus-ide-collab/releases/tag/v0.12.9",
+				url: "https://github.com/coder/coder/releases/tag/v0.12.9",
 			});
 		}),
 	);

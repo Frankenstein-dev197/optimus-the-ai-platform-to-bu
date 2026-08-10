@@ -278,12 +278,12 @@ describe("TerminalPage", () => {
 			await ws.nextMessage;
 
 			// OSC 52 sequence per #16577:
-			// printf "\033]52;c;$(echo -n 'Optimus IDE Collab is Cool' | base64)\a"
-			const base64 = btoa("Optimus IDE Collab is Cool");
+			// printf "\033]52;c;$(echo -n 'Optimus is Cool' | base64)\a"
+			const base64 = btoa("Optimus is Cool");
 			ws.send(`\x1b]52;c;${base64}\x07`);
 
 			await waitFor(() => {
-				expect(writeTextMock).toHaveBeenCalledWith("Optimus IDE Collab is Cool");
+				expect(writeTextMock).toHaveBeenCalledWith("Optimus is Cool");
 			});
 		});
 

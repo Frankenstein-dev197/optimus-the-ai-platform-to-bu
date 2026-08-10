@@ -533,7 +533,7 @@ export const TemplateScheduleForm: FC<TemplateScheduleForm> = ({
 			{allowAdvancedScheduling && (
 				<FormSection
 					title="Dormancy"
-					description="When enabled, Optimus IDE Collab will mark workspaces as dormant after a period of time with no connections. Dormant workspaces can be auto-deleted (see below) or manually reviewed by the workspace owner or admins."
+					description="When enabled, Optimus will mark workspaces as dormant after a period of time with no connections. Dormant workspaces can be auto-deleted (see below) or manually reviewed by the workspace owner or admins."
 				>
 					<FormFields>
 						<div className="flex flex-col gap-8">
@@ -576,7 +576,7 @@ export const TemplateScheduleForm: FC<TemplateScheduleForm> = ({
 									<StackLabel>
 										Enable Dormancy Auto-Deletion
 										<StackLabelHelperText>
-											When enabled, Optimus IDE Collab will permanently delete dormant
+											When enabled, Optimus will permanently delete dormant
 											workspaces after a period of time.{" "}
 											<strong>
 												Once a workspace is deleted it cannot be recovered.
@@ -615,7 +615,7 @@ export const TemplateScheduleForm: FC<TemplateScheduleForm> = ({
 									<StackLabel>
 										Enable Failure Cleanup
 										<StackLabelHelperText>
-											When enabled, Optimus IDE Collab will attempt to stop workspaces that
+											When enabled, Optimus will attempt to stop workspaces that
 											are in a failed state after a period of time.
 										</StackLabelHelperText>
 									</StackLabel>

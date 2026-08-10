@@ -795,7 +795,7 @@ export const ExportAllRuns: Story = {
 
 		await waitFor(() => expect(args.download).toHaveBeenCalledTimes(1));
 		const [blob, filename] = getLastDownloadCall(args.download);
-		expect(filename).toMatch(/^optimus-ide-collab-agents-debug-chat-debug-ch-.*\.json$/);
+		expect(filename).toMatch(/^optimus-agents-debug-chat-debug-ch-.*\.json$/);
 		expect(blob.type).toBe("application/json");
 
 		const payload = JSON.parse(await blob.text());
@@ -1005,7 +1005,7 @@ export const ExportSingleRun: Story = {
 
 		await waitFor(() => expect(args.download).toHaveBeenCalledTimes(1));
 		const [blob, filename] = getLastDownloadCall(args.download);
-		expect(filename).toMatch(/^optimus-ide-collab-agents-debug-run-run-1-.*\.json$/);
+		expect(filename).toMatch(/^optimus-agents-debug-run-run-1-.*\.json$/);
 		expect(blob.type).toBe("application/json");
 
 		const payload = JSON.parse(await blob.text());

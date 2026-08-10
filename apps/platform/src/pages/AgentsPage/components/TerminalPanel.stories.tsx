@@ -54,7 +54,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const promptMessage =
-	"\u001b[H\u001b[2J\u001b[1m\u001b[32m➜  \u001b[36moptimus-ide-collab\u001b[C\u001b[34mgit:(\u001b[31mmain\u001b[34m) \u001b[33m✗";
+	"\u001b[H\u001b[2J\u001b[1m\u001b[32m➜  \u001b[36mcoder\u001b[C\u001b[34mgit:(\u001b[31mmain\u001b[34m) \u001b[33m✗";
 
 export const Connected: Story = {
 	decorators: [withWebSocket],

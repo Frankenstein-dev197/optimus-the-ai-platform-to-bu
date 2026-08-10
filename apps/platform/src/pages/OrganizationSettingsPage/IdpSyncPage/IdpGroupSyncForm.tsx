@@ -105,7 +105,7 @@ export const IdpGroupSyncForm: FC<IdpGroupSyncFormProps> = ({
 		enableReinitialize: Boolean(groupSyncSettings),
 	});
 	const [idpGroupName, setIdpGroupName] = useState("");
-	const [optimusIDECollabGroups, setOptimusIDECollabGroups] = useState<Option[]>([]);
+	const [coderGroups, setCoderGroups] = useState<Option[]>([]);
 	const id = useId();
 	const [comboInputValue, setComboInputValue] = useState("");
 	const [open, setOpen] = useState(false);
@@ -286,16 +286,16 @@ export const IdpGroupSyncForm: FC<IdpGroupSyncFormProps> = ({
 						)}
 					</div>
 					<div className="grid items-center gap-1 flex-1">
-						<Label className="text-sm" htmlFor={`${id}-optimus-ide-collab-group`}>
-							Optimus IDE Collab group
+						<Label className="text-sm" htmlFor={`${id}-coder-group`}>
+							Optimus group
 						</Label>
 						<MultiSelectCombobox
 							inputProps={{
-								id: `${id}-optimus-ide-collab-group`,
+								id: `${id}-coder-group`,
 							}}
 							className="min-w-60 max-w-3xl"
-							value={optimusIDECollabGroups}
-							onChange={setOptimusIDECollabGroups}
+							value={coderGroups}
+							onChange={setCoderGroups}
 							options={groups
 								.filter((group) => !isEveryoneGroup(group))
 								.map((group) => ({
@@ -316,19 +316,19 @@ export const IdpGroupSyncForm: FC<IdpGroupSyncFormProps> = ({
 						<Button
 							type="submit"
 							className="min-w-fit"
-							disabled={!idpGroupName || optimusIDECollabGroups.length === 0}
+							disabled={!idpGroupName || coderGroups.length === 0}
 							onClick={() => {
 								const newSyncSettings = {
 									...form.values,
 									mapping: {
 										...form.values.mapping,
-										[idpGroupName]: optimusIDECollabGroups.map((group) => group.value),
+										[idpGroupName]: coderGroups.map((group) => group.value),
 									},
 								};
 								void form.setFieldValue("mapping", newSyncSettings.mapping);
 								form.handleSubmit();
 								setIdpGroupName("");
-								setOptimusIDECollabGroups([]);
+								setCoderGroups([]);
 							}}
 						>
 							<Spinner loading={form.isSubmitting}>
@@ -355,7 +355,7 @@ export const IdpGroupSyncForm: FC<IdpGroupSyncFormProps> = ({
 										key={idpGroup}
 										idpGroup={idpGroup}
 										exists={claimFieldValues?.includes(idpGroup)}
-										optimusIDECollabGroup={getGroupNames(groups)}
+										coderGroup={getGroupNames(groups)}
 										onDelete={handleDelete}
 									/>
 								))}
@@ -374,7 +374,7 @@ export const IdpGroupSyncForm: FC<IdpGroupSyncFormProps> = ({
 											key={groupId}
 											idpGroup={idpGroup}
 											exists={claimFieldValues?.includes(idpGroup)}
-											optimusIDECollabGroup={getGroupNames([groupId])}
+											coderGroup={getGroupNames([groupId])}
 											onDelete={handleDelete}
 										/>
 									))}
@@ -390,14 +390,14 @@ export const IdpGroupSyncForm: FC<IdpGroupSyncFormProps> = ({
 interface GroupRowProps {
 	idpGroup: string;
 	exists: boolean | undefined;
-	optimusIDECollabGroup: readonly string[];
+	coderGroup: readonly string[];
 	onDelete: (idpOrg: string) => void;
 }
 
 const GroupRow: FC<GroupRowProps> = ({
 	idpGroup,
 	exists = true,
-	optimusIDECollabGroup,
+	coderGroup,
 	onDelete,
 }) => {
 	return (
@@ -426,7 +426,7 @@ const GroupRow: FC<GroupRowProps> = ({
 			</TableCell>
 
 			<TableCell>
-				<IdpPillList roles={optimusIDECollabGroup} />
+				<IdpPillList roles={coderGroup} />
 			</TableCell>
 
 			<TableCell>
@@ -452,7 +452,7 @@ const AutoCreateMissingGroupsHelpPopover: FC = () => {
 			<HelpPopoverContent>
 				<HelpPopoverText>
 					Enabling auto create missing groups will automatically create groups
-					returned by the OIDC provider if they do not exist in Optimus IDE Collab.
+					returned by the OIDC provider if they do not exist in Optimus.
 				</HelpPopoverText>
 			</HelpPopoverContent>
 		</HelpPopover>

@@ -1,1 +1,0 @@
-import{a as e,i as t}from"./emotion-Gs6oPiCL.js";var n=()=>t(`div`,{className:`w-full h-full flex flex-row justify-center items-center`,children:e(`p`,{className:`flex gap-4`,children:[t(`span`,{className:`font-bold`,children:`404`}),`This page could not be found.`]})});export{n as t};

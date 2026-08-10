@@ -38,7 +38,7 @@ export type UseClipboardResult = Readonly<{
 	 * Trying to make this property accurate enough that it could safely be called
 	 * `isCopied` led to browser compatibility issues in Safari.
 	 *
-	 * @see {@link https://github.com/optimus-ide-collab/optimus-ide-collab/pull/11863}
+	 * @see {@link https://github.com/coder/coder/pull/11863}
 	 */
 	showCopiedSuccess: boolean;
 }>;
@@ -95,7 +95,7 @@ export const useClipboard = (
 
 	const readFromClipboard = useCallback(async (): Promise<string> => {
 		// Insecure (HTTP) contexts and older browsers cannot read the system
-		// clipboard, so fall back to the last value copied within Optimus IDE Collab. In a
+		// clipboard, so fall back to the last value copied within Optimus. In a
 		// secure context, surface read failures (such as a denied permission)
 		// instead of silently pasting a stale cached selection.
 		if (

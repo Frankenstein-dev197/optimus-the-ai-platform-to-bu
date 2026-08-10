@@ -7,7 +7,7 @@
  * limitation on HTTP/1.1 and below where there is a maximum number of 6 ports
  * that can ever be used for a domain (sometimes less depending on the browser).
  * Not only is this limit shared with short-lived REST requests, but it also
- * applies across tabs and windows. So if a user opens Optimus IDE Collab in multiple tabs,
+ * applies across tabs and windows. So if a user opens Coder in multiple tabs,
  * there is a very real possibility that parts of the app will start to lock up
  * without it being clear why.
  *

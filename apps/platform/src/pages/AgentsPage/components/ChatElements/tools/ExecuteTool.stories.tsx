@@ -3,7 +3,7 @@ import { expect, userEvent, within } from "storybook/test";
 import { ExecuteTool } from "./ExecuteTool";
 
 const longCommand =
-	"find /home/optimus-ide-collab/project/src -type f -name '*.ts' -not -path '*/node_modules/*' -not -path '*/.git/*' | xargs grep -l 'deprecated' | sort | head -50";
+	"find /home/coder/project/src -type f -name '*.ts' -not -path '*/node_modules/*' -not -path '*/.git/*' | xargs grep -l 'deprecated' | sort | head -50";
 
 const stoppedWorkspaceError =
 	"workspace has no running agent: the workspace is likely stopped. Use the start_workspace tool to start it";
@@ -85,9 +85,9 @@ export const WithOutput: Story = {
 				kind: "output",
 				text: [
 					"NAMES                STATUS              PORTS",
-					"optimus-ide-collab-gateway        Up 3 hours          0.0.0.0:3000->3000/tcp",
-					"optimus-ide-collab-database       Up 3 hours          0.0.0.0:5432->5432/tcp",
-					"optimus-ide-collab-provisioner    Up 3 hours",
+					"coder-gateway        Up 3 hours          0.0.0.0:3000->3000/tcp",
+					"coder-database       Up 3 hours          0.0.0.0:5432->5432/tcp",
+					"coder-provisioner    Up 3 hours",
 					"redis-cache          Up 3 hours          0.0.0.0:6379->6379/tcp",
 					"nginx-proxy          Up 2 hours          0.0.0.0:80->80/tcp, 0.0.0.0:443->443/tcp",
 					"prometheus           Up 2 hours          0.0.0.0:9090->9090/tcp",
@@ -104,7 +104,7 @@ export const WithOutput: Story = {
 /** A command currently running shows a spinner in the header. */
 export const Running: Story = {
 	args: {
-		command: "go test -race -count=1 ./optimus-ide-collabd/...",
+		command: "go test -race -count=1 ./coderd/...",
 		status: "running",
 		transcriptBlocks: [
 			{
@@ -125,8 +125,8 @@ export const ErrorOutput: Story = {
 			{
 				kind: "output",
 				text: [
-					"optimus-ide-collabd/workspaces.go:142:6: cannot use ws (variable of type *database.Workspace) as database.Store value in argument to api.Authorize",
-					"optimus-ide-collabd/workspaces.go:155:19: ws.OwnerID undefined (type *database.Workspace has no field or method OwnerID)",
+					"coderd/workspaces.go:142:6: cannot use ws (variable of type *database.Workspace) as database.Store value in argument to api.Authorize",
+					"coderd/workspaces.go:155:19: ws.OwnerID undefined (type *database.Workspace has no field or method OwnerID)",
 					"make: *** [build] Error 1",
 				].join("\n"),
 			},
@@ -190,7 +190,7 @@ export const ParsedCommands: Story = {
 /** parsedCommands paired with modelIntent. */
 export const ParsedCommandsWithIntent: Story = {
 	args: {
-		command: "cd /repo && go test -race ./optimus-ide-collabd/...",
+		command: "cd /repo && go test -race ./coderd/...",
 		status: "running",
 		modelIntent: "Running the unit tests",
 		parsedCommands: [

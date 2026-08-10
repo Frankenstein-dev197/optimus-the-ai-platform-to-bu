@@ -4,7 +4,7 @@ import {
 } from "#/api/typesGenerated";
 import { formatProviderLabel } from "./modelOptions";
 
-// Budgets sit below the wire limits to leave room for enoptimus-ide-collab framing
+// Budgets sit below the wire limits to leave room for encoder framing
 // overhead, so a file at exactly the budget is still under the
 // server's hard cap.
 const FRAMING_MARGIN_BYTES = 16 * 1024;

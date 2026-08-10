@@ -4,7 +4,7 @@ import { docs } from "#/utils/docs";
 
 export const SpendEstimateDocsLink: FC = () => (
 	<Link
-		href={docs("/ai-optimus-ide-collab/ai-gateway/cost-controls#how-spend-is-estimated")}
+		href={docs("/ai-coder/ai-gateway/cost-controls#how-spend-is-estimated")}
 		target="_blank"
 		rel="noreferrer"
 	>

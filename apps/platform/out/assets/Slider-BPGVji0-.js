@@ -1,7 +1,0 @@
-import{C as e,S as t,b as n,x as r}from"./radix-ui-BltpLS8E.js";import{t as i}from"./cn-CcU7hTTa.js";import{a,i as o}from"./emotion-Gs6oPiCL.js";var s=({className:s,...c})=>a(r,{className:i(`relative flex w-full items-center h-1.5`,s,`touch-none select-none`),...c,children:[o(e,{className:`relative h-2 w-full grow overflow-hidden rounded-full bg-surface-secondary data-[disabled]:opacity-40`,children:o(n,{className:`absolute h-full bg-content-primary`})}),o(t,{className:`block size-4 rounded-full border border-solid border-surface-invert-secondary bg-surface-primary shadow transition-colors
-			focus-visible:outline-none hover:border-content-primary
-			focus-visible:ring-0 focus-visible:ring-content-primary focus-visible:ring-offset-surface-primary
-			disabled:pointer-events-none data-[disabled]:opacity-100 data-[disabled]:border-border`}),o(t,{className:`block size-4 rounded-full border border-solid border-surface-invert-secondary bg-surface-primary shadow transition-colors
-			focus-visible:outline-none hover:border-content-primary
-			focus-visible:ring-0 focus-visible:ring-content-primary focus-visible:ring-offset-surface-primary
-			disabled:pointer-events-none data-[disabled]:opacity-100 data-[disabled]:border-border`})]});export{s as t};

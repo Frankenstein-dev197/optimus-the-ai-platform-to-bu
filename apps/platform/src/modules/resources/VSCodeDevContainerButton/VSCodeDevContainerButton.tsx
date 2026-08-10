@@ -137,7 +137,7 @@ const VSCodeButton: FC<VSCodeDevContainerButtonProps> = ({
 							query.set("agent", agentName);
 						}
 
-						location.href = `vscode://optimus-ide-collab.optimus-ide-collab-remote/openDevContainer?${query.toString()}`;
+						location.href = `vscode://coder.coder-remote/openDevContainer?${query.toString()}`;
 					})
 					.catch((ex) => {
 						console.error(ex);
@@ -185,7 +185,7 @@ const VSCodeInsidersButton: FC<VSCodeDevContainerButtonProps> = ({
 							query.set("agent", agentName);
 						}
 
-						location.href = `vscode-insiders://optimus-ide-collab.optimus-ide-collab-remote/openDevContainer?${query.toString()}`;
+						location.href = `vscode-insiders://coder.coder-remote/openDevContainer?${query.toString()}`;
 					})
 					.catch((ex) => {
 						console.error(ex);

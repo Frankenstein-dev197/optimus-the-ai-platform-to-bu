@@ -15,7 +15,7 @@ const meta: Meta<typeof PortForwardButton> = {
 	component: PortForwardButton,
 	decorators: [withDashboardProvider],
 	args: {
-		host: "*.optimus-ide-collabidecollab.com",
+		host: "*.coder.com",
 		agent: MockWorkspaceAgent,
 		workspace: MockWorkspace,
 		template: MockTemplate,

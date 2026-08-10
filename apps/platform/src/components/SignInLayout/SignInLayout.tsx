@@ -7,7 +7,7 @@ export const SignInLayout: FC<PropsWithChildren> = ({ children }) => {
 					{children}
 				</div>
 				<div className="text-xs text-content-secondary pt-6">
-					&copy; {new Date().getFullYear()} Optimus IDE Collab Technologies, Inc.
+					&copy; {new Date().getFullYear()} Optimus Technologies, Inc.
 				</div>
 			</div>
 		</div>

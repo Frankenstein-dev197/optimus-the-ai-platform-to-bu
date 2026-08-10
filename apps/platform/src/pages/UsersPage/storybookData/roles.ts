@@ -1,6 +1,6 @@
 import type { AssignableRoles, RBACAction, Role } from "#/api/typesGenerated";
 
-// The following values were retrieved from the Optimus IDE Collab API.
+// The following values were retrieved from the Optimus API.
 export const MockRoles: (AssignableRoles | Role)[] = [
 	{
 		name: "owner",

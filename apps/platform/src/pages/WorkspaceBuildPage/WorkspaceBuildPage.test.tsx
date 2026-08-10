@@ -100,7 +100,7 @@ describe("WorkspaceBuildPage", () => {
 
 		await user.click(
 			screen.getByRole("tab", {
-				name: `optimus-ide-collab_agent.${MockWorkspaceAgent.name}`,
+				name: `coder_agent.${MockWorkspaceAgent.name}`,
 			}),
 		);
 

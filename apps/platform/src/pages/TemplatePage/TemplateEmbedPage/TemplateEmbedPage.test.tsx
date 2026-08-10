@@ -172,7 +172,7 @@ describe("TemplateEmbedPage", () => {
 		});
 
 		const copiedText = writeTextMock.mock.calls[0][0] as string;
-		expect(copiedText).toContain("open-in-optimus-ide-collab.svg");
+		expect(copiedText).toContain("open-in-optimus.svg");
 		expect(copiedText).toContain(
 			`/templates/${MockTemplate.organization_name}/${MockTemplate.name}/workspace`,
 		);

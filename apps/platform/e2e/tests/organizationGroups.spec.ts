@@ -9,10 +9,10 @@ import {
 import { defaultOrganizationId, defaultOrganizationName } from "../constants";
 import { expectUrl } from "../expectUrl";
 import { login, randomName, requiresLicense } from "../helpers";
-import { beforeOptimus IDE CollabTest } from "../hooks";
+import { beforeCoderTest } from "../hooks";
 
 test.beforeEach(async ({ page }) => {
-	beforeOptimus IDE CollabTest(page);
+	beforeCoderTest(page);
 	await login(page);
 	await setupApiCalls(page);
 });
@@ -44,11 +44,11 @@ test("create group", async ({ page }) => {
 
 	// Navigate to groups page
 	await page.getByRole("link", { name: "Groups" }).click();
-	await expect(page).toHaveTitle("Groups - Optimus IDE Collab");
+	await expect(page).toHaveTitle("Groups - Coder");
 
 	// Create a new group
 	await page.getByText("Create group").click();
-	await expect(page).toHaveTitle("Create Group - Optimus IDE Collab");
+	await expect(page).toHaveTitle("Create Group - Coder");
 	const name = randomName();
 	await page.getByLabel("Name", { exact: true }).fill(name);
 	const displayName = `Group ${name}`;
@@ -59,7 +59,7 @@ test("create group", async ({ page }) => {
 	await expectUrl(page).toHavePathName(
 		`/organizations/${org.name}/groups/${name}`,
 	);
-	await expect(page).toHaveTitle(`${displayName} - Optimus IDE Collab`);
+	await expect(page).toHaveTitle(`${displayName} - Coder`);
 	await expect(page.getByText("No members yet")).toBeVisible();
 	await expect(page.getByText(displayName)).toBeVisible();
 
@@ -93,7 +93,7 @@ test("create group", async ({ page }) => {
 	await expect(page.getByText(/deleted successfully/)).toBeVisible();
 
 	await expectUrl(page).toHavePathName(`/organizations/${org.name}/groups`);
-	await expect(page).toHaveTitle("Groups - Optimus IDE Collab");
+	await expect(page).toHaveTitle("Groups - Coder");
 });
 
 test("change quota settings", async ({ page }) => {

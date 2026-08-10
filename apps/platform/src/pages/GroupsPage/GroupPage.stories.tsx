@@ -717,7 +717,7 @@ export const AIBudgetReadOnlyWithoutUserPermission: Story = {
 		);
 		await expect(
 			await body.findByText(
-				/To update this limit, contact a Optimus IDE Collab administrator\./,
+				/To update this limit, contact a Optimus administrator\./,
 			),
 		).toBeInTheDocument();
 		await expect(body.queryByRole("checkbox")).not.toBeInTheDocument();

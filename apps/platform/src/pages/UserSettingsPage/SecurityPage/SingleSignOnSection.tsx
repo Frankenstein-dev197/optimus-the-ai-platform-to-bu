@@ -108,7 +108,7 @@ const SSOEmptyState: FC = () => {
 		<EmptyState
 			className="rounded-lg border border-solid border-border min-h-0"
 			message="No SSO Providers"
-			description="No SSO providers are configured with this Optimus IDE Collab deployment."
+			description="No SSO providers are configured with this Optimus deployment."
 			cta={
 				<Link
 					href={docs("/admin/users/oidc-auth")}
@@ -146,7 +146,7 @@ export const SingleSignOnSection: FC<SingleSignOnSectionProps> = ({
 					Single Sign On
 				</SettingsHeaderTitle>
 				<SettingsHeaderDescription>
-					Authenticate in Optimus IDE Collab using one-click.
+					Authenticate in Optimus using one-click.
 				</SettingsHeaderDescription>
 			</SettingsHeader>
 

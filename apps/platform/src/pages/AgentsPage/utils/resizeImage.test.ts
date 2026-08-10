@@ -3,9 +3,9 @@ import { resizeImageToMaxBytes } from "./resizeImage";
 
 // jsdom (the default vitest environment) does not implement
 // createImageBitmap / OffscreenCanvas, so the re-encode codepaths
-// cannot run against real browser deoptimus-ide-collabs. The "with stubbed
-// deoptimus-ide-collabs" block below installs a deterministic fake so the shrink
-// loop runs in CI; the "with real deoptimus-ide-collabs" block only runs when
+// cannot run against real browser decoders. The "with stubbed
+// decoders" block below installs a deterministic fake so the shrink
+// loop runs in CI; the "with real decoders" block only runs when
 // actual browser APIs are available (e.g. a future Playwright-based
 // vitest project).
 const canDecodeImages =
@@ -14,7 +14,7 @@ const canDecodeImages =
 
 const describeIfDecode = canDecodeImages ? describe : describe.skip;
 
-// Minimum byte count the fake deoptimus-ide-collab reports for a blob at given
+// Minimum byte count the fake decoder reports for a blob at given
 // dimensions. Sized so the shrink loop runs a realistic number of
 // iterations within the module's MAX_SHRINK_ITERATIONS=8 budget.
 const FAKE_BYTES_PER_PIXEL = 0.5;
@@ -71,7 +71,7 @@ describe("resizeImageToMaxBytes", () => {
 	it("accepts image/jpg alias alongside image/jpeg", async () => {
 		// Pins the non-IANA `image/jpg` alias in RESIZABLE_MIME_TYPES.
 		// The under-budget passthrough is enough to prove acceptance;
-		// the over-budget case in the stubbed-deoptimus-ide-collab block proves
+		// the over-budget case in the stubbed-decoder block proves
 		// the encode pipeline runs.
 		const under = new File([new Uint8Array(512)], "icon.jpg", {
 			type: "image/jpg",
@@ -93,7 +93,7 @@ describe("resizeImageToMaxBytes", () => {
 	});
 });
 
-describe("resizeImageToMaxBytes with stubbed deoptimus-ide-collabs", () => {
+describe("resizeImageToMaxBytes with stubbed decoders", () => {
 	// Each test installs its own fakes; track per-test state on a
 	// shared object so the stubs can read the active configuration.
 	interface StubState {
@@ -248,7 +248,7 @@ describe("resizeImageToMaxBytes with stubbed deoptimus-ide-collabs", () => {
 		expect(state.encodeCalls.length).toBeGreaterThan(0);
 	});
 
-	it("deoptimus-ide-collab never stretches non-square sources", async () => {
+	it("decoder never stretches non-square sources", async () => {
 		// 4:1 source with long axis above MAX_INITIAL_DIMENSION.
 		// If decodeToBitmap passes both resize dims, the spec
 		// would force 8192x8192 output and the ratio assertion
@@ -347,7 +347,7 @@ describe("resizeImageToMaxBytes with stubbed deoptimus-ide-collabs", () => {
 		// dims, proportional scale with one, including upscale
 		// when a resize dim exceeds the source. A fake that capped
 		// at source dimensions or scaled uniformly would mask real
-		// deoptimus-ide-collab bugs in production code.
+		// decoder bugs in production code.
 		state.srcWidth = 4000;
 		state.srcHeight = 1000;
 		const blob = new Blob([new Uint8Array(8)], { type: "image/png" });
@@ -379,7 +379,7 @@ describe("resizeImageToMaxBytes with stubbed deoptimus-ide-collabs", () => {
 		expect(downHeight.width).toBe(800);
 
 		// Upscale by width: spec allows; a capped fake would
-		// report (4000, 1000) and mask production deoptimus-ide-collab bugs.
+		// report (4000, 1000) and mask production decoder bugs.
 		const upWidth = await createBitmap(blob, { resizeWidth: 8000 });
 		expect(upWidth.width).toBe(8000);
 		expect(upWidth.height).toBe(2000);
@@ -390,7 +390,7 @@ describe("resizeImageToMaxBytes with stubbed deoptimus-ide-collabs", () => {
 		expect(natural.height).toBe(1000);
 	});
 
-	it("keeps the File type honest when the enoptimus-ide-collab falls back to PNG", async () => {
+	it("keeps the File type honest when the encoder falls back to PNG", async () => {
 		// Some browsers without WebP encode return a PNG; the
 		// File's labelled type must match the actual content.
 		state.convertBlobType = "image/png";
@@ -420,9 +420,9 @@ describe("resizeImageToMaxBytes with stubbed deoptimus-ide-collabs", () => {
 	});
 });
 
-describeIfDecode("resizeImageToMaxBytes with real deoptimus-ide-collabs", () => {
+describeIfDecode("resizeImageToMaxBytes with real decoders", () => {
 	it("returns null (does not throw) for a corrupt image blob", async () => {
-		// Real deoptimus-ide-collab only; jsdom <img> fallback never fires
+		// Real decoder only; jsdom <img> fallback never fires
 		// onload/onerror on a corrupt blob and would hang.
 		const bytes = new Uint8Array([0x00, 0x01, 0x02, 0x03]);
 		const file = new File([bytes], "broken.png", { type: "image/png" });

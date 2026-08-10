@@ -56,7 +56,7 @@ export const NetworkSettingsPageView: FC<NetworkSettingsPageViewProps> = ({
 				</SettingsHeaderTitle>
 				<SettingsHeaderDescription>
 					Port forwarding lets developers securely access processes on their
-					Optimus IDE Collab workspace from a local machine.
+					Optimus workspace from a local machine.
 				</SettingsHeaderDescription>
 			</SettingsHeader>
 

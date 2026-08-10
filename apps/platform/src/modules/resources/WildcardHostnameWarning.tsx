@@ -25,13 +25,13 @@ export const WildcardHostnameWarning: FC<WildcardHostnameWarningProps> = ({
 	}
 
 	if (hasResources) {
-		const hasSubdomainOptimusIDECollabApp = resources!.some((resource) => {
+		const hasSubdomainCoderApp = resources!.some((resource) => {
 			return resource.agents?.some((agent) =>
 				agent.apps?.some((app) => app.subdomain),
 			);
 		});
 
-		if (!hasSubdomainOptimusIDECollabApp) {
+		if (!hasSubdomainCoderApp) {
 			return null;
 		}
 	}
@@ -50,7 +50,7 @@ export const WildcardHostnameWarning: FC<WildcardHostnameWarningProps> = ({
 			<AlertDescription>
 				<div>
 					{hasResources
-						? "This template contains optimus-ide-collab_app resources with"
+						? "This template contains coder_app resources with"
 						: "One or more apps in this workspace have"}{" "}
 					<code className="py-px px-1 bg-surface-tertiary rounded-sm text-content-primary">
 						subdomain = true
@@ -62,10 +62,10 @@ export const WildcardHostnameWarning: FC<WildcardHostnameWarningProps> = ({
 							<code className="py-px px-1 bg-surface-tertiary rounded-sm text-content-primary">
 								--wildcard-access-url
 							</code>{" "}
-							flag when starting the Optimus IDE Collab server.
+							flag when starting the Optimus server.
 						</>
 					) : (
-						", which requires a Optimus IDE Collab deployment with a Wildcard Access URL configured. Please contact your administrator."
+						", which requires a Optimus deployment with a Wildcard Access URL configured. Please contact your administrator."
 					)}
 				</div>
 				<div className="pt-2">

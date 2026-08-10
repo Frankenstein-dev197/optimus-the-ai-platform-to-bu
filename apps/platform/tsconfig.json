@@ -6,11 +6,7 @@
 		"isolatedModules": true,
 		"jsx": "react-jsx",
 		"jsxImportSource": "@emotion/react",
-		"lib": [
-			"dom",
-			"esnext",
-			"dom.iterable"
-		],
+		"lib": ["dom", "esnext"],
 		"module": "preserve",
 		"moduleResolution": "bundler",
 		"noEmit": true,
@@ -29,19 +25,9 @@
 			"novnc__novnc"
 		],
 		"paths": {
-			"#/*": [
-				"./src/*"
-			],
-			"@optimus-ide-collab/pixel-storybook/storyapi": [
-				"./src/stubs/pixel-storybook/storyapi"
-			]
+			"#/*": ["./src/*"]
 		}
 	},
-	"include": [
-		"src/**/*"
-	],
-	"exclude": [
-		"node_modules/",
-		"e2e/"
-	]
+	"include": ["**/*"],
+	"exclude": ["node_modules/"]
 }

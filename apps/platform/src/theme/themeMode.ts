@@ -131,7 +131,7 @@ export const switchToSingle = (
 
 /**
  * Flat request shape sent to the backend. Kept in sync with
- * `optimus-ide-collabsdk.UpdateUserAppearanceSettingsRequest`; this helper lets the
+ * `codersdk.UpdateUserAppearanceSettingsRequest`; this helper lets the
  * form code stay ignorant of the exact field ordering.
  */
 type AppearanceUpdate = {

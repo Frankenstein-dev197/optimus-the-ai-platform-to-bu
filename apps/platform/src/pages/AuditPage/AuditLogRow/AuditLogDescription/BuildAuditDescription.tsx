@@ -12,11 +12,11 @@ export const BuildAuditDescription: FC<BuildAuditDescriptionProps> = ({
 	auditLog,
 }) => {
 	const workspaceName = auditLog.additional_fields?.workspace_name?.trim();
-	// workspaces can be started/stopped/deleted by a user, or kicked off automatically by Optimus IDE Collab
+	// workspaces can be started/stopped/deleted by a user, or kicked off automatically by Optimus
 	const user =
 		auditLog.additional_fields?.build_reason &&
 		systemBuildReasons.includes(auditLog.additional_fields?.build_reason)
-			? "Optimus IDE Collab automatically"
+			? "Optimus automatically"
 			: auditLog.user
 				? auditLog.user.username.trim()
 				: "Unauthenticated user";

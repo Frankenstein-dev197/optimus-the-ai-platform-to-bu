@@ -4,17 +4,17 @@ import { oldestSupportedAgentVersion } from "../constants";
 import {
 	createTemplate,
 	createWorkspace,
-	downloadOptimus IDE CollabVersion,
+	downloadCoderVersion,
 	login,
 	sshIntoWorkspace,
 	startAgentWithCommand,
 	stopAgent,
 	stopWorkspace,
 } from "../helpers";
-import { beforeOptimus IDE CollabTest } from "../hooks";
+import { beforeCoderTest } from "../hooks";
 
 test.beforeEach(async ({ page }) => {
-	beforeOptimus IDE CollabTest(page);
+	beforeCoderTest(page);
 	await login(page);
 });
 
@@ -41,7 +41,7 @@ test.skip(`ssh with agent ${oldestSupportedAgentVersion}`, async ({ page }) => {
 		],
 	});
 	const workspaceName = await createWorkspace(page, template);
-	const binaryPath = await downloadOptimus IDE CollabVersion(oldestSupportedAgentVersion);
+	const binaryPath = await downloadCoderVersion(oldestSupportedAgentVersion);
 	const agent = await startAgentWithCommand(page, token, binaryPath);
 
 	const client = await sshIntoWorkspace(page, workspaceName);

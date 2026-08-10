@@ -11,10 +11,10 @@ import {
 	requiresLicense,
 	requiresUnlicensed,
 } from "../../../helpers";
-import { beforeOptimus IDE CollabTest } from "../../../hooks";
+import { beforeCoderTest } from "../../../hooks";
 
 test.beforeEach(async ({ page }) => {
-	beforeOptimus IDE CollabTest(page);
+	beforeCoderTest(page);
 	await login(page);
 });
 
@@ -192,8 +192,8 @@ test.describe("CustomRolesPage", () => {
 
 test("custom roles disabled", async ({ page }) => {
 	requiresUnlicensed();
-	await page.goto("/organizations/optimus-ide-collab/roles");
-	await expect(page).toHaveURL("/organizations/optimus-ide-collab/roles");
+	await page.goto("/organizations/coder/roles");
+	await expect(page).toHaveURL("/organizations/coder/roles");
 
 	await expect(
 		page.getByText("Upgrade to a premium license to create a custom role"),

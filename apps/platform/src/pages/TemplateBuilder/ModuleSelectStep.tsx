@@ -43,7 +43,7 @@ function toMeta(m: TemplateBuilderModule): SelectedModuleMeta {
 
 // TODO add this to the API response so we don't have to construct it manually here.
 function moduleDetailsUrl(moduleId: string): string {
-	return `https://registry.optimus-ide-collabidecollab.com/modules/${moduleId}`;
+	return `https://registry.coder.com/modules/${moduleId}`;
 }
 
 interface ModuleConflict {

@@ -2,10 +2,10 @@ import { expect, test } from "@playwright/test";
 import { setupApiCalls } from "../api";
 import { expectUrl } from "../expectUrl";
 import { login, randomName, requiresLicense } from "../helpers";
-import { beforeOptimus IDE CollabTest } from "../hooks";
+import { beforeCoderTest } from "../hooks";
 
 test.beforeEach(async ({ page }) => {
-	beforeOptimus IDE CollabTest(page);
+	beforeCoderTest(page);
 	await login(page);
 	await setupApiCalls(page);
 });

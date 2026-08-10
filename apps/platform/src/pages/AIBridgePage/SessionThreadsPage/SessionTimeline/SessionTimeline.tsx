@@ -322,7 +322,7 @@ const ThreadItem: FC<ThreadItemProps> = ({ thread, initiator }) => {
 											</p>
 											<Link
 												href={docs(
-													"/ai-optimus-ide-collab/ai-gateway/audit#human-vs-agent-attribution",
+													"/ai-coder/ai-gateway/audit#human-vs-agent-attribution",
 												)}
 												target="_blank"
 												className="text-sm"
@@ -501,7 +501,7 @@ export const SessionTimeline: FC<SessionTimelineProps> = ({
 								</div>
 								<div>
 									<Link
-										href={docs("/ai-optimus-ide-collab/ai-governance")}
+										href={docs("/ai-coder/ai-governance")}
 										target="_blank"
 										className="text-sm"
 									>

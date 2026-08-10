@@ -89,9 +89,9 @@ const SettingsTabBody: FC<{ settings: SettingsTab }> = ({ settings }) => {
 					<ErrorAlert error={settings.loadError} />
 				) : (
 					<p className="text-sm text-content-secondary m-0">
-						Optimus IDE Collab did not return a value for Dynamic Client Registration. This
+						Optimus did not return a value for Dynamic Client Registration. This
 						can happen while the browser is offline. Retry, or check the setting
-						with <code className="text-xs">optimus-ide-collab oauth2-provider dcr</code>.
+						with <code className="text-xs">coder oauth2-provider dcr</code>.
 					</p>
 				)}
 				<Button variant="outline" size="sm" onClick={settings.onRetry}>
@@ -167,7 +167,7 @@ const OAuth2AppsSettingsPageView: FC<OAuth2AppsSettingsProps> = ({
 				 * with no control for it on the page sends them looking for one.
 				 */}
 				<SettingsHeaderDescription>
-					Register applications to use Optimus IDE Collab as an OAuth2 provider
+					Register applications to use Optimus as an OAuth2 provider
 					{settings && ", and configure how this deployment behaves as one"}.
 				</SettingsHeaderDescription>
 			</SettingsHeader>
@@ -205,7 +205,7 @@ const OAuth2AppsSettingsPageView: FC<OAuth2AppsSettingsProps> = ({
 							) : !appsError && (!apps || apps.length === 0) ? (
 								<TableEmpty
 									message="No OAuth2 applications configured"
-									description="Add an application to use Optimus IDE Collab as an OAuth2 provider."
+									description="Add an application to use Optimus as an OAuth2 provider."
 									cta={canCreateApp ? <AddApplicationButton /> : undefined}
 								/>
 							) : (

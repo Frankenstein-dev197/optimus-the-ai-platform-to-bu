@@ -1,1 +1,0 @@
-import{o as e}from"./rolldown-runtime-DAXXjFlN.js";import{P as t}from"./mui-Cl_E9pOk.js";var n=e(t()),r=(e,t)=>{let r=(0,n.useRef)(null);return{ref:r,onClick:e,tabIndex:0,role:t??`button`,onKeyDown:e=>{e.key===`Enter`&&(r.current?.click(),e.stopPropagation())},onKeyUp:e=>{e.key===` `&&(r.current?.click(),e.stopPropagation())}}};export{r as t};

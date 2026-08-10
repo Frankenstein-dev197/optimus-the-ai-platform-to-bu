@@ -12,7 +12,7 @@ import { ConfirmDeleteDialog } from "./ConfirmDeleteDialog";
 import { useTokensData } from "./hooks";
 import { TokensPageView } from "./TokensPageView";
 
-const cliCreateCommand = "optimus-ide-collab tokens create";
+const cliCreateCommand = "coder tokens create";
 
 const TokensPage: FC = () => {
 	const [tokenToDelete, setTokenToDelete] = useState<
@@ -46,8 +46,8 @@ const TokensPage: FC = () => {
 			>
 				<SettingsHeaderTitle>Tokens</SettingsHeaderTitle>
 				<SettingsHeaderDescription>
-					Tokens are used to authenticate with the Optimus IDE Collab API. You can create a
-					token with the Optimus IDE Collab CLI using the{" "}
+					Tokens are used to authenticate with the Optimus API. You can create a
+					token with the Optimus CLI using the{" "}
 					<code className="bg-surface-secondary text-content-primary text-xs px-1 py-0.5 rounded-sm">
 						{cliCreateCommand}
 					</code>{" "}

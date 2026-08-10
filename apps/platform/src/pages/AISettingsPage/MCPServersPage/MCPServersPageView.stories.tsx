@@ -3,7 +3,7 @@ import { expect, within } from "storybook/test";
 import { reactRouterParameters } from "storybook-addon-remix-react-router";
 import MCPServersPageView from "./MCPServersPageView";
 import {
-	MockOptimusIDECollabMCPServer,
+	MockCoderMCPServer,
 	MockGitHubMCPServer,
 	MockImageMCPServer,
 	MockMemoryMCPServer,
@@ -16,7 +16,7 @@ const meta: Meta<typeof MCPServersPageView> = {
 		isLoading: false,
 		error: null,
 		servers: [
-			MockOptimusIDECollabMCPServer,
+			MockCoderMCPServer,
 			MockGitHubMCPServer,
 			MockImageMCPServer,
 			MockMemoryMCPServer,
@@ -45,7 +45,7 @@ export const Default: Story = {
 		await expect(
 			canvas.getByRole("button", { name: /add server/i }),
 		).toBeInTheDocument();
-		await expect(canvas.getByText("Optimus IDE Collab")).toBeInTheDocument();
+		await expect(canvas.getByText("Optimus")).toBeInTheDocument();
 		await expect(canvas.getByText("GitHub")).toBeInTheDocument();
 		await expect(canvas.getByText("Image")).toBeInTheDocument();
 		await expect(canvas.getByText("API key")).toBeInTheDocument();

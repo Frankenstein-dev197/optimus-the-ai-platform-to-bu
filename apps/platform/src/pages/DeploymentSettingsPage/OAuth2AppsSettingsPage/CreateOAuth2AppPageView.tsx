@@ -45,7 +45,7 @@ export const CreateOAuth2AppPageView: FC = () => {
 					<SettingsHeaderTitle>Add an OAuth2 application</SettingsHeaderTitle>
 				</div>
 				<p className="text-sm text-content-secondary m-0">
-					Configure an application to use Optimus IDE Collab as an OAuth2 provider.
+					Configure an application to use Optimus as an OAuth2 provider.
 				</p>
 
 				<div className="border border-solid p-6 rounded-lg">

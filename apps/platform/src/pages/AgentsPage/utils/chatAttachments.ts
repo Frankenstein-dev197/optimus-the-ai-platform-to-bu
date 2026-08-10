@@ -33,8 +33,8 @@ export async function classifyAttachmentFailureResponse(
 		return { kind: "failed", detail: undisplayableAttachmentDetail };
 	}
 
-	// Prefer the API's structured error message (optimus-ide-collabd returns
-	// optimus-ide-collabsdk.Response { message, detail }). Fall back to the status
+	// Prefer the API's structured error message (coderd returns
+	// codersdk.Response { message, detail }). Fall back to the status
 	// line when the body isn't JSON, for example when a proxy inserted
 	// an HTML page, so the tooltip still surfaces something concrete.
 	let detail = response.statusText
@@ -77,7 +77,7 @@ const chatAttachmentExtraExtensions = [
 
 /**
  * `accept` attribute for the chat-attachment file input. Mirrors
- * optimus-ide-collabsdk.AllChatAttachmentMediaTypes so the OS file picker advertises
+ * codersdk.AllChatAttachmentMediaTypes so the OS file picker advertises
  * exactly what the server will accept.
  */
 export const chatAttachmentAcceptAttribute = [

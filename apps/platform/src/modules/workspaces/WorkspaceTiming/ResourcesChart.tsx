@@ -60,7 +60,7 @@ export const ResourcesChart: FC<ResourcesChartProps> = ({
 	const visibleTimings = timings.filter(
 		// Stage boundaries are also included
 		(t) =>
-			(!isOptimusIDECollabResource(t.name) || isStageBoundary(t.name)) &&
+			(!isCoderResource(t.name) || isStageBoundary(t.name)) &&
 			t.name.includes(filter),
 	);
 	const theme = useTheme();
@@ -160,14 +160,14 @@ export const ResourcesChart: FC<ResourcesChartProps> = ({
 };
 
 export const isStageBoundary = (resource: string) => {
-	return resource.startsWith("optimus-ide-collab_stage_");
+	return resource.startsWith("coder_stage_");
 };
 
-export const isOptimusIDECollabResource = (resource: string) => {
+export const isCoderResource = (resource: string) => {
 	return (
-		resource.startsWith("data.optimus-ide-collab") ||
-		resource.startsWith("module.optimus-ide-collab") ||
-		resource.startsWith("optimus-ide-collab_")
+		resource.startsWith("data.coder") ||
+		resource.startsWith("module.coder") ||
+		resource.startsWith("coder_")
 	);
 };
 

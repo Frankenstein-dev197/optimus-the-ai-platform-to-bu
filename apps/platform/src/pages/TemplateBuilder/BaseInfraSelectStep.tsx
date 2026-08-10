@@ -16,7 +16,7 @@ interface BaseInfraSelectStepProps {
 }
 
 function detailsUrl(baseId: string): string {
-	return `https://registry.optimus-ide-collabidecollab.com/templates/${baseId}`;
+	return `https://registry.coder.com/templates/${baseId}`;
 }
 
 export const BaseInfraSelectStep: FC<BaseInfraSelectStepProps> = ({

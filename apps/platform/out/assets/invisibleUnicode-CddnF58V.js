@@ -1,1 +1,0 @@
-function e(e){return!(e===173||e===847||e===1564||e===6158||e===65279||e===8203||e>=8205&&e<=8207||e>=8234&&e<=8238||e>=8288&&e<=8292||e>=8294&&e<=8297||e>=8298&&e<=8303||e>=65529&&e<=65531)}function t(t){let n=0;for(let r=0;r<t.length;r++)e(t.charCodeAt(r))||n++;return n}export{t};

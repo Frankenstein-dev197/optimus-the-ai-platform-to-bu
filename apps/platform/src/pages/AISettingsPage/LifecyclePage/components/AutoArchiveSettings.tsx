@@ -23,7 +23,7 @@ interface AutoArchiveSettingsProps {
 	isSaveAutoArchiveDaysError: boolean;
 }
 
-// Keep in sync with autoArchiveDaysMaximum in optimus-ide-collabd/exp_chats.go.
+// Keep in sync with autoArchiveDaysMaximum in coderd/exp_chats.go.
 const DAYS_MIN = 1;
 const DAYS_MAX = 3650;
 const ENABLE_DEFAULT_DAYS = 90;

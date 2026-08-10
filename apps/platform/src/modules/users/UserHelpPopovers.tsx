@@ -17,7 +17,7 @@ export const RolesHelpPopover: FC = () => {
 			<HelpPopoverContent>
 				<HelpPopoverTitle>What is a role?</HelpPopoverTitle>
 				<HelpPopoverText>
-					Optimus IDE Collab role-based access control (RBAC) provides fine-grained access
+					Optimus role-based access control (RBAC) provides fine-grained access
 					management. View our docs on how to use the available roles.
 				</HelpPopoverText>
 				<HelpPopoverLinksGroup>

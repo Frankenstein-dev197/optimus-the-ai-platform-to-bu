@@ -23,7 +23,7 @@ interface DebugRetentionSettingsProps {
 	isSaveDebugRetentionDaysError: boolean;
 }
 
-// Keep in sync with chatDebugRetentionDaysMaximum in optimus-ide-collabd/exp_chats.go.
+// Keep in sync with chatDebugRetentionDaysMaximum in coderd/exp_chats.go.
 const DAYS_MIN = 1;
 const DAYS_MAX = 3650;
 

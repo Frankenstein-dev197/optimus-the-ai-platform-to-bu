@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, fn, userEvent, waitFor, within } from "storybook/test";
 import { reactRouterParameters } from "storybook-addon-remix-react-router";
 import type * as TypesGen from "#/api/typesGenerated";
-import { MockOptimusIDECollabMCPServer } from "../testFixtures";
+import { MockCoderMCPServer } from "../testFixtures";
 import UpdateMCPServerPageView from "./UpdateMCPServerPageView";
 
 const onUpdateServer = fn(
@@ -16,7 +16,7 @@ const meta: Meta<typeof UpdateMCPServerPageView> = {
 	title: "pages/AISettingsPage/MCPServersPage/UpdateMCPServerPageView",
 	component: UpdateMCPServerPageView,
 	args: {
-		server: MockOptimusIDECollabMCPServer,
+		server: MockCoderMCPServer,
 		isSaving: false,
 		isDeleting: false,
 		onUpdateServer,
@@ -26,7 +26,7 @@ const meta: Meta<typeof UpdateMCPServerPageView> = {
 	},
 	parameters: {
 		reactRouter: reactRouterParameters({
-			location: { path: "/ai/settings/mcp-servers/mcp-optimus-ide-collab" },
+			location: { path: "/ai/settings/mcp-servers/mcp-coder" },
 			routing: { path: "/ai/settings/mcp-servers/:serverId" },
 		}),
 	},
@@ -39,7 +39,7 @@ export const Default: Story = {
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
 
-		await expect(canvas.getByLabelText(/display name/i)).toHaveValue("Optimus IDE Collab");
+		await expect(canvas.getByLabelText(/display name/i)).toHaveValue("Optimus");
 		await userEvent.click(
 			canvas.getByRole("button", { name: /authentication/i }),
 		);
@@ -53,10 +53,10 @@ export const Default: Story = {
 
 		await waitFor(() => {
 			expect(onUpdateServer).toHaveBeenCalledWith(
-				"mcp-optimus-ide-collab",
+				"mcp-coder",
 				expect.objectContaining({
-					display_name: "Optimus IDE Collab",
-					slug: "optimus-ide-collab",
+					display_name: "Optimus",
+					slug: "coder",
 				}),
 			);
 		});

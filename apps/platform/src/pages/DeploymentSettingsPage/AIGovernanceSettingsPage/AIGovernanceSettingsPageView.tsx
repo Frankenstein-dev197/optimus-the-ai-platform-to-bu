@@ -31,7 +31,7 @@ export const AIGovernanceSettingsPageView: FC<
 			<div>
 				<SettingsHeader
 					actions={
-						<SettingsHeaderDocsLink href={docs("/ai-optimus-ide-collab/ai-gateway")} />
+						<SettingsHeaderDocsLink href={docs("/ai-coder/ai-gateway")} />
 					}
 				>
 					<SettingsHeaderTitle hierarchy="secondary" level="h2">
@@ -52,7 +52,7 @@ export const AIGovernanceSettingsPageView: FC<
 								<AlertDescription>
 									You have access to AI Governance, but it still needs to be
 									setup. Check out the{" "}
-									<Link href={docs("/ai-optimus-ide-collab/ai-gateway")} target="_blank">
+									<Link href={docs("/ai-coder/ai-gateway")} target="_blank">
 										AI Gateway
 									</Link>{" "}
 									documentation to get started.

@@ -1,1 +1,0 @@
-function e(e){return e.trim().toLowerCase()}var t={anthropic:`https://api.anthropic.com`,google:`https://generativelanguage.googleapis.com/v1beta`,openai:`https://api.openai.com/v1`,openrouter:`https://openrouter.ai/api/v1`,vercel:`https://ai-gateway.vercel.sh/v1`};function n(n){return t[e(n)]??``}export{e as n,n as t};

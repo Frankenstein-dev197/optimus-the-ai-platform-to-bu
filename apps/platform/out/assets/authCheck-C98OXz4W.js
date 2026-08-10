@@ -1,1 +1,0 @@
-import{t as e}from"./api-CEfiC5C8.js";import{n as t}from"./util-D_K8GU8P.js";var n=`authorization`,r=e=>[n,e];function i(n,i){let a={queryKey:r(n),queryFn:()=>e.checkAuthorization(n)};return i?.available?{...a,initialData:i.value,...t}:a}export{r as n,i as t};

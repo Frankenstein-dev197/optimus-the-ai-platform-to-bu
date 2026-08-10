@@ -29,7 +29,7 @@ export const ManagedAgentsConsumption: FC<ManagedAgentsConsumptionProps> = ({
 						<span className="text-base">Agent Workspace Builds Disabled</span>
 						<span className="text-content-secondary text-center max-w-[464px] mt-2">
 							Agent Workspace Builds are not included in your current license.
-							Contact <Link href="mailto:sales@optimus-ide-collabidecollab.com">sales</Link> to
+							Contact <Link href="mailto:sales@optimus.com">sales</Link> to
 							upgrade your license and unlock this feature.
 						</span>
 					</div>
@@ -100,21 +100,21 @@ export const ManagedAgentsConsumption: FC<ManagedAgentsConsumptionProps> = ({
 						<p>
 							Today,{" "}
 							<Link
-								href={docs("/ai-optimus-ide-collab/tasks")}
+								href={docs("/ai-coder/tasks")}
 								target="_blank"
 								rel="noreferrer"
 							>
-								Optimus IDE Collab Tasks (via UI, CLI, or API)
+								Optimus Tasks (via UI, CLI, or API)
 							</Link>{" "}
 							is the only way to create agentic workspaces, but additional
 							protocols and APIs may be supported as standards emerge. Learn
 							more in{" "}
 							<Link
-								href={docs("/ai-optimus-ide-collab/ai-governance")}
+								href={docs("/ai-coder/ai-governance")}
 								target="_blank"
 								rel="noreferrer"
 							>
-								the Optimus IDE Collab documentation
+								the Optimus documentation
 							</Link>
 						</p>
 						<ul>

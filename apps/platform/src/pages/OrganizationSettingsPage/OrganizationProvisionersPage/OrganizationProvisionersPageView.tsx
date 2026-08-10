@@ -63,7 +63,7 @@ export const OrganizationProvisionersPageView: FC<
 			<SettingsHeader>
 				<SettingsHeaderTitle>Provisioners</SettingsHeaderTitle>
 				<SettingsHeaderDescription>
-					Optimus IDE Collab server runs provisioner daemons which execute terraform during
+					Optimus server runs provisioner daemons which execute terraform during
 					workspace and template builds.{" "}
 					<Link href={docs("/admin/provisioners")}>View docs</Link>
 				</SettingsHeaderDescription>

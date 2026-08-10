@@ -6,10 +6,10 @@ import {
 	setupApiCalls,
 } from "../../api";
 import { login, randomName, requiresLicense } from "../../helpers";
-import { beforeOptimus IDE CollabTest } from "../../hooks";
+import { beforeCoderTest } from "../../hooks";
 
 test.beforeEach(async ({ page }) => {
-	beforeOptimus IDE CollabTest(page);
+	beforeCoderTest(page);
 	await login(page);
 	await setupApiCalls(page);
 });
@@ -62,7 +62,7 @@ test.describe("IdpGroupSyncPage", () => {
 		await deleteOrganization(org.name);
 	});
 
-	test("delete a IdP group to optimus-ide-collab group mapping row", async ({ page }) => {
+	test("delete a IdP group to coder group mapping row", async ({ page }) => {
 		requiresLicense();
 		const org = await createOrganizationWithName(randomName());
 		await createGroupSyncSettings(org.id);
@@ -158,7 +158,7 @@ test.describe("IdpGroupSyncPage", () => {
 
 		await idpOrgInput.fill("new-idp-group");
 
-		// Select Optimus IDE Collab organization from combobox
+		// Select Coder organization from combobox
 		const groupSelector = page.getByPlaceholder("Select group");
 		await expect(groupSelector).toBeAttached();
 		await expect(groupSelector).toBeVisible();

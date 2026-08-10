@@ -1,1 +1,0 @@
-import{er as e,tr as t}from"./monaco-BJttp60A.js";export{e as conf,t as language};

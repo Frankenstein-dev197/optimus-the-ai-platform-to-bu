@@ -12,12 +12,12 @@ const meta: Meta<typeof AISettingsSidebarView> = {
 	},
 	parameters: {
 		reactRouter: reactRouterParameters({
-			location: { path: "/ai/settings/optimus-ide-collab-agents" },
+			location: { path: "/ai/settings/optimus-agents" },
 			routing: [
 				{ path: "/ai/settings/governance", useStoryElement: true },
 				{ path: "/ai/settings/gateway-keys", useStoryElement: true },
 				{ path: "/ai/settings/providers", useStoryElement: true },
-				{ path: "/ai/settings/optimus-ide-collab-agents", useStoryElement: true },
+				{ path: "/ai/settings/optimus-agents", useStoryElement: true },
 				{ path: "/ai/settings/models", useStoryElement: true },
 				{ path: "/ai/settings/mcp-servers", useStoryElement: true },
 				{ path: "/ai/settings/templates", useStoryElement: true },
@@ -31,7 +31,7 @@ const meta: Meta<typeof AISettingsSidebarView> = {
 export default meta;
 type Story = StoryObj<typeof AISettingsSidebarView>;
 
-export const OptimusIDECollabAgentsActive: Story = {
+export const CoderAgentsActive: Story = {
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
 		await expect(canvas.getByRole("link", { name: "Models" })).toBeVisible();
@@ -77,7 +77,7 @@ export const NoDeploymentConfig: Story = {
 	},
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
-		expect(canvas.queryByText("Optimus IDE Collab Agents")).not.toBeInTheDocument();
+		expect(canvas.queryByText("Optimus Agents")).not.toBeInTheDocument();
 		expect(canvas.queryByText("Templates")).not.toBeInTheDocument();
 	},
 };
@@ -91,7 +91,7 @@ export const NoUpdateTemplates: Story = {
 	},
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
-		expect(await canvas.findByText("Optimus IDE Collab Agents")).toBeVisible();
+		expect(await canvas.findByText("Optimus Agents")).toBeVisible();
 		expect(canvas.queryByText("Templates")).not.toBeInTheDocument();
 		expect(canvas.getByText("Models")).toBeVisible();
 	},

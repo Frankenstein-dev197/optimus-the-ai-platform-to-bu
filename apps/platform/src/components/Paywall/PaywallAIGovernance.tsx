@@ -24,10 +24,10 @@ const PaywallAIGovernance = () => {
 				</PaywallHeading>
 				<PaywallDescription>
 					AI Gateway provides auditable visibility into user prompts and LLM
-					tool calls from developer tools within Optimus IDE Collab Workspaces. AI Gateway
+					tool calls from developer tools within Optimus Workspaces. AI Gateway
 					requires a Premium license with AI Governance add-on.
 				</PaywallDescription>
-				<PaywallDocumentationLink href={docs("/ai-optimus-ide-collab/ai-governance")}>
+				<PaywallDocumentationLink href={docs("/ai-coder/ai-governance")}>
 					Learn about AI Governance
 				</PaywallDocumentationLink>
 			</PaywallContent>
@@ -44,7 +44,7 @@ const PaywallAIGovernance = () => {
 						<span>
 							Visit{" "}
 							<a
-								href={docs("/ai-optimus-ide-collab/ai-gateway")}
+								href={docs("/ai-coder/ai-gateway")}
 								target="_blank"
 								rel="noreferrer"
 								className="text-content-link"
@@ -54,7 +54,7 @@ const PaywallAIGovernance = () => {
 						</span>
 					</PaywallFeature>
 				</PaywallFeatures>
-				<PaywallCTA href="https://optimus-ide-collabidecollab.com/contact/sales">
+				<PaywallCTA href="https://coder.com/contact/sales">
 					Contact Sales
 				</PaywallCTA>
 			</PaywallStack>

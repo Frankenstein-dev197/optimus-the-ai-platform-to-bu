@@ -15,8 +15,8 @@ describe("getPathBasename", () => {
 
 describe("getPathDirname", () => {
 	it.each([
-		["/home/optimus-ide-collab/AGENTS.md", "/home/optimus-ide-collab"],
-		["/home/optimus-ide-collab/.optimus-ide-collab/skills/deploy", "/home/optimus-ide-collab/.optimus-ide-collab/skills"],
+		["/home/coder/AGENTS.md", "/home/coder"],
+		["/home/coder/.coder/skills/deploy", "/home/coder/.coder/skills"],
 		["foo/bar.ts", "foo"],
 		["main.go", ""],
 		["", ""],

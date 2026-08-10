@@ -118,7 +118,7 @@ export const SettingsPanel: FC<SettingsPanelProps> = ({
 						icon={Settings2Icon}
 						label="Manage agents"
 						active={false}
-						to="/ai/settings/optimus-ide-collab-agents"
+						to="/ai/settings/optimus-agents"
 						trailingIcon={ArrowUpRightIcon}
 					/>
 				)}

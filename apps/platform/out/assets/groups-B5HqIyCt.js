@@ -1,1 +1,0 @@
-import{L as e}from"./api-CEfiC5C8.js";import{o as t,t as n}from"./currency-DtKnUuNS.js";var r=e/n,i=`Enter an amount between 0 and ${t.format(r)}.`,a=e=>`members`in e,o=e=>e.id===e.organization_id,s=e=>{if(e.id===e.organization_id)return`All users`;let t=e.total_member_count??e.members?.length??0;return t===1?`1 member`:`${t} members`};export{r as a,a as i,s as n,o as r,i as t};

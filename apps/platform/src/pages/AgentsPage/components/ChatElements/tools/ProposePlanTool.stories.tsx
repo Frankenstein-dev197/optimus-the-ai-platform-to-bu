@@ -37,7 +37,7 @@ const samplePlan = [
 ].join("\n");
 
 const defaultPlanPath =
-	"/home/optimus-ide-collab/.optimus-ide-collab/plans/PLAN-a1b2c3d4-e5f6-7890-abcd-ef1234567890.md";
+	"/home/coder/.coder/plans/PLAN-a1b2c3d4-e5f6-7890-abcd-ef1234567890.md";
 const defaultPlanFilename = getPathBasename(defaultPlanPath) || "PLAN.md";
 
 const meta: Meta<typeof Tool> = {
@@ -98,10 +98,10 @@ export const Completed: Story = {
 export const CustomPath: Story = {
 	args: {
 		status: "completed",
-		args: { path: "/home/optimus-ide-collab/docs/AUTH_PLAN.md" },
+		args: { path: "/home/coder/docs/AUTH_PLAN.md" },
 		result: {
 			ok: true,
-			path: "/home/optimus-ide-collab/docs/AUTH_PLAN.md",
+			path: "/home/coder/docs/AUTH_PLAN.md",
 			kind: "plan",
 			file_id: "test-file-id-custom-path",
 			media_type: "text/markdown",
@@ -122,10 +122,10 @@ export const CustomPath: Story = {
 export const CompletedCopyButton: Story = {
 	args: {
 		status: "completed",
-		args: { path: "/home/optimus-ide-collab/PLAN.md" },
+		args: { path: "/home/coder/PLAN.md" },
 		result: {
 			ok: true,
-			path: "/home/optimus-ide-collab/PLAN.md",
+			path: "/home/coder/PLAN.md",
 			kind: "plan",
 			file_id: "test-file-id-copy",
 			media_type: "text/markdown",

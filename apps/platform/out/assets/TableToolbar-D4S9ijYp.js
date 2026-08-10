@@ -1,1 +1,0 @@
-import{i as e}from"./emotion-Gs6oPiCL.js";import"./Skeleton-FaCxl8EN.js";var t=({children:t})=>e(`div`,{className:`text-sm mb-2 mt-0 h-9 text-content-secondary flex items-center [&_strong]:text-content-primary`,children:t});export{t};

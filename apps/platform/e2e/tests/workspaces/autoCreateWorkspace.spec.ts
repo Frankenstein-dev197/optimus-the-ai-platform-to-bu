@@ -6,7 +6,7 @@ import {
 	echoResponsesWithParameters,
 	login,
 } from "../../helpers";
-import { beforeOptimus IDE CollabTest } from "../../hooks";
+import { beforeCoderTest } from "../../hooks";
 import { emptyParameter } from "../../parameters";
 import type { RichParameter } from "../../provisionerGenerated";
 
@@ -28,7 +28,7 @@ test.beforeAll(async ({ browser }) => {
 });
 
 test.beforeEach(async ({ page }) => {
-	beforeOptimus IDE CollabTest(page);
+	beforeCoderTest(page);
 	await login(page, users.member);
 });
 
@@ -41,7 +41,7 @@ test("create workspace in auto mode", async ({ page }) => {
 		},
 	);
 	await page.getByRole("button", { name: /confirm and create/i }).click();
-	await expect(page).toHaveTitle(`${users.member.username}/${name} - Optimus IDE Collab`);
+	await expect(page).toHaveTitle(`${users.member.username}/${name} - Coder`);
 });
 
 test("use an existing workspace that matches the `match` parameter instead of creating a new one", async ({
@@ -56,7 +56,7 @@ test("use an existing workspace that matches the `match` parameter instead of cr
 	);
 	await page.getByRole("button", { name: /confirm and create/i }).click();
 	await expect(page).toHaveTitle(
-		`${users.member.username}/${prevWorkspace} - Optimus IDE Collab`,
+		`${users.member.username}/${prevWorkspace} - Coder`,
 	);
 });
 

@@ -5,10 +5,10 @@ import { CompactOrgSelector } from "./CompactOrgSelector";
 
 const mockOrgs: Organization[] = [
 	{
-		id: "org-optimus-ide-collab",
-		name: "optimus-ide-collab",
-		display_name: "Optimus IDE Collab",
-		icon: "/icon/optimus-ide-collab.svg",
+		id: "org-coder",
+		name: "coder",
+		display_name: "Optimus",
+		icon: "/icon/coder.svg",
 		description: "Main engineering organization",
 		created_at: "2024-01-01T00:00:00Z",
 		updated_at: "2024-06-01T00:00:00Z",

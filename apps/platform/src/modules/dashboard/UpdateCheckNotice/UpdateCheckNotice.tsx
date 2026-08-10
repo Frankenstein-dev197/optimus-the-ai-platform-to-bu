@@ -29,7 +29,9 @@ export const UpdateCheckNotice: FC<UpdateCheckNoticeProps> = ({
 		>
 			<InfoIcon className="mt-0.5 size-icon-sm shrink-0 text-highlight-sky" />
 			<div className="flex flex-col gap-1">
-				<p className="m-0 font-semibold">Optimus IDE Collab {version} is now available. </p>
+				<p className="m-0 font-semibold">
+					Optimus {version} is now available.{" "}
+				</p>
 				<p className="m-0 flex-1 leading-5">
 					View the{" "}
 					<a

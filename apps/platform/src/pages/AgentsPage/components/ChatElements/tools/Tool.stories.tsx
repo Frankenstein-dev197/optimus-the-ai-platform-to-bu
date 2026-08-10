@@ -15,7 +15,7 @@ import { Tool, toolRendererNames } from "./Tool";
 const executeCommand = "git fetch origin";
 const executeIntentCommand = "npm test";
 const longExecuteCommand =
-	"docker build --no-cache --build-arg NODE_ENV=production --build-arg API_URL=https://optimus-ide-collab.example.com/api --build-arg SENTRY_DSN=https://example.com/sentry --build-arg FEATURE_FLAGS=agents,shell-tools --tag optimus-ide-collab-agent:latest .";
+	"docker build --no-cache --build-arg NODE_ENV=production --build-arg API_URL=https://coder.example.com/api --build-arg SENTRY_DSN=https://example.com/sentry --build-arg FEATURE_FLAGS=agents,shell-tools --tag coder-agent:latest .";
 
 // 1x1 solid coral (#FF6B6B) PNG encoded as base64.
 const TEST_PNG_B64 =
@@ -168,8 +168,8 @@ const allToolShowcaseItems: ToolShowcaseItem[] = [
 	},
 	{
 		name: "propose_plan",
-		args: { path: "/home/optimus-ide-collab/.optimus-ide-collab/plans/PLAN-example.md" },
-		result: { path: "/home/optimus-ide-collab/.optimus-ide-collab/plans/PLAN-example.md" },
+		args: { path: "/home/coder/.coder/plans/PLAN-example.md" },
+		result: { path: "/home/coder/.coder/plans/PLAN-example.md" },
 	},
 	{
 		name: "ask_user_question",
@@ -352,12 +352,12 @@ export const ExecuteSuccess: Story = {
 			wall_duration_ms: 47200,
 			exit_code: 0,
 			output:
-				"From github.com:optimus-ide-collab/optimus-ide-collab\n * [new branch]      feature/agent-ui -> origin/feature/agent-ui",
+				"From github.com:coder/coder\n * [new branch]      feature/agent-ui -> origin/feature/agent-ui",
 		},
 	},
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
-		expect(canvas.getByText(/From github\.com:optimus-ide-collab\/optimus-ide-collab/)).toBeVisible();
+		expect(canvas.getByText(/From github\.com:coder\/coder/)).toBeVisible();
 		expect(canvas.queryByText("exit 0")).not.toBeInTheDocument();
 		expect(
 			canvas.queryByRole("img", { name: "Running in background" }),
@@ -567,7 +567,7 @@ export const ExecuteAlwaysCollapsed: Story = {
 		args: { command: executeCommand },
 		shellToolDisplayMode: "always_collapsed",
 		result: {
-			output: "From github.com:optimus-ide-collab/optimus-ide-collab\nFetching origin/main",
+			output: "From github.com:coder/coder\nFetching origin/main",
 		},
 	},
 	play: async ({ canvasElement }) => {
@@ -579,11 +579,11 @@ export const ExecuteAlwaysCollapsed: Story = {
 		expect(canvas.queryByText("exit 0")).not.toBeInTheDocument();
 		expect(canvas.queryByText("2 lines")).not.toBeInTheDocument();
 		expect(
-			canvas.queryByText(/From github\.com:optimus-ide-collab\/optimus-ide-collab/),
+			canvas.queryByText(/From github\.com:coder\/coder/),
 		).not.toBeInTheDocument();
 		await userEvent.click(commandButton);
 		await waitFor(() => {
-			expect(canvas.getByText(/From github\.com:optimus-ide-collab\/optimus-ide-collab/)).toBeVisible();
+			expect(canvas.getByText(/From github\.com:coder\/coder/)).toBeVisible();
 		});
 	},
 };
@@ -1540,7 +1540,7 @@ const sampleMCPServers = [
 		enabled: true,
 		model_intent: false,
 		allow_in_plan_mode: false,
-		"forward_optimus-ide-collab_headers": false,
+		forward_coder_headers: false,
 		auth_connected: true,
 		created_at: "2025-01-01T00:00:00Z",
 		updated_at: "2025-01-01T00:00:00Z",
@@ -2406,7 +2406,7 @@ export const GenericMCPToolStringError: Story = {
 };
 
 const longCodeLine =
-	'export const config = { apiUrl: "https://optimus-ide-collab.example.com/api/v2/workspaces", token: "abcdefghijklmnopqrstuvwxyz0123456789_ABCDEFGHIJKLMNOPQRSTUVWXYZ_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", retries: 5 };';
+	'export const config = { apiUrl: "https://coder.example.com/api/v2/workspaces", token: "abcdefghijklmnopqrstuvwxyz0123456789_ABCDEFGHIJKLMNOPQRSTUVWXYZ_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", retries: 5 };';
 
 const tallWideFileContent = [
 	longCodeLine,
@@ -3038,7 +3038,7 @@ export const StartWorkspaceQuotaReached: Story = {
 			error: "workspace start build failed: insufficient quota",
 			title: "Workspace quota reached",
 			message:
-				"Optimus IDE Collab could not start this workspace because your workspace quota is full.",
+				"Optimus could not start this workspace because your workspace quota is full.",
 			build_id: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
 			quota: {
 				credits_consumed: 40,
@@ -3137,7 +3137,7 @@ export const CreateWorkspaceQuotaReached: Story = {
 			error: "workspace build failed: insufficient quota",
 			title: "Workspace quota reached",
 			message:
-				"Optimus IDE Collab could not create this workspace because your workspace quota is full.",
+				"Optimus could not create this workspace because your workspace quota is full.",
 			build_id: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
 			quota: {
 				credits_consumed: 40,

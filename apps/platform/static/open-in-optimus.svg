@@ -1,0 +1,14 @@
+<svg width="206" height="47" viewBox="0 0 206 47" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="206" height="47" rx="23.5" fill="url(#og)"/>
+<g transform="translate(16.0,16.0)" fill="#FFFFFF">
+<path fill-rule="evenodd" d="M 23.500 17.200 28.956 20.350 28.956 26.650 23.500 29.800 18.044 26.650 18.044 20.350 Z M 23.500 19.450 27.007 21.475 27.007 25.525 23.500 27.550 19.993 25.525 19.993 21.475 Z" />
+<path d="M 23.500 22.450 24.409 22.975 24.409 24.025 23.500 24.550 22.591 24.025 22.591 22.975 Z" />
+</g>
+<text x="48" y="30" font-family="-apple-system,Segoe UI,Roboto,sans-serif" font-size="15" font-weight="600" fill="#FFFFFF">Open in Optimus</text>
+<defs>
+<linearGradient id="og" x1="0" y1="0" x2="206" y2="47" gradientUnits="userSpaceOnUse">
+<stop stop-color="#1E40AF"/>
+<stop offset="1" stop-color="#2563EB"/>
+</linearGradient>
+</defs>
+</svg>

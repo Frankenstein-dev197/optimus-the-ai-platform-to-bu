@@ -52,7 +52,7 @@ export const WithTextEnd: Story = {
 		children: (
 			<>
 				<InputGroupInput placeholder="username" />
-				<InputGroupAddon align="inline-end">@optimus-ide-collabidecollab.com</InputGroupAddon>
+				<InputGroupAddon align="inline-end">@optimus.com</InputGroupAddon>
 			</>
 		),
 	},

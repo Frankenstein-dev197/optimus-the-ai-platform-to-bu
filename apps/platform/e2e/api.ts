@@ -10,13 +10,13 @@ dayjs.extend(duration);
 dayjs.extend(relativeTime);
 
 import { humanDuration } from "#/utils/time";
-import { optimus-ide-collabPort, defaultPassword } from "./constants";
+import { coderPort, defaultPassword } from "./constants";
 import { findSessionToken, type LoginOptions, randomName } from "./helpers";
 
 let currentOrgId: string;
 
 export const setupApiCalls = async (page: Page) => {
-	API.setHost(`http://127.0.0.1:${optimus-ide-collabPort}`);
+	API.setHost(`http://127.0.0.1:${coderPort}`);
 	const token = await findSessionToken(page);
 	API.setSessionToken(token);
 };
@@ -33,7 +33,7 @@ export const getCurrentOrgId = async (): Promise<string> => {
 export const createUser = async (...orgIds: string[]) => {
 	const name = randomName();
 	const user = await API.createUser({
-		email: `${name}@optimus-ide-collabidecollab.com`,
+		email: `${name}@coder.com`,
 		username: name,
 		name: name,
 		password: defaultPassword,
@@ -54,7 +54,7 @@ type CreateOrganizationMemberOptions = {
 
 export const createOrganizationMember = async ({
 	username = randomName(),
-	email = `${username}@optimus-ide-collabidecollab.com`,
+	email = `${username}@coder.com`,
 	password = defaultPassword,
 	orgRoles,
 }: CreateOrganizationMemberOptions): Promise<LoginOptions> => {

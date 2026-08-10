@@ -127,12 +127,12 @@ export const FailureTTLHelperText = (props: { ttl?: number }) => {
 	}
 
 	if (ttl === 0) {
-		return <span>Optimus IDE Collab will not automatically stop failed workspaces.</span>;
+		return <span>Optimus will not automatically stop failed workspaces.</span>;
 	}
 
 	return (
 		<span>
-			Optimus IDE Collab will attempt to stop failed workspaces after {humanDuration(ttl)}.
+			Optimus will attempt to stop failed workspaces after {humanDuration(ttl)}.
 		</span>
 	);
 };
@@ -146,12 +146,12 @@ export const DormancyTTLHelperText = (props: { ttl?: number }) => {
 	}
 
 	if (ttl === 0) {
-		return <span>Optimus IDE Collab will not mark workspaces as dormant.</span>;
+		return <span>Optimus will not mark workspaces as dormant.</span>;
 	}
 
 	return (
 		<span>
-			Optimus IDE Collab will mark workspaces as dormant after {humanDuration(ttl)} without
+			Optimus will mark workspaces as dormant after {humanDuration(ttl)} without
 			user connections.
 		</span>
 	);
@@ -166,12 +166,14 @@ export const DormancyAutoDeletionTTLHelperText = (props: { ttl?: number }) => {
 	}
 
 	if (ttl === 0) {
-		return <span>Optimus IDE Collab will not automatically delete dormant workspaces.</span>;
+		return (
+			<span>Optimus will not automatically delete dormant workspaces.</span>
+		);
 	}
 
 	return (
 		<span>
-			Optimus IDE Collab will automatically delete dormant workspaces after{" "}
+			Optimus will automatically delete dormant workspaces after{" "}
 			{humanDuration(ttl)}.
 		</span>
 	);

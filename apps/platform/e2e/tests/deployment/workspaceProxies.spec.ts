@@ -1,13 +1,13 @@
 import { expect, type Page, test } from "@playwright/test";
 import { API } from "#/api/api";
 import { setupApiCalls } from "../../api";
-import { optimus-ide-collabPort, workspaceProxyPort } from "../../constants";
+import { coderPort, workspaceProxyPort } from "../../constants";
 import { login, randomName, requiresLicense } from "../../helpers";
-import { beforeOptimus IDE CollabTest } from "../../hooks";
+import { beforeCoderTest } from "../../hooks";
 import { startWorkspaceProxy, stopWorkspaceProxy } from "../../proxy";
 
 test.beforeEach(async ({ page }) => {
-	beforeOptimus IDE CollabTest(page);
+	beforeCoderTest(page);
 	await login(page);
 });
 
@@ -28,7 +28,7 @@ test("default proxy is online", async ({ page }) => {
 	const status = workspaceProxyPrimary.locator(".status");
 
 	await expect(summary).toContainText("Default");
-	await expect(summary).toContainText(`http://localhost:${optimus-ide-collabPort}`);
+	await expect(summary).toContainText(`http://localhost:${coderPort}`);
 	await expect(status).toContainText("Healthy");
 });
 

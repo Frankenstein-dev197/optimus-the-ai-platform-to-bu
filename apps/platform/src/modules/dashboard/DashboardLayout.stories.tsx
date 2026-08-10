@@ -29,7 +29,7 @@ const outdatedUpdateCheck: UpdateCheckResponse = {
 	...MockUpdateCheck,
 	current: false,
 	version: "v0.12.9",
-	url: "https://github.com/optimus-ide-collab/optimus-ide-collab/releases/tag/v0.12.9",
+	url: "https://github.com/coder/coder/releases/tag/v0.12.9",
 };
 
 const pageContent = (
@@ -106,7 +106,7 @@ export const UpdateAvailable: Story = {
 		const notice = await screen.findByTestId("update-check-notice");
 		await expect(notice).toBeVisible();
 		await expect(
-			screen.getByText(/Optimus IDE Collab v0\.12\.9 is now available/),
+			screen.getByText(/Optimus v0\.12\.9 is now available/),
 		).toBeVisible();
 	},
 };

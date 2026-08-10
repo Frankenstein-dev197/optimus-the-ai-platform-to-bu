@@ -28,13 +28,13 @@ export const WithContent: Story = {
 	args: {
 		value: `terraform {
   required_providers {
-    optimus-ide-collab = {
-      source = "optimus-ide-collab/optimus-ide-collab"
+    coder = {
+      source = "coder/coder"
     }
   }
 }
 
-resource "optimus-ide-collab_agent" "main" {
+resource "coder_agent" "main" {
   os   = "linux"
   arch = "amd64"
 }

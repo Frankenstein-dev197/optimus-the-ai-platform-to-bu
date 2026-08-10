@@ -1,4 +1,4 @@
-import { isPixel } from "@optimus-ide-collab/pixel-storybook/storyapi";
+import { isPixel } from "@coder/pixel-storybook/storyapi";
 import type { FC } from "react";
 import { pageTitle } from "#/utils/page";
 import { CliInstallPageView } from "./CliInstallPageView";
@@ -8,7 +8,7 @@ const CliInstallPage: FC = () => {
 
 	return (
 		<>
-			<title>{pageTitle("Install the Optimus IDE Collab CLI")}</title>
+			<title>{pageTitle("Install the Optimus CLI")}</title>
 			<CliInstallPageView origin={origin} />
 		</>
 	);

@@ -160,11 +160,11 @@ const InstructionsForm: FC<InstructionsFormProps> = ({
 						onCheckedChange={(checked) =>
 							form.setFieldValue("include_default_system_prompt", checked)
 						}
-						aria-label="Include Optimus IDE Collab Agents default system prompt"
+						aria-label="Include Optimus Agents default system prompt"
 						disabled={isDisabled}
 					/>
 					<div className="flex min-w-0 items-center gap-1.5">
-						<span>Include Optimus IDE Collab Agents default system prompt.</span>
+						<span>Include Optimus Agents default system prompt.</span>
 						<Button
 							size="xs"
 							variant="subtle"

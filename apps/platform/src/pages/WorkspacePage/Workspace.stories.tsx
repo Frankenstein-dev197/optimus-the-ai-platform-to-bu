@@ -132,7 +132,7 @@ export const RunningWithAppStatuses: Story = {
 												icon: "/emojis/1f4dd.png", // 📝
 												message: "Creating PR with gh CLI",
 												created_at: createTimestamp(4, 38), // 15:04:38
-												uri: "https://github.com/optimus-ide-collab/optimus-ide-collab/pull/5678",
+												uri: "https://github.com/coder/coder/pull/5678",
 												state: "working" as const,
 												agent_id: Mocks.MockWorkspaceAgent.id,
 											},
@@ -479,7 +479,7 @@ function makeFailedBuildLogs(): ProvisionerJobLog[] {
 			log_source: "provisioner",
 			log_level: "debug",
 			stage: "Planning infrastructure",
-			output: '- Finding optimus-ide-collab/optimus-ide-collab versions matching "~\u003e 0.6.17"...',
+			output: '- Finding coder/coder versions matching "~\u003e 0.6.17"...',
 		},
 		{
 			id: 2368,
@@ -505,7 +505,7 @@ function makeFailedBuildLogs(): ProvisionerJobLog[] {
 			log_source: "provisioner",
 			log_level: "debug",
 			stage: "Planning infrastructure",
-			output: "- Using optimus-ide-collab/optimus-ide-collab v0.6.20 from the shared cache directory",
+			output: "- Using coder/coder v0.6.20 from the shared cache directory",
 		},
 		{
 			id: 2371,
@@ -606,7 +606,7 @@ function makeFailedBuildLogs(): ProvisionerJobLog[] {
 			log_source: "provisioner",
 			log_level: "debug",
 			stage: "Planning infrastructure",
-			output: "  - optimus-ide-collab/optimus-ide-collab",
+			output: "  - coder/coder",
 		},
 		{
 			id: 2383,
@@ -780,7 +780,7 @@ function makeFailedBuildLogs(): ProvisionerJobLog[] {
 			log_source: "provisioner",
 			log_level: "info",
 			stage: "Planning infrastructure",
-			output: "data.optimus-ide-collab_provisioner.me: Refreshing...",
+			output: "data.coder_provisioner.me: Refreshing...",
 		},
 		{
 			id: 2404,
@@ -788,7 +788,7 @@ function makeFailedBuildLogs(): ProvisionerJobLog[] {
 			log_source: "provisioner",
 			log_level: "info",
 			stage: "Planning infrastructure",
-			output: "data.optimus-ide-collab_workspace.me: Refreshing...",
+			output: "data.coder_workspace.me: Refreshing...",
 		},
 		{
 			id: 2405,
@@ -796,7 +796,7 @@ function makeFailedBuildLogs(): ProvisionerJobLog[] {
 			log_source: "provisioner",
 			log_level: "info",
 			stage: "Planning infrastructure",
-			output: "data.optimus-ide-collab_parameter.security_groups: Refreshing...",
+			output: "data.coder_parameter.security_groups: Refreshing...",
 		},
 		{
 			id: 2406,
@@ -805,7 +805,7 @@ function makeFailedBuildLogs(): ProvisionerJobLog[] {
 			log_level: "info",
 			stage: "Planning infrastructure",
 			output:
-				"data.optimus-ide-collab_provisioner.me: Refresh complete after 0s [id=993f697b-3948-4d31-8377-6c86edc90a83]",
+				"data.coder_provisioner.me: Refresh complete after 0s [id=993f697b-3948-4d31-8377-6c86edc90a83]",
 		},
 		{
 			id: 2407,
@@ -814,7 +814,7 @@ function makeFailedBuildLogs(): ProvisionerJobLog[] {
 			log_level: "info",
 			stage: "Planning infrastructure",
 			output:
-				"data.optimus-ide-collab_workspace.me: Refresh complete after 0s [id=ca18ddca-14b5-4f5f-be55-7bfd2e3c2dc9]",
+				"data.coder_workspace.me: Refresh complete after 0s [id=ca18ddca-14b5-4f5f-be55-7bfd2e3c2dc9]",
 		},
 		{
 			id: 2408,
@@ -823,7 +823,7 @@ function makeFailedBuildLogs(): ProvisionerJobLog[] {
 			log_level: "info",
 			stage: "Planning infrastructure",
 			output:
-				"data.optimus-ide-collab_parameter.security_groups: Refresh complete after 0s [id=9832a15f-267b-4abf-9c23-e4265af0befa]",
+				"data.coder_parameter.security_groups: Refresh complete after 0s [id=9832a15f-267b-4abf-9c23-e4265af0befa]",
 		},
 		{
 			id: 2409,
@@ -832,7 +832,7 @@ function makeFailedBuildLogs(): ProvisionerJobLog[] {
 			log_level: "info",
 			stage: "Planning infrastructure",
 			output:
-				"optimus-ide-collab_agent.main: Refreshing state... [id=6c3718cb-605b-4b68-b26f-46dba8767f43]",
+				"coder_agent.main: Refreshing state... [id=6c3718cb-605b-4b68-b26f-46dba8767f43]",
 		},
 		{
 			id: 2410,
@@ -841,7 +841,7 @@ function makeFailedBuildLogs(): ProvisionerJobLog[] {
 			log_level: "info",
 			stage: "Planning infrastructure",
 			output:
-				"optimus-ide-collab_agent.main: Refresh complete [id=6c3718cb-605b-4b68-b26f-46dba8767f43]",
+				"coder_agent.main: Refresh complete [id=6c3718cb-605b-4b68-b26f-46dba8767f43]",
 		},
 		{
 			id: 2411,
@@ -850,7 +850,7 @@ function makeFailedBuildLogs(): ProvisionerJobLog[] {
 			log_level: "info",
 			stage: "Planning infrastructure",
 			output:
-				"docker_volume.home_volume: Refreshing state... [id=optimus-ide-collab-ca18ddca-14b5-4f5f-be55-7bfd2e3c2dc9-home]",
+				"docker_volume.home_volume: Refreshing state... [id=coder-ca18ddca-14b5-4f5f-be55-7bfd2e3c2dc9-home]",
 		},
 		{
 			id: 2412,
@@ -859,7 +859,7 @@ function makeFailedBuildLogs(): ProvisionerJobLog[] {
 			log_level: "info",
 			stage: "Planning infrastructure",
 			output:
-				"optimus-ide-collab_app.code-server: Refreshing state... [id=4a45a1cc-9861-4a9c-bd2f-3a2f1abc4c65]",
+				"coder_app.code-server: Refreshing state... [id=4a45a1cc-9861-4a9c-bd2f-3a2f1abc4c65]",
 		},
 		{
 			id: 2413,
@@ -868,7 +868,7 @@ function makeFailedBuildLogs(): ProvisionerJobLog[] {
 			log_level: "info",
 			stage: "Planning infrastructure",
 			output:
-				"optimus-ide-collab_app.code-server: Refresh complete [id=4a45a1cc-9861-4a9c-bd2f-3a2f1abc4c65]",
+				"coder_app.code-server: Refresh complete [id=4a45a1cc-9861-4a9c-bd2f-3a2f1abc4c65]",
 		},
 		{
 			id: 2414,
@@ -877,7 +877,7 @@ function makeFailedBuildLogs(): ProvisionerJobLog[] {
 			log_level: "error",
 			stage: "Planning infrastructure",
 			output:
-				"Error: Unable to inspect volume: Error: No such volume: optimus-ide-collab-ca18ddca-14b5-4f5f-be55-7bfd2e3c2dc9-home",
+				"Error: Unable to inspect volume: Error: No such volume: coder-ca18ddca-14b5-4f5f-be55-7bfd2e3c2dc9-home",
 		},
 		{
 			id: 2415,

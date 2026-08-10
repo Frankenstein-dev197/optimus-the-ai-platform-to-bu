@@ -447,7 +447,7 @@ export const CreateWorkspacePageView: FC<CreateWorkspacePageViewProps> = ({
 						<HelpPopover>
 							<HelpPopoverIconTrigger />
 							<HelpPopoverContent className="max-w-xs text-sm">
-								Dynamic Parameters enhances Optimus IDE Collab's existing parameter system
+								Dynamic Parameters enhances Optimus's existing parameter system
 								with real-time validation, conditional parameter behavior, and
 								richer input types.
 								<br />

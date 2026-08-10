@@ -17,7 +17,7 @@ type Story = StoryObj<typeof ProvisionerKey>;
 
 export const Key: Story = {
 	args: {
-		name: "gke-dogfood-v2-optimus-ide-collab",
+		name: "gke-dogfood-v2-coder",
 	},
 };
 

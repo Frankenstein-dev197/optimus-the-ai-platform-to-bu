@@ -9,7 +9,7 @@ const meta: Meta<typeof AppearanceSettingsPageView> = {
 	args: {
 		appearance: {
 			application_name: "Foobar",
-			logo_url: "https://github.com/optimus-ide-collab.png",
+			logo_url: "https://github.com/coder.png",
 			service_banner: {
 				enabled: false,
 				message: "",

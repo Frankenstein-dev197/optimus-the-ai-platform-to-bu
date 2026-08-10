@@ -14,7 +14,7 @@ export const Welcome: FC<WelcomeProps> = ({ children, className }) => {
 			</div>
 
 			<h1 className="text-3xl font-semibold m-0 flex justify-center items-center text-center leading-snug">
-				{children || "Welcome to Optimus IDE Collab"}
+				{children || "Welcome to Optimus"}
 			</h1>
 		</div>
 	);

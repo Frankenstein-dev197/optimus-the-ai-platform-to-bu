@@ -63,7 +63,7 @@ export const MCPServerAuthSection: FC<MCPServerAuthSectionProps> = ({
 			)}
 			{form.values.authType === "user_oidc" && (
 				<p className="m-0 text-sm text-content-secondary">
-					Optimus IDE Collab will forward the user's OIDC identity to this MCP server.
+					Optimus will forward the user's OIDC identity to this MCP server.
 				</p>
 			)}
 		</>
@@ -78,7 +78,8 @@ const OAuth2Fields: FC<MCPServerAuthSectionProps> = ({
 	<div className="space-y-5">
 		<p className="m-0 text-sm text-content-secondary">
 			Register a client with the external MCP server's OAuth2 provider and enter
-			the credentials below. Optimus IDE Collab will handle the per-user authorization flow.
+			the credentials below. Optimus will handle the per-user authorization
+			flow.
 		</p>
 		<div className="grid items-start gap-4 sm:grid-cols-2">
 			<Field label="Client ID" htmlFor={`${formId}-oauth-id`}>

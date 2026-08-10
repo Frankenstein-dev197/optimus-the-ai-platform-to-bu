@@ -115,7 +115,7 @@ export const Starting: Story = {
 			{
 				event: "message",
 				// Copied and pasted this from browser
-				data: "[H[2J[1m[32m➜  [36moptimus-ide-collab[C[34mgit:([31mbq/refactor-web-term-notifications[34m) [33m✗",
+				data: "[H[2J[1m[32m➜  [36mcoder[C[34mgit:([31mbq/refactor-web-term-notifications[34m) [33m✗",
 			},
 		],
 		queries: [...meta.parameters.queries, createWorkspaceWithAgent("starting")],
@@ -130,7 +130,7 @@ export const FontFiraCode: Story = {
 			{
 				event: "message",
 				// Copied and pasted this from browser
-				data: "[H[2J[1m[32m➜  [36moptimus-ide-collab[C[34mgit:([31mbq/refactor-web-term-notifications[34m) [33m✗",
+				data: "[H[2J[1m[32m➜  [36mcoder[C[34mgit:([31mbq/refactor-web-term-notifications[34m) [33m✗",
 			},
 		],
 		queries: [
@@ -162,7 +162,7 @@ export const Ready: Story = {
 			{
 				event: "message",
 				// Copied and pasted this from browser
-				data: "[H[2J[1m[32m➜  [36moptimus-ide-collab[C[34mgit:([31mbq/refactor-web-term-notifications[34m) [33m✗",
+				data: "[H[2J[1m[32m➜  [36mcoder[C[34mgit:([31mbq/refactor-web-term-notifications[34m) [33m✗",
 			},
 		],
 		queries: [...meta.parameters.queries, createWorkspaceWithAgent("ready")],
@@ -293,7 +293,7 @@ export const CommandConfirmation: Story = {
 		webSocket: [
 			{
 				event: "message",
-				data: "\x1b[H\x1b[2J\x1b[1m\x1b[32m\u27a4  \x1b[36moptimus-ide-collab\x1b[C\x1b[34mgit:(\x1b[31mbq/refactor-web-term-notifications\x1b[34m) \x1b[33m\u2717",
+				data: "\x1b[H\x1b[2J\x1b[1m\x1b[32m\u27a4  \x1b[36mcoder\x1b[C\x1b[34mgit:(\x1b[31mbq/refactor-web-term-notifications\x1b[34m) \x1b[33m\u2717",
 			},
 		],
 		queries: [...meta.parameters.queries, createWorkspaceWithAgent("ready")],

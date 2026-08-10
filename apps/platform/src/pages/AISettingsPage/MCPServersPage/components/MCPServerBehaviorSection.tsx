@@ -83,10 +83,10 @@ export const MCPServerBehaviorSection: FC<MCPServerBehaviorSectionProps> = ({
 					tooltip="Allows tools during planning. Workspace MCP and plan-mode controls still apply."
 				/>
 				<SwitchField
-					label="Forward Optimus IDE Collab identity headers"
-					checked={form.values.forwardOptimusIDECollabHeaders}
+					label="Forward Optimus identity headers"
+					checked={form.values.forwardCoderHeaders}
 					onCheckedChange={(checked) =>
-						void form.setFieldValue("forwardOptimusIDECollabHeaders", checked)
+						void form.setFieldValue("forwardCoderHeaders", checked)
 					}
 					disabled={disabled}
 					tooltip="Only enable for first-party or trusted MCP servers."

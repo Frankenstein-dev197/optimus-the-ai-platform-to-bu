@@ -108,21 +108,21 @@ describe("util > workspace", () => {
 					...Mocks.MockWorkspaceBuild,
 					reason: "autostart",
 				},
-				"Optimus IDE Collab",
+				"Optimus",
 			],
 			[
 				{
 					...Mocks.MockWorkspaceBuild,
 					reason: "autostop",
 				},
-				"Optimus IDE Collab",
+				"Optimus",
 			],
 			[
 				{
 					...Mocks.MockWorkspaceBuild,
 					reason: "task_auto_pause",
 				},
-				"Optimus IDE Collab",
+				"Optimus",
 			],
 		])("getDisplayWorkspaceBuildInitiatedBy(%p) returns %p", (build, initiatedBy) => {
 			expect(getDisplayWorkspaceBuildInitiatedBy(build)).toEqual(initiatedBy);

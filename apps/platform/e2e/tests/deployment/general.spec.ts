@@ -3,10 +3,10 @@ import { API } from "#/api/api";
 import { setupApiCalls } from "../../api";
 import { e2eFakeExperiment1, e2eFakeExperiment2 } from "../../constants";
 import { login } from "../../helpers";
-import { beforeOptimus IDE CollabTest } from "../../hooks";
+import { beforeCoderTest } from "../../hooks";
 
 test.beforeEach(async ({ page }) => {
-	beforeOptimus IDE CollabTest(page);
+	beforeCoderTest(page);
 	await login(page);
 	await setupApiCalls(page);
 });

@@ -44,7 +44,7 @@ export const DesktopPanel: FC<DesktopPanelProps> = ({ chatId, isVisible }) => {
 
 	// Listen for BroadcastChannel messages from the pop-out window.
 	useEffect(() => {
-		const channel = new BroadcastChannel(`optimus-ide-collab-desktop-${chatId}`);
+		const channel = new BroadcastChannel(`coder-desktop-${chatId}`);
 
 		channel.addEventListener("message", (event) => {
 			if (event.data?.type === "popout-opened") {
@@ -65,13 +65,13 @@ export const DesktopPanel: FC<DesktopPanelProps> = ({ chatId, isVisible }) => {
 		const top = Math.round((screen.availHeight - height) / 2);
 		open(
 			`/agents/${chatId}/desktop`,
-			`optimus-ide-collab-desktop-${chatId}`,
+			`coder-desktop-${chatId}`,
 			`popup,width=${width},height=${height},left=${left},top=${top}`,
 		);
 	};
 
 	const handleBringBack = () => {
-		const channel = new BroadcastChannel(`optimus-ide-collab-desktop-${chatId}`);
+		const channel = new BroadcastChannel(`coder-desktop-${chatId}`);
 		channel.postMessage({ type: "bring-back" });
 		channel.close();
 		setIsPoppedOut(false);

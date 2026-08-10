@@ -44,7 +44,7 @@ describe("getVSCodeHref", () => {
 			chatId: "chat-123",
 		});
 
-		expect(href).toBe(`vscode://optimus-ide-collab.optimus-ide-collab-remote/open?${query}`);
+		expect(href).toBe(`vscode://coder.coder-remote/open?${query}`);
 	});
 
 	it("omits the chat ID when none is provided", () => {
@@ -61,7 +61,7 @@ describe("getVSCodeHref", () => {
 			openRecent: "true",
 		});
 
-		expect(href).toBe(`cursor://optimus-ide-collab.optimus-ide-collab-remote/open?${query}`);
+		expect(href).toBe(`cursor://coder.coder-remote/open?${query}`);
 	});
 });
 
@@ -165,7 +165,7 @@ describe("getAppHref", () => {
 		const app = {
 			...MockWorkspaceApp,
 			subdomain: true,
-			subdomain_name: "hellooptimus-ide-collab",
+			subdomain_name: "hellocoder",
 		};
 		const href = getAppHref(app, {
 			host: "*.apps-host.tld",
@@ -173,7 +173,7 @@ describe("getAppHref", () => {
 			workspace: MockWorkspace,
 			path: "/path-base",
 		});
-		expect(href).toBe("http://hellooptimus-ide-collab.apps-host.tld/");
+		expect(href).toBe("http://hellocoder.apps-host.tld/");
 	});
 
 	it("returns a path when app has a subdomain but no subdomain name", () => {

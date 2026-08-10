@@ -63,7 +63,8 @@ export const LoginPageView: FC<LoginPageViewProps> = ({
 				)}
 				<footer className="text-xs text-content-secondary mt-6">
 					<div>
-						Copyright &copy; {new Date().getFullYear()} Optimus IDE Collab Technologies, Inc.
+						Copyright &copy; {new Date().getFullYear()} Optimus Technologies,
+						Inc.
 					</div>
 					<div>{buildInfo?.version}</div>
 					{tosAccepted && (

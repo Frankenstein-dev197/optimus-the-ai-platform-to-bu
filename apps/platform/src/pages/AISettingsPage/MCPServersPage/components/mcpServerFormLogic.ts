@@ -64,7 +64,7 @@ export interface MCPServerFormValues {
 	enabled: boolean;
 	modelIntent: boolean;
 	allowInPlanMode: boolean;
-	forwardOptimusIDECollabHeaders: boolean;
+	forwardCoderHeaders: boolean;
 	toolAllowList: string;
 	toolDenyList: string;
 	customHeaders: Array<{ key: string; value: string }>;
@@ -103,7 +103,7 @@ export const buildInitialMCPServerFormValues = (
 	enabled: server?.enabled ?? true,
 	modelIntent: server?.model_intent ?? false,
 	allowInPlanMode: server?.allow_in_plan_mode ?? false,
-	forwardOptimusIDECollabHeaders: server?.["forward_optimus-ide-collab_headers"] ?? false,
+	forwardCoderHeaders: server?.forward_coder_headers ?? false,
 	toolAllowList: server?.tool_allow_list.join(", ") ?? "",
 	toolDenyList: server?.tool_deny_list.join(", ") ?? "",
 	customHeaders: [],
@@ -143,7 +143,7 @@ export const buildCreateMCPServerConfigRequest = (
 		enabled: values.enabled,
 		model_intent: values.modelIntent,
 		allow_in_plan_mode: values.allowInPlanMode,
-		"forward_optimus-ide-collab_headers": values.forwardOptimusIDECollabHeaders,
+		forward_coder_headers: values.forwardCoderHeaders,
 		tool_allow_list: toolAllowList,
 		tool_deny_list: toolDenyList,
 	};

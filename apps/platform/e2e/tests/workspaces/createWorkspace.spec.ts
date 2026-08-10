@@ -10,7 +10,7 @@ import {
 	StarterTemplates,
 	verifyParameters,
 } from "../../helpers";
-import { beforeOptimus IDE CollabTest } from "../../hooks";
+import { beforeCoderTest } from "../../hooks";
 import {
 	fifthParameter,
 	firstParameter,
@@ -26,7 +26,7 @@ import type { RichParameter } from "../../provisionerGenerated";
 test.describe.configure({ mode: "parallel" });
 
 test.beforeEach(async ({ page }) => {
-	beforeOptimus IDE CollabTest(page);
+	beforeCoderTest(page);
 });
 
 test("create workspace", async ({ page }) => {

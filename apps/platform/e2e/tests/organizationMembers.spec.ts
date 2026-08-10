@@ -7,10 +7,10 @@ import {
 	login,
 	requiresLicense,
 } from "../helpers";
-import { beforeOptimus IDE CollabTest } from "../hooks";
+import { beforeCoderTest } from "../hooks";
 
 test.beforeEach(async ({ page }) => {
-	beforeOptimus IDE CollabTest(page);
+	beforeCoderTest(page);
 	await login(page);
 	await setupApiCalls(page);
 });
@@ -23,7 +23,7 @@ test("add and remove organization member", async ({ page }) => {
 
 	// Navigate to members page
 	await page.getByRole("link", { name: "Members" }).click();
-	await expect(page).toHaveTitle(`Members - ${displayName} - Optimus IDE Collab`);
+	await expect(page).toHaveTitle(`Members - ${displayName} - Coder`);
 
 	// Add a user to the org
 	const personToAdd = await createUser(page);

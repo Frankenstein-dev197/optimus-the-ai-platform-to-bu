@@ -11,7 +11,7 @@ import { useTemporarySavedState } from "#/components/TemporarySavedState/Tempora
 import { ModelSelector } from "#/pages/AgentsPage/components/ChatElements/ModelSelector";
 import type { ProviderInfo } from "#/pages/AgentsPage/utils/modelOptions";
 import { pickReasoningEffort } from "#/pages/AgentsPage/utils/reasoningEffort";
-import { AgentSettingLayout } from "#/pages/AISettingsPage/OptimusIDECollabAgentsPage/components/AgentSettingLayout";
+import { AgentSettingLayout } from "#/pages/AISettingsPage/OptimusAgentsPage/components/AgentSettingLayout";
 import { cn } from "#/utils/cn";
 
 const nilUUID = "00000000-0000-0000-0000-000000000000";

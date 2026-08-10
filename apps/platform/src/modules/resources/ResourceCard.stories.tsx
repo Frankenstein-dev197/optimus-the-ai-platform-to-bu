@@ -56,7 +56,7 @@ export const BunchOfMetadata: Story = {
 					value: "run_as_user 1000 fs_group 1000",
 					sensitive: false,
 				},
-				{ key: "volume", value: "/home/optimus-ide-collab", sensitive: false },
+				{ key: "volume", value: "/home/coder", sensitive: false },
 				{
 					key: "secret",
 					value: "3XqfNW0b1bvsGsqud8O6OW6VabH3fwzI",

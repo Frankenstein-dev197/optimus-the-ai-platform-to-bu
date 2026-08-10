@@ -17,20 +17,20 @@ describe("normalizeChatSearchInput", () => {
 		);
 		expect(
 			normalizeChatSearchInput(
-				'diff_url:"https://github.com/optimus-ide-collab/optimus-ide-collab/pull/25391"',
+				'diff_url:"https://github.com/coder/coder/pull/25391"',
 			),
-		).toBe('diff_url:"https://github.com/optimus-ide-collab/optimus-ide-collab/pull/25391"');
+		).toBe('diff_url:"https://github.com/coder/coder/pull/25391"');
 		expect(
 			normalizeChatSearchInput(
-				"diff_url:https://github.com/optimus-ide-collab/optimus-ide-collab/pull/26016",
+				"diff_url:https://github.com/coder/coder/pull/26016",
 			),
-		).toBe('diff_url:"https://github.com/optimus-ide-collab/optimus-ide-collab/pull/26016"');
+		).toBe('diff_url:"https://github.com/coder/coder/pull/26016"');
 		expect(
-			normalizeChatSearchInput("diff_url:github.com/optimus-ide-collab/optimus-ide-collab/pull/26016"),
-		).toBe('diff_url:"https://github.com/optimus-ide-collab/optimus-ide-collab/pull/26016"');
+			normalizeChatSearchInput("diff_url:github.com/coder/coder/pull/26016"),
+		).toBe('diff_url:"https://github.com/coder/coder/pull/26016"');
 		expect(
-			normalizeChatSearchInput('diff_url:"github.com/optimus-ide-collab/optimus-ide-collab/pull/26016"'),
-		).toBe('diff_url:"https://github.com/optimus-ide-collab/optimus-ide-collab/pull/26016"');
+			normalizeChatSearchInput('diff_url:"github.com/coder/coder/pull/26016"'),
+		).toBe('diff_url:"https://github.com/coder/coder/pull/26016"');
 	});
 
 	it("re-quotes passthrough values containing spaces so the result round-trips", () => {
@@ -61,9 +61,9 @@ describe("normalizeChatSearchInput", () => {
 		);
 		expect(
 			normalizeChatSearchInput(
-				"diff_url:https://github.com/optimus-ide-collab/optimus-ide-collab/pull/26016 fix",
+				"diff_url:https://github.com/coder/coder/pull/26016 fix",
 			),
-		).toBe('diff_url:"https://github.com/optimus-ide-collab/optimus-ide-collab/pull/26016" title:"fix"');
+		).toBe('diff_url:"https://github.com/coder/coder/pull/26016" title:"fix"');
 		expect(
 			normalizeChatSearchInput('archived:true title:"chat title" fix'),
 		).toBe('archived:true title:"chat title fix"');

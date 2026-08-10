@@ -507,7 +507,7 @@ export const CheckExternalAuthOnChangingVersions: Story = {
 	},
 };
 
-// Regression test introduced in https://github.com/optimus-ide-collab/optimus-ide-collab/pull/22032
+// Regression test introduced in https://github.com/coder/coder/pull/22032
 // A change was introduced that cause the focused selector to be mostly
 // hidden due to an introduced `overflow-hidden`. The change wasn't spotted
 // in the PR it was introduced as no stories triggered that behavior, so we
@@ -529,7 +529,7 @@ export const PresetSelectorFocused: Story = {
 	},
 };
 
-// Regression test for https://github.com/optimus-ide-collab/optimus-ide-collab/issues/22245
+// Regression test for https://github.com/coder/coder/issues/22245
 // Dark monochrome icons (like GitHub or Tasks) were invisible on dark
 // backgrounds because icons used a plain <img> instead of
 // ExternalImage, which applies theme-aware CSS filters.

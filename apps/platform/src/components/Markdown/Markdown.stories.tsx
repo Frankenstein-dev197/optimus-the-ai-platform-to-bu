@@ -14,7 +14,7 @@ export const WithCode: Story = {
 		children: `
   ## Required permissions / policy
 
-  The following sample policy allows Optimus IDE Collab to create EC2 instances and modify instances provisioned by Optimus IDE Collab:
+  The following sample policy allows Optimus to create EC2 instances and modify instances provisioned by Optimus:
 
   \`\`\`json
   {
@@ -37,7 +37,7 @@ export const WithCode: Story = {
             "Resource": "*"
         },
         {
-            "Sid": "Optimus IDE CollabResources",
+            "Sid": "CoderResources",
             "Effect": "Allow",
             "Action": [
                 "ec2:DescribeInstances",
@@ -56,7 +56,7 @@ export const WithCode: Story = {
             "Resource": "arn:aws:ec2:*:*:instance/*",
             "Condition": {
                 "StringEquals": {
-                    "aws:ResourceTag/Optimus IDE Collab_Provisioned": "true"
+                    "aws:ResourceTag/Coder_Provisioned": "true"
                 }
             }
         }

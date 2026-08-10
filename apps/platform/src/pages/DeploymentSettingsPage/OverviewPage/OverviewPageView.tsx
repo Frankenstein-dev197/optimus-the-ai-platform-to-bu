@@ -37,7 +37,7 @@ export const OverviewPageView: FC<OverviewPageViewProps> = ({
 			>
 				<SettingsHeaderTitle>General</SettingsHeaderTitle>
 				<SettingsHeaderDescription>
-					Information about your Optimus IDE Collab deployment.
+					Information about your Optimus deployment.
 				</SettingsHeaderDescription>
 			</SettingsHeader>
 

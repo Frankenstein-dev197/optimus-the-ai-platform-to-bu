@@ -59,7 +59,7 @@ export const AdminOnlyUnsupportedProvider: Story = {
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
 		await expect(
-			canvas.getByText(/not supported by Optimus IDE Collab Agents/),
+			canvas.getByText(/not supported by Optimus Agents/),
 		).toBeInTheDocument();
 		await expect(canvas.getByText(/GitHub Copilot/)).toBeInTheDocument();
 		await expect(
@@ -80,7 +80,7 @@ export const MemberOnlyUnsupportedProvider: Story = {
 		const canvas = within(canvasElement);
 		// Members get the "learn more" docs link but no admin settings link.
 		await expect(
-			canvas.getByRole("link", { name: /not supported by Optimus IDE Collab Agents/ }),
+			canvas.getByRole("link", { name: /not supported by Optimus Agents/ }),
 		).toBeInTheDocument();
 		await expect(
 			canvas.queryByRole("link", { name: "provider" }),

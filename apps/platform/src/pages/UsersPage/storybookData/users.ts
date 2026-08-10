@@ -112,7 +112,7 @@ const fakeUserData = [
 	},
 ];
 
-// These values were retrieved from the Optimus IDE Collab API. Sensitive information such as
+// These values were retrieved from the Optimus API. Sensitive information such as
 // usernames, names, and emails has been replaced with fake user data to protect
 // privacy.
 export const MockUsers: User[] = [

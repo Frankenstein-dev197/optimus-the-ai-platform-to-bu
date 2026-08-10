@@ -1,4 +1,4 @@
-import { isPixel } from "@optimus-ide-collab/pixel-storybook/storyapi";
+import { isPixel } from "@coder/pixel-storybook/storyapi";
 import {
 	ArrowLeftIcon,
 	PauseIcon,

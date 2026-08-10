@@ -341,7 +341,7 @@ export const StartErrorWithoutFailedSourceLogs: Story = {
 		const canvas = within(canvasElement);
 
 		// Wait for a non-failed source tab to render, confirming logs streamed in.
-		await canvas.findByRole("tab", { name: "optimus-ide-collab" });
+		await canvas.findByRole("tab", { name: "coder" });
 
 		// All Logs must stay active because no failed source has rendered logs.
 		const allLogsTab = canvas.getByRole("tab", { name: "All Logs" });

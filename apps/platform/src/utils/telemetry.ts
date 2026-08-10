@@ -1,6 +1,6 @@
 import type { BuildInfoResponse } from "#/api/typesGenerated";
 
-// sendDeploymentEvent sends a CORs payload to optimus-ide-collabidecollab.com
+// sendDeploymentEvent sends a CORs payload to coder.com
 // to track a deployment event.
 export const sendDeploymentEvent = (
 	buildInfo: BuildInfoResponse,
@@ -17,7 +17,7 @@ export const sendDeploymentEvent = (
 		return;
 	}
 	navigator.sendBeacon(
-		"https://optimus-ide-collabidecollab.com/api/track-deployment",
+		"https://coder.com/api/track-deployment",
 		new Blob(
 			[
 				JSON.stringify({

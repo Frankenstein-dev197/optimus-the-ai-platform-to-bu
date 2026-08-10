@@ -26,7 +26,7 @@ const meta: Meta<typeof PortForwardPopoverView> = {
 		template: MockTemplate,
 		workspace: MockWorkspace,
 		portSharingControlsEnabled: true,
-		host: "*.optimus-ide-collabidecollab.com",
+		host: "*.coder.com",
 		refetchSharedPorts: () => {},
 	},
 };

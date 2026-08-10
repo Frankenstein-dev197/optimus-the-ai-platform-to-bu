@@ -63,7 +63,7 @@ const { FakeRFB, lastInstance } = vi.hoisted(() => {
 	return { FakeRFB, lastInstance: ref };
 });
 
-vi.mock("@novnc/novnc/core/rfb", () => ({
+vi.mock("@novnc/novnc/lib/rfb", () => ({
 	default: FakeRFB,
 }));
 

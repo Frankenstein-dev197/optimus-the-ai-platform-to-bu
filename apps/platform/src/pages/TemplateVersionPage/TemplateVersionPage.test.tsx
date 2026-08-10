@@ -7,7 +7,7 @@ import * as CreateDayString from "#/utils/createDayString";
 import * as templateVersionUtils from "#/utils/templateVersion";
 import TemplateVersionPage from "./TemplateVersionPage";
 
-const TEMPLATE_NAME = "optimus-ide-collab-ts";
+const TEMPLATE_NAME = "coder-ts";
 const VERSION_NAME = "12345";
 const TERRAFORM_FILENAME = "main.tf";
 const README_FILENAME = "readme.md";

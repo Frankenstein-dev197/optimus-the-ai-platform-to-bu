@@ -43,7 +43,7 @@ const TemplatesPage: FC = () => {
 			});
 		} catch (error) {
 			toast.error(
-				`${template.display_name || template.name} in ${template.organization_display_name || template.organization_name}: ${getErrorMessage(error, "Failed to update whether Optimus IDE Collab Agents can create workspaces.")}`,
+				`${template.display_name || template.name} in ${template.organization_display_name || template.organization_name}: ${getErrorMessage(error, "Failed to update whether Optimus Agents can create workspaces.")}`,
 				{
 					description: getErrorDetail(error),
 					duration: Number.POSITIVE_INFINITY,

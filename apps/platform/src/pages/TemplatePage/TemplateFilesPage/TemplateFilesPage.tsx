@@ -59,13 +59,13 @@ const TemplateFilesPage: FC = () => {
 						Awesome, you just created a new template!
 					</AlertTitle>
 					<AlertDescription>
-						To customize it further you can edit the Terraform or Optimus IDE Collab Template
-						directly. You can use our template agent skill to help you.
+						To customize it further you can edit the Terraform or Optimus
+						Template directly. You can use our template agent skill to help you.
 					</AlertDescription>
 					<div className="flex items-center gap-2 mt-4">
 						<Button asChild size="sm" variant="default">
 							<a
-								href="https://registry.optimus-ide-collabidecollab.com/skills/optimus-ide-collab-templates"
+								href="https://registry.coder.com/skills/coder-templates"
 								target="_blank"
 								rel="noopener noreferrer"
 								className="flex items-center"

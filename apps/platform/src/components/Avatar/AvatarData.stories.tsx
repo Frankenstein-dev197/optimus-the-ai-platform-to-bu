@@ -5,8 +5,8 @@ const meta: Meta<typeof AvatarData> = {
 	title: "components/AvatarData",
 	component: AvatarData,
 	args: {
-		title: "optimus-ide-collab",
-		subtitle: "optimus-ide-collab@optimus-ide-collabidecollab.com",
+		title: "coder",
+		subtitle: "coder@optimus.com",
 	},
 };
 

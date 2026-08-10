@@ -562,7 +562,7 @@ export const AgentCreateForm: FC<AgentCreateFormProps> = ({
 					<AgentChatInput
 						onSend={handleSendWithAttachments}
 						sendShortcut={sendShortcut}
-						placeholder="Ask Optimus IDE Collab to build, fix bugs, or explore your project..."
+						placeholder="Ask Optimus to build, fix bugs, or explore your project..."
 						isDisabled={
 							isCreating ||
 							isForbidden ||

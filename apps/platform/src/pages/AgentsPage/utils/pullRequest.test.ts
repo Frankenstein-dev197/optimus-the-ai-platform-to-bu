@@ -4,10 +4,10 @@ import { parsePullRequestUrl } from "./pullRequest";
 describe("parsePullRequestUrl", () => {
 	it("parses canonical GitHub pull request URLs", () => {
 		expect(
-			parsePullRequestUrl("https://github.com/optimus-ide-collab/optimus-ide-collab/pull/42"),
+			parsePullRequestUrl("https://github.com/coder/coder/pull/42"),
 		).toEqual({
-			owner: "optimus-ide-collab",
-			repo: "optimus-ide-collab",
+			owner: "coder",
+			repo: "coder",
 			number: "42",
 		});
 	});
@@ -24,10 +24,10 @@ describe("parsePullRequestUrl", () => {
 
 	it("parses pull request URLs with suffix pages", () => {
 		expect(
-			parsePullRequestUrl("https://github.com/optimus-ide-collab/optimus-ide-collab/pull/42/files"),
+			parsePullRequestUrl("https://github.com/coder/coder/pull/42/files"),
 		).toEqual({
-			owner: "optimus-ide-collab",
-			repo: "optimus-ide-collab",
+			owner: "coder",
+			repo: "coder",
 			number: "42",
 		});
 	});
@@ -45,7 +45,7 @@ describe("parsePullRequestUrl", () => {
 	it("ignores branch URLs that only contain pull-like path segments", () => {
 		expect(
 			parsePullRequestUrl(
-				"https://github.com/optimus-ide-collab/optimus-ide-collab/tree/feature/pull/123/fix",
+				"https://github.com/coder/coder/tree/feature/pull/123/fix",
 			),
 		).toBeNull();
 	});

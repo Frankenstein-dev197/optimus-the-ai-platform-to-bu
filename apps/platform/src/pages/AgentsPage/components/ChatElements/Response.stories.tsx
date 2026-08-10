@@ -10,7 +10,7 @@ I checked the auth flow and found two issues:
 1. Missing provider fallback for unknown IDs.
 2. Error text was not surfaced in the UI.
 
-See [external auth docs](https://optimus-ide-collabidecollab.com/docs) for expected behavior.
+See [external auth docs](https://coder.com/docs) for expected behavior.
 
 Inline command example: \`git fetch origin\`.
 
@@ -125,7 +125,7 @@ export const SingleLineFencedBlock: Story = {
 
 const longLineCodeBlockMarkdown = [
 	"```ts",
-	'const config = { apiUrl: "https://optimus-ide-collab.example.com/api/v2/workspaces", token: "abcdefghijklmnopqrstuvwxyz0123456789_ABCDEFGHIJKLMNOPQRSTUVWXYZ_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", retries: 5 };',
+	'const config = { apiUrl: "https://coder.example.com/api/v2/workspaces", token: "abcdefghijklmnopqrstuvwxyz0123456789_ABCDEFGHIJKLMNOPQRSTUVWXYZ_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", retries: 5 };',
 	"```",
 	"",
 ].join("\n");

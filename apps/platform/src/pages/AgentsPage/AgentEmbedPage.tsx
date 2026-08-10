@@ -25,7 +25,7 @@ import {
 } from "./components/EmbedContext";
 
 type BootstrapMessage = {
-	type: "optimus-ide-collab:vscode-auth-bootstrap";
+	type: "coder:vscode-auth-bootstrap";
 	payload: {
 		token: string;
 	};
@@ -37,7 +37,7 @@ const getBootstrapToken = (data: unknown): string | undefined => {
 	}
 
 	const message = data as Partial<BootstrapMessage>;
-	if (message.type !== "optimus-ide-collab:vscode-auth-bootstrap") {
+	if (message.type !== "coder:vscode-auth-bootstrap") {
 		return undefined;
 	}
 
@@ -59,7 +59,7 @@ const getThemeFromMessage = (data: unknown): ConcreteThemeName | undefined => {
 		return undefined;
 	}
 	const msg = data as { type?: unknown; payload?: unknown };
-	if (msg.type !== "optimus-ide-collab:set-theme") {
+	if (msg.type !== "coder:set-theme") {
 		return undefined;
 	}
 	if (typeof msg.payload !== "object" || msg.payload === null) {
@@ -163,7 +163,7 @@ const AgentEmbedPage: FC = () => {
 		}
 		window.parent.postMessage(
 			{
-				type: "optimus-ide-collab:navigate",
+				type: "coder:navigate",
 				payload: {
 					url: nextLocation.pathname + nextLocation.search + nextLocation.hash,
 				},
@@ -218,7 +218,7 @@ const AgentEmbedPage: FC = () => {
 	}, []);
 
 	const onChatReady = () => {
-		window.parent.postMessage({ type: "optimus-ide-collab:chat-ready" }, "*");
+		window.parent.postMessage({ type: "coder:chat-ready" }, "*");
 	};
 
 	const outletContext: AgentsPageOutletContext = {
@@ -276,7 +276,7 @@ const AgentEmbedPage: FC = () => {
 		// immediate bootstrap response is never missed.
 		window.addEventListener("message", handleMessage);
 		parentWindow.postMessage(
-			{ type: "optimus-ide-collab:vscode-ready", payload: { agentId } },
+			{ type: "coder:vscode-ready", payload: { agentId } },
 			"*",
 		);
 		return () => {

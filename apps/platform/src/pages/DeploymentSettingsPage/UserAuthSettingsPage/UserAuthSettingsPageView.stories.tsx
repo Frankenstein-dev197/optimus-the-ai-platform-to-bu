@@ -31,7 +31,7 @@ const meta: Meta<typeof UserAuthSettingsPageView> = {
 				description: "Client secret to use for Login with OIDC.",
 				value: "",
 				value_source: "env",
-				env: "OPTIMUS_IDE_COLLAB_OIDC_CLIENT_SECRET",
+				env: "CODER_OIDC_CLIENT_SECRET",
 				group: oidcGroup,
 				flag: "oidc-client-secret",
 				annotations: { secret: "true" },
@@ -50,7 +50,7 @@ const meta: Meta<typeof UserAuthSettingsPageView> = {
 				name: "OIDC Email Domain",
 				description:
 					"Email domains that clients logging in with OIDC must match.",
-				value: "@optimus-ide-collabidecollab.com",
+				value: "@optimus.com",
 				group: oidcGroup,
 				flag: "oidc",
 				flag_shorthand: "o",
@@ -59,7 +59,7 @@ const meta: Meta<typeof UserAuthSettingsPageView> = {
 			{
 				name: "OIDC Issuer URL",
 				description: "Issuer URL to use for Login with OIDC.",
-				value: "https://optimus-ide-collabidecollab.com",
+				value: "https://coder.com",
 				group: oidcGroup,
 				flag: "oidc",
 				flag_shorthand: "o",

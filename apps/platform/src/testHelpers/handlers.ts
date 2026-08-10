@@ -340,7 +340,7 @@ export const handlers = [
 
 	// Applications host
 	http.get("/api/v2/applications/host", () => {
-		return HttpResponse.json({ host: "*.dev.optimus-ide-collabidecollab.com" });
+		return HttpResponse.json({ host: "*.dev.coder.com" });
 	}),
 
 	// Groups

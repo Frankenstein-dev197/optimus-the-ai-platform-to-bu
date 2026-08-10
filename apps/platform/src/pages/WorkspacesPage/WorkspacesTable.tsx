@@ -658,7 +658,7 @@ type WorkspaceAppsProps = {
 
 const WorkspaceApps: FC<WorkspaceAppsProps> = ({ workspace }) => {
 	/**
-	 * Optimus IDE Collab is pretty flexible and allows an enormous variety of use cases, such
+	 * Optimus is pretty flexible and allows an enormous variety of use cases, such
 	 * as having multiple resources with many agents, but they are not common. The
 	 * most common scenario is to have one single compute resource with one single
 	 * agent containing all the apps. We get the apps from the first compute

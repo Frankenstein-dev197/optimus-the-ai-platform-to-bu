@@ -7,7 +7,7 @@ const meta: Meta<typeof TemplateCard> = {
 	component: TemplateCard,
 	args: {
 		onSelect: fn(),
-		detailsUrl: "https://registry.optimus-ide-collabidecollab.com/templates/docker",
+		detailsUrl: "https://registry.coder.com/templates/docker",
 	},
 };
 
@@ -17,7 +17,7 @@ type Story = StoryObj<typeof TemplateCard>;
 export const Default: Story = {
 	args: {
 		name: "Docker Containers",
-		description: "Provision Docker containers as Optimus IDE Collab workspaces.",
+		description: "Provision Docker containers as Optimus workspaces.",
 		iconUrl: "/icon/docker.svg",
 		selected: false,
 	},
@@ -26,7 +26,7 @@ export const Default: Story = {
 export const Selected: Story = {
 	args: {
 		name: "Docker Containers",
-		description: "Provision Docker containers as Optimus IDE Collab workspaces.",
+		description: "Provision Docker containers as Optimus workspaces.",
 		iconUrl: "/icon/docker.svg",
 		selected: true,
 	},
@@ -43,7 +43,7 @@ export const NoIcon: Story = {
 export const Community: Story = {
 	args: {
 		name: "Docker Containers",
-		description: "Provision Docker containers as Optimus IDE Collab workspaces.",
+		description: "Provision Docker containers as Optimus workspaces.",
 		iconUrl: "/icon/docker.svg",
 		official: false,
 		selected: false,
@@ -53,7 +53,7 @@ export const Community: Story = {
 export const CommunitySelected: Story = {
 	args: {
 		name: "Docker Containers",
-		description: "Provision Docker containers as Optimus IDE Collab workspaces.",
+		description: "Provision Docker containers as Optimus workspaces.",
 		iconUrl: "/icon/docker.svg",
 		official: false,
 		selected: true,
@@ -64,7 +64,7 @@ export const LongDescription: Story = {
 	args: {
 		name: "Kubernetes Pods",
 		description:
-			"Provision Kubernetes pods as Optimus IDE Collab workspaces with full cluster access and custom resource limits.",
+			"Provision Kubernetes pods as Optimus workspaces with full cluster access and custom resource limits.",
 		iconUrl: "/icon/k8s.svg",
 		selected: false,
 	},

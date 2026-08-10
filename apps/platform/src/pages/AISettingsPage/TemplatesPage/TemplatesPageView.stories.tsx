@@ -79,11 +79,11 @@ export const MixedToggles: Story = {
 		).toBeVisible();
 		expect(canvas.getByText("125 developers")).toBeVisible();
 		const table = canvas.getByRole("table", {
-			name: "Templates Optimus IDE Collab Agents can use to create workspaces",
+			name: "Templates Optimus Agents can use to create workspaces",
 		});
 		expect(
 			within(table).getByRole("columnheader", {
-				name: "Optimus IDE Collab Agents workspace creation",
+				name: "Optimus Agents workspace creation",
 			}),
 		).toBeInTheDocument();
 		const rows = within(table).getAllByRole("row");
@@ -91,12 +91,12 @@ export const MixedToggles: Story = {
 		expect(within(rows[2]).getByText("Product ops engineering")).toBeVisible();
 		expect(
 			canvas.getByRole("switch", {
-				name: "Allow Optimus IDE Collab Agents to create workspaces using Docker containers in My Organization",
+				name: "Allow Optimus Agents to create workspaces using Docker containers in My Organization",
 			}),
 		).toBeChecked();
 		expect(
 			canvas.getByRole("switch", {
-				name: "Allow Optimus IDE Collab Agents to create workspaces using Product ops engineering in My Organization",
+				name: "Allow Optimus Agents to create workspaces using Product ops engineering in My Organization",
 			}),
 		).not.toBeChecked();
 	},
@@ -107,7 +107,7 @@ export const ToggleTemplate: Story = {
 		const canvas = within(canvasElement);
 		await userEvent.click(
 			canvas.getByRole("switch", {
-				name: "Allow Optimus IDE Collab Agents to create workspaces using Docker containers in My Organization",
+				name: "Allow Optimus Agents to create workspaces using Docker containers in My Organization",
 			}),
 		);
 		expect(args.onToggleAgentsAllowed).toHaveBeenCalledWith(
@@ -151,7 +151,7 @@ export const RefetchError: Story = {
 		expect(await canvas.findByText("Failed to load templates.")).toBeVisible();
 		expect(
 			canvas.getByRole("table", {
-				name: "Templates Optimus IDE Collab Agents can use to create workspaces",
+				name: "Templates Optimus Agents can use to create workspaces",
 			}),
 		).toBeVisible();
 		expect(canvas.getByText("Docker containers")).toBeVisible();
@@ -192,7 +192,7 @@ export const Empty: Story = {
 		expect(await canvas.findByText("No templates found.")).toBeVisible();
 		expect(
 			canvas.getByText(
-				"Create a template before configuring whether Optimus IDE Collab Agents can create workspaces.",
+				"Create a template before configuring whether Optimus Agents can create workspaces.",
 			),
 		).toBeVisible();
 	},
@@ -239,10 +239,10 @@ export const MixedOrganizations: Story = {
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
 		const engineeringSwitch = await canvas.findByRole("switch", {
-			name: "Allow Optimus IDE Collab Agents to create workspaces using Docker containers in Engineering",
+			name: "Allow Optimus Agents to create workspaces using Docker containers in Engineering",
 		});
 		const productSwitch = canvas.getByRole("switch", {
-			name: "Allow Optimus IDE Collab Agents to create workspaces using Docker containers in Product",
+			name: "Allow Optimus Agents to create workspaces using Docker containers in Product",
 		});
 		expect(engineeringSwitch).toBeChecked();
 		expect(productSwitch).toBeChecked();
@@ -257,12 +257,12 @@ export const UpdatingOneTemplate: Story = {
 		const canvas = within(canvasElement);
 		expect(
 			await canvas.findByRole("switch", {
-				name: "Allow Optimus IDE Collab Agents to create workspaces using Product ops engineering in My Organization",
+				name: "Allow Optimus Agents to create workspaces using Product ops engineering in My Organization",
 			}),
 		).toBeDisabled();
 		expect(
 			canvas.getByRole("switch", {
-				name: "Allow Optimus IDE Collab Agents to create workspaces using Docker containers in My Organization",
+				name: "Allow Optimus Agents to create workspaces using Docker containers in My Organization",
 			}),
 		).toBeEnabled();
 	},

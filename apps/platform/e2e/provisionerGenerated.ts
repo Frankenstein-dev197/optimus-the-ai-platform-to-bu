@@ -289,7 +289,7 @@ export interface Env {
   value: string;
   /**
    * merge_strategy controls how this env var is merged when multiple
-   * optimus-ide-collab_env resources define the same name. Valid values: "replace"
+   * coder_env resources define the same name. Valid values: "replace"
    * (default), "append", "prepend", "error".
    */
   mergeStrategy: string;
@@ -399,7 +399,7 @@ export interface AITask {
 
 /** Metadata is information about a workspace used in the execution of a build */
 export interface Metadata {
-  optimus-ide-collabUrl: string;
+  coderUrl: string;
   workspaceTransition: WorkspaceTransition;
   workspaceName: string;
   workspaceOwner: string;
@@ -526,7 +526,7 @@ export interface GraphComplete {
   externalAuthProviders: ExternalAuthProviderResource[];
   presets: Preset[];
   /**
-   * Whether actual `optimus-ide-collab_ai_task` resource instances exist.
+   * Whether actual `coder_ai_task` resource instances exist.
    * Resources defined with count = 0 do not set this flag.
    */
   hasAiTasks: boolean;
@@ -1310,8 +1310,8 @@ export const AITask = {
 
 export const Metadata = {
   encode(message: Metadata, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.optimus-ide-collabUrl !== "") {
-      writer.uint32(10).string(message.optimus-ide-collabUrl);
+    if (message.coderUrl !== "") {
+      writer.uint32(10).string(message.coderUrl);
     }
     if (message.workspaceTransition !== 0) {
       writer.uint32(16).int32(message.workspaceTransition);

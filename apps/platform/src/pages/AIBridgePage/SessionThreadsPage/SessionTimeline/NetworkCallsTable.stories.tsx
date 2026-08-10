@@ -59,7 +59,7 @@ export const ExpandRow: Story = {
 
 		await userEvent.click(
 			canvas.getByRole("button", {
-				name: /https:\/\/api\.github\.com\/repos\/optimus-ide-collab\/optimus-ide-collab/,
+				name: /https:\/\/api\.github\.com\/repos\/coder\/coder/,
 			}),
 		);
 
@@ -71,13 +71,13 @@ export const ExpandRow: Story = {
 export const CollapsePanel: Story = {
 	play: async ({ canvas }) => {
 		await expect(
-			canvas.getByText("https://api.github.com/repos/optimus-ide-collab/optimus-ide-collab"),
+			canvas.getByText("https://api.github.com/repos/coder/coder"),
 		).toBeVisible();
 
 		await userEvent.click(canvas.getByText("Network calls (4)"));
 
 		await expect(
-			canvas.queryByText("https://api.github.com/repos/optimus-ide-collab/optimus-ide-collab"),
+			canvas.queryByText("https://api.github.com/repos/coder/coder"),
 		).not.toBeInTheDocument();
 	},
 };

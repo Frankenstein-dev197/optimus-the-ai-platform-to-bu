@@ -105,7 +105,7 @@ export const ReadOnlyWithOverride: Story = {
 		const body = within(document.body);
 		await expect(await body.findByText("$12,000 USD")).toBeInTheDocument();
 		await expect(
-			body.getByText(/To update this limit, contact a Optimus IDE Collab administrator\./),
+			body.getByText(/To update this limit, contact a Optimus administrator\./),
 		).toBeInTheDocument();
 		await expect(body.queryByRole("checkbox")).not.toBeInTheDocument();
 		await expect(
@@ -135,7 +135,7 @@ export const ReadOnlyWithoutOverride: Story = {
 		const body = within(document.body);
 		await expect(await body.findByText("$5,000 USD")).toBeInTheDocument();
 		await expect(
-			body.getByText(/To update this limit, contact a Optimus IDE Collab administrator\./),
+			body.getByText(/To update this limit, contact a Optimus administrator\./),
 		).toBeInTheDocument();
 		await expect(body.queryByRole("checkbox")).not.toBeInTheDocument();
 		await expect(

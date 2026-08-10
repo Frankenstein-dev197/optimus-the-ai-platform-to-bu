@@ -13,7 +13,7 @@ const renderAppLink = (app: typeof MockWorkspaceApp) => {
 	);
 };
 
-// Regression test for https://github.com/optimus-ide-collab/optimus-ide-collab/issues/18573:
+// Regression test for https://github.com/coder/coder/issues/18573:
 // open_in="tab" was not opening links in a new tab.
 describe("AppLink", () => {
 	it("sets target=_blank and rel=noreferrer when open_in is tab", async () => {

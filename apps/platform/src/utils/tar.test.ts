@@ -16,8 +16,8 @@ test("tar", async () => {
 	writer.addFolder("etc", { mtime });
 	writer.addFile("etc/d.txt", "Some text content", {
 		mtime,
-		user: "optimus-ide-collab",
-		group: "optimus-ide-collabgroup",
+		user: "coder",
+		group: "codergroup",
 		mode: 0o777,
 	});
 	const blob = (await writer.write()) as Blob;
@@ -44,8 +44,8 @@ test("tar", async () => {
 		name: "etc/d.txt",
 		content: "Some text content",
 	});
-	expect(fileInfos[4].group).toEqual("optimus-ide-collabgroup");
-	expect(fileInfos[4].user).toEqual("optimus-ide-collab");
+	expect(fileInfos[4].group).toEqual("codergroup");
+	expect(fileInfos[4].user).toEqual("coder");
 	expect(fileInfos[4].mode).toEqual(0o777);
 });
 

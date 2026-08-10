@@ -59,7 +59,7 @@ export const GatewayKeysPageView: FC<GatewayKeysPageViewProps> = ({
 				<SettingsHeaderDescription>
 					Keys authenticate standalone AI Gateway replicas to this deployment.
 					The key value is shown only once when created.{" "}
-					<Link href={docs("/ai-optimus-ide-collab/ai-gateway")}>View docs</Link>
+					<Link href={docs("/ai-coder/ai-gateway")}>View docs</Link>
 				</SettingsHeaderDescription>
 			</SettingsHeader>
 
@@ -67,7 +67,7 @@ export const GatewayKeysPageView: FC<GatewayKeysPageViewProps> = ({
 				<PaywallPremium
 					message="AI Gateway"
 					description="Authenticate standalone AI Gateway replicas to your deployment. You need a Premium license with AI Gateway enabled to use this feature."
-					documentationLink={docs("/ai-optimus-ide-collab/ai-gateway")}
+					documentationLink={docs("/ai-coder/ai-gateway")}
 					canViewPremium={permissions.viewAllLicenses}
 				/>
 			)}

@@ -453,7 +453,7 @@ const WarningDialog: FC<
 	return <ConfirmDialog type="info" hideCancel={false} {...props} />;
 };
 
-// You can see the favicon designs here: https://www.figma.com/file/YIGBkXUcnRGz2ZKNmLaJQf/Optimus IDE Collab-v2-Design?node-id=560%3A620
+// You can see the favicon designs here: https://www.figma.com/file/YIGBkXUcnRGz2ZKNmLaJQf/Coder-v2-Design?node-id=560%3A620
 type FaviconType =
 	| "favicon"
 	| "favicon-success"

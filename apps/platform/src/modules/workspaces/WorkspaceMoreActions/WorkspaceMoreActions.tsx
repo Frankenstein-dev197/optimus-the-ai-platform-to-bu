@@ -112,7 +112,7 @@ export const WorkspaceMoreActions: FC<WorkspaceMoreActionsProps> = ({
 
 	// Since the workspace state is not updated immediately after the mutation, we
 	// need to be sure the menu is closed when the action gets disabled.
-	// Reference: https://github.com/optimus-ide-collab/optimus-ide-collab/pull/17775#discussion_r2087273706
+	// Reference: https://github.com/coder/coder/pull/17775#discussion_r2087273706
 	const [open, setOpen] = useState(false);
 	useEffect(() => {
 		setOpen((open) => (disabled ? false : open));

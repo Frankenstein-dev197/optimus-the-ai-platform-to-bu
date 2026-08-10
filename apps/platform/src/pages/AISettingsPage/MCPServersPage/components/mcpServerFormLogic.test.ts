@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { MockOptimusIDECollabMCPServer } from "../testFixtures";
+import { MockCoderMCPServer } from "../testFixtures";
 import {
 	buildCreateMCPServerConfigRequest,
 	buildInitialMCPServerFormValues,
@@ -22,7 +22,7 @@ const validValues = (
 describe("mcpServerFormLogic", () => {
 	it("uses placeholders for existing secrets", () => {
 		const values = buildInitialMCPServerFormValues({
-			...MockOptimusIDECollabMCPServer,
+			...MockCoderMCPServer,
 			has_api_key: true,
 		});
 
@@ -104,7 +104,7 @@ describe("mcpServerFormLogic", () => {
 	it("initializes slugTouched true for edit and false for create", () => {
 		const createValues = buildInitialMCPServerFormValues();
 		expect(createValues.slugTouched).toBe(false);
-		const editValues = buildInitialMCPServerFormValues(MockOptimusIDECollabMCPServer);
+		const editValues = buildInitialMCPServerFormValues(MockCoderMCPServer);
 		expect(editValues.slugTouched).toBe(true);
 	});
 

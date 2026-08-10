@@ -625,7 +625,7 @@ describe("getModelOptionsFromConfigs", () => {
 				{
 					provider: "anthropic",
 					displayName: "Hyper",
-					icon: "/icon/optimus-ide-collab.svg",
+					icon: "/icon/coder.svg",
 				},
 			],
 		]);
@@ -642,7 +642,7 @@ describe("getModelOptionsFromConfigs", () => {
 				id: "config-hyper",
 				providerId: "prov-anthropic-hyper",
 				providerLabel: "Hyper",
-				providerIcon: "/icon/optimus-ide-collab.svg",
+				providerIcon: "/icon/coder.svg",
 			}),
 		]);
 	});

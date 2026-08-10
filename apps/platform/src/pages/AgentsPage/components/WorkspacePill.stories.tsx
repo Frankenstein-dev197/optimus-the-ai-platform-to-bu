@@ -38,7 +38,7 @@ const cursorApp: WorkspaceApp = {
 	slug: "cursor",
 	display_name: "Cursor",
 	external: true,
-	url: "cursor://optimus-ide-collab.optimus-ide-collab-remote/open?$SESSION_TOKEN",
+	url: "cursor://coder.coder-remote/open?$SESSION_TOKEN",
 	subdomain: false,
 	health: "disabled",
 	sharing_level: "owner",
@@ -113,7 +113,7 @@ const meta: Meta<typeof WorkspacePill> = {
 			proxy: {
 				proxy: undefined,
 				preferredPathAppURL: "",
-				preferredWildcardHostname: "*.optimus-ide-collabidecollab.com",
+				preferredWildcardHostname: "*.coder.com",
 			},
 		}),
 	],
@@ -135,7 +135,7 @@ export const WithAllApps: Story = {
 		...defaultProps,
 		workspace: MockWorkspace,
 		agent: agentWithApps,
-		sshCommand: "ssh optimus-ide-collab.test-workspace",
+		sshCommand: "ssh coder.test-workspace",
 	},
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);

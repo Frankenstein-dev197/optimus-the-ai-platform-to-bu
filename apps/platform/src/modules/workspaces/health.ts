@@ -31,7 +31,7 @@ export const agentScriptMessages = {
 
 /**
  * Canonical messages for agent connection issues (the agent
- * process connecting to the Optimus IDE Collab control plane).
+ * process connecting to the Optimus control plane).
  */
 export const agentConnectionMessages = {
 	connecting: {
