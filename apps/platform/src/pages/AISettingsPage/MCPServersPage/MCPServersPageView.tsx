@@ -46,8 +46,8 @@ const MCPServersPageView: FC<MCPServersPageViewProps> = ({
 			>
 				<SettingsHeaderTitle>MCP servers</SettingsHeaderTitle>
 				<SettingsHeaderDescription>
-					Configure external MCP servers that provide additional tools for Optimus IDE Collab
-					Agents.
+					Configure external MCP servers that provide additional tools for
+					Optimus Agents.
 				</SettingsHeaderDescription>
 			</SettingsHeader>
 			{Boolean(error) && (

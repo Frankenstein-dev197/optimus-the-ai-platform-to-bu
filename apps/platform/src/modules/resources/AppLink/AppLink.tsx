@@ -127,7 +127,7 @@ export const AppLink: FC<AppLinkProps> = ({
 			<>
 				This app has an invalid URL and can't be opened. Ask your template
 				administrator to fix the app's <code>url</code> in the template's{" "}
-				<code>optimus-ide-collab_app</code> configuration.
+				<code>coder_app</code> configuration.
 			</>
 		);
 	}

@@ -1,6 +1,6 @@
 import type { ChatDebugRun } from "#/api/typesGenerated";
 
-// Keep in sync with maxDebugRuns in optimus-ide-collabd/exp_chats.go.
+// Keep in sync with maxDebugRuns in coderd/exp_chats.go.
 export const DEBUG_RUN_LIST_LIMIT = 100;
 
 const DEBUG_ID_PREFIX_LENGTH = 8;
@@ -92,5 +92,5 @@ export const debugExportFilename = ({
 	const timestamp = exportedAt.toISOString().replace(/[:.]/g, "-");
 	const idPrefix = (runId ?? chatId).slice(0, DEBUG_ID_PREFIX_LENGTH);
 	const scope = runId ? "run" : "chat";
-	return `optimus-ide-collab-agents-debug-${scope}-${idPrefix}-${timestamp}.json`;
+	return `optimus-agents-debug-${scope}-${idPrefix}-${timestamp}.json`;
 };

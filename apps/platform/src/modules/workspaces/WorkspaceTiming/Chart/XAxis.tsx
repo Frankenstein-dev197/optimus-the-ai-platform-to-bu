@@ -118,7 +118,7 @@ export const XAxisRow: FC<XAxisRowProps> = ({ yAxisLabelId, ...htmlProps }) => {
 			return;
 		}
 		// Selecting a label with special characters (e.g.,
-		// #optimus-ide-collab_metadata.container_info[0]) will fail because it is not a valid
+		// #coder_metadata.container_info[0]) will fail because it is not a valid
 		// selector. To handle this, we need to query by the id attribute and escape
 		// it with quotes.
 		const selector = `[id="${encodeURIComponent(yAxisLabelId)}"]`;

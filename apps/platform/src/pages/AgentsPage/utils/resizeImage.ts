@@ -221,7 +221,7 @@ async function probeNaturalDimensions(
 async function decodeViaImgFallback(file: File): Promise<ImageBitmap | null> {
 	// Decode via <img> + Blob URL. Reached only on browsers
 	// without createImageBitmap (very old Safari, embedded
-	// webviews); time-bounded so a stuck deoptimus-ide-collab can't wedge the
+	// webviews); time-bounded so a stuck decoder can't wedge the
 	// queue. No decode-time clamp on this path.
 	return await new Promise<ImageBitmap | null>((resolve, reject) => {
 		const url = URL.createObjectURL(file);
@@ -296,7 +296,7 @@ function toWebPFile(original: File, blob: Blob): File {
 	const dot = original.name.lastIndexOf(".");
 	const baseName = dot > 0 ? original.name.slice(0, dot) : original.name;
 	const webpName = `${baseName || "image"}.webp`;
-	// Use blob.type: canvas enoptimus-ide-collabs fall back to PNG on browsers
+	// Use blob.type: canvas encoders fall back to PNG on browsers
 	// without WebP support; this keeps the File's labelled type
 	// matching its actual content.
 	const effectiveType = blob.type || "image/webp";

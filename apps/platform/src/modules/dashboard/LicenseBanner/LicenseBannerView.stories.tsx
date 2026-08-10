@@ -32,8 +32,8 @@ export const OneWarning: Story = {
 				message: "You have exceeded the number of seats in your license.",
 				variant: "warningProminent",
 				link: {
-					href: "mailto:sales@optimus-ide-collabidecollab.com",
-					label: "Contact sales@optimus-ide-collabidecollab.com.",
+					href: "mailto:sales@optimus.com",
+					label: "Contact sales@optimus.com.",
 					showExternalIcon: false,
 				},
 			},
@@ -128,8 +128,8 @@ export const TelemetryRequiredError: Story = {
 				message: LicenseTelemetryRequiredErrorText,
 				variant: "error",
 				link: {
-					href: "mailto:sales@optimus-ide-collabidecollab.com",
-					label: "Contact sales@optimus-ide-collabidecollab.com if you need an exception.",
+					href: "mailto:sales@optimus.com",
+					label: "Contact sales@optimus.com if you need an exception.",
 					showExternalIcon: false,
 				},
 			},
@@ -142,9 +142,9 @@ export const TelemetryRequiredError: Story = {
 		);
 		await expect(
 			canvas.getByRole("link", {
-				name: /Contact sales@optimus-ide-collab\.com if you need an exception\./i,
+				name: /Contact sales@coder\.com if you need an exception\./i,
 			}),
-		).toHaveAttribute("href", "mailto:sales@optimus-ide-collabidecollab.com");
+		).toHaveAttribute("href", "mailto:sales@optimus.com");
 	},
 };
 
@@ -155,7 +155,7 @@ export const ManagedAgentLimitExceeded: Story = {
 				message: LicenseManagedAgentLimitExceededWarningText,
 				variant: "warningProminent",
 				link: {
-					href: docs("/ai-optimus-ide-collab/ai-governance"),
+					href: docs("/ai-coder/ai-governance"),
 					label: "View AI Governance",
 					showExternalIcon: true,
 					target: "_blank",
@@ -234,8 +234,8 @@ export const AIGovernanceNearLimit: Story = {
 			"You have used 95% of your AI Governance add-on seats.",
 		);
 		await expect(
-			canvas.getByRole("link", { name: /Contact sales@optimus-ide-collab\.com/i }),
-		).toHaveAttribute("href", "mailto:sales@optimus-ide-collabidecollab.com");
+			canvas.getByRole("link", { name: /Contact sales@coder\.com/i }),
+		).toHaveAttribute("href", "mailto:sales@optimus.com");
 	},
 };
 

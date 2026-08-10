@@ -1,12 +1,12 @@
 import { expect, test } from "@playwright/test";
 import { API } from "#/api/api";
-import { optimus-ide-collabPort, license, premiumTestsRequired, users } from "../constants";
+import { coderPort, license, premiumTestsRequired, users } from "../constants";
 import { expectUrl } from "../expectUrl";
 import { createUser } from "../helpers";
 
 test("setup deployment", async ({ page }) => {
 	await page.goto("/", { waitUntil: "domcontentloaded" });
-	API.setHost(`http://127.0.0.1:${optimus-ide-collabPort}`);
+	API.setHost(`http://127.0.0.1:${coderPort}`);
 	const exists = await API.hasFirstUser();
 	// First user already exists, abort early. All tests execute this as a dependency,
 	// if you run multiple tests in the UI, this will fail unless we check this.
@@ -39,7 +39,7 @@ test("setup deployment", async ({ page }) => {
 		expect(license.split(".").length).toBe(3); // otherwise it's invalid
 
 		await page.goto("/deployment/licenses", { waitUntil: "domcontentloaded" });
-		await expect(page).toHaveTitle("License Settings - Optimus IDE Collab");
+		await expect(page).toHaveTitle("License Settings - Coder");
 
 		await page.getByText("Add a license").click();
 		await page.getByRole("textbox").fill(license);

@@ -39,8 +39,8 @@ export const AIGovernanceSeatBannerView: FC<AIGovernanceSeatBannerViewProps> = (
 						Your organization is using {actual} / {limit} AI Governance user
 						seats ({overPercent}% over the limit). Contact{" "}
 					</span>
-					<Link href="mailto:sales@optimus-ide-collabidecollab.com" showExternalIcon={false}>
-						sales@optimus-ide-collabidecollab.com
+					<Link href="mailto:sales@optimus.com" showExternalIcon={false}>
+						sales@optimus.com
 					</Link>
 				</div>
 			</div>

@@ -73,7 +73,7 @@ function variableToField(
 }
 
 function moduleDetailsUrl(moduleId: string): string {
-	return `https://registry.optimus-ide-collabidecollab.com/modules/${moduleId}`;
+	return `https://registry.coder.com/modules/${moduleId}`;
 }
 
 /**

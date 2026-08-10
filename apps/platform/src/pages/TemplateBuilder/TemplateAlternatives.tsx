@@ -12,7 +12,7 @@ interface AlternativeLink {
 const alternatives: readonly AlternativeLink[] = [
 	{
 		label: "Start from scratch",
-		href: "https://optimus-ide-collabidecollab.com/docs/tutorials/template-from-scratch",
+		href: "https://coder.com/docs/tutorials/template-from-scratch",
 		external: true,
 	},
 	{
@@ -22,12 +22,12 @@ const alternatives: readonly AlternativeLink[] = [
 	},
 	{
 		label: "Browse community templates",
-		href: "https://registry.optimus-ide-collabidecollab.com/templates",
+		href: "https://registry.coder.com/templates",
 		external: true,
 	},
 	{
 		label: "Use template agent skill",
-		href: "https://registry.optimus-ide-collabidecollab.com/skills",
+		href: "https://registry.coder.com/skills",
 		external: true,
 	},
 ];

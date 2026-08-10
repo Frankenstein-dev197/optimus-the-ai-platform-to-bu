@@ -11,7 +11,7 @@ interface ThemePreviewProps {
 }
 
 /**
- * Mini mockup of the Optimus IDE Collab UI under a given theme.
+ * Mini mockup of the Optimus UI under a given theme.
  * The header bar's two accent swatches visibly change between
  * colorblind variants because they use `bg-git-added` / `bg-git-deleted`.
  */

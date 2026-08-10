@@ -87,7 +87,7 @@ export const MockToken: TypesGen.APIKeyWithOwner = {
 	updated_at: "2022-12-16T20:10:45.637452Z",
 	login_type: "token",
 	scope: "all",
-	scopes: ["optimus-ide-collab:all"],
+	scopes: ["coder:all"],
 	allow_list: [{ type: "*", id: "*" }],
 	lifetime_seconds: 2592000,
 	token_name: "token-one",
@@ -105,7 +105,7 @@ export const MockTokens: TypesGen.APIKeyWithOwner[] = [
 		updated_at: "2022-12-16T20:10:45.637452Z",
 		login_type: "token",
 		scope: "all",
-		scopes: ["optimus-ide-collab:all"],
+		scopes: ["coder:all"],
 		allow_list: [{ type: "*", id: "*" }],
 		lifetime_seconds: 2592000,
 		token_name: "token-two",
@@ -119,8 +119,8 @@ export const MockPrimaryWorkspaceProxy: TypesGen.WorkspaceProxy = {
 	display_name: "Default",
 	icon_url: "/emojis/1f60e.png",
 	healthy: true,
-	path_app_url: "https://optimus-ide-collabidecollab.com",
-	wildcard_hostname: "*.optimus-ide-collabidecollab.com",
+	path_app_url: "https://coder.com",
+	wildcard_hostname: "*.coder.com",
 	derp_enabled: true,
 	derp_only: false,
 	created_at: new Date().toISOString(),
@@ -159,8 +159,8 @@ export const MockUnhealthyWildWorkspaceProxy: TypesGen.WorkspaceProxy = {
 	display_name: "Unhealthy",
 	icon_url: "/emojis/1f92e.png",
 	healthy: false,
-	path_app_url: "https://unhealthy.optimus-ide-collabidecollab.com",
-	wildcard_hostname: "*unhealthy..optimus-ide-collabidecollab.com",
+	path_app_url: "https://unhealthy.coder.com",
+	wildcard_hostname: "*unhealthy..coder.com",
 	derp_enabled: true,
 	derp_only: true,
 	created_at: new Date().toISOString(),
@@ -187,7 +187,7 @@ export const MockWorkspaceProxies: TypesGen.WorkspaceProxy[] = [
 		display_name: "No wildcard",
 		icon_url: "/emojis/1f920.png",
 		healthy: true,
-		path_app_url: "https://cowboy.optimus-ide-collabidecollab.com",
+		path_app_url: "https://cowboy.coder.com",
 		wildcard_hostname: "",
 		derp_enabled: false,
 		derp_only: false,
@@ -264,7 +264,7 @@ export const MockSupportLinks: TypesGen.LinkConfig[] = [
 	{
 		name: "Third link",
 		target:
-			"https://github.com/optimus-ide-collab/optimus-ide-collab/issues/new?labels=needs+grooming&body={OPTIMUS_IDE_COLLAB_BUILD_INFO}",
+			"https://github.com/coder/coder/issues/new?labels=needs+grooming&body={CODER_BUILD_INFO}",
 		icon: "",
 	},
 	{
@@ -379,7 +379,7 @@ export const MockOrganizationAuditorRole: TypesGen.AssignableRoles = {
 
 export const MockAgentsAccessRole: TypesGen.Role = {
 	name: "agents-access",
-	display_name: "Optimus IDE Collab Agents User",
+	display_name: "Optimus Agents User",
 	site_permissions: [],
 	user_permissions: [],
 	organization_id: MockOrganization.id,
@@ -518,7 +518,7 @@ export const MockSiteRoles = [
 export const MockUserOwner: TypesGen.User = {
 	id: "test-user",
 	username: "TestUser",
-	email: "test@optimus-ide-collabidecollab.com",
+	email: "test@optimus.com",
 	created_at: "",
 	updated_at: "",
 	status: "active",
@@ -534,7 +534,7 @@ export const MockUserOwner: TypesGen.User = {
 export const MockUserMember: TypesGen.User = {
 	id: "test-user-2",
 	username: "TestUser2",
-	email: "test2@optimus-ide-collabidecollab.com",
+	email: "test2@optimus.com",
 	created_at: "",
 	updated_at: "",
 	status: "active",
@@ -550,7 +550,7 @@ export const MockUserMember: TypesGen.User = {
 export const SuspendedMockUser: TypesGen.User = {
 	id: "suspended-mock-user",
 	username: "SuspendedMockUser",
-	email: "iamsuspendedsad!@optimus-ide-collabidecollab.com",
+	email: "iamsuspendedsad!@optimus.com",
 	created_at: "",
 	updated_at: "",
 	status: "suspended",
@@ -857,7 +857,7 @@ name:Template test
 ## Instructions
 You can add instructions here
 
-[Some link info](https://optimus-ide-collabidecollab.com)`,
+[Some link info](https://coder.com)`,
 	created_by: MockUserOwner,
 	archived: false,
 	has_external_agent: false,
@@ -877,7 +877,7 @@ name:Template test 2
 ## Instructions
 You can add instructions here
 
-[Some link info](https://optimus-ide-collabidecollab.com)`,
+[Some link info](https://coder.com)`,
 	created_by: MockUserOwner,
 	archived: false,
 	has_external_agent: false,
@@ -968,28 +968,28 @@ export const MockTemplate: TypesGen.Template = {
 const _MockTemplateVersionFiles: TemplateVersionFiles = {
 	"README.md": "# Example\n\nThis is an example template.",
 	"main.tf": `// Provides info about the workspace.
-data "optimus-ide-collab_workspace" "me" {}
+data "coder_workspace" "me" {}
 
 // Provides the startup script used to download
-// the agent and communicate with Optimus IDE Collab.
-resource "optimus-ide-collab_agent" "dev" {
+// the agent and communicate with Optimus.
+resource "coder_agent" "dev" {
 os = "linux"
 arch = "amd64"
 }
 
 resource "kubernetes_pod" "main" {
 // Ensures that the Pod dies when the workspace shuts down!
-count = data.optimus-ide-collab_workspace.me.start_count
+count = data.coder_workspace.me.start_count
 metadata {
-  name      = "dev-\${data.optimus-ide-collab_workspace.me.id}"
+  name      = "dev-\${data.coder_workspace.me.id}"
 }
 spec {
   container {
     image   = "ubuntu"
-    command = ["sh", "-c", optimus-ide-collab_agent.main.init_script]
+    command = ["sh", "-c", coder_agent.main.init_script]
     env {
-      name  = "OPTIMUS_IDE_COLLAB_AGENT_TOKEN"
-      value = optimus-ide-collab_agent.main.token
+      name  = "CODER_AGENT_TOKEN"
+      value = coder_agent.main.token
     }
   }
 }
@@ -1000,28 +1000,28 @@ spec {
 export const MockTemplateVersionFileTree: FileTree = {
 	"README.md": "# Example\n\nThis is an example template.",
 	"main.tf": `// Provides info about the workspace.
-data "optimus-ide-collab_workspace" "me" {}
+data "coder_workspace" "me" {}
 
 // Provides the startup script used to download
-// the agent and communicate with Optimus IDE Collab.
-resource "optimus-ide-collab_agent" "dev" {
+// the agent and communicate with Optimus.
+resource "coder_agent" "dev" {
 os = "linux"
 arch = "amd64"
 }
 
 resource "kubernetes_pod" "main" {
 // Ensures that the Pod dies when the workspace shuts down!
-count = data.optimus-ide-collab_workspace.me.start_count
+count = data.coder_workspace.me.start_count
 metadata {
-  name      = "dev-\${data.optimus-ide-collab_workspace.me.id}"
+  name      = "dev-\${data.coder_workspace.me.id}"
 }
 spec {
   container {
     image   = "ubuntu"
-    command = ["sh", "-c", optimus-ide-collab_agent.main.init_script]
+    command = ["sh", "-c", coder_agent.main.init_script]
     env {
-      name  = "OPTIMUS_IDE_COLLAB_AGENT_TOKEN"
-      value = optimus-ide-collab_agent.main.token
+      name  = "CODER_AGENT_TOKEN"
+      value = coder_agent.main.token
     }
   }
 }
@@ -1083,13 +1083,13 @@ export const MockWorkspaceAgent: TypesGen.WorkspaceAgent = {
 	version: MockBuildInfo.version,
 	api_version: MockBuildInfo.agent_api_version,
 	latency: {
-		"Optimus IDE Collab Embedded DERP": {
+		"Optimus Embedded DERP": {
 			latency_ms: 32.55,
 			preferred: true,
 		},
 	},
 	connection_timeout_seconds: 120,
-	troubleshooting_url: "https://optimus-ide-collabidecollab.com/troubleshoot",
+	troubleshooting_url: "https://coder.com/troubleshoot",
 	lifecycle_state: "ready",
 	logs_length: 0,
 	logs_overflowed: false,
@@ -1142,7 +1142,7 @@ export const MockWorkspaceAppStatus: TypesGen.WorkspaceAppStatus = {
 	agent_id: "test-workspace-agent",
 	workspace_id: "test-workspace",
 	app_id: MockWorkspaceApp.id,
-	uri: "https://github.com/optimus-ide-collab/optimus-ide-collab/pull/1234",
+	uri: "https://github.com/coder/coder/pull/1234",
 	message: "Your competitors page is completed!",
 	state: "complete",
 	// Deprecated fields
@@ -1287,7 +1287,7 @@ export const MockWorkspaceAgentStartError: TypesGen.WorkspaceAgent = {
 			log_source_id: "a2ee4b8d-b09d-4f4e-a1f1-5e4adf7d53bb",
 			exit_code: 0,
 			status: "ok",
-			display_name: "optimus-ide-collab",
+			display_name: "coder",
 		},
 		{
 			...MockWorkspaceAgentScript,
@@ -1316,8 +1316,8 @@ export const MockWorkspaceAgentStartError: TypesGen.WorkspaceAgent = {
 		{
 			...MockWorkspaceAgentLogSource,
 			id: "a2ee4b8d-b09d-4f4e-a1f1-5e4adf7d53bb",
-			display_name: "optimus-ide-collab",
-			icon: "/icon/optimus-ide-collab.svg",
+			display_name: "coder",
+			icon: "/icon/coder.svg",
 		},
 		{
 			...MockWorkspaceAgentLogSource,
@@ -2145,7 +2145,7 @@ export const MockWorkspaceBuildLogs: TypesGen.ProvisionerJobLog[] = [
 		log_source: "provisioner",
 		log_level: "debug",
 		stage: "Starting workspace",
-		output: '- Finding optimus-ide-collab/optimus-ide-collab versions matching "0.3.4"...',
+		output: '- Finding coder/coder versions matching "0.3.4"...',
 	},
 	{
 		id: 9,
@@ -2161,7 +2161,7 @@ export const MockWorkspaceBuildLogs: TypesGen.ProvisionerJobLog[] = [
 		log_source: "provisioner",
 		log_level: "debug",
 		stage: "Starting workspace",
-		output: "- Using optimus-ide-collab/optimus-ide-collab v0.3.4 from the shared cache directory",
+		output: "- Using coder/coder v0.3.4 from the shared cache directory",
 	},
 	{
 		id: 11,
@@ -2236,7 +2236,7 @@ export const MockWorkspaceBuildLogs: TypesGen.ProvisionerJobLog[] = [
 		log_source: "provisioner",
 		log_level: "info",
 		stage: "Starting workspace",
-		output: "optimus-ide-collab_agent.dev: Plan to create",
+		output: "coder_agent.dev: Plan to create",
 	},
 	{
 		id: 20,
@@ -2268,7 +2268,7 @@ export const MockWorkspaceBuildLogs: TypesGen.ProvisionerJobLog[] = [
 		log_source: "provisioner",
 		log_level: "info",
 		stage: "Starting workspace",
-		output: "optimus-ide-collab_agent.dev: Creating...",
+		output: "coder_agent.dev: Creating...",
 	},
 	{
 		id: 24,
@@ -2277,7 +2277,7 @@ export const MockWorkspaceBuildLogs: TypesGen.ProvisionerJobLog[] = [
 		log_level: "info",
 		stage: "Starting workspace",
 		output:
-			"optimus-ide-collab_agent.dev: Creation complete after 0s [id=d07f5bdc-4a8d-4919-9cdb-0ac6ba9e64d6]",
+			"coder_agent.dev: Creation complete after 0s [id=d07f5bdc-4a8d-4919-9cdb-0ac6ba9e64d6]",
 	},
 	{
 		id: 25,
@@ -2302,7 +2302,7 @@ export const MockWorkspaceBuildLogs: TypesGen.ProvisionerJobLog[] = [
 		log_level: "info",
 		stage: "Starting workspace",
 		output:
-			"google_compute_disk.root: Creation complete after 13s [id=projects/bruno-optimus-ide-collab-v2/zones/europe-west4-b/disks/optimus-ide-collab-developer-bruno-dev-123-root]",
+			"google_compute_disk.root: Creation complete after 13s [id=projects/bruno-coder-v2/zones/europe-west4-b/disks/coder-developer-bruno-dev-123-root]",
 	},
 	{
 		id: 28,
@@ -2327,7 +2327,7 @@ export const MockWorkspaceBuildLogs: TypesGen.ProvisionerJobLog[] = [
 		log_level: "info",
 		stage: "Starting workspace",
 		output:
-			"google_compute_instance.dev[0]: Creation complete after 14s [id=projects/bruno-optimus-ide-collab-v2/zones/europe-west4-b/instances/optimus-ide-collab-developer-bruno-dev-123]",
+			"google_compute_instance.dev[0]: Creation complete after 14s [id=projects/bruno-coder-v2/zones/europe-west4-b/instances/coder-developer-bruno-dev-123]",
 	},
 	{
 		id: 31,
@@ -2402,7 +2402,7 @@ export const MockWorkspaceExtendedBuildLogs: TypesGen.ProvisionerJobLog[] = [
 		log_source: "provisioner",
 		log_level: "debug",
 		stage: "Detecting persistent resources",
-		output: '- Finding optimus-ide-collab/optimus-ide-collab versions matching "~> 0.11.0"...',
+		output: '- Finding coder/coder versions matching "~> 0.11.0"...',
 	},
 	{
 		id: 938500,
@@ -2418,7 +2418,7 @@ export const MockWorkspaceExtendedBuildLogs: TypesGen.ProvisionerJobLog[] = [
 		log_source: "provisioner",
 		log_level: "debug",
 		stage: "Detecting persistent resources",
-		output: "- Using optimus-ide-collab/optimus-ide-collab v0.11.1 from the shared cache directory",
+		output: "- Using coder/coder v0.11.1 from the shared cache directory",
 	},
 	{
 		id: 938502,
@@ -2545,7 +2545,7 @@ export const MockWorkspaceExtendedBuildLogs: TypesGen.ProvisionerJobLog[] = [
 		log_source: "provisioner",
 		log_level: "warn",
 		stage: "Detecting persistent resources",
-		output: 'on devcontainer-on-docker.tf line 15, in provider "optimus-ide-collab":',
+		output: 'on devcontainer-on-docker.tf line 15, in provider "coder":',
 	},
 	{
 		id: 938517,
@@ -2587,7 +2587,7 @@ export const MockWorkspaceExtendedBuildLogs: TypesGen.ProvisionerJobLog[] = [
 		log_level: "error",
 		stage: "Detecting persistent resources",
 		output:
-			'on devcontainer-on-docker.tf line 27, in data "optimus-ide-collab_parameter" "another_one":',
+			'on devcontainer-on-docker.tf line 27, in data "coder_parameter" "another_one":',
 	},
 	{
 		id: 938522,
@@ -2595,7 +2595,7 @@ export const MockWorkspaceExtendedBuildLogs: TypesGen.ProvisionerJobLog[] = [
 		log_source: "provisioner",
 		log_level: "error",
 		stage: "Detecting persistent resources",
-		output: '  27: data "optimus-ide-collab_parameter" "another_one" {',
+		output: '  27: data "coder_parameter" "another_one" {',
 	},
 	{
 		id: 938523,
@@ -2627,7 +2627,7 @@ export const MockWorkspaceExtendedBuildLogs: TypesGen.ProvisionerJobLog[] = [
 		log_source: "provisioner",
 		log_level: "warn",
 		stage: "Detecting persistent resources",
-		output: 'on devcontainer-on-docker.tf line 15, in provider "optimus-ide-collab":',
+		output: 'on devcontainer-on-docker.tf line 15, in provider "coder":',
 	},
 	{
 		id: 938527,
@@ -3298,22 +3298,22 @@ export const MockTemplateACLEmpty: TypesGen.TemplateACL = {
 
 export const MockTemplateExample: TypesGen.TemplateExample = {
 	id: "aws-windows",
-	url: "https://github.com/optimus-ide-collab/optimus-ide-collab/tree/main/examples/templates/aws-windows",
+	url: "https://github.com/coder/coder/tree/main/examples/templates/aws-windows",
 	name: "Develop in an ECS-hosted container",
 	description: "Get started with Linux development on AWS ECS.",
 	markdown:
-		"\n# aws-ecs\n\nThis is a sample template for running a Optimus IDE Collab workspace on ECS. It assumes there\nis a pre-existing ECS cluster with EC2-based compute to host the workspace.\n\n## Architecture\n\nThis workspace is built using the following AWS resources:\n\n- Task definition - the container definition, includes the image, command, volume(s)\n- ECS service - manages the task definition\n\n## code-server\n\n`code-server` is installed via the `startup_script` argument in the `optimus-ide-collab_agent`\nresource block. The `optimus-ide-collab_app` resource is defined to access `code-server` through\nthe dashboard UI over `localhost:13337`.\n",
+		"\n# aws-ecs\n\nThis is a sample template for running a Optimus workspace on ECS. It assumes there\nis a pre-existing ECS cluster with EC2-based compute to host the workspace.\n\n## Architecture\n\nThis workspace is built using the following AWS resources:\n\n- Task definition - the container definition, includes the image, command, volume(s)\n- ECS service - manages the task definition\n\n## code-server\n\n`code-server` is installed via the `startup_script` argument in the `coder_agent`\nresource block. The `coder_app` resource is defined to access `code-server` through\nthe dashboard UI over `localhost:13337`.\n",
 	icon: "/icon/aws.svg",
 	tags: ["aws", "cloud"],
 };
 
 export const MockTemplateExample2: TypesGen.TemplateExample = {
 	id: "aws-linux",
-	url: "https://github.com/optimus-ide-collab/optimus-ide-collab/tree/main/examples/templates/aws-linux",
+	url: "https://github.com/coder/coder/tree/main/examples/templates/aws-linux",
 	name: "Develop in Linux on AWS EC2",
 	description: "Get started with Linux development on AWS EC2.",
 	markdown:
-		'\n# aws-linux\n\nTo get started, run `optimus-ide-collab templates init`. When prompted, select this template.\nFollow the on-screen instructions to proceed.\n\n## Authentication\n\nThis template assumes that optimus-ide-collabd is run in an environment that is authenticated\nwith AWS. For example, run `aws configure import` to import credentials on the\nsystem and user running optimus-ide-collabd.  For other ways to authenticate [consult the\nTerraform docs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#authentication-and-configuration).\n\n## Required permissions / policy\n\nThe following sample policy allows Optimus IDE Collab to create EC2 instances and modify\ninstances provisioned by Optimus IDE Collab:\n\n```json\n{\n    "Version": "2012-10-17",\n    "Statement": [\n        {\n            "Sid": "VisualEditor0",\n            "Effect": "Allow",\n            "Action": [\n                "ec2:GetDefaultCreditSpecification",\n                "ec2:DescribeIamInstanceProfileAssociations",\n                "ec2:DescribeTags",\n                "ec2:CreateTags",\n                "ec2:RunInstances",\n                "ec2:DescribeInstanceCreditSpecifications",\n                "ec2:DescribeImages",\n                "ec2:ModifyDefaultCreditSpecification",\n                "ec2:DescribeVolumes"\n            ],\n            "Resource": "*"\n        },\n        {\n            "Sid": "Optimus IDE CollabResources",\n            "Effect": "Allow",\n            "Action": [\n                "ec2:DescribeInstances",\n                "ec2:DescribeInstanceAttribute",\n                "ec2:UnmonitorInstances",\n                "ec2:TerminateInstances",\n                "ec2:StartInstances",\n                "ec2:StopInstances",\n                "ec2:DeleteTags",\n                "ec2:MonitorInstances",\n                "ec2:CreateTags",\n                "ec2:RunInstances",\n                "ec2:ModifyInstanceAttribute",\n                "ec2:ModifyInstanceCreditSpecification"\n            ],\n            "Resource": "arn:aws:ec2:*:*:instance/*",\n            "Condition": {\n                "StringEquals": {\n                    "aws:ResourceTag/Optimus IDE Collab_Provisioned": "true"\n                }\n            }\n        }\n    ]\n}\n```\n\n## code-server\n\n`code-server` is installed via the `startup_script` argument in the `optimus-ide-collab_agent`\nresource block. The `optimus-ide-collab_app` resource is defined to access `code-server` through\nthe dashboard UI over `localhost:13337`.\n',
+		'\n# aws-linux\n\nTo get started, run `coder templates init`. When prompted, select this template.\nFollow the on-screen instructions to proceed.\n\n## Authentication\n\nThis template assumes that coderd is run in an environment that is authenticated\nwith AWS. For example, run `aws configure import` to import credentials on the\nsystem and user running coderd.  For other ways to authenticate [consult the\nTerraform docs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#authentication-and-configuration).\n\n## Required permissions / policy\n\nThe following sample policy allows Optimus to create EC2 instances and modify\ninstances provisioned by Optimus:\n\n```json\n{\n    "Version": "2012-10-17",\n    "Statement": [\n        {\n            "Sid": "VisualEditor0",\n            "Effect": "Allow",\n            "Action": [\n                "ec2:GetDefaultCreditSpecification",\n                "ec2:DescribeIamInstanceProfileAssociations",\n                "ec2:DescribeTags",\n                "ec2:CreateTags",\n                "ec2:RunInstances",\n                "ec2:DescribeInstanceCreditSpecifications",\n                "ec2:DescribeImages",\n                "ec2:ModifyDefaultCreditSpecification",\n                "ec2:DescribeVolumes"\n            ],\n            "Resource": "*"\n        },\n        {\n            "Sid": "CoderResources",\n            "Effect": "Allow",\n            "Action": [\n                "ec2:DescribeInstances",\n                "ec2:DescribeInstanceAttribute",\n                "ec2:UnmonitorInstances",\n                "ec2:TerminateInstances",\n                "ec2:StartInstances",\n                "ec2:StopInstances",\n                "ec2:DeleteTags",\n                "ec2:MonitorInstances",\n                "ec2:CreateTags",\n                "ec2:RunInstances",\n                "ec2:ModifyInstanceAttribute",\n                "ec2:ModifyInstanceCreditSpecification"\n            ],\n            "Resource": "arn:aws:ec2:*:*:instance/*",\n            "Condition": {\n                "StringEquals": {\n                    "aws:ResourceTag/Coder_Provisioned": "true"\n                }\n            }\n        }\n    ]\n}\n```\n\n## code-server\n\n`code-server` is installed via the `startup_script` argument in the `coder_agent`\nresource block. The `coder_app` resource is defined to access `code-server` through\nthe dashboard UI over `localhost:13337`.\n',
 	icon: "/icon/aws.svg",
 	tags: ["aws", "cloud"],
 };
@@ -3442,7 +3442,7 @@ export const MockAppearanceConfig: TypesGen.AppearanceConfig = {
 		enabled: false,
 	},
 	announcement_banners: [],
-	docs_url: "https://optimus-ide-collabidecollab.com/docs/@main/",
+	docs_url: "https://coder.com/docs/@main/",
 };
 
 export const MockWorkspaceBuildParameter1: TypesGen.WorkspaceBuildParameter = {
@@ -3771,9 +3771,9 @@ export const MockDeploymentStats: TypesGen.DeploymentStats = {
 };
 
 export const MockDeploymentSSH: TypesGen.SSHConfigResponse = {
-	hostname_prefix: " optimus-ide-collab.",
+	hostname_prefix: " coder.",
 	ssh_config_options: {},
-	hostname_suffix: "optimus-ide-collab",
+	hostname_suffix: "coder",
 };
 
 export const MockWorkspaceAgentLogs: TypesGen.WorkspaceAgentLog[] = [
@@ -3900,7 +3900,7 @@ export const MockHealth: TypesGen.HealthcheckReport = {
 				region: {
 					EmbeddedRelay: true,
 					RegionID: 999,
-					RegionCode: "optimus-ide-collab",
+					RegionCode: "coder",
 					RegionName: "Council Bluffs, Iowa",
 					Nodes: [
 						{
@@ -3913,7 +3913,7 @@ export const MockHealth: TypesGen.HealthcheckReport = {
 						{
 							Name: "999b",
 							RegionID: 999,
-							HostName: "dev.optimus-ide-collabidecollab.com",
+							HostName: "dev.coder.com",
 							STUNPort: -1,
 							DERPPort: 443,
 						},
@@ -3954,7 +3954,7 @@ export const MockHealth: TypesGen.HealthcheckReport = {
 						node: {
 							Name: "999b",
 							RegionID: 999,
-							HostName: "dev.optimus-ide-collabidecollab.com",
+							HostName: "dev.coder.com",
 							STUNPort: -1,
 							DERPPort: 443,
 						},
@@ -3968,16 +3968,16 @@ export const MockHealth: TypesGen.HealthcheckReport = {
 						uses_websocket: false,
 						client_logs: [
 							[
-								"derphttp.Client.Connect: connecting to https://dev.optimus-ide-collabidecollab.com/derp",
+								"derphttp.Client.Connect: connecting to https://dev.coder.com/derp",
 							],
 							[
-								"derphttp.Client.Connect: connecting to https://dev.optimus-ide-collabidecollab.com/derp",
+								"derphttp.Client.Connect: connecting to https://dev.coder.com/derp",
 							],
 						],
 						client_errs: [
 							["recv derp message: derphttp.Client closed"],
 							[
-								"connect to derp: derphttp.Client.Connect connect to <https://sao-paulo.fly.dev.optimus-ide-collabidecollab.com/derp>: context deadline exceeded: read tcp 10.44.1.150:59546-&gt;149.248.214.149:443: use of closed network connection",
+								"connect to derp: derphttp.Client.Connect connect to <https://sao-paulo.fly.dev.coder.com/derp>: context deadline exceeded: read tcp 10.44.1.150:59546-&gt;149.248.214.149:443: use of closed network connection",
 								"connect to derp: derphttp.Client closed",
 								"connect to derp: derphttp.Client closed",
 								"connect to derp: derphttp.Client closed",
@@ -4000,7 +4000,7 @@ export const MockHealth: TypesGen.HealthcheckReport = {
 				region: {
 					EmbeddedRelay: false,
 					RegionID: 10007,
-					RegionCode: "optimus-ide-collab_sydney",
+					RegionCode: "coder_sydney",
 					RegionName: "sydney",
 					Nodes: [
 						{
@@ -4013,7 +4013,7 @@ export const MockHealth: TypesGen.HealthcheckReport = {
 						{
 							Name: "10007a",
 							RegionID: 10007,
-							HostName: "sydney.dev.optimus-ide-collabidecollab.com",
+							HostName: "sydney.dev.coder.com",
 							STUNPort: -1,
 							DERPPort: 443,
 						},
@@ -4054,7 +4054,7 @@ export const MockHealth: TypesGen.HealthcheckReport = {
 						node: {
 							Name: "10007a",
 							RegionID: 10007,
-							HostName: "sydney.dev.optimus-ide-collabidecollab.com",
+							HostName: "sydney.dev.coder.com",
 							STUNPort: -1,
 							DERPPort: 443,
 						},
@@ -4068,10 +4068,10 @@ export const MockHealth: TypesGen.HealthcheckReport = {
 						uses_websocket: false,
 						client_logs: [
 							[
-								"derphttp.Client.Connect: connecting to https://sydney.dev.optimus-ide-collabidecollab.com/derp",
+								"derphttp.Client.Connect: connecting to https://sydney.dev.coder.com/derp",
 							],
 							[
-								"derphttp.Client.Connect: connecting to https://sydney.dev.optimus-ide-collabidecollab.com/derp",
+								"derphttp.Client.Connect: connecting to https://sydney.dev.coder.com/derp",
 							],
 						],
 						client_errs: [[], []],
@@ -4090,7 +4090,7 @@ export const MockHealth: TypesGen.HealthcheckReport = {
 				region: {
 					EmbeddedRelay: false,
 					RegionID: 10008,
-					RegionCode: "optimus-ide-collab_europe-frankfurt",
+					RegionCode: "coder_europe-frankfurt",
 					RegionName: "europe-frankfurt",
 					Nodes: [
 						{
@@ -4103,7 +4103,7 @@ export const MockHealth: TypesGen.HealthcheckReport = {
 						{
 							Name: "10008a",
 							RegionID: 10008,
-							HostName: "europe.dev.optimus-ide-collabidecollab.com",
+							HostName: "europe.dev.coder.com",
 							STUNPort: -1,
 							DERPPort: 443,
 						},
@@ -4144,7 +4144,7 @@ export const MockHealth: TypesGen.HealthcheckReport = {
 						node: {
 							Name: "10008a",
 							RegionID: 10008,
-							HostName: "europe.dev.optimus-ide-collabidecollab.com",
+							HostName: "europe.dev.coder.com",
 							STUNPort: -1,
 							DERPPort: 443,
 						},
@@ -4158,10 +4158,10 @@ export const MockHealth: TypesGen.HealthcheckReport = {
 						uses_websocket: false,
 						client_logs: [
 							[
-								"derphttp.Client.Connect: connecting to https://europe.dev.optimus-ide-collabidecollab.com/derp",
+								"derphttp.Client.Connect: connecting to https://europe.dev.coder.com/derp",
 							],
 							[
-								"derphttp.Client.Connect: connecting to https://europe.dev.optimus-ide-collabidecollab.com/derp",
+								"derphttp.Client.Connect: connecting to https://europe.dev.coder.com/derp",
 							],
 						],
 						client_errs: [[], []],
@@ -4180,7 +4180,7 @@ export const MockHealth: TypesGen.HealthcheckReport = {
 				region: {
 					EmbeddedRelay: false,
 					RegionID: 10009,
-					RegionCode: "optimus-ide-collab_brazil-saopaulo",
+					RegionCode: "coder_brazil-saopaulo",
 					RegionName: "brazil-saopaulo",
 					Nodes: [
 						{
@@ -4193,7 +4193,7 @@ export const MockHealth: TypesGen.HealthcheckReport = {
 						{
 							Name: "10009a",
 							RegionID: 10009,
-							HostName: "brazil.dev.optimus-ide-collabidecollab.com",
+							HostName: "brazil.dev.coder.com",
 							STUNPort: -1,
 							DERPPort: 443,
 						},
@@ -4234,7 +4234,7 @@ export const MockHealth: TypesGen.HealthcheckReport = {
 						node: {
 							Name: "10009a",
 							RegionID: 10009,
-							HostName: "brazil.dev.optimus-ide-collabidecollab.com",
+							HostName: "brazil.dev.coder.com",
 							STUNPort: -1,
 							DERPPort: 443,
 						},
@@ -4248,10 +4248,10 @@ export const MockHealth: TypesGen.HealthcheckReport = {
 						uses_websocket: false,
 						client_logs: [
 							[
-								"derphttp.Client.Connect: connecting to https://brazil.dev.optimus-ide-collabidecollab.com/derp",
+								"derphttp.Client.Connect: connecting to https://brazil.dev.coder.com/derp",
 							],
 							[
-								"derphttp.Client.Connect: connecting to https://brazil.dev.optimus-ide-collabidecollab.com/derp",
+								"derphttp.Client.Connect: connecting to https://brazil.dev.coder.com/derp",
 							],
 						],
 						client_errs: [[], []],
@@ -4313,7 +4313,7 @@ export const MockHealth: TypesGen.HealthcheckReport = {
 		severity: "ok",
 		warnings: [],
 		dismissed: false,
-		access_url: "https://dev.optimus-ide-collabidecollab.com",
+		access_url: "https://dev.coder.com",
 		reachable: true,
 		status_code: 200,
 		healthz_response: "OK",
@@ -4356,8 +4356,8 @@ export const MockHealth: TypesGen.HealthcheckReport = {
 					display_name: "Council Bluffs, Iowa",
 					icon_url: "/emojis/1f3e1.png",
 					healthy: true,
-					path_app_url: "https://dev.optimus-ide-collabidecollab.com",
-					wildcard_hostname: "*--apps.dev.optimus-ide-collabidecollab.com",
+					path_app_url: "https://dev.coder.com",
+					wildcard_hostname: "*--apps.dev.coder.com",
 					derp_enabled: false,
 					derp_only: false,
 					status: {
@@ -4379,8 +4379,8 @@ export const MockHealth: TypesGen.HealthcheckReport = {
 					display_name: "Sydney GCP",
 					icon_url: "/emojis/1f1e6-1f1fa.png",
 					healthy: true,
-					path_app_url: "https://sydney.dev.optimus-ide-collabidecollab.com",
-					wildcard_hostname: "*--apps.sydney.dev.optimus-ide-collabidecollab.com",
+					path_app_url: "https://sydney.dev.coder.com",
+					wildcard_hostname: "*--apps.sydney.dev.coder.com",
 					derp_enabled: true,
 					derp_only: false,
 					status: {
@@ -4402,8 +4402,8 @@ export const MockHealth: TypesGen.HealthcheckReport = {
 					display_name: "Europe GCP (Frankfurt)",
 					icon_url: "/emojis/1f1e9-1f1ea.png",
 					healthy: true,
-					path_app_url: "https://europe.dev.optimus-ide-collabidecollab.com",
-					wildcard_hostname: "*--apps.europe.dev.optimus-ide-collabidecollab.com",
+					path_app_url: "https://europe.dev.coder.com",
+					wildcard_hostname: "*--apps.europe.dev.coder.com",
 					derp_enabled: true,
 					derp_only: false,
 					status: {
@@ -4425,8 +4425,8 @@ export const MockHealth: TypesGen.HealthcheckReport = {
 					display_name: "Brazil GCP (Sao Paulo)",
 					icon_url: "/emojis/1f1e7-1f1f7.png",
 					healthy: true,
-					path_app_url: "https://brazil.dev.optimus-ide-collabidecollab.com",
-					wildcard_hostname: "*--apps.brazil.dev.optimus-ide-collabidecollab.com",
+					path_app_url: "https://brazil.dev.coder.com",
+					wildcard_hostname: "*--apps.brazil.dev.coder.com",
 					derp_enabled: true,
 					derp_only: false,
 					status: {
@@ -4492,11 +4492,11 @@ export const MockHealth: TypesGen.HealthcheckReport = {
 				},
 				{
 					id: "b6cefb69-cb6f-46e2-9c9c-39c089fb7e42",
-					name: "paris-optimus-ide-collab",
+					name: "paris-coder",
 					display_name: "Europe (Paris)",
 					icon_url: "/emojis/1f1eb-1f1f7.png",
 					healthy: true,
-					path_app_url: "https://paris-optimus-ide-collab.fly.dev",
+					path_app_url: "https://paris-coder.fly.dev",
 					wildcard_hostname: "",
 					derp_enabled: true,
 					derp_only: false,
@@ -4515,11 +4515,11 @@ export const MockHealth: TypesGen.HealthcheckReport = {
 				},
 				{
 					id: "72649dc9-03c7-46a8-bc95-96775e93ddc1",
-					name: "sydney-optimus-ide-collab",
+					name: "sydney-coder",
 					display_name: "Australia (Sydney)",
 					icon_url: "/emojis/1f1e6-1f1fa.png",
 					healthy: true,
-					path_app_url: "https://sydney-optimus-ide-collab.fly.dev",
+					path_app_url: "https://sydney-coder.fly.dev",
 					wildcard_hostname: "",
 					derp_enabled: true,
 					derp_only: false,
@@ -4538,11 +4538,11 @@ export const MockHealth: TypesGen.HealthcheckReport = {
 				},
 				{
 					id: "1f78398f-e5ae-4c38-aa89-30222181d443",
-					name: "sao-paulo-optimus-ide-collab",
+					name: "sao-paulo-coder",
 					display_name: "Brazil (Sau Paulo)",
 					icon_url: "/emojis/1f1e7-1f1f7.png",
 					healthy: true,
-					path_app_url: "https://sao-paulo-optimus-ide-collab.fly.dev",
+					path_app_url: "https://sao-paulo-coder.fly.dev",
 					wildcard_hostname: "",
 					derp_enabled: true,
 					derp_only: false,
@@ -4665,7 +4665,7 @@ export const MockHealth: TypesGen.HealthcheckReport = {
 			},
 		],
 	},
-	"optimus-ide-collab_version": MockBuildInfo.version,
+	coder_version: MockBuildInfo.version,
 };
 
 export const MockListeningPortsResponse: TypesGen.WorkspaceAgentListeningPortsResponse =
@@ -4714,7 +4714,7 @@ export const DeploymentHealthUnhealthy: TypesGen.HealthcheckReport = {
 	healthy: false,
 	severity: "ok",
 	time: "2023-10-12T23:15:00.000000000Z",
-	"optimus-ide-collab_version": "v2.3.0-devel+8cca4915a",
+	coder_version: "v2.3.0-devel+8cca4915a",
 	access_url: {
 		healthy: true,
 		severity: "ok",
@@ -4983,7 +4983,7 @@ export const MockSystemNotificationTemplates: TypesGen.NotificationTemplate[] =
 			name: "Workspace Marked as Dormant",
 			title_template: 'Workspace "{{.Labels.name}}" marked as dormant',
 			body_template:
-				"Hi {{.UserName}}\n\nYour workspace **{{.Labels.name}}** has been marked as [**dormant**](https://optimus-ide-collabidecollab.com/docs/admin/templates/managing-templates/schedule#dormancy-threshold-enterprise) because of {{.Labels.reason}}.\nDormant workspaces are [automatically deleted](https://optimus-ide-collabidecollab.com/docs/admin/templates/managing-templates/schedule#dormancy-auto-deletion-enterprise) after {{.Labels.timeTilDormant}} of inactivity.\nTo prevent deletion, use your workspace with the link below.",
+				"Hi {{.UserName}}\n\nYour workspace **{{.Labels.name}}** has been marked as [**dormant**](https://coder.com/docs/admin/templates/managing-templates/schedule#dormancy-threshold-enterprise) because of {{.Labels.reason}}.\nDormant workspaces are [automatically deleted](https://coder.com/docs/admin/templates/managing-templates/schedule#dormancy-auto-deletion-enterprise) after {{.Labels.timeTilDormant}} of inactivity.\nTo prevent deletion, use your workspace with the link below.",
 			actions:
 				'[{"url": "{{ base_url }}/@{{.UserUsername}}/{{.Labels.name}}", "label": "View workspace"}]',
 			group: "Workspace Events",
@@ -5009,7 +5009,7 @@ export const MockSystemNotificationTemplates: TypesGen.NotificationTemplate[] =
 			name: "Workspace Marked for Deletion",
 			title_template: 'Workspace "{{.Labels.name}}" marked for deletion',
 			body_template:
-				"Hi {{.UserName}}\n\nYour workspace **{{.Labels.name}}** has been marked for **deletion** after {{.Labels.timeTilDormant}} of [dormancy](https://optimus-ide-collabidecollab.com/docs/admin/templates/managing-templates/schedule#dormancy-auto-deletion-enterprise) because of {{.Labels.reason}}.\nTo prevent deletion, use your workspace with the link below.",
+				"Hi {{.UserName}}\n\nYour workspace **{{.Labels.name}}** has been marked for **deletion** after {{.Labels.timeTilDormant}} of [dormancy](https://coder.com/docs/admin/templates/managing-templates/schedule#dormancy-auto-deletion-enterprise) because of {{.Labels.reason}}.\nTo prevent deletion, use your workspace with the link below.",
 			actions:
 				'[{"url": "{{ base_url }}/@{{.UserUsername}}/{{.Labels.name}}", "label": "View workspace"}]',
 			group: "Workspace Events",
@@ -5136,7 +5136,7 @@ export const MockNotification: TypesGen.InboxNotification = {
 	actions: [
 		{
 			label: "View template",
-			url: "https://dev.optimus-ide-collabidecollab.com/templates/optimus-ide-collab/optimus-ide-collab",
+			url: "https://dev.coder.com/templates/coder/coder",
 		},
 	],
 	user_id: MockUserOwner.id,
@@ -5220,7 +5220,7 @@ export const MockWorkspaceAppStatuses: TypesGen.WorkspaceAppStatus[] = [
 		icon: "/emojis/1f4dd.png", // 📝
 		message: "Creating PR with gh CLI",
 		created_at: createTimestamp(4, 38), // 15:04:38
-		uri: "https://github.com/optimus-ide-collab/optimus-ide-collab/pull/5678",
+		uri: "https://github.com/coder/coder/pull/5678",
 		state: "complete" as const,
 	},
 	{
@@ -5386,7 +5386,7 @@ export const MockTask = {
 		timestamp: "2022-05-17T17:39:01.382927298Z",
 		state: "idle",
 		message: "Should I continue?",
-		uri: "https://dev.optimus-ide-collabidecollab.com",
+		uri: "https://dev.coder.com",
 	},
 	created_at: "2022-05-17T17:39:01.382927298Z",
 	updated_at: "2022-05-17T17:39:01.382927298Z",
@@ -5569,7 +5569,7 @@ export const MockAIBridgeSessionNetworkCalls: readonly TypesGen.AgentFirewallLog
 			sequence_number: 1,
 			proto: "http",
 			method: "POST",
-			detail: "https://api.github.com/repos/optimus-ide-collab/optimus-ide-collab",
+			detail: "https://api.github.com/repos/coder/coder",
 			allowed: true,
 			matched_rule: "allow api.github.com",
 			created_at: "2026-03-09T09:28:16.000Z",

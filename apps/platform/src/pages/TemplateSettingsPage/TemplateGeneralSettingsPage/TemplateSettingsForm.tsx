@@ -117,7 +117,7 @@ export const TemplateSettingsForm: FC<TemplateSettingsForm> = ({
 	});
 	const maxPortShareHelperId = `${maxPortShareField.id}-helper`;
 	const corsBehaviorField = getFieldHelpers("cors_behavior", {
-		helperText: "Use Passthru to bypass Optimus IDE Collab's built-in CORS protection.",
+		helperText: "Use Passthru to bypass Optimus's built-in CORS protection.",
 	});
 	const corsBehaviorHelperId = `${corsBehaviorField.id}-helper`;
 
@@ -215,7 +215,7 @@ export const TemplateSettingsForm: FC<TemplateSettingsForm> = ({
 						/>
 						<Label htmlFor="agents_allowed">
 							<StackLabel>
-								Allow Optimus IDE Collab Agents to create workspaces using this template
+								Allow Optimus Agents to create workspaces using this template
 							</StackLabel>
 						</Label>
 					</div>
@@ -343,7 +343,7 @@ export const TemplateSettingsForm: FC<TemplateSettingsForm> = ({
 				title="Port Sharing"
 				description="Shared ports with the Public sharing level can be accessed by anyone,
           while ports with the Authenticated sharing level can only be accessed
-          by authenticated Optimus IDE Collab users. Ports with the Owner sharing level can
+          by authenticated Optimus users. Ports with the Owner sharing level can
           only be accessed by the workspace owner."
 			>
 				<FormFields>

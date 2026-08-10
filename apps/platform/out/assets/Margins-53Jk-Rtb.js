@@ -1,1 +1,0 @@
-import{t as e}from"./cn-CcU7hTTa.js";import{i as t}from"./emotion-Gs6oPiCL.js";import{a as n,i as r}from"./constants-5mSKKEeY.js";var i={regular:r,medium:n,condensed:r/2,small:r/3},a=({size:n=`regular`,children:r,className:a,...o})=>{let s=i[n];return t(`div`,{...o,style:{maxWidth:s,paddingLeft:24,paddingRight:24},className:e(`mx-auto w-full`,a),children:r})};export{a as t};

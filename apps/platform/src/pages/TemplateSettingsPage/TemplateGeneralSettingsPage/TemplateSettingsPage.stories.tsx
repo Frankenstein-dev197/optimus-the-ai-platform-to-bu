@@ -169,7 +169,7 @@ async function fillAndSubmitForm(
 	await user.type(iconField, "vscode.png");
 
 	const agentsAllowedField = canvas.getByRole("checkbox", {
-		name: /allow optimus-ide-collab agents to create workspaces using this template/i,
+		name: /allow coder agents to create workspaces using this template/i,
 	});
 	expect(agentsAllowedField).toBeChecked();
 	await user.click(agentsAllowedField);

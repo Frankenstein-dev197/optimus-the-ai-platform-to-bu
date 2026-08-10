@@ -84,7 +84,7 @@ const agentsRouting = [
 ];
 
 const settingsRouting = [
-	{ path: "/ai/settings/optimus-ide-collab-agents", useStoryElement: true },
+	{ path: "/ai/settings/optimus-agents", useStoryElement: true },
 	{ path: "/agents/settings/:section", useStoryElement: true },
 	{ path: "/agents/settings", useStoryElement: true },
 	...agentsRouting,
@@ -1623,7 +1623,7 @@ export const WithDiffStats: Story = {
 				updated_at: recentTimestamp,
 				diff_status: {
 					chat_id: "diff-both",
-					url: "https://github.com/optimus-ide-collab/optimus-ide-collab/pull/1",
+					url: "https://github.com/coder/coder/pull/1",
 					pull_request_title: "",
 					pull_request_draft: false,
 					changes_requested: false,
@@ -1638,7 +1638,7 @@ export const WithDiffStats: Story = {
 				updated_at: recentTimestamp,
 				diff_status: {
 					chat_id: "diff-add-only",
-					url: "https://github.com/optimus-ide-collab/optimus-ide-collab/pull/2",
+					url: "https://github.com/coder/coder/pull/2",
 					pull_request_title: "",
 					pull_request_draft: false,
 					changes_requested: false,
@@ -1653,7 +1653,7 @@ export const WithDiffStats: Story = {
 				updated_at: recentTimestamp,
 				diff_status: {
 					chat_id: "diff-del-only",
-					url: "https://github.com/optimus-ide-collab/optimus-ide-collab/pull/3",
+					url: "https://github.com/coder/coder/pull/3",
 					pull_request_title: "",
 					pull_request_draft: false,
 					changes_requested: false,
@@ -1668,7 +1668,7 @@ export const WithDiffStats: Story = {
 				updated_at: recentTimestamp,
 				diff_status: {
 					chat_id: "diff-none",
-					url: "https://github.com/optimus-ide-collab/optimus-ide-collab/pull/4",
+					url: "https://github.com/coder/coder/pull/4",
 					pull_request_title: "",
 					pull_request_draft: false,
 					changes_requested: false,
@@ -1714,7 +1714,7 @@ export const WithDiffStatsLight: Story = {
 				updated_at: recentTimestamp,
 				diff_status: {
 					chat_id: "diff-both-light",
-					url: "https://github.com/optimus-ide-collab/optimus-ide-collab/pull/1",
+					url: "https://github.com/coder/coder/pull/1",
 					pull_request_title: "",
 					pull_request_draft: false,
 					changes_requested: false,
@@ -1729,7 +1729,7 @@ export const WithDiffStatsLight: Story = {
 				updated_at: recentTimestamp,
 				diff_status: {
 					chat_id: "diff-add-only-light",
-					url: "https://github.com/optimus-ide-collab/optimus-ide-collab/pull/2",
+					url: "https://github.com/coder/coder/pull/2",
 					pull_request_title: "",
 					pull_request_draft: false,
 					changes_requested: false,
@@ -1744,7 +1744,7 @@ export const WithDiffStatsLight: Story = {
 				updated_at: recentTimestamp,
 				diff_status: {
 					chat_id: "diff-del-only-light",
-					url: "https://github.com/optimus-ide-collab/optimus-ide-collab/pull/3",
+					url: "https://github.com/coder/coder/pull/3",
 					pull_request_title: "",
 					pull_request_draft: false,
 					changes_requested: false,
@@ -1779,7 +1779,7 @@ export const WithPRStateIcons: Story = {
 				updated_at: recentTimestamp,
 				diff_status: {
 					chat_id: "pr-open",
-					url: "https://github.com/optimus-ide-collab/optimus-ide-collab/pull/100",
+					url: "https://github.com/coder/coder/pull/100",
 					pull_request_state: "open",
 					pull_request_title: "feat: add new feature",
 					pull_request_draft: false,
@@ -1795,7 +1795,7 @@ export const WithPRStateIcons: Story = {
 				updated_at: recentTimestamp,
 				diff_status: {
 					chat_id: "pr-draft",
-					url: "https://github.com/optimus-ide-collab/optimus-ide-collab/pull/101",
+					url: "https://github.com/coder/coder/pull/101",
 					pull_request_state: "open",
 					pull_request_title: "wip: draft changes",
 					pull_request_draft: true,
@@ -1811,7 +1811,7 @@ export const WithPRStateIcons: Story = {
 				updated_at: recentTimestamp,
 				diff_status: {
 					chat_id: "pr-merged",
-					url: "https://github.com/optimus-ide-collab/optimus-ide-collab/pull/102",
+					url: "https://github.com/coder/coder/pull/102",
 					pull_request_state: "merged",
 					pull_request_title: "feat: completed feature",
 					pull_request_draft: false,
@@ -1827,7 +1827,7 @@ export const WithPRStateIcons: Story = {
 				updated_at: recentTimestamp,
 				diff_status: {
 					chat_id: "pr-closed",
-					url: "https://github.com/optimus-ide-collab/optimus-ide-collab/pull/103",
+					url: "https://github.com/coder/coder/pull/103",
 					pull_request_state: "closed",
 					pull_request_title: "fix: abandoned approach",
 					pull_request_draft: false,
@@ -1843,7 +1843,7 @@ export const WithPRStateIcons: Story = {
 				updated_at: recentTimestamp,
 				diff_status: {
 					chat_id: "pr-no-state",
-					url: "https://github.com/optimus-ide-collab/optimus-ide-collab/tree/my-branch",
+					url: "https://github.com/coder/coder/tree/my-branch",
 					pull_request_title: "",
 					pull_request_draft: false,
 					changes_requested: false,
@@ -2416,7 +2416,7 @@ export const SettingsUserAgentsAdmin: Story = {
 		});
 		expect(manageAgentsLink).toHaveAttribute(
 			"href",
-			"/ai/settings/optimus-ide-collab-agents",
+			"/ai/settings/optimus-agents",
 		);
 	},
 };

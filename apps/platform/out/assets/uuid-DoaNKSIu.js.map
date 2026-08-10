@@ -1,1 +1,0 @@
-{"version":3,"file":"uuid-DoaNKSIu.js","names":[],"sources":["../../src/utils/uuid.ts"],"sourcesContent":["export const isUUID = (text: string) => {\n\tconst UUID =\n\t\t/^[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;\n\treturn UUID.test(text);\n};\n"],"mappings":"AAAA,IAAa,EAAU,GAGf,6EAAK,KAAK,CAAI"}

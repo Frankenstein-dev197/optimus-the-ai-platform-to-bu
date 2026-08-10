@@ -82,7 +82,7 @@ describe("debugExportFilename", () => {
 				chatId: "abcdef12-3456-7890-abcd-ef1234567890",
 				exportedAt,
 			}),
-		).toBe("optimus-ide-collab-agents-debug-chat-abcdef12-2026-05-07T10-45-00-000Z.json");
+		).toBe("optimus-agents-debug-chat-abcdef12-2026-05-07T10-45-00-000Z.json");
 	});
 
 	it("generates a run-level filename", () => {
@@ -92,6 +92,6 @@ describe("debugExportFilename", () => {
 				runId: "deadbeef-1234-5678-9abc-def012345678",
 				exportedAt,
 			}),
-		).toBe("optimus-ide-collab-agents-debug-run-deadbeef-2026-05-07T10-45-00-000Z.json");
+		).toBe("optimus-agents-debug-run-deadbeef-2026-05-07T10-45-00-000Z.json");
 	});
 });

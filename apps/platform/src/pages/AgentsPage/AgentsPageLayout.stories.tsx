@@ -27,7 +27,7 @@ import {
 	withDashboardProvider,
 	withWebSocket,
 } from "#/testHelpers/storybook";
-import { OptimusIDECollabAgentsPageView } from "../AISettingsPage/OptimusIDECollabAgentsPage/OptimusIDECollabAgentsPageView";
+import { OptimusAgentsPageView } from "../AISettingsPage/OptimusAgentsPage/OptimusAgentsPageView";
 import AgentCreatePage from "./AgentCreatePage";
 import AgentSettingsCompactionPage from "./AgentSettingsCompactionPage";
 import AgentSettingsGeneralPage from "./AgentSettingsGeneralPage";
@@ -79,7 +79,7 @@ const buildChat = (overrides: Partial<Chat> = {}): Chat => ({
 });
 
 const AgentsRouteElement = () => (
-	<OptimusIDECollabAgentsPageView
+	<OptimusAgentsPageView
 		adminOverridesData={{ allow_users: false }}
 		onSaveAdminOverrides={fn()}
 		isSavingAdminOverrides={false}
@@ -147,15 +147,15 @@ const agentsRouting = {
 				},
 				{
 					path: "admin",
-					element: <Navigate to="/ai/settings/optimus-ide-collab-agents" replace />,
+					element: <Navigate to="/ai/settings/optimus-agents" replace />,
 				},
 				{
 					path: "agents",
-					element: <Navigate to="/ai/settings/optimus-ide-collab-agents" replace />,
+					element: <Navigate to="/ai/settings/optimus-agents" replace />,
 				},
 				{
-					path: "optimus-ide-collab-agents",
-					element: <Navigate to="/ai/settings/optimus-ide-collab-agents" replace />,
+					path: "optimus-agents",
+					element: <Navigate to="/ai/settings/optimus-agents" replace />,
 				},
 			],
 		},
@@ -166,7 +166,7 @@ const agentsRouting = {
 
 const aiSettingsRouting = {
 	path: "/ai/settings",
-	children: [{ path: "optimus-ide-collab-agents", element: <AgentsRouteElement /> }],
+	children: [{ path: "optimus-agents", element: <AgentsRouteElement /> }],
 };
 
 const setInnerWidthForStory = (width: number) => {
@@ -312,7 +312,7 @@ const meta: Meta<typeof AgentsPageLayout> = {
 		spyOn(API.experimental, "getChatSystemPrompt").mockResolvedValue({
 			system_prompt: "",
 			include_default_system_prompt: true,
-			default_system_prompt: "You are Optimus IDE Collab, an AI coding assistant...",
+			default_system_prompt: "You are Optimus, an AI coding assistant...",
 		});
 		spyOn(API.experimental, "updateChatSystemPrompt").mockResolvedValue();
 		spyOn(API.experimental, "getUserChatCustomPrompt").mockResolvedValue({
@@ -1019,18 +1019,18 @@ export const OpensAISettingsFromManageAgentsOnMobile: Story = {
 		});
 		expect(manageAgentsLink).toHaveAttribute(
 			"href",
-			"/ai/settings/optimus-ide-collab-agents",
+			"/ai/settings/optimus-agents",
 		);
 
 		await userEvent.click(manageAgentsLink);
 
 		await expect(
-			await screen.findByRole("heading", { name: "Optimus IDE Collab Agents" }),
+			await screen.findByRole("heading", { name: "Optimus Agents" }),
 		).toBeInTheDocument();
 	},
 };
 
-export const SettingsViewOptimusIDECollabAgentsLink: Story = {
+export const SettingsViewCoderAgentsLink: Story = {
 	play: async ({ canvasElement }) => {
 		await openSettingsView(canvasElement);
 
@@ -1045,7 +1045,7 @@ export const SettingsViewOptimusIDECollabAgentsLink: Story = {
 		});
 		expect(manageAgentsLink).toHaveAttribute(
 			"href",
-			"/ai/settings/optimus-ide-collab-agents",
+			"/ai/settings/optimus-agents",
 		);
 
 		await userEvent.click(manageAgentsLink);
@@ -1053,7 +1053,7 @@ export const SettingsViewOptimusIDECollabAgentsLink: Story = {
 		await waitFor(() => {
 			expect(
 				screen.getByText(
-					"Configure deployment-wide defaults for Optimus IDE Collab Agents and agent-specific capabilities.",
+					"Configure deployment-wide defaults for Optimus Agents and agent-specific capabilities.",
 				),
 			).toBeInTheDocument();
 		});

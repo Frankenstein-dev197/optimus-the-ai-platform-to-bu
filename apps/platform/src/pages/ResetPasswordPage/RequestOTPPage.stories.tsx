@@ -22,7 +22,7 @@ export const Success: Story = {
 		const canvas = within(canvasElement);
 		const user = userEvent.setup();
 		const emailInput = await canvas.findByLabelText(/email/i);
-		await user.type(emailInput, "admin@optimus-ide-collabidecollab.com");
+		await user.type(emailInput, "admin@optimus.com");
 		await user.click(canvas.getByRole("button", { name: /reset password/i }));
 	},
 };
@@ -55,7 +55,7 @@ export const ServerError: Story = {
 		const canvas = within(canvasElement);
 		const user = userEvent.setup();
 		const emailInput = await canvas.findByLabelText(/email/i);
-		await user.type(emailInput, "admin@optimus-ide-collabidecollab.com");
+		await user.type(emailInput, "admin@optimus.com");
 		await user.click(canvas.getByRole("button", { name: /reset password/i }));
 	},
 };

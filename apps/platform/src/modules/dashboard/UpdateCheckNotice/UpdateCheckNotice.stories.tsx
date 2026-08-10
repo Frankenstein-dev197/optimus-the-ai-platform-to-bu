@@ -7,7 +7,7 @@ const meta: Meta<typeof UpdateCheckNotice> = {
 	component: UpdateCheckNotice,
 	args: {
 		version: "v0.12.9",
-		releaseNotesUrl: "https://github.com/optimus-ide-collab/optimus-ide-collab/releases/tag/v0.12.9",
+		releaseNotesUrl: "https://github.com/coder/coder/releases/tag/v0.12.9",
 		onDismiss: fn(),
 		aboveDeploymentBanner: true,
 	},
@@ -23,13 +23,13 @@ export const AboveDeploymentBanner: Story = {
 	play: async ({ canvasElement, args }) => {
 		const canvas = within(canvasElement);
 		await expect(
-			canvas.getByText(/Optimus IDE Collab v0\.12\.9 is now available/),
+			canvas.getByText(/Optimus v0\.12\.9 is now available/),
 		).toBeVisible();
 		await expect(
 			canvas.getByRole("link", { name: "release notes" }),
 		).toHaveAttribute(
 			"href",
-			"https://github.com/optimus-ide-collab/optimus-ide-collab/releases/tag/v0.12.9",
+			"https://github.com/coder/coder/releases/tag/v0.12.9",
 		);
 		await expect(
 			canvas.getByRole("link", { name: "upgrade instructions" }),

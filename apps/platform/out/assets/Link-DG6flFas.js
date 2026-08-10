@@ -1,5 +1,0 @@
-import{Ft as e,It as t}from"./radix-ui-BltpLS8E.js";import{t as n}from"./cn-CcU7hTTa.js";import{a as r,i}from"./emotion-Gs6oPiCL.js";import{t as a}from"./square-arrow-out-up-right-BsgLFqHi.js";import{t as o}from"./dist-DiDikc8X.js";var s=o(`relative inline-flex items-center no-underline font-medium text-content-link hover:cursor-pointer
-	 after:hover:content-[''] after:hover:absolute after:hover:left-0 after:hover:w-full after:hover:h-px after:hover:bg-current after:hover:bottom-px
-	 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-content-link
-	 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-primary focus-visible:rounded-sm
-	 visited:text-content-link pl-0.5`,{variants:{size:{lg:`text-sm gap-0.5 [&_svg]:size-icon-sm [&_svg]:p-0.5 leading-6`,sm:`text-xs gap-1 [&_svg]:size-icon-xs [&_svg]:p-px leading-5`}},defaultVariants:{size:`lg`}}),c=({className:o,children:c,size:l,asChild:u,showExternalIcon:d=!0,...f})=>r(u?e:`a`,{className:n(s({size:l}),o),...f,children:[i(t,{children:c}),d&&i(a,{})]});export{c as t};

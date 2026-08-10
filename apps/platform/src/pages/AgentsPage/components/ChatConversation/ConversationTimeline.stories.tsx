@@ -1426,7 +1426,7 @@ export const MetadataOnlyUserMessageDoesNotLeaveStickyGap: Story = {
 				content: [
 					{
 						type: "context-file",
-						context_file_path: "/home/optimus-ide-collab/optimus-ide-collab/AGENTS.md",
+						context_file_path: "/home/coder/coder/AGENTS.md",
 					},
 				],
 			},
@@ -2854,7 +2854,7 @@ export const ThinkingBlockWithToolCall: Story = {
 					{
 						type: "tool-result",
 						tool_call_id: "tool-1",
-						result: { content: '{"name":"optimus-ide-collab"}' },
+						result: { content: '{"name":"coder"}' },
 					},
 				],
 			},

@@ -22,7 +22,7 @@ interface RetentionPeriodSettingsProps {
 	isSaveRetentionDaysError: boolean;
 }
 
-// Keep in sync with retentionDaysMaximum in optimus-ide-collabd/exp_chats.go.
+// Keep in sync with retentionDaysMaximum in coderd/exp_chats.go.
 const DAYS_MIN = 1;
 const DAYS_MAX = 3650;
 // Matches SQL COALESCE default in GetChatRetentionDays.

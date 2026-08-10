@@ -327,7 +327,7 @@ describe.each(secureContextValues)("useClipboard - secure: %j", (isSecure) => {
 			).rejects.toThrow();
 		} else {
 			// Insecure contexts cannot read the system clipboard, so paste falls
-			// back to the last value copied within Optimus IDE Collab.
+			// back to the last value copied within Optimus.
 			const readText = await act(() => result.current.readFromClipboard());
 			expect(readText).toEqual(textToCopy);
 		}

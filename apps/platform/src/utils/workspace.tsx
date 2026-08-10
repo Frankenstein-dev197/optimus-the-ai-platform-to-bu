@@ -38,7 +38,7 @@ export const getDisplayWorkspaceBuildInitiatedBy = (
 		case "autostop":
 		case "dormancy":
 		case "task_auto_pause":
-			return "Optimus IDE Collab";
+			return "Optimus";
 	}
 	return undefined;
 };

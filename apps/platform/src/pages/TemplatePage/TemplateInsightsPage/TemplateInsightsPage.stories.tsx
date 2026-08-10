@@ -92,7 +92,7 @@ export const Empty: Story = {
 
 export const Loaded: Story = {
 	args: {
-		// Got from dev.optimus-ide-collabidecollab.com network calls
+		// Got from dev.coder.com network calls
 		templateInsights: {
 			data: {
 				report: {
@@ -160,7 +160,7 @@ export const Loaded: Story = {
 							description: "Docker image for the development container",
 							values: [
 								{
-									value: "ghcr.io/harrison-ai/optimus-ide-collab-dev:base",
+									value: "ghcr.io/harrison-ai/coder-dev:base",
 									count: 2,
 								},
 							],
@@ -530,7 +530,7 @@ export const Loaded: Story = {
 								"See sample projects (https://github.com/microsoft/vscode-dev-containers#sample-projects)",
 							values: [
 								{
-									value: "https://github.com/mtojek/optimus-ide-collab",
+									value: "https://github.com/mtojek/coder",
 									count: 2,
 								},
 							],

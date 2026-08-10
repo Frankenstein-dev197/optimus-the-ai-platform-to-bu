@@ -15,7 +15,7 @@ import { createChatStore } from "./chatStore";
 import type { StreamState } from "./types";
 import { useChatToolInvalidations } from "./useChatToolInvalidations";
 
-const ORGANIZATION_NAME = "optimus-ide-collab";
+const ORGANIZATION_NAME = "coder";
 const USERNAME = "alice";
 
 type ToolResultOverrides = Partial<StreamState["toolResults"][string]>;

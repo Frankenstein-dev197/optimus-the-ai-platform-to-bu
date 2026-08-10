@@ -1,1 +1,0 @@
-import{n as e,r as t,t as n}from"./OrganizationSettingsLayout-q0KfCAQt.js";export{n as OrganizationSettingsContext,e as default,t as useOrganizationSettings};

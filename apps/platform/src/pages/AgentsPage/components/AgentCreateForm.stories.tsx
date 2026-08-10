@@ -92,7 +92,7 @@ const mock403Error = Object.assign(
 			statusText: "Forbidden",
 			data: {
 				message: "Forbidden.",
-				detail: "Insufficient permissions to use Optimus IDE Collab Agents.",
+				detail: "Insufficient permissions to use Optimus Agents.",
 			},
 			headers: {},
 			config: {},
@@ -706,7 +706,7 @@ export const MissingProviderAndModelSetup: Story = {
 				canvas.getAllByText((_content, element) => {
 					return (
 						element?.textContent ===
-						"To chat with Optimus IDE Collab Agents, set up a provider then add a model."
+						"To chat with Optimus Agents, set up a provider then add a model."
 					);
 				})[0],
 			).toBeVisible();

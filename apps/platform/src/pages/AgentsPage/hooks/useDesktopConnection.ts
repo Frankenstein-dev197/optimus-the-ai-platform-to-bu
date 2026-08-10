@@ -1,4 +1,4 @@
-import RFB, { type RFB as RFBType } from "@novnc/novnc/core/rfb";
+import RFB from "@novnc/novnc/lib/rfb";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import { watchChatDesktop } from "#/api/api";
@@ -38,7 +38,7 @@ export interface UseDesktopConnectionResult {
 	/** Latest text received from the remote desktop clipboard. */
 	remoteClipboardText: string | null;
 	/** The underlying RFB instance, if connected. */
-	rfb: InstanceType<typeof RFB> | null;
+	rfb: RFB | null;
 }
 
 const MAX_BACKOFF_MS = 30_000;
@@ -95,8 +95,8 @@ export function useDesktopConnection({
 	// rfbRef provides synchronous access for cleanup and event
 	// handlers. rfbInstance (state) provides reactivity so consumers
 	// re-render when the RFB instance changes.
-	const [rfbInstance, setRfbInstance] =  useState<RFBType | null>(null);
-	const rfbRef =  useRef<RFBType | null>(null);
+	const [rfbInstance, setRfbInstance] = useState<RFB | null>(null);
+	const rfbRef = useRef<RFB | null>(null);
 
 	const offscreenContainerRef = useRef<HTMLElement | null>(null);
 	const reconnectAttemptRef = useRef(0);

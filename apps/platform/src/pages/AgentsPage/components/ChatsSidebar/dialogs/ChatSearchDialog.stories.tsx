@@ -8,7 +8,7 @@ import { ChatSearchDialog } from "./ChatSearchDialog";
 
 const mockDiffStatus: NonNullable<Chat["diff_status"]> = {
 	chat_id: "chat-1",
-	url: "https://github.com/optimus-ide-collab/optimus-ide-collab/pull/25391",
+	url: "https://github.com/coder/coder/pull/25391",
 	pull_request_state: "open",
 	pull_request_title: "Fix race condition",
 	pull_request_draft: false,
@@ -87,7 +87,7 @@ const cappedMockChats: Chat[] = Array.from(
 	}),
 );
 const longDiffURL =
-	"github.com/optimus-ide-collab/optimus-ide-collab/pull/26016/files/1234567890abcdef1234567890abcdef1234567890abcdef";
+	"github.com/coder/coder/pull/26016/files/1234567890abcdef1234567890abcdef1234567890abcdef";
 
 const meta: Meta<typeof ChatSearchDialog> = {
 	title: "pages/AgentsPage/ChatSearchDialog",

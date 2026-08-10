@@ -12,12 +12,12 @@ export const AIBridgeClientIcon = ({
 	const iconClassName = "flex-shrink-0";
 	// This should be kept in sync with the client names in
 	// the AI Bridge bridge.go file.
-	// https://github.com/optimus-ide-collab/aibridge/blob/main/bridge.go#L31-L32
+	// https://github.com/coder/aibridge/blob/main/bridge.go#L31-L32
 	switch (client) {
-		case "Optimus IDE Collab Agents":
+		case "Coder Agents":
 			return (
 				<ExternalImage
-					src="/icon/optimus-ide-collab.svg"
+					src="/icon/optimus.svg"
 					className={cn(iconClassName, className)}
 				/>
 			);

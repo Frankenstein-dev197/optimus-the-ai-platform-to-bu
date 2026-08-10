@@ -34,7 +34,7 @@ export const Default: Story = {
 			<SidebarHeader
 				avatar={<Avatar fallback="Jon" />}
 				title="Jon"
-				subtitle="jon@optimus-ide-collabidecollab.com"
+				subtitle="jon@optimus.com"
 			/>
 			<SidebarNavItem href="account" icon={UserIcon}>
 				Account

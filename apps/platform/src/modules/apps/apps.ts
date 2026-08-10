@@ -15,7 +15,7 @@ export const SESSION_TOKEN_PLACEHOLDER = "$SESSION_TOKEN";
 // allow to be opened in a new window. This is
 // used to prevent phishing attacks where a user
 // is tricked into clicking a link that opens
-// a malicious app using the Optimus IDE Collab session token.
+// a malicious app using the Optimus session token.
 const ALLOWED_EXTERNAL_APP_PROTOCOLS = [
 	"vscode:",
 	"vscode-insiders:",
@@ -57,7 +57,7 @@ export const getVSCodeHref = (
 	if (chatId) {
 		query.set("chatId", chatId);
 	}
-	return `${app}://optimus-ide-collab.optimus-ide-collab-remote/open?${query}`;
+	return `${app}://coder.coder-remote/open?${query}`;
 };
 
 type GetTerminalHrefParams = {
@@ -85,7 +85,7 @@ export const getTerminalHref = ({
 
 // Open `about:blank` first to detect a popup blocker. If it opens, we
 // null out `opener` (durable on the opened window); and navigate `popup`
-// to the target URL. The Optimus IDE Collab UI keeps access to `popup`s handle
+// to the target URL. The Optimus UI keeps access to `popup`s handle
 export const openAppInNewWindow = (href: string) => {
 	const popup = window.open("about:blank", "_blank", "width=900,height=600");
 	if (!popup) {
@@ -171,7 +171,7 @@ export const isExternalApp = (
 
 export const needsSessionToken = (app: ExternalWorkspaceApp) => {
 	// HTTP links should never need the session token, since Cookies
-	// handle sharing it when you access the Optimus IDE Collab Dashboard. We should
+	// handle sharing it when you access the Optimus Dashboard. We should
 	// never be forwarding the bare session token to other domains!
 	const isHttp = app.url.startsWith("http");
 	const requiresSessionToken = app.url.includes(SESSION_TOKEN_PLACEHOLDER);

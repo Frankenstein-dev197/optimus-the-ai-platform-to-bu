@@ -42,7 +42,7 @@ export const AgentSetupNotice: FC<AgentSetupNoticeProps> = ({
 		return (
 			<NoticeContainer>
 				AI Gateway is disabled. Enable it in your deployment config to chat with
-				Optimus IDE Collab Agents.
+				Optimus Agents.
 			</NoticeContainer>
 		);
 	}
@@ -51,18 +51,18 @@ export const AgentSetupNotice: FC<AgentSetupNoticeProps> = ({
 		return null;
 	}
 
-	// Configured providers exist but none are supported by Optimus IDE Collab Agents
+	// Configured providers exist but none are supported by Optimus Agents
 	// (e.g. GitHub Copilot). Say so rather than asking to set up a provider.
 	if (hasUnsupportedProviderNames) {
 		const providerList = formatProviderList(unsupportedProviderNames);
 		const unsupportedLink = (
 			<a
-				href={docs("/ai-optimus-ide-collab/agents/models#providers")}
+				href={docs("/ai-coder/agents/models#providers")}
 				target="_blank"
 				rel="noreferrer"
 				className="text-content-link transition-colors hover:text-content-link/80"
 			>
-				not supported by Optimus IDE Collab Agents
+				not supported by Optimus Agents
 			</a>
 		);
 		if (!isAdmin) {
@@ -84,7 +84,7 @@ export const AgentSetupNotice: FC<AgentSetupNoticeProps> = ({
 				>
 					provider
 				</Link>{" "}
-				to chat with Optimus IDE Collab Agents.
+				to chat with Optimus Agents.
 			</NoticeContainer>
 		);
 	}
@@ -103,7 +103,7 @@ export const AgentSetupNotice: FC<AgentSetupNoticeProps> = ({
 	if (!hasProvider) {
 		return (
 			<NoticeContainer>
-				To chat with Optimus IDE Collab Agents, set up a{" "}
+				To chat with Optimus Agents, set up a{" "}
 				<Link
 					to="/ai/settings/providers"
 					className="text-content-link transition-colors hover:text-content-link/80"
@@ -130,7 +130,7 @@ export const AgentSetupNotice: FC<AgentSetupNoticeProps> = ({
 	// Admin: has providers but no models
 	return (
 		<NoticeContainer>
-			To chat with Optimus IDE Collab Agents, set up a{" "}
+			To chat with Optimus Agents, set up a{" "}
 			<Link
 				to="/ai/settings/models"
 				className="text-content-link transition-colors hover:text-content-link/80"

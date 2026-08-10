@@ -35,8 +35,8 @@ export const LongCode: Story = {
 export const Redact: Story = {
 	args: {
 		secret: false,
-		redactPattern: /OPTIMUS_IDE_COLLAB_AGENT_TOKEN="([^"]+)"/g,
-		redactReplacement: `OPTIMUS_IDE_COLLAB_AGENT_TOKEN="********"`,
+		redactPattern: /CODER_AGENT_TOKEN="([^"]+)"/g,
+		redactReplacement: `CODER_AGENT_TOKEN="********"`,
 		showRevealButton: true,
 	},
 };

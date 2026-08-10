@@ -97,7 +97,7 @@ const TemplateRow: FC<TemplateRowProps> = ({
 						onToggleAgentsAllowed(template, agentsAllowed)
 					}
 					disabled={isPending}
-					aria-label={`Allow Optimus IDE Collab Agents to create workspaces using ${label} in ${organization}`}
+					aria-label={`Allow Optimus Agents to create workspaces using ${label} in ${organization}`}
 				/>
 			</TableCell>
 		</TableRow>
@@ -121,7 +121,7 @@ export const TemplatesPageView: FC<TemplatesPageViewProps> = ({
 			<SettingsHeader>
 				<SettingsHeaderTitle>Templates</SettingsHeaderTitle>
 				<SettingsHeaderDescription>
-					Choose which templates Optimus IDE Collab Agents can use to create workspaces.
+					Choose which templates Optimus Agents can use to create workspaces.
 				</SettingsHeaderDescription>
 			</SettingsHeader>
 
@@ -147,7 +147,7 @@ export const TemplatesPageView: FC<TemplatesPageViewProps> = ({
 			)}
 			{!hasValidationError && (!hasLoadError || templates !== undefined) && (
 				<Table
-					aria-label="Templates Optimus IDE Collab Agents can use to create workspaces"
+					aria-label="Templates Optimus Agents can use to create workspaces"
 					className="table-fixed"
 				>
 					<TableHeader>
@@ -156,7 +156,9 @@ export const TemplatesPageView: FC<TemplatesPageViewProps> = ({
 							<TableHead className="w-44">Last updated</TableHead>
 							<TableHead className="w-44">Used by</TableHead>
 							<TableHead className="w-36 text-right">
-								<span className="sr-only">Optimus IDE Collab Agents workspace creation</span>
+								<span className="sr-only">
+									Optimus Agents workspace creation
+								</span>
 							</TableHead>
 						</TableRow>
 					</TableHeader>
@@ -173,7 +175,7 @@ export const TemplatesPageView: FC<TemplatesPageViewProps> = ({
 								description={
 									filterState.filter.used
 										? undefined
-										: "Create a template before configuring whether Optimus IDE Collab Agents can create workspaces."
+										: "Create a template before configuring whether Optimus Agents can create workspaces."
 								}
 								isCompact
 								className="min-h-52"

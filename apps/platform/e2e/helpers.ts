@@ -17,8 +17,8 @@ import type {
 import { TarWriter } from "#/utils/tar";
 import {
 	agentPProfPort,
-	optimus-ide-collabBinary,
-	optimus-ide-collabPort,
+	coderBinary,
+	coderPort,
 	defaultOrganizationName,
 	defaultPassword,
 	license,
@@ -86,9 +86,9 @@ export async function login(page: Page, options: LoginOptions = users.owner) {
 	// has mounted. The title check is the actual synchronization point:
 	// it retries until the page component renders. Removing either wait
 	// reintroduces a navigation race in tests that goto() right after
-	// login. See https://github.com/optimus-ide-collab/optimus-ide-collab/pull/27107.
+	// login. See https://github.com/coder/coder/pull/27107.
 	await page.waitForURL((url) => url.pathname === "/workspaces");
-	await expect(page).toHaveTitle("Workspaces - Optimus IDE Collab");
+	await expect(page).toHaveTitle("Workspaces - Coder");
 	// biome-ignore lint/suspicious/noExplicitAny: update once logged in
 	(ctx as any)[Symbol.for("currentUser")] = options;
 }
@@ -369,12 +369,12 @@ export const createGroup = async (
 };
 
 /**
- * sshIntoWorkspace spawns a Optimus IDE Collab SSH process and a client connected to it.
+ * sshIntoWorkspace spawns a Coder SSH process and a client connected to it.
  */
 export const sshIntoWorkspace = async (
 	page: Page,
 	workspace: string,
-	binaryPath = optimus-ide-collabBinary,
+	binaryPath = coderBinary,
 	binaryArgs: string[] = [],
 ): Promise<ssh.Client> => {
 	const sessionToken = await findSessionToken(page);
@@ -382,8 +382,8 @@ export const sshIntoWorkspace = async (
 		const cp = spawn(binaryPath, [...binaryArgs, "ssh", "--stdio", workspace], {
 			env: {
 				...process.env,
-				OPTIMUS_IDE_COLLAB_SESSION_TOKEN: sessionToken,
-				OPTIMUS_IDE_COLLAB_URL: `http://localhost:${optimus-ide-collabPort}`,
+				CODER_SESSION_TOKEN: sessionToken,
+				CODER_URL: `http://localhost:${coderPort}`,
 			},
 		});
 		cp.on("error", (err) => reject(err));
@@ -403,7 +403,7 @@ export const sshIntoWorkspace = async (
 		const client = new ssh.Client();
 		client.connect({
 			sock: proxyStream,
-			username: "optimus-ide-collab",
+			username: "coder",
 		});
 		client.on("error", (err) => reject(err));
 		client.on("ready", () => {
@@ -449,21 +449,21 @@ export const startWorkspaceWithEphemeralParameters = async (
 };
 
 /**
- * startAgent runs the optimus-ide-collab agent with the provided token. It waits for the
+ * startAgent runs the coder agent with the provided token. It waits for the
  * agent to be ready before returning.
  */
 export const startAgent = async (
 	page: Page,
 	token: string,
 ): Promise<ChildProcess> => {
-	return startAgentWithCommand(page, token, optimus-ide-collabBinary);
+	return startAgentWithCommand(page, token, coderBinary);
 };
 
 /**
- * downloadOptimus IDE CollabVersion downloads the version provided into a temporary dir and
+ * downloadCoderVersion downloads the version provided into a temporary dir and
  * caches it so subsequent calls are fast.
  */
-export const downloadOptimus IDE CollabVersion = async (
+export const downloadCoderVersion = async (
 	version: string,
 ): Promise<string> => {
 	let versionNumber = version;
@@ -471,8 +471,8 @@ export const downloadOptimus IDE CollabVersion = async (
 		versionNumber = versionNumber.slice(1);
 	}
 
-	const binaryName = `optimus-ide-collab-e2e-${versionNumber}`;
-	const tempDir = "/tmp/optimus-ide-collab-e2e-cache";
+	const binaryName = `coder-e2e-${versionNumber}`;
+	const tempDir = "/tmp/coder-e2e-cache";
 	// The install script adds `./bin` automatically to the path :shrug:
 	const binaryPath = path.join(tempDir, "bin", binaryName);
 
@@ -506,7 +506,7 @@ export const downloadOptimus IDE CollabVersion = async (
 				{
 					env: {
 						...process.env,
-						XDG_CACHE_HOME: "/tmp/optimus-ide-collab-e2e-cache",
+						XDG_CACHE_HOME: "/tmp/coder-e2e-cache",
 						TRACE: "1", // tells install.sh to `set -x`, helpful if something goes wrong
 					},
 				},
@@ -553,10 +553,10 @@ export const startAgentWithCommand = async (
 	const cp = spawn(command, [...args, "agent", "--no-reap"], {
 		env: {
 			...process.env,
-			OPTIMUS_IDE_COLLAB_AGENT_URL: `http://localhost:${optimus-ide-collabPort}`,
-			OPTIMUS_IDE_COLLAB_AGENT_TOKEN: token,
-			OPTIMUS_IDE_COLLAB_AGENT_PPROF_ADDRESS: `127.0.0.1:${agentPProfPort}`,
-			OPTIMUS_IDE_COLLAB_AGENT_PROMETHEUS_ADDRESS: `127.0.0.1:${prometheusPort}`,
+			CODER_AGENT_URL: `http://localhost:${coderPort}`,
+			CODER_AGENT_TOKEN: token,
+			CODER_AGENT_PPROF_ADDRESS: `127.0.0.1:${agentPProfPort}`,
+			CODER_AGENT_PROMETHEUS_ADDRESS: `127.0.0.1:${prometheusPort}`,
 		},
 	});
 	cp.stdout.on("data", (data: Buffer) => {
@@ -626,7 +626,7 @@ interface EchoProvisionerResponses {
 	extraFiles?: Map<string, string>;
 }
 
-const emptyPlan = new TextEnoptimus-ide-collab().encode("{}");
+const emptyPlan = new TextEncoder().encode("{}");
 
 /**
  * createTemplateVersionTar consumes a series of echo provisioner protobufs and
@@ -964,7 +964,7 @@ function isPortAvailable(port: number, host = "0.0.0.0"): Promise<boolean> {
 
 export const findSessionToken = async (page: Page): Promise<string> => {
 	const cookies = await page.context().cookies();
-	const sessionCookie = cookies.find((c) => c.name === "optimus-ide-collab_session_token");
+	const sessionCookie = cookies.find((c) => c.name === "coder_session_token");
 	if (!sessionCookie) {
 		throw new Error("session token not found");
 	}
@@ -976,8 +976,8 @@ export const echoResponsesWithParameters = (
 ): EchoProvisionerResponses => {
 	let tf = `terraform {
   required_providers {
-    optimus-ide-collab = {
-      source = "optimus-ide-collab/optimus-ide-collab"
+    coder = {
+      source = "coder/coder"
     }
   }
 }
@@ -999,7 +999,7 @@ export const echoResponsesWithParameters = (
 		}
 
 		tf += `
-data "optimus-ide-collab_parameter" "${parameter.name}" {
+data "coder_parameter" "${parameter.name}" {
 	type        = ${JSON.stringify(parameter.type)}
 	name        = ${JSON.stringify(parameter.displayName)}
 	icon        = ${JSON.stringify(parameter.icon)}
@@ -1169,7 +1169,7 @@ export const updateTemplate = async (
 
 	const sessionToken = await findSessionToken(page);
 	const child = spawn(
-		optimus-ide-collabBinary,
+		coderBinary,
 		[
 			"templates",
 			"push",
@@ -1185,8 +1185,8 @@ export const updateTemplate = async (
 		{
 			env: {
 				...process.env,
-				OPTIMUS_IDE_COLLAB_SESSION_TOKEN: sessionToken,
-				OPTIMUS_IDE_COLLAB_URL: `http://localhost:${optimus-ide-collabPort}`,
+				CODER_SESSION_TOKEN: sessionToken,
+				CODER_URL: `http://localhost:${coderPort}`,
 			},
 		},
 	);
@@ -1199,7 +1199,7 @@ export const updateTemplate = async (
 			return;
 		}
 
-		throw new Error(`optimus-ide-collab templates push failed with code ${code}`);
+		throw new Error(`coder templates push failed with code ${code}`);
 	});
 
 	child.stdin.write(tarball);
@@ -1338,14 +1338,14 @@ export async function createUser(
 	const returnTo = page.url();
 
 	await page.goto("/deployment/users", { waitUntil: "domcontentloaded" });
-	await expect(page).toHaveTitle("Users - Optimus IDE Collab");
+	await expect(page).toHaveTitle("Users - Coder");
 
 	await page.getByRole("link", { name: "Create user" }).click();
-	await expect(page).toHaveTitle("Create User - Optimus IDE Collab");
+	await expect(page).toHaveTitle("Create User - Coder");
 
 	const username = userValues.username ?? randomName();
 	const name = userValues.name ?? username;
-	const email = userValues.email ?? `${username}@optimus-ide-collabidecollab.com`;
+	const email = userValues.email ?? `${username}@coder.com`;
 	const password = userValues.password || defaultPassword;
 	const roles = userValues.roles ?? [];
 
@@ -1377,7 +1377,7 @@ export async function createUser(
 	await page.getByRole("button", { name: /save/i }).click();
 	await expect(page.getByText(/created successfully/)).toBeVisible();
 
-	await expect(page).toHaveTitle("Users - Optimus IDE Collab");
+	await expect(page).toHaveTitle("Users - Coder");
 	const addedRow = page.locator("tr", { hasText: email });
 	await expect(addedRow).toBeVisible();
 

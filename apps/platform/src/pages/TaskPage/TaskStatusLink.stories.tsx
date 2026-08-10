@@ -19,7 +19,7 @@ type Story = StoryObj<typeof TaskStatusLink>;
 
 export const GitHubNewPR: Story = {
 	args: {
-		uri: "https://github.com/optimus-ide-collab/optimus-ide-collab/pull/new/fix-deleted-template-button",
+		uri: "https://github.com/coder/coder/pull/new/fix-deleted-template-button",
 	},
 };
 
@@ -37,7 +37,7 @@ export const GitHubPRNoNumber: Story = {
 
 export const GitHubNewIssue: Story = {
 	args: {
-		uri: "https://github.com/optimus-ide-collab/optimus-ide-collab/issues/new?template=BLANK_ISSUE",
+		uri: "https://github.com/coder/coder/issues/new?template=BLANK_ISSUE",
 	},
 };
 
@@ -79,7 +79,7 @@ export const File: Story = {
 
 export const Long: Story = {
 	args: {
-		uri: "https://dev.optimus-ide-collabidecollab.com/this-is-a/long-url/to-test/how-the-truncation/looks",
+		uri: "https://dev.coder.com/this-is-a/long-url/to-test/how-the-truncation/looks",
 	},
 };
 

@@ -8,19 +8,19 @@ import {
 	randomName,
 	requiresLicense,
 } from "../helpers";
-import { beforeOptimus IDE CollabTest } from "../hooks";
+import { beforeCoderTest } from "../hooks";
 
 test.describe.configure({ mode: "parallel" });
 
 test.beforeEach(async ({ page }) => {
-	beforeOptimus IDE CollabTest(page);
+	beforeCoderTest(page);
 });
 
 const name = randomName();
 const userToAudit = {
 	username: `peep-${name}`,
 	password: defaultPassword,
-	email: `peep-${name}@optimus-ide-collabidecollab.com`,
+	email: `peep-${name}@coder.com`,
 	roles: ["Template Admin", "User Admin"],
 };
 

@@ -9,11 +9,11 @@ import {
 	stopAgent,
 	stopWorkspace,
 } from "../helpers";
-import { beforeOptimus IDE CollabTest } from "../hooks";
+import { beforeCoderTest } from "../hooks";
 import { AppOpenIn } from "../provisionerGenerated";
 
 test.beforeEach(async ({ page }) => {
-	beforeOptimus IDE CollabTest(page);
+	beforeCoderTest(page);
 	await login(page);
 });
 

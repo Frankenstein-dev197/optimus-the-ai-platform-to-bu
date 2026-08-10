@@ -179,7 +179,7 @@ export const DefaultSupportLinks: Story = {
 			{ icon: "bug", name: "Report a bug", target: "" },
 			{
 				icon: "chat",
-				name: "Join the Optimus IDE Collab Discord",
+				name: "Join the Optimus Discord",
 				target: "",
 				location: "navbar",
 			},
@@ -193,7 +193,7 @@ export const DevelBuild: Story = {
 		buildInfo: {
 			...MockBuildInfo,
 			version: "v2.21.0-devel+abc123",
-			external_url: "https://github.com/optimus-ide-collab/optimus-ide-collab/commit/abc123",
+			external_url: "https://github.com/coder/coder/commit/abc123",
 		},
 	},
 };
@@ -203,7 +203,7 @@ export const RcBuild: Story = {
 		buildInfo: {
 			...MockBuildInfo,
 			version: "v2.21.0-rc.1+def456",
-			external_url: "https://github.com/optimus-ide-collab/optimus-ide-collab/releases/tag/v2.21.0-rc.1",
+			external_url: "https://github.com/coder/coder/releases/tag/v2.21.0-rc.1",
 		},
 	},
 };
@@ -213,7 +213,7 @@ export const RcDevelBuild: Story = {
 		buildInfo: {
 			...MockBuildInfo,
 			version: "v2.33.0-rc.1-devel+727ec00f7",
-			external_url: "https://github.com/optimus-ide-collab/optimus-ide-collab/commit/727ec00f7",
+			external_url: "https://github.com/coder/coder/commit/727ec00f7",
 		},
 	},
 };

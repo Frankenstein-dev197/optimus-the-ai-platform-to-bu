@@ -35,7 +35,7 @@ export const TrialError: Story = {
 	args: {
 		error: mockApiError({
 			message: "Couldn't generate trial!",
-			detail: "It looks like your team is already trying Optimus IDE Collab.",
+			detail: "It looks like your team is already trying Optimus.",
 		}),
 	},
 };
@@ -48,7 +48,7 @@ export const Loading: Story = {
 
 // TrialOpen pins the "Number of developers" bucket list. If this assertion
 // changes, coordinate the new values with the licensor service owner, since
-// the selected bucket is forwarded verbatim to v2-licensor.optimus-ide-collabidecollab.com/trial.
+// the selected bucket is forwarded verbatim to v2-licensor.coder.com/trial.
 export const TrialOpen: Story = {
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);

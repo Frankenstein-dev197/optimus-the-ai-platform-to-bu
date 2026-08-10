@@ -36,8 +36,8 @@ export const ProvisionerVersion: FC<ProvisionerVersionProps> = ({
 			<TooltipContent className="max-w-xs">
 				<p className="m-0">
 					This provisioner is out of date. You may experience issues when using
-					a provisioner version that doesn't match your Optimus IDE Collab deployment. Please
-					upgrade to a newer version.
+					a provisioner version that doesn't match your Optimus deployment.
+					Please upgrade to a newer version.
 				</p>
 			</TooltipContent>
 		</Tooltip>

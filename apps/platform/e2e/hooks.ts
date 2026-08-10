@@ -1,15 +1,15 @@
 import http from "node:http";
 import type { BrowserContext, Page } from "@playwright/test";
-import { optimus-ide-collabPort, gitAuth } from "./constants";
+import { coderPort, gitAuth } from "./constants";
 
-export const beforeOptimus IDE CollabTest = (page: Page) => {
+export const beforeCoderTest = (page: Page) => {
 	page.on("console", (msg) => {
 		const location = msg.location();
 		// Filters out a bunch of junk warnings the browser produces.
 		if (!location.url) {
 			return;
 		}
-		// Filters out the gigantic OPTIMUS_IDE_COLLAB logo we print on every page load, as well
+		// Filters out the gigantic CODER logo we print on every page load, as well
 		// as some other noise.
 		if (msg.type() === "info") {
 			return;
@@ -56,12 +56,12 @@ export const beforeOptimus IDE CollabTest = (page: Page) => {
 export const resetExternalAuthKey = async (context: BrowserContext) => {
 	// Find the session token so we can destroy the external auth link between tests, to ensure valid authentication happens each time.
 	const cookies = await context.cookies();
-	const sessionCookie = cookies.find((c) => c.name === "optimus-ide-collab_session_token");
+	const sessionCookie = cookies.find((c) => c.name === "coder_session_token");
 	const options = {
 		method: "DELETE",
 		hostname: "127.0.0.1",
-		port: optimus-ide-collabPort,
-		path: `/api/v2/external-auth/${gitAuth.webProvider}?optimus-ide-collab_session_token=${sessionCookie?.value}`,
+		port: coderPort,
+		path: `/api/v2/external-auth/${gitAuth.webProvider}?coder_session_token=${sessionCookie?.value}`,
 	};
 
 	const req = http.request(options, (res) => {

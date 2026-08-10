@@ -82,7 +82,7 @@ export const UserDropdownContent: FC<UserDropdownContentProps> = ({
 				</>
 			)}
 			<DropdownMenuItem asChild>
-				<Link to="/optimus-ide-collab-cup">
+				<Link to="/coder-cup">
 					<svg
 						viewBox="0 0 24 24"
 						fill="none"
@@ -100,7 +100,7 @@ export const UserDropdownContent: FC<UserDropdownContentProps> = ({
 						<line x1="18" y1="19" x2="22" y2="19" />
 						<path d="M10,15 L10.5,18 L13.5,18 L14,15" />
 					</svg>
-					<span>OptimusIDECollabnauts</span>
+					<span>Codernauts</span>
 				</Link>
 			</DropdownMenuItem>{" "}
 			<DropdownMenuSeparator />
@@ -144,7 +144,9 @@ export const UserDropdownContent: FC<UserDropdownContentProps> = ({
 				</Tooltip>
 			)}
 			<DropdownMenuItem className="text-xs" disabled>
-				<span>&copy; {new Date().getFullYear()} Optimus IDE Collab Technologies, Inc.</span>
+				<span>
+					&copy; {new Date().getFullYear()} Optimus Technologies, Inc.
+				</span>
 			</DropdownMenuItem>
 		</>
 	);

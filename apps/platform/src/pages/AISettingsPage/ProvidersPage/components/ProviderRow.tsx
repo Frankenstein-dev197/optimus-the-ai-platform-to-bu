@@ -57,7 +57,7 @@ export const ProviderRow: React.FC<ProviderRowProps> = ({
 					{AgentsUnsupportedProviderTypes.some((t) => t === provider.type) && (
 						<Badge
 							variant="info"
-							title="This provider works with the AI Gateway proxy but Optimus IDE Collab Agents can't use it."
+							title="This provider works with the AI Gateway proxy but Optimus Agents can't use it."
 						>
 							Not supported in Agents
 						</Badge>

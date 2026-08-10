@@ -47,7 +47,7 @@ export const Add: Story = {
 		).toBeInTheDocument();
 		await expect(
 			canvas.getByRole("checkbox", {
-				name: /set as optimus-ide-collab agents default model/i,
+				name: /set as coder agents default model/i,
 			}),
 		).toBeInTheDocument();
 		const submit = canvas.getByRole("button", { name: /add model/i });
@@ -76,7 +76,7 @@ export const AddSetAsDefault: Story = {
 		await userEvent.type(canvas.getByLabelText(/context limit/i), "200000");
 		await userEvent.click(
 			canvas.getByRole("checkbox", {
-				name: /set as optimus-ide-collab agents default model/i,
+				name: /set as coder agents default model/i,
 			}),
 		);
 		await userEvent.click(canvas.getByRole("button", { name: /add model/i }));
@@ -114,7 +114,7 @@ export const ReplaceDefaultWarning: Story = {
 		await userEvent.type(canvas.getByLabelText(/context limit/i), "200000");
 		await userEvent.click(
 			canvas.getByRole("checkbox", {
-				name: /set as optimus-ide-collab agents default model/i,
+				name: /set as coder agents default model/i,
 			}),
 		);
 		await userEvent.click(canvas.getByRole("button", { name: /add model/i }));
@@ -205,7 +205,7 @@ export const Edit: Story = {
 		).toBeVisible();
 		await expect(
 			canvas.getByRole("checkbox", {
-				name: /set as optimus-ide-collab agents default model/i,
+				name: /set as coder agents default model/i,
 			}),
 		).toBeInTheDocument();
 		await expect(canvas.getByLabelText(/model identifier/i)).toBeEnabled();

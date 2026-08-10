@@ -36,13 +36,13 @@ export const MockChat: Chat = {
 // Pinned workspace-context resources the prompt is built from.
 const MockChatContextResources: ChatContextResource[] = [
 	{
-		source: "/home/optimus-ide-collab/AGENTS.md",
+		source: "/home/coder/AGENTS.md",
 		kind: "instruction_file",
 		size_bytes: 248,
 		status: "ok",
 	},
 	{
-		source: "/home/optimus-ide-collab/.optimus-ide-collab/skills/deploy",
+		source: "/home/coder/.coder/skills/deploy",
 		kind: "skill",
 		size_bytes: 96,
 		status: "ok",
@@ -50,7 +50,7 @@ const MockChatContextResources: ChatContextResource[] = [
 		skill_description: "Deploy the app to staging.",
 	},
 	{
-		source: "/home/optimus-ide-collab/.mcp.json",
+		source: "/home/coder/.mcp.json",
 		kind: "mcp_config",
 		size_bytes: 184,
 		status: "ok",
@@ -71,11 +71,11 @@ const MockChatContextResources: ChatContextResource[] = [
 	{
 		// An invalid skill the agent rejected: surfaced as an issue with its
 		// error rather than silently dropped.
-		source: "/home/optimus-ide-collab/test/.agents/skills/moo",
+		source: "/home/coder/test/.agents/skills/moo",
 		kind: "skill",
 		size_bytes: 356,
 		status: "invalid",
-		error: 'front-matter name "optimus-ide-collab-review" does not match directory "moo"',
+		error: 'front-matter name "coder-review" does not match directory "moo"',
 	},
 ];
 
@@ -108,7 +108,7 @@ export const MockMCPServerConfig: MCPServerConfig = {
 	enabled: true,
 	model_intent: false,
 	allow_in_plan_mode: false,
-	"forward_optimus-ide-collab_headers": false,
+	forward_coder_headers: false,
 	created_at: MOCK_TIMESTAMP,
 	updated_at: MOCK_TIMESTAMP,
 	auth_connected: false,

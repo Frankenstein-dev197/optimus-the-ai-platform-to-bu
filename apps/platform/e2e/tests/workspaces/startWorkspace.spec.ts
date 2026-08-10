@@ -9,12 +9,12 @@ import {
 	stopWorkspace,
 	verifyParameters,
 } from "../../helpers";
-import { beforeOptimus IDE CollabTest } from "../../hooks";
+import { beforeCoderTest } from "../../hooks";
 import { firstBuildOption, secondBuildOption } from "../../parameters";
 import type { RichParameter } from "../../provisionerGenerated";
 
 test.beforeEach(async ({ page }) => {
-	beforeOptimus IDE CollabTest(page);
+	beforeCoderTest(page);
 });
 
 test("start workspace with ephemeral parameters", async ({ page }) => {

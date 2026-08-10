@@ -102,7 +102,7 @@ const normalizeAIGovernanceWarning = (
 const messageLink = (message: string): LicenseBannerLink => {
 	if (message === LicenseManagedAgentLimitExceededWarningText) {
 		return {
-			href: docs("/ai-optimus-ide-collab/ai-governance"),
+			href: docs("/ai-coder/ai-governance"),
 			label: "View AI Governance",
 			showExternalIcon: true,
 			target: "_blank",
@@ -110,14 +110,14 @@ const messageLink = (message: string): LicenseBannerLink => {
 	}
 	if (message === LicenseTelemetryRequiredErrorText) {
 		return {
-			href: "mailto:sales@optimus-ide-collabidecollab.com",
-			label: "Contact sales@optimus-ide-collabidecollab.com if you need an exception.",
+			href: "mailto:sales@optimus.com",
+			label: "Contact sales@optimus.com if you need an exception.",
 			showExternalIcon: false,
 		};
 	}
 	return {
-		href: "mailto:sales@optimus-ide-collabidecollab.com",
-		label: "Contact sales@optimus-ide-collabidecollab.com.",
+		href: "mailto:sales@optimus.com",
+		label: "Contact sales@optimus.com.",
 		showExternalIcon: false,
 	};
 };

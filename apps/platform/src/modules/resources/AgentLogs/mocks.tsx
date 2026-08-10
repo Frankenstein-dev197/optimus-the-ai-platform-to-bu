@@ -1,4 +1,4 @@
-// Those mocks are fetched from the Optimus IDE Collab API in dev.optimus-ide-collabidecollab.com
+// Those mocks are fetched from the Coder API in dev.coder.com
 
 import type { Line } from "#/components/Logs/LogLine";
 
@@ -35,8 +35,8 @@ export const MockSources = [
 		workspace_agent_id: "722654da-cd27-4edf-a525-54979c864344",
 		id: "8e2c562c-3361-4eee-b45a-96a3df4b9760",
 		created_at: "2024-03-14T11:31:03.443877Z",
-		display_name: "Optimus IDE Collab Login",
-		icon: "/icon/optimus-ide-collab.svg",
+		display_name: "Optimus Login",
+		icon: "/icon/coder.svg",
 	},
 	{
 		workspace_agent_id: "722654da-cd27-4edf-a525-54979c864344",
@@ -65,7 +65,7 @@ export const MockLogs = [
 	{
 		id: 3295730,
 		level: "info",
-		output: "\u001b[0;1mLogging into Optimus IDE Collab...",
+		output: "\u001b[0;1mLogging into Optimus...",
 		time: "2024-03-14T11:31:04.090715Z",
 		sourceId: "8e2c562c-3361-4eee-b45a-96a3df4b9760",
 	},
@@ -79,7 +79,7 @@ export const MockLogs = [
 	{
 		id: 3295732,
 		level: "info",
-		output: "/home/optimus-ide-collab/optimus-ide-collab already exists and isn't empty, skipping clone!",
+		output: "/home/coder/coder already exists and isn't empty, skipping clone!",
 		time: "2024-03-14T11:31:04.239194Z",
 		sourceId: "310562c2-5a1d-4e0b-9a32-d214dadd1624",
 	},
@@ -101,7 +101,7 @@ export const MockLogs = [
 		id: 3295737,
 		level: "info",
 		output:
-			"Run \u001b[36;40;1mtouch /home/optimus-ide-collab/personalize && chmod +x /home/optimus-ide-collab/personalize\u001b[0m to create one.",
+			"Run \u001b[36;40;1mtouch /home/coder/personalize && chmod +x /home/coder/personalize\u001b[0m to create one.",
 		time: "2024-03-14T11:31:04.383656Z",
 		sourceId: "db9e2fdc-a227-42e4-a1a3-e534c1511eb7",
 	},
@@ -144,7 +144,7 @@ export const MockLogs = [
 	{
 		id: 3295743,
 		level: "error",
-		output: "+ trap 'touch /tmp/.optimus-ide-collab-startup-script.done' EXIT",
+		output: "+ trap 'touch /tmp/.coder-startup-script.done' EXIT",
 		time: "2024-03-14T11:31:04.67431Z",
 		sourceId: "d9475581-8a42-4bce-b4d0-e4d2791d5c98",
 	},
@@ -158,14 +158,14 @@ export const MockLogs = [
 	{
 		id: 3295745,
 		level: "error",
-		output: "+ [[ -f /home/optimus-ide-collab/optimus-ide-collab/site/package.json ]]",
+		output: "+ [[ -f /home/coder/coder/site/package.json ]]",
 		time: "2024-03-14T11:31:04.67431Z",
 		sourceId: "d9475581-8a42-4bce-b4d0-e4d2791d5c98",
 	},
 	{
 		id: 3295746,
 		level: "error",
-		output: "+ cd /home/optimus-ide-collab/optimus-ide-collab/site",
+		output: "+ cd /home/coder/coder/site",
 		time: "2024-03-14T11:31:04.67431Z",
 		sourceId: "d9475581-8a42-4bce-b4d0-e4d2791d5c98",
 	},
@@ -208,7 +208,7 @@ export const MockLogs = [
 	{
 		id: 3295752,
 		level: "info",
-		output: "You are already authenticated with optimus-ide-collab.",
+		output: "You are already authenticated with coder.",
 		time: "2024-03-14T11:31:05.070816Z",
 		sourceId: "8e2c562c-3361-4eee-b45a-96a3df4b9760",
 	},
@@ -350,7 +350,7 @@ export const MockLogs = [
 	{
 		id: 3295775,
 		level: "info",
-		output: "> optimus-ide-collab-v2@ playwright:install /home/optimus-ide-collab/optimus-ide-collab/site",
+		output: "> coder-v2@ playwright:install /home/coder/coder/site",
 		time: "2024-03-14T11:31:06.349058Z",
 		sourceId: "d9475581-8a42-4bce-b4d0-e4d2791d5c98",
 	},
@@ -413,7 +413,7 @@ export const MockLogs = [
 	{
 		id: 3295784,
 		level: "info",
-		output: "📂 Serving /home/optimus-ide-collab at http://localhost:13339 ",
+		output: "📂 Serving /home/coder at http://localhost:13339 ",
 		time: "2024-03-14T11:31:06.494535Z",
 		sourceId: "f0df7490-1be9-4722-96b6-45037b011c93",
 	},
@@ -427,7 +427,7 @@ export const MockLogs = [
 	{
 		id: 3295786,
 		level: "info",
-		output: "Running 'filebrowser --noauth --root /home/optimus-ide-collab --port 13339' ",
+		output: "Running 'filebrowser --noauth --root /home/coder --port 13339' ",
 		time: "2024-03-14T11:31:06.494535Z",
 		sourceId: "f0df7490-1be9-4722-96b6-45037b011c93",
 	},
@@ -1124,7 +1124,7 @@ export const MockLogs = [
 	{
 		id: 3295887,
 		level: "error",
-		output: "+ touch /tmp/.optimus-ide-collab-startup-script.done",
+		output: "+ touch /tmp/.coder-startup-script.done",
 		time: "2024-03-14T11:31:10.859531Z",
 		sourceId: "d9475581-8a42-4bce-b4d0-e4d2791d5c98",
 	},

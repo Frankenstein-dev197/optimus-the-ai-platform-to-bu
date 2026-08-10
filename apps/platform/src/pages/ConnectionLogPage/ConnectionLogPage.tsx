@@ -20,7 +20,7 @@ const ConnectionLogPage: FC = () => {
 	// The "else false" is required if connection_log is undefined, which may
 	// happen if the license is removed.
 	//
-	// see: https://github.com/optimus-ide-collab/optimus-ide-collab/issues/14798
+	// see: https://github.com/coder/coder/issues/14798
 	const isConnectionLogVisible = feats.connection_log || false;
 
 	const { showOrganizations } = useDashboard();

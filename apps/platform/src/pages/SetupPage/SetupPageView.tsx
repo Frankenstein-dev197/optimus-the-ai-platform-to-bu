@@ -199,7 +199,9 @@ export const SetupPageView: FC<SetupPageViewProps> = ({
 			<div className="flex flex-col w-full max-w-[500px] px-4">
 				<header className="mb-8">
 					<ProductLogo />
-					<h1 className="text-2xl font-semibold mt-4 mb-0">Welcome to Optimus IDE Collab</h1>
+					<h1 className="text-2xl font-semibold mt-4 mb-0">
+						Welcome to Optimus
+					</h1>
 					<p className="mt-3 mb-0 text-sm text-content-secondary font-normal">
 						Set up your admin account and start building secure, reproducible
 						dev environments.
@@ -269,7 +271,7 @@ export const SetupPageView: FC<SetupPageViewProps> = ({
 								quotas, and more.
 							</span>
 							<a
-								href="https://optimus-ide-collabidecollab.com/pricing"
+								href="https://coder.com/pricing"
 								target="_blank"
 								rel="noreferrer"
 								className="text-xs text-content-link hover:underline mt-0.5"
@@ -397,7 +399,7 @@ export const SetupPageView: FC<SetupPageViewProps> = ({
 								disabled={isLoading}
 							/>
 							<div className="flex flex-col text-sm">
-								<span className="font-medium">Monthly Optimus IDE Collab newsletter</span>
+								<span className="font-medium">Monthly Optimus newsletter</span>
 								<span className="text-content-secondary">
 									Latest articles, workshops, events, and announcements
 								</span>
@@ -406,15 +408,15 @@ export const SetupPageView: FC<SetupPageViewProps> = ({
 
 						{/* Privacy policy notice */}
 						<p className="text-xs text-content-secondary leading-relaxed">
-							Subscribe for the latest product and news updates from Optimus IDE Collab. The
-							information you provide will be treated in accordance with the{" "}
+							Subscribe for the latest product and news updates from Optimus.
+							The information you provide will be treated in accordance with the{" "}
 							<a
-								href="https://optimus-ide-collabidecollab.com/legal/privacy-policy"
+								href="https://coder.com/legal/privacy-policy"
 								target="_blank"
 								rel="noreferrer"
 								className="text-content-link hover:underline"
 							>
-								Optimus IDE Collab Privacy Policy
+								Optimus Privacy Policy
 							</a>
 							.
 						</p>
@@ -431,7 +433,7 @@ export const SetupPageView: FC<SetupPageViewProps> = ({
 									<a
 										target="_blank"
 										rel="noreferrer"
-										href="https://optimus-ide-collabidecollab.com/contact/sales"
+										href="https://coder.com/contact/sales"
 										className="text-content-link hover:underline"
 									>
 										Contact Sales
@@ -450,7 +452,7 @@ export const SetupPageView: FC<SetupPageViewProps> = ({
 				</form>
 
 				<div className="text-xs text-content-secondary pt-6">
-					&copy; {new Date().getFullYear()} Optimus IDE Collab Technologies, Inc.
+					&copy; {new Date().getFullYear()} Optimus Technologies, Inc.
 				</div>
 			</div>
 		</div>

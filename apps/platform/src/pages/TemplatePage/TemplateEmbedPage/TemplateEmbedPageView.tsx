@@ -204,11 +204,13 @@ const TestHelpPopover: React.FC = () => {
 		<HelpPopover>
 			<HelpPopoverIconTrigger size="small" />
 			<HelpPopoverContent>
-				<HelpPopoverTitle>Testing your Open in Optimus IDE Collab settings</HelpPopoverTitle>
+				<HelpPopoverTitle>
+					Testing your Open in Optimus settings
+				</HelpPopoverTitle>
 				<HelpPopoverText>
 					This button will open the workspace creation page in a new tab with
 					the parameters that you have supplied. Use this to debug your{" "}
-					<strong>Open in Optimus IDE Collab</strong> button before using it.
+					<strong>Open in Optimus</strong> button before using it.
 				</HelpPopoverText>
 				<HelpPopoverText>
 					Note: Even if you have set creation mode to auto, this button will not
@@ -216,8 +218,8 @@ const TestHelpPopover: React.FC = () => {
 					inspect the parameters and check for errors.
 				</HelpPopoverText>
 				<HelpPopoverLinksGroup>
-					<HelpPopoverLink href={docs("/admin/templates/open-in-optimus-ide-collab")}>
-						Templates &ndash; Open in Optimus IDE Collab
+					<HelpPopoverLink href={docs("/admin/templates/open-in-coder")}>
+						Templates &ndash; Open in Optimus
 					</HelpPopoverLink>
 				</HelpPopoverLinksGroup>
 			</HelpPopoverContent>
@@ -232,7 +234,7 @@ function getClipboardCopyContent(
 	buttonValues: ButtonValues | undefined,
 ): string {
 	const buttonUrl = getButtonUrl(template, buttonValues);
-	return `[![Open in Optimus IDE Collab](${deploymentUrl}/open-in-optimus-ide-collab.svg)](${buttonUrl})`;
+	return `[![Open in Optimus](${deploymentUrl}/open-in-optimus.svg)](${buttonUrl})`;
 }
 
 function getButtonUrl(
@@ -261,7 +263,7 @@ const ButtonPreview: React.FC<ButtonPreviewProps> = ({
 				flex flex-col items-center justify-center p-6
 			 	rounded-lg border border-border border-solid bg-surface-secondary"
 			>
-				<img src="/open-in-optimus-ide-collab.svg" alt="Open in Optimus IDE Collab button" />
+				<img src="/open-in-optimus.svg" alt="Open in Optimus button" />
 			</div>
 			<Button
 				variant="default"

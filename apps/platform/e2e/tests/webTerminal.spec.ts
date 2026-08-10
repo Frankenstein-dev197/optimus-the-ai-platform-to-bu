@@ -8,10 +8,10 @@ import {
 	startAgent,
 	stopAgent,
 } from "../helpers";
-import { beforeOptimus IDE CollabTest } from "../hooks";
+import { beforeCoderTest } from "../hooks";
 
 test.beforeEach(async ({ page }) => {
-	beforeOptimus IDE CollabTest(page);
+	beforeCoderTest(page);
 	await login(page);
 });
 
@@ -56,7 +56,7 @@ test("web terminal", async ({ context, page }) => {
 	await terminal.keyboard.press("Enter");
 
 	// Check if "echo" command was executed
-	// try-catch is used temporarily to find the root cause: https://github.com/optimus-ide-collab/optimus-ide-collab/actions/runs/6176958762/job/16767089943
+	// try-catch is used temporarily to find the root cause: https://github.com/coder/coder/actions/runs/6176958762/job/16767089943
 	try {
 		await terminal.waitForSelector(
 			'div.xterm-rows span:text-matches("hello123456")',

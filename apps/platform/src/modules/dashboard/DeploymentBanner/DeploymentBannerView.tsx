@@ -138,7 +138,7 @@ export const DeploymentBannerView: FC<DeploymentBannerViewProps> = ({
 						{healthErrors.length > 0 ? (
 							<>
 								<HelpPopoverTitle>
-									We have detected problems with your Optimus IDE Collab deployment.
+									We have detected problems with your Optimus deployment.
 								</HelpPopoverTitle>
 								<div className="flex flex-col gap-1">
 									{healthErrors.map((error) => (
@@ -147,7 +147,7 @@ export const DeploymentBannerView: FC<DeploymentBannerViewProps> = ({
 								</div>
 							</>
 						) : (
-							"Status of your Optimus IDE Collab deployment. Only visible for admins!"
+							"Status of your Optimus deployment. Only visible for admins!"
 						)}
 					</TooltipContent>
 				</Tooltip>
@@ -254,7 +254,7 @@ export const DeploymentBannerView: FC<DeploymentBannerViewProps> = ({
 								</div>
 							</TooltipTrigger>
 							<TooltipContent>
-								VS Code Editors with the Optimus IDE Collab Remote Extension
+								VS Code Editors with the Optimus Remote Extension
 							</TooltipContent>
 						</Tooltip>
 					</TooltipProvider>

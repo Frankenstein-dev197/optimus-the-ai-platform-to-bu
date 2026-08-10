@@ -13,7 +13,7 @@ const meta: Meta<typeof FileUpload> = {
 				<Link href="/starter-templates" showExternalIcon={false}>
 					starter templates
 				</Link>{" "}
-				to getting started with Optimus IDE Collab.
+				to getting started with Optimus.
 			</>
 		),
 	},

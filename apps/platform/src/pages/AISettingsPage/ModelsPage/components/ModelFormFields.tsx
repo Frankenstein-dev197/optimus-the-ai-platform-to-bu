@@ -169,7 +169,7 @@ export const ModelFormFields: FC<{
 								}
 								disabled={setDefaultDisabled}
 							/>
-							Set as Optimus IDE Collab Agents default model
+							Set as Optimus Agents default model
 						</label>
 					</div>
 					<div className="grid gap-1.5">

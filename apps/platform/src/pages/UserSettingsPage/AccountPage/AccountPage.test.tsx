@@ -28,7 +28,7 @@ describe("AccountPage", () => {
 			vi.spyOn(API, "updateProfile").mockImplementationOnce((userId, data) =>
 				Promise.resolve({
 					id: userId,
-					email: "user@optimus-ide-collabidecollab.com",
+					email: "user@optimus.com",
 					created_at: new Date().toISOString(),
 					updated_at: new Date().toISOString(),
 					status: "active",

@@ -27,7 +27,7 @@ export const GlobalErrorBoundaryInner: FC<GlobalErrorBoundaryInnerProps> = ({
 	const { metadata } = useEmbeddedMetadata();
 	const location = useLocation();
 
-	const optimusIDECollabVersion = metadata["build-info"].value?.version;
+	const coderVersion = metadata["build-info"].value?.version;
 	const isRenderableError =
 		error instanceof Error || isRouteErrorResponse(error);
 
@@ -45,11 +45,11 @@ export const GlobalErrorBoundaryInner: FC<GlobalErrorBoundaryInnerProps> = ({
 							Please try reloading the page. If reloading does not work, you can
 							ask for help in the{" "}
 							<Link
-								href="https://discord.gg/optimus-ide-collab"
+								href="https://discord.gg/coder"
 								target="_blank"
 								rel="noreferrer"
 							>
-								Optimus IDE Collab Discord community
+								Optimus Discord community
 								<span className="sr-only"> (link opens in a new tab)</span>
 							</Link>{" "}
 							or{" "}
@@ -57,7 +57,7 @@ export const GlobalErrorBoundaryInner: FC<GlobalErrorBoundaryInnerProps> = ({
 								target="_blank"
 								rel="noreferrer"
 								href={publicGithubIssueLink(
-									optimusIDECollabVersion,
+									coderVersion,
 									location.pathname,
 									error,
 								)}
@@ -135,11 +135,11 @@ function serializeDataAsJson(data: unknown): string | null {
 }
 
 function publicGithubIssueLink(
-	optimusIDECollabVersion: string | undefined,
+	coderVersion: string | undefined,
 	pathName: string,
 	error: unknown,
 ): string {
-	const baseLink = "https://github.com/optimus-ide-collab/optimus-ide-collab/issues/new";
+	const baseLink = "https://github.com/coder/coder/issues/new";
 
 	// Anytime you see \`\`\`txt, that's wrapping the text in a GitHub codeblock
 	let printableError: string;
@@ -160,7 +160,7 @@ function publicGithubIssueLink(
 
 	const messageBody = `\
 **Version**
-${optimusIDECollabVersion ?? "-- Set version --"}
+${coderVersion ?? "-- Set version --"}
 
 **Path**
 \`${pathName}\`

@@ -26,13 +26,13 @@ const EnterpriseVersion: FC = () => {
 						<PremiumBadge />
 					</div>
 					<p className="text-sm max-w-xl mt-2 text-content-secondary font-medium">
-						As an Enterprise license holder, you already benefit from Optimus IDE Collab’s
-						features for secure, large-scale deployments. Upgrade to Optimus IDE Collab
+						As an Enterprise license holder, you already benefit from Optimus’s
+						features for secure, large-scale deployments. Upgrade to Optimus
 						Premium for enhanced multi-tenant control and flexibility.
 					</p>
 				</div>
 				<Button asChild>
-					<a href="https://optimus-ide-collabidecollab.com/contact/sales" className="no-underline">
+					<a href="https://coder.com/contact/sales" className="no-underline">
 						<SquareArrowOutUpRightIcon />
 						Contact sales
 					</a>
@@ -97,14 +97,14 @@ const OSSVersion: FC = () => {
 						<PremiumBadge />
 					</div>
 					<p className="text-sm max-w-xl mt-2 text-content-secondary">
-						Optimus IDE Collab Premium is designed for enterprises that need to scale their
-						Optimus IDE Collab deployment efficiently, securely, and with full control. By
+						Optimus Premium is designed for enterprises that need to scale their
+						Optimus deployment efficiently, securely, and with full control. By
 						upgrading, your team gains access to advanced features enabling
 						governance across all environments.
 					</p>
 				</div>
 				<Button asChild>
-					<a href="https://optimus-ide-collabidecollab.com/contact/sales" className="no-underline">
+					<a href="https://coder.com/contact/sales" className="no-underline">
 						<SquareArrowOutUpRightIcon />
 						Contact sales
 					</a>
@@ -115,7 +115,7 @@ const OSSVersion: FC = () => {
 				<h2 className="text-xl text-content-primary m-0">
 					<span className="flex flex-row items-center">
 						<ExpandIcon className="size-icon-sm text-content-secondary" />
-						&nbsp; Deploy optimus-ide-collab at scale
+						&nbsp; Deploy coder at scale
 					</span>
 				</h2>
 				<p>
@@ -130,7 +130,7 @@ const OSSVersion: FC = () => {
 						<br />
 						<span className="font-medium">
 							Scale with automatic failover and load balancing across multiple
-							Optimus IDE Collab instances.
+							Optimus instances.
 						</span>
 					</li>
 					<li>
@@ -139,7 +139,7 @@ const OSSVersion: FC = () => {
 						</span>
 						<br />
 						<span className="font-medium">
-							Isolate teams, projects, and environments within a single Optimus IDE Collab
+							Isolate teams, projects, and environments within a single Optimus
 							deployment.
 						</span>
 					</li>

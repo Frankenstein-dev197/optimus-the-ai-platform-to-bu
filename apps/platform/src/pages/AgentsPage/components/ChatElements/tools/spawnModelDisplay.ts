@@ -10,7 +10,7 @@ import {
 } from "#/api/typesGenerated";
 
 // Global reasoning effort scale, ordered low to high. Mirrors
-// optimus-ide-collabsdk.ChatModelReasoningEffortValues().
+// codersdk.ChatModelReasoningEffortValues().
 const effortScale: readonly string[] = [
 	ChatModelReasoningEffortNone,
 	ChatModelReasoningEffortMinimal,

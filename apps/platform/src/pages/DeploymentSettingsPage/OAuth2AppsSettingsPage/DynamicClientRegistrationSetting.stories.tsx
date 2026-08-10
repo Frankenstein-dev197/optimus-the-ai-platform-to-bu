@@ -102,7 +102,7 @@ export const EnableShowsConfirmationDialog: Story = {
 		// admin reads before enabling. It has to name both what enabling exposes
 		// and what disabling does not undo, or the confirm click decides nothing.
 		await expect(
-			body.getByText(/no Optimus IDE Collab account and no administrator approval/),
+			body.getByText(/no Optimus account and no administrator approval/),
 		).toBeInTheDocument();
 		await expect(
 			body.getByText(/does not revoke clients that already registered/),

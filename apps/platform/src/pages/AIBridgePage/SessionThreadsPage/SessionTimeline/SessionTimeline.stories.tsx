@@ -151,7 +151,7 @@ export const WithNetworkCalls: Story = {
 	play: async ({ canvas }) => {
 		await expect(canvas.getByText("Network calls (4)")).toBeInTheDocument();
 		await expect(
-			canvas.getByText("https://api.github.com/repos/optimus-ide-collab/optimus-ide-collab"),
+			canvas.getByText("https://api.github.com/repos/coder/coder"),
 		).toBeInTheDocument();
 	},
 };

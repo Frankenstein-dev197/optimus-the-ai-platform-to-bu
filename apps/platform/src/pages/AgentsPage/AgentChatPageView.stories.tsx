@@ -372,7 +372,7 @@ export const WithSidebarPanel: Story = {
 			diffStatusData={
 				{
 					chat_id: AGENT_ID,
-					url: "https://github.com/optimus-ide-collab/optimus-ide-collab/pull/123",
+					url: "https://github.com/coder/coder/pull/123",
 					pull_request_title: "fix: resolve race condition in workspace builds",
 					pull_request_draft: false,
 					changes_requested: false,
@@ -456,7 +456,7 @@ export const RefreshInvalidatesPRDiff: Story = {
 			diffStatusData={
 				{
 					chat_id: AGENT_ID,
-					url: "https://github.com/optimus-ide-collab/optimus-ide-collab/pull/123",
+					url: "https://github.com/coder/coder/pull/123",
 					pull_request_title: "fix: resolve race condition in workspace builds",
 					pull_request_draft: false,
 					changes_requested: false,
@@ -545,7 +545,7 @@ export const MissingProviderAndModelSetup: Story = {
 				canvas.getAllByText((_content, element) => {
 					return (
 						element?.textContent ===
-						"To chat with Optimus IDE Collab Agents, set up a provider then add a model."
+						"To chat with Optimus Agents, set up a provider then add a model."
 					);
 				})[0],
 			).toBeVisible();
@@ -580,7 +580,7 @@ export const MissingModelSetup: Story = {
 				canvas.getAllByText((_content, element) => {
 					return (
 						element?.textContent ===
-						"To chat with Optimus IDE Collab Agents, set up a model."
+						"To chat with Optimus Agents, set up a model."
 					);
 				})[0],
 			).toBeVisible();
@@ -608,7 +608,7 @@ export const MissingProviderSetup: Story = {
 				canvas.getAllByText((_content, element) => {
 					return (
 						element?.textContent ===
-						"To chat with Optimus IDE Collab Agents, set up a provider."
+						"To chat with Optimus Agents, set up a provider."
 					);
 				})[0],
 			).toBeVisible();
@@ -649,7 +649,7 @@ export const WithWorkspace: Story = {
 		<StoryAgentChatPageView
 			workspace={MockWorkspace}
 			workspaceAgent={MockWorkspaceAgent}
-			sshCommand="ssh optimus-ide-collab.workspace"
+			sshCommand="ssh coder.workspace"
 		/>
 	),
 };
@@ -877,7 +877,7 @@ const otherUserActionMessages: TypesGen.ChatMessage[] = [
 			type: "tool-call",
 			tool_call_id: "other-user-plan",
 			tool_name: "propose_plan",
-			args: { path: "/home/optimus-ide-collab/PLAN.md" },
+			args: { path: "/home/coder/PLAN.md" },
 		},
 		{
 			type: "tool-result",
@@ -1594,7 +1594,7 @@ export const RestoresPersistedSidebarTab: Story = {
 			showSidebarPanel
 			workspace={MockWorkspace}
 			workspaceAgent={MockWorkspaceAgent}
-			sshCommand="ssh optimus-ide-collab.workspace"
+			sshCommand="ssh coder.workspace"
 		/>
 	),
 	play: async ({ canvasElement }) => {
@@ -1626,7 +1626,7 @@ export const PersistsSidebarTabClick: Story = {
 			showSidebarPanel
 			workspace={MockWorkspace}
 			workspaceAgent={MockWorkspaceAgent}
-			sshCommand="ssh optimus-ide-collab.workspace"
+			sshCommand="ssh coder.workspace"
 		/>
 	),
 	play: async ({ canvasElement }) => {
@@ -1700,7 +1700,7 @@ export const DoesNotPersistForArchivedChat: Story = {
 			isInputDisabled
 			workspace={MockWorkspace}
 			workspaceAgent={MockWorkspaceAgent}
-			sshCommand="ssh optimus-ide-collab.workspace"
+			sshCommand="ssh coder.workspace"
 		/>
 	),
 	play: async ({ canvasElement }) => {

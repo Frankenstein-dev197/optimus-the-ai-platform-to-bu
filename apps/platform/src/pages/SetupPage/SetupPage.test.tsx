@@ -12,7 +12,7 @@ import { server } from "#/testHelpers/server";
 import { SetupPage } from "./SetupPage";
 
 const fillForm = async ({
-	email = "someone@optimus-ide-collabidecollab.com",
+	email = "someone@optimus.com",
 	password = "password",
 }: {
 	username?: string;
@@ -141,7 +141,7 @@ describe("Setup Page", () => {
 		await waitForLoaderToBeRemoved();
 		await waitFor(() => {
 			expect(navigator.sendBeacon).toBeCalledWith(
-				"https://optimus-ide-collabidecollab.com/api/track-deployment",
+				"https://coder.com/api/track-deployment",
 				new Blob(
 					[
 						JSON.stringify({

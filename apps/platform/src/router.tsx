@@ -376,8 +376,8 @@ const AgentSettingsCompactionPage = lazy(
 const AISettingsLifecyclePage = lazy(
 	() => import("./pages/AISettingsPage/LifecyclePage/LifecyclePage"),
 );
-const OptimusIDECollabAgentsPage = lazy(
-	() => import("./pages/AISettingsPage/OptimusIDECollabAgentsPage/OptimusIDECollabAgentsPage"),
+const OptimusAgentsPage = lazy(
+	() => import("./pages/AISettingsPage/OptimusAgentsPage/OptimusAgentsPage"),
 );
 const AgentSettingsUserAgentsPage = lazy(
 	() => import("./pages/AgentsPage/AgentSettingsUserAgentsPage"),
@@ -394,7 +394,9 @@ import {
 	AgentsPageLayoutSkeleton,
 } from "./pages/AgentsPage/components/AgentsSkeletons";
 
-const OptimusIDECollabCupPage = lazy(() => import("./pages/OptimusIDECollabCupPage/OptimusIDECollabCupPage"));
+const OptimusCupPage = lazy(
+	() => import("./pages/OptimusCupPage/OptimusCupPage"),
+);
 const TasksPage = lazy(() => import("./pages/TasksPage/TasksPage"));
 const TaskPage = lazy(() => import("./pages/TaskPage/TaskPage"));
 const AIBridgeLayout = lazy(
@@ -760,7 +762,12 @@ export const router = createBrowserRouter(
 							element={<AISettingsInstructionsPage />}
 						/>
 						<Route path="lifecycle" element={<AISettingsLifecyclePage />} />
-						<Route path="optimus-ide-collab-agents" element={<OptimusIDECollabAgentsPage />} />
+						<Route path="optimus-agents" element={<OptimusAgentsPage />} />
+						{/* Legacy redirect for the previous Optimus-branded route. */}
+						<Route
+							path="coder-agents"
+							element={<Navigate to="/ai/settings/optimus-agents" replace />}
+						/>
 						<Route path="templates" element={<AISettingsTemplatesPage />} />
 						<Route path="models/add" element={<AISettingsAddModelPage />} />
 						<Route
@@ -826,7 +833,12 @@ export const router = createBrowserRouter(
 					element={<TerminalPage />}
 				/>
 				<Route path="/cli-auth" element={<CliAuthPage />} />
-				<Route path="/optimus-ide-collab-cup" element={<OptimusIDECollabCupPage />} />
+				<Route path="/optimus-cup" element={<OptimusCupPage />} />
+				{/* Legacy redirect for the previous Optimus-branded route. */}
+				<Route
+					path="/coder-cup"
+					element={<Navigate to="/optimus-cup" replace />}
+				/>
 				<Route path="/icons" element={<IconsPage />} />
 				<Route path="/tasks/:username/:taskId" element={<TaskPage />} />
 				<Route
@@ -863,19 +875,19 @@ export const router = createBrowserRouter(
 						/>
 						<Route
 							path="admin"
-							element={<Navigate to="/ai/settings/optimus-ide-collab-agents" replace />}
+							element={<Navigate to="/ai/settings/optimus-agents" replace />}
 						/>
 						<Route
 							path="agents"
-							element={<Navigate to="/ai/settings/optimus-ide-collab-agents" replace />}
+							element={<Navigate to="/ai/settings/optimus-agents" replace />}
 						/>
 						<Route
-							path="optimus-ide-collab-agents"
-							element={<Navigate to="/ai/settings/optimus-ide-collab-agents" replace />}
+							path="coder-agents"
+							element={<Navigate to="/ai/settings/optimus-agents" replace />}
 						/>
 						<Route
 							path="experiments"
-							element={<Navigate to="/ai/settings/optimus-ide-collab-agents" replace />}
+							element={<Navigate to="/ai/settings/optimus-agents" replace />}
 						/>
 						<Route path="api-keys" element={<AgentSettingsAPIKeysPage />} />
 						<Route

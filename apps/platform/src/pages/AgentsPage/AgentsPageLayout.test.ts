@@ -612,7 +612,7 @@ describe("useFileAttachments persistence", () => {
 });
 
 // Synthetic resize swaps the File without invoking the browser's
-// deoptimus-ide-collab, so these tests run in jsdom without resizeImage.ts fakes.
+// decoder, so these tests run in jsdom without resizeImage.ts fakes.
 describe("useFileAttachments processResizes", () => {
 	beforeEach(() => {
 		localStorage.clear();

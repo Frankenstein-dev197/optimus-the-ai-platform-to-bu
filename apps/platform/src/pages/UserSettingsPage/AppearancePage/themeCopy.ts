@@ -9,7 +9,7 @@ export const THEME_COPY: Record<ConcreteThemeName, ThemeCopy> = {
 	light: {
 		title: "Light default",
 		description:
-			"Optimus IDE Collab's standard light theme with full color contrast and brightness.",
+			"Optimus's standard light theme with full color contrast and brightness.",
 	},
 	"light-protan-deuter": {
 		title: "Light protanopia and deuteranopia",
@@ -24,7 +24,7 @@ export const THEME_COPY: Record<ConcreteThemeName, ThemeCopy> = {
 	dark: {
 		title: "Dark default",
 		description:
-			"Optimus IDE Collab's standard dark theme with full color contrast and brightness on a dark background.",
+			"Optimus's standard dark theme with full color contrast and brightness on a dark background.",
 	},
 	"dark-protan-deuter": {
 		title: "Dark protanopia and deuteranopia",

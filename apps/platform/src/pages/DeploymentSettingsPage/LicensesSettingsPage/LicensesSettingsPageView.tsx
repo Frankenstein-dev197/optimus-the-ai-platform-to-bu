@@ -142,7 +142,7 @@ const LicensesSettingsPageView: FC<Props> = ({
 									You&apos;re missing out on high availability, RBAC, quotas,
 									and much more. Contact{" "}
 									<Link
-										href="mailto:sales@optimus-ide-collabidecollab.com"
+										href="mailto:sales@optimus.com"
 										className="m-0 p-0 text-base"
 										showExternalIcon={false}
 									>
@@ -150,7 +150,7 @@ const LicensesSettingsPageView: FC<Props> = ({
 									</Link>{" "}
 									or{" "}
 									<Link
-										href="https://optimus-ide-collabidecollab.com/trial"
+										href="https://coder.com/trial"
 										className="m-0 p-0 text-base"
 										showExternalIcon={false}
 									>

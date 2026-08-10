@@ -951,7 +951,7 @@ describe("useGitWatcher", () => {
 			expect(result.current.repositories.size).toBe(1);
 		});
 
-		// Some JSON enoptimus-ide-collabs may preserve an empty array rather than
+		// Some JSON encoders may preserve an empty array rather than
 		// omitting the field. Either shape must be treated as a pure
 		// heartbeat on the client.
 		act(() => {

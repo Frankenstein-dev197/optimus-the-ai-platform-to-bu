@@ -73,7 +73,7 @@ export function isWorkspaceAutoCreated(
 /**
  * Detects whether an error indicates a missing or deleted workspace.
  *
- * The Optimus IDE Collab backend returns 404 when a workspace does not exist or
+ * The Optimus backend returns 404 when a workspace does not exist or
  * the user lacks access (to avoid leaking resource existence), and
  * 410 Gone when a workspace has been soft-deleted. Both cases mean
  * the workspace is unavailable for deletion.

@@ -63,13 +63,13 @@ export const useAppLink = (
 			const openAppExternallyFailedTimeout = 1500;
 			const openAppExternallyFailed = setTimeout(() => {
 				// Check if this is a JetBrains IDE app
-				// starts with "jetbrains-gateway://connect#type=optimus-ide-collab" (from https://registry.optimus-ide-collabidecollab.com/modules/optimus-ide-collab/jetbrains-gateway)
+				// starts with "jetbrains-gateway://connect#type=coder" (from https://registry.coder.com/modules/coder/jetbrains-gateway)
 				const isJetBrainsGateway = app.url?.startsWith("jetbrains-gateway:");
-				// starts with "jetbrains://gateway/optimus-ide-collab" (from https://registry.optimus-ide-collabidecollab.com/modules/optimus-ide-collab/jetbrains)
+				// starts with "jetbrains://gateway/coder" (from https://registry.coder.com/modules/coder/jetbrains)
 				const isJetBrainsToolbox = app.url?.startsWith("jetbrains:");
 
-				// Check if this is a optimus-ide-collab:// URL
-				const isOptimusIDECollabApp = app.url?.startsWith("optimus-ide-collab:");
+				// Check if this is a coder:// URL
+				const isCoderApp = app.url?.startsWith("coder:");
 
 				if (isJetBrainsGateway) {
 					toast.error(`Failed to open "${label}".`, {
@@ -79,9 +79,9 @@ export const useAppLink = (
 					toast.error(`Failed to open "${label}".`, {
 						description: "JetBrains Toolbox must be installed.",
 					});
-				} else if (isOptimusIDECollabApp) {
+				} else if (isCoderApp) {
 					toast.error(`Failed to open "${label}".`, {
-						description: "Optimus IDE Collab Desktop must be installed.",
+						description: "Optimus Desktop must be installed.",
 					});
 				} else {
 					toast.error(`Failed to open "${label}".`, {

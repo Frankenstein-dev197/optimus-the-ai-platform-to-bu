@@ -10,7 +10,7 @@ const meta: Meta<typeof PaywallPremium> = {
 		description:
 			"Workspace proxies provide low-latency connections for geo-distributed teams. You need a Premium license to use this feature.",
 		documentationLink:
-			"https://optimus-ide-collabidecollab.com/docs/admin/networking/workspace-proxies",
+			"https://coder.com/docs/admin/networking/workspace-proxies",
 		canViewPremium: false,
 	},
 };

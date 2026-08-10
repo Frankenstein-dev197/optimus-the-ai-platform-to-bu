@@ -9,13 +9,13 @@ const MockMCPServerConfig: TypesGen.MCPServerConfig = {
 	updated_at: now,
 };
 
-export const MockOptimusIDECollabMCPServer: TypesGen.MCPServerConfig = {
+export const MockCoderMCPServer: TypesGen.MCPServerConfig = {
 	...MockMCPServerConfig,
-	id: "mcp-optimus-ide-collab",
-	display_name: "Optimus IDE Collab",
-	slug: "optimus-ide-collab",
-	icon_url: "/icon/optimus-ide-collab.svg",
-	url: "https://dev.optimus-ide-collabidecollab.com/api/experimental/mcp/http",
+	id: "mcp-coder",
+	display_name: "Optimus",
+	slug: "coder",
+	icon_url: "/icon/coder.svg",
+	url: "https://dev.coder.com/api/experimental/mcp/http",
 	transport: "streamable_http",
 	auth_type: "oauth2",
 	has_oauth2_secret: true,

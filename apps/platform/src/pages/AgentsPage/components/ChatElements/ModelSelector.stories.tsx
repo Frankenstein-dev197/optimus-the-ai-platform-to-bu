@@ -182,7 +182,7 @@ export const MultipleProviderInstances: Story = {
 				provider: "anthropic",
 				providerId: "provider-anthropic-hyper",
 				providerLabel: "Hyper",
-				providerIcon: "/icon/optimus-ide-collab.svg",
+				providerIcon: "/icon/coder.svg",
 				model: "claude-opus-4-20250514",
 				displayName: "Claude Opus 4",
 				contextLimit: 200_000,

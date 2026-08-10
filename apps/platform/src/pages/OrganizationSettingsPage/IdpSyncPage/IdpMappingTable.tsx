@@ -30,7 +30,7 @@ export const IdpMappingTable: FC<IdpMappingTableProps> = ({
 							IdP {type.toLocaleLowerCase()}
 						</TableCell>
 						<TableCell className="w-3/5">
-							Optimus IDE Collab {type.toLocaleLowerCase()}
+							Optimus {type.toLocaleLowerCase()}
 						</TableCell>
 						<TableCell className="w-auto" />
 					</TableRow>

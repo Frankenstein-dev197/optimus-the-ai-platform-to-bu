@@ -1,10 +1,10 @@
 import { expect, test } from "@playwright/test";
 import { createUser, getCurrentOrgId, setupApiCalls } from "../../api";
 import { login } from "../../helpers";
-import { beforeOptimus IDE CollabTest } from "../../hooks";
+import { beforeCoderTest } from "../../hooks";
 
 test.beforeEach(async ({ page }) => {
-	beforeOptimus IDE CollabTest(page);
+	beforeCoderTest(page);
 	await login(page);
 	await setupApiCalls(page);
 });
@@ -14,7 +14,7 @@ test("remove user", async ({ page, baseURL }) => {
 	const user = await createUser(orgId);
 
 	await page.goto(`${baseURL}/users`, { waitUntil: "domcontentloaded" });
-	await expect(page).toHaveTitle("Users - Optimus IDE Collab");
+	await expect(page).toHaveTitle("Users - Coder");
 
 	const userRow = page.getByRole("row", { name: user.email });
 	await userRow.getByRole("button", { name: "Open menu" }).click();

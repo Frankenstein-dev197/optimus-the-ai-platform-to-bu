@@ -39,22 +39,6 @@ if (process.env.STATS !== undefined) {
 	);
 }
 
-// Custom plugin to resolve noVNC correctly
-const novncPlugin = {
-	name: "novnc-resolve",
-	resolveId(source: string) {
-		if (source === "@novnc/novnc/core/rfb") {
-			return {
-				id: path.resolve(__dirname, "./node_modules/@novnc/novnc/core/rfb.js"),
-				external: false,
-			};
-		}
-		return null;
-	},
-};
-
-plugins.push(novncPlugin as PluginOption);
-
 export default defineConfig({
 	plugins,
 	worker: {
@@ -89,78 +73,226 @@ export default defineConfig({
 			},
 		},
 	},
-	ssr: {
-		noExternal: [
-			"@mui/material",
+	define: {
+		"process.env": {
+			NODE_ENV: process.env.NODE_ENV,
+			STORYBOOK: process.env.STORYBOOK,
+		},
+	},
+	server: {
+		port: process.env.PORT ? Number(process.env.PORT) : 8080,
+		headers: {
+			// This header corresponds to "src/api/api.ts"'s hardcoded FE token.
+			// This is the secret side of the CSRF double cookie submit method.
+			// This should be sent on **every** response from the webserver.
+			//
+			// This is required because in production, the Golang webserver generates
+			// this "Set-Cookie" header. The Vite webserver needs to replicate this
+			// behavior. Instead of implementing CSRF though, we just use static
+			// values for simplicity.
+			"Set-Cookie":
+				"csrf_token=JXm9hOUdZctWt0ZZGAy9xiS/gxMKYOThdxjjMnMUyn4=; Path=/; HttpOnly; SameSite=Lax",
+		},
+		// The proxy targets localhost:3000 (coderd). During tests no
+		// coderd is running, and the proxy's retry sockets keep the
+		// Node process alive after vitest finishes.
+		proxy: process.env.VITEST
+			? undefined
+			: {
+					"//": {
+						changeOrigin: true,
+						target: process.env.CODER_HOST || "http://localhost:3000",
+						secure: process.env.NODE_ENV === "production",
+						rewrite: (path) => path.replace(/\/+/g, "/"),
+					},
+					"/api": {
+						ws: true,
+						changeOrigin: true,
+						target: process.env.CODER_HOST || "http://localhost:3000",
+						secure: process.env.NODE_ENV === "production",
+						configure: (proxy) => {
+							if (process.env.CODER_SESSION_TOKEN) {
+								proxy.on("proxyReq", (proxyReq) => {
+									proxyReq.setHeader(
+										"Coder-Session-Token",
+										process.env.CODER_SESSION_TOKEN!,
+									);
+								});
+							}
+							// Vite does not catch socket errors, and stops the webserver.
+							// As /logs endpoint can return HTTP 4xx status, we need to embrace
+							// Vite with a custom error handler to prevent from quitting.
+							proxy.on("proxyReqWs", (proxyReq, _req, socket) => {
+								if (process.env.NODE_ENV === "development") {
+									proxyReq.setHeader(
+										"origin",
+										process.env.CODER_HOST || "http://localhost:3000",
+									);
+									if (process.env.CODER_SESSION_TOKEN) {
+										proxyReq.setHeader(
+											"Coder-Session-Token",
+											process.env.CODER_SESSION_TOKEN!,
+										);
+									}
+								}
+
+								socket.on("error", (error) => {
+									console.error(error);
+								});
+							});
+						},
+					},
+					"/swagger": {
+						target: process.env.CODER_HOST || "http://localhost:3000",
+						secure: process.env.NODE_ENV === "production",
+					},
+					"/healthz": {
+						target: process.env.CODER_HOST || "http://localhost:3000",
+						secure: process.env.NODE_ENV === "production",
+					},
+					"/serviceWorker.js": {
+						target: process.env.CODER_HOST || "http://localhost:3000",
+						secure: process.env.NODE_ENV === "production",
+					},
+				},
+		allowedHosts: [".coder", ".dev.coder.com"],
+	},
+	// Pre-bundle deps that Vite tends to discover late (deep MUI
+	// imports, Emotion). Without this, Vite re-optimizes mid-session
+	// which returns 504 "Outdated Optimize Dep" for every previously
+	// served chunk, cascading into dynamic import failures.
+	optimizeDeps: {
+		include: [
+			"@emotion/cache",
+			"@emotion/css",
 			"@emotion/react",
+			"@emotion/react/jsx-runtime",
 			"@emotion/styled",
-			"react",
-			"react-dom",
-			"react-router-dom",
-			"react-hook-form",
-			"@hookform/resolvers",
-			"zod",
-			"@tanstack/react-query",
-			"@tanstack/react-virtual",
-			"date-fns",
-			"@floating-ui/react",
-			"sonner",
-			"axios",
-			"clsx",
-			"i18next",
-			"react-i18next",
-			"i18next-browser-languagedetector",
-			"@sentry/react",
-			"@sentry/browser",
-			"@optimus-ide-collab/pixel-storybook",
-			"@optimus-ide-collab/pixel-ui",
-			"@optimus-ide-collab/pixel-code-editor",
-			"@optimus-ide-collab/pixel-terminal",
+			"@mui/material/Autocomplete",
+			"@mui/material/Card",
+			"@mui/material/CardActionArea",
+			"@mui/material/CardContent",
+			"@mui/material/Checkbox",
+			"@mui/material/Collapse",
+			"@mui/material/CssBaseline",
+			"@mui/material/Dialog",
+			"@mui/material/DialogActions",
+			"@mui/material/DialogContent",
+			"@mui/material/DialogContentText",
+			"@mui/material/DialogTitle",
+			"@mui/material/Divider",
+			"@mui/material/Drawer",
+			"@mui/material/FormControl",
+			"@mui/material/FormControlLabel",
+			"@mui/material/FormGroup",
+			"@mui/material/FormHelperText",
+			"@mui/material/FormLabel",
+			"@mui/material/InputAdornment",
+			"@mui/material/InputBase",
+			"@mui/material/Link",
+			"@mui/material/List",
+			"@mui/material/ListItem",
+			"@mui/material/ListItemText",
+			"@mui/material/Menu",
+			"@mui/material/MenuItem",
+			"@mui/material/MenuList",
+			"@mui/material/Radio",
+			"@mui/material/RadioGroup",
+			"@mui/material/Select",
+			"@mui/material/Skeleton",
+			"@mui/material/Snackbar",
+			"@mui/material/Stack",
+			"@mui/material/TableRow",
+			"@mui/material/TextField",
+			"@mui/material/ToggleButton",
+			"@mui/material/ToggleButtonGroup",
+			"@mui/material/styles",
+			"@mui/system/createTheme",
+			"@mui/system/useTheme",
+			// Discovered at runtime without this entry, triggering
+			// a mid-run dep re-optimization that breaks imports.
+			"@tanstack/react-query-devtools",
 		],
 	},
-	define: {
-		// Suppress React version warnings from @optimus-ide-collab packages
-		__UMD_DEV__: JSON.stringify(false),
+	resolve: {
+		alias: {
+			// In profiling builds, swap the usual reconciler for the profiling
+			// variant so that <Profiler> receives actual timing data.
+			...(isProfilingBuild
+				? { "react-dom/client": "react-dom/profiling" }
+				: {}),
+		},
 	},
 	test: {
-		include: ["src/**/*.test.{ts,tsx}"],
-		globals: true,
-		environment: "happy-dom",
-		setupFiles: ["src/testHelpers/setup.ts"],
-		coverage: {
-			include: ["src/**/*.{ts,tsx}"],
-			exclude: ["src/**/*.d.ts", "src/testHelpers/**"],
-		},
-	},
-	storybook: {
-		framework: {
-			name: "@storybook/react-vite",
-		},
-		addons: [
-			"@storybook/addon-essentials",
-			"@storybook/addon-interactions",
-			"@storybook/addon-themes",
-		],
-		stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
-		docs: {
-			autodocs: "tag",
-		},
-		viteFinal: async (config) => ({
-			...config,
-			plugins: [
-				...config.plugins,
-				storybookTest(),
-				playwright({
-					projects: [
-						{
-							name: "chromium",
-							use: {
-								channel: "chromium",
-							},
-						},
+		silent: "passed-only",
+		// Rolldown's native threads do not terminate on close,
+		// so vitest always hits this timeout. Keep it short.
+		teardownTimeout: 1000,
+		projects: [
+			{
+				extends: true,
+				test: {
+					name: "unit",
+					include: [
+						"src/**/*.test.?(m)ts?(x)",
+						"scripts/**/*.test.?(m)[jt]s?(x)",
 					],
-				}),
-			],
-		}),
+					globals: true,
+					environment: "jsdom",
+					setupFiles: [
+						"@testing-library/jest-dom/vitest",
+						"./test/vitestSetup.ts",
+					],
+				},
+			},
+			// Storybook story tests via Playwright browser mode.
+			// Discovery handled by the storybookTest plugin via
+			// .storybook/main.ts `stories` config.
+			{
+				extends: true,
+				plugins: [
+					storybookTest({
+						configDir: path.join(__dirname, ".storybook"),
+					}),
+					{
+						name: "storybook-test-setup",
+						// Return 502 for API routes. The proxy is disabled
+						// during tests (see above), so without this vite
+						// serves its HTML fallback for unmatched routes.
+						configureServer(server) {
+							server.middlewares.use((req, res, next) => {
+								const url = req.url ?? "";
+								if (
+									url.startsWith("/api/") ||
+									url.startsWith("/swagger/") ||
+									url.startsWith("/healthz")
+								) {
+									res.statusCode = 502;
+									res.end();
+									return;
+								}
+								next();
+							});
+						},
+					},
+				],
+				test: {
+					name: "storybook",
+					browser: {
+						enabled: true,
+						headless: true,
+						provider: playwright(),
+						instances: [{ browser: "chromium" }],
+					},
+					setupFiles: [".storybook/vitest.setup.ts"],
+					// Stop early on systemic failures.
+					bail: 5,
+					// Cap concurrent browser iframes. The default
+					// (os.availableParallelism, 96 on dev workspaces)
+					// overwhelms vite's transform pipeline on cold cache.
+					maxWorkers: 4,
+				},
+			},
+		],
 	},
 });

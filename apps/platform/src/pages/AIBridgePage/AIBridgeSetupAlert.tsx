@@ -12,7 +12,7 @@ export const AIBridgeSetupAlert: FC = () => {
 			<AlertDescription>
 				You have access to AI Governance, but it still needs to be set up. Check
 				out the{" "}
-				<Link href={docs("/ai-optimus-ide-collab/ai-gateway")} target="_blank">
+				<Link href={docs("/ai-coder/ai-gateway")} target="_blank">
 					AI Gateway
 				</Link>{" "}
 				documentation to get started.

@@ -83,7 +83,7 @@ export const NavigateToPlanStage: Story = {
 		});
 		await user.click(detailsButton);
 		await canvas.findByText(
-			"module.dotfiles.data.optimus-ide-collab_parameter.dotfiles_uri[0]",
+			"module.dotfiles.data.coder_parameter.dotfiles_uri[0]",
 		);
 	},
 };
@@ -101,7 +101,7 @@ export const NavigateToStartStage: Story = {
 	},
 };
 
-// Test case for https://github.com/optimus-ide-collab/optimus-ide-collab/issues/15413
+// Test case for https://github.com/coder/coder/issues/15413
 export const DuplicatedScriptTiming: Story = {
 	args: {
 		agentScriptTimings: [
@@ -116,7 +116,7 @@ export const DuplicatedScriptTiming: Story = {
 };
 
 // Loading when agent script timings are empty
-// Test case for https://github.com/optimus-ide-collab/optimus-ide-collab/issues/15273
+// Test case for https://github.com/coder/coder/issues/15273
 export const LoadingWhenAgentScriptTimingsAreEmpty: Story = {
 	args: {
 		agentScriptTimings: undefined,
@@ -180,8 +180,8 @@ export const MissedAction: Story = {
 				action: "create",
 				ended_at: "2025-03-12T18:08:07.402358Z",
 				job_id: "a7c4a05d-1c36-4264-8275-8107c93c5fc8",
-				resource: "optimus-ide-collab_agent.Interface",
-				source: "optimus-ide-collab",
+				resource: "coder_agent.Interface",
+				source: "coder",
 				stage: "apply",
 				started_at: "2025-03-12T18:08:07.194957Z",
 			},
@@ -293,36 +293,36 @@ export const MultipleAgents: Story = {
 				started_at: "2026-02-02T08:34:16.067798Z",
 				ended_at: "2026-02-02T08:34:16.626888Z",
 				stage: "init",
-				source: "optimus-ide-collab",
+				source: "coder",
 				action: "terraform",
-				resource: "optimus-ide-collab_stage_init",
+				resource: "coder_stage_init",
 			},
 			{
 				job_id: "fb0a0941-5052-4f8b-8046-64da139220cd",
 				started_at: "2026-02-02T08:34:16.649547Z",
 				ended_at: "2026-02-02T08:34:18.65871Z",
 				stage: "plan",
-				source: "optimus-ide-collab",
+				source: "coder",
 				action: "terraform",
-				resource: "optimus-ide-collab_stage_plan",
+				resource: "coder_stage_plan",
 			},
 			{
 				job_id: "fb0a0941-5052-4f8b-8046-64da139220cd",
 				started_at: "2026-02-02T08:34:18.722631Z",
 				ended_at: "2026-02-02T08:34:21.332458Z",
 				stage: "apply",
-				source: "optimus-ide-collab",
+				source: "coder",
 				action: "terraform",
-				resource: "optimus-ide-collab_stage_apply",
+				resource: "coder_stage_apply",
 			},
 			{
 				job_id: "fb0a0941-5052-4f8b-8046-64da139220cd",
 				started_at: "2026-02-02T08:34:21.698283Z",
 				ended_at: "2026-02-02T08:34:22.014735Z",
 				stage: "graph",
-				source: "optimus-ide-collab",
+				source: "coder",
 				action: "terraform",
-				resource: "optimus-ide-collab_stage_graph",
+				resource: "coder_stage_graph",
 			},
 		],
 		agentConnectionTimings: [
@@ -338,7 +338,7 @@ export const MultipleAgents: Story = {
 				ended_at: "2026-02-02T08:34:51.36274Z",
 				stage: "connect",
 				workspace_agent_id: "afbdd368-b7b8-453e-af5a-02b13bc45553",
-				workspace_agent_name: "optimus-ide-collab",
+				workspace_agent_name: "coder",
 			},
 		],
 		agentScriptTimings: [
@@ -381,7 +381,7 @@ export const MultipleAgents: Story = {
 				status: "ok",
 				display_name: "Installing Dependencies",
 				workspace_agent_id: "afbdd368-b7b8-453e-af5a-02b13bc45553",
-				workspace_agent_name: "optimus-ide-collab",
+				workspace_agent_name: "coder",
 			},
 			{
 				started_at: "2026-02-02T08:34:53.3Z",
@@ -391,7 +391,7 @@ export const MultipleAgents: Story = {
 				status: "ok",
 				display_name: "Personalize",
 				workspace_agent_id: "afbdd368-b7b8-453e-af5a-02b13bc45553",
-				workspace_agent_name: "optimus-ide-collab",
+				workspace_agent_name: "coder",
 			},
 		],
 	},
@@ -399,7 +399,7 @@ export const MultipleAgents: Story = {
 		const canvas = within(canvasElement);
 		// Verify both agents are shown
 		await canvas.findByText("agent (dev)");
-		await canvas.findByText("agent (optimus-ide-collab)");
+		await canvas.findByText("agent (coder)");
 	},
 };
 

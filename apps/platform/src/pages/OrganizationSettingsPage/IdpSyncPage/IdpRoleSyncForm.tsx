@@ -86,7 +86,7 @@ export const IdpRoleSyncForm: FC<IdpRoleSyncFormProps> = ({
 		enableReinitialize: Boolean(roleSyncSettings),
 	});
 	const [idpRoleName, setIdpRoleName] = useState("");
-	const [optimusIDECollabRoles, setOptimusIDECollabRoles] = useState<Option[]>([]);
+	const [coderRoles, setCoderRoles] = useState<Option[]>([]);
 	const id = useId();
 	const [comboInputValue, setComboInputValue] = useState("");
 	const [open, setOpen] = useState(false);
@@ -232,16 +232,16 @@ export const IdpRoleSyncForm: FC<IdpRoleSyncFormProps> = ({
 						)}
 					</div>
 					<div className="grid items-center gap-1 flex-1">
-						<Label className="text-sm" htmlFor={`${id}-optimus-ide-collab-role`}>
-							Optimus IDE Collab role
+						<Label className="text-sm" htmlFor={`${id}-coder-role`}>
+							Optimus role
 						</Label>
 						<MultiSelectCombobox
 							inputProps={{
-								id: `${id}-optimus-ide-collab-role`,
+								id: `${id}-coder-role`,
 							}}
 							className="min-w-60 max-w-3xl"
-							value={optimusIDECollabRoles}
-							onChange={setOptimusIDECollabRoles}
+							value={coderRoles}
+							onChange={setCoderRoles}
 							options={roles.map((role) => ({
 								label: role.display_name || role.name,
 								value: role.name,
@@ -260,19 +260,19 @@ export const IdpRoleSyncForm: FC<IdpRoleSyncFormProps> = ({
 						<Button
 							type="submit"
 							className="min-w-fit"
-							disabled={!idpRoleName || optimusIDECollabRoles.length === 0}
+							disabled={!idpRoleName || coderRoles.length === 0}
 							onClick={() => {
 								const newSyncSettings = {
 									...form.values,
 									mapping: {
 										...form.values.mapping,
-										[idpRoleName]: optimusIDECollabRoles.map((role) => role.value),
+										[idpRoleName]: coderRoles.map((role) => role.value),
 									},
 								};
 								void form.setFieldValue("mapping", newSyncSettings.mapping);
 								form.handleSubmit();
 								setIdpRoleName("");
-								setOptimusIDECollabRoles([]);
+								setCoderRoles([]);
 							}}
 						>
 							<Spinner loading={form.isSubmitting}>
@@ -298,7 +298,7 @@ export const IdpRoleSyncForm: FC<IdpRoleSyncFormProps> = ({
 									key={idpRole}
 									idpRole={idpRole}
 									exists={claimFieldValues?.includes(idpRole)}
-									optimusIDECollabRoles={roles}
+									coderRoles={roles}
 									onDelete={handleDelete}
 								/>
 							))}
@@ -311,14 +311,14 @@ export const IdpRoleSyncForm: FC<IdpRoleSyncFormProps> = ({
 interface RoleRowProps {
 	idpRole: string;
 	exists: boolean | undefined;
-	optimusIDECollabRoles: readonly string[];
+	coderRoles: readonly string[];
 	onDelete: (idpOrg: string) => void;
 }
 
 const RoleRow: FC<RoleRowProps> = ({
 	idpRole,
 	exists = true,
-	optimusIDECollabRoles,
+	coderRoles,
 	onDelete,
 }) => {
 	return (
@@ -347,7 +347,7 @@ const RoleRow: FC<RoleRowProps> = ({
 			</TableCell>
 
 			<TableCell>
-				<IdpPillList roles={optimusIDECollabRoles} />
+				<IdpPillList roles={coderRoles} />
 			</TableCell>
 
 			<TableCell>

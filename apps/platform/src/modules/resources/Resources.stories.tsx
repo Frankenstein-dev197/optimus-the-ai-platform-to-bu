@@ -67,7 +67,7 @@ export const Markdown: Story = {
 					{ key: "text", value: "hello", sensitive: false },
 					{ key: "link", value: "[hello](#)", sensitive: false },
 					{ key: "b/i", value: "_hello_, **friend**!", sensitive: false },
-					{ key: "optimus-ide-collab", value: "`beep boop`", sensitive: false },
+					{ key: "coder", value: "`beep boop`", sensitive: false },
 				],
 			},
 

@@ -59,7 +59,7 @@ async function fillForm(
 	user: ReturnType<typeof userEvent.setup>,
 ) {
 	await user.type(await canvas.findByLabelText("Username"), "someuser");
-	await user.type(canvas.getByLabelText(/email/i), "someone@optimus-ide-collabidecollab.com");
+	await user.type(canvas.getByLabelText(/email/i), "someone@optimus.com");
 
 	const body = within(document.body);
 	await user.click(canvas.getByTestId("login-type-input"));

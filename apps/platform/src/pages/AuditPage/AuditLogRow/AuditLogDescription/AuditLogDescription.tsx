@@ -31,9 +31,9 @@ export const AuditLogDescription: FC<AuditLogDescriptionProps> = ({
 	// This occurs when SCIM creates a user, or dormancy changes a users status.
 	if (
 		auditLog.resource_type === "user" &&
-		auditLog.additional_fields?.automatic_actor === "optimus-ide-collab"
+		auditLog.additional_fields?.automatic_actor === "coder"
 	) {
-		user = "Optimus IDE Collab automatically";
+		user = "Optimus automatically";
 	}
 
 	const truncatedDescription = auditLog.description

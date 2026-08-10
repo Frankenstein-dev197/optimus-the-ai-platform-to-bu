@@ -54,9 +54,9 @@ index aaa1111..bbb2222 100644
 const makeRepo = (
 	overrides: Partial<WorkspaceAgentRepoChanges> = {},
 ): WorkspaceAgentRepoChanges => ({
-	repo_root: "/home/optimus-ide-collab/optimus-ide-collab",
+	repo_root: "/home/coder/coder",
 	branch: "feat/add-logging",
-	remote_origin: "https://github.com/optimus-ide-collab/optimus-ide-collab.git",
+	remote_origin: "https://github.com/coder/coder.git",
 	unified_diff: sampleDiff,
 	...overrides,
 });
@@ -80,7 +80,7 @@ const makePrStatus = (
 	overrides: Partial<ChatDiffStatus> = {},
 ): ChatDiffStatus => ({
 	...defaultDiffStatus,
-	url: "https://github.com/optimus-ide-collab/optimus-ide-collab/pull/23020",
+	url: "https://github.com/coder/coder/pull/23020",
 	pull_request_title: "feat(agents): add MCP server configuration to agents",
 	pull_request_state: "open",
 	pull_request_draft: false,
@@ -130,7 +130,7 @@ export const PullRequestAndWorkingChanges: Story = {
 	args: {
 		prTab: { prNumber: 23020, chatId: "test-chat" },
 		remoteDiffStats: makePrStatus(),
-		repositories: new Map([["/home/optimus-ide-collab/optimus-ide-collab", makeRepo()]]),
+		repositories: new Map([["/home/coder/coder", makeRepo()]]),
 	},
 	beforeEach: () => {
 		spyOn(API.experimental, "getChatDiffContents").mockResolvedValue({
@@ -154,7 +154,7 @@ export const DraftPullRequest: Story = {
 	args: {
 		prTab: { prNumber: 22950, chatId: "test-chat" },
 		remoteDiffStats: makePrStatus({
-			url: "https://github.com/optimus-ide-collab/optimus-ide-collab/pull/22950",
+			url: "https://github.com/coder/coder/pull/22950",
 			pull_request_title: "fix: resolve race condition in workspace builds",
 			pull_request_draft: true,
 			head_branch: "fix/race-condition",
@@ -163,7 +163,7 @@ export const DraftPullRequest: Story = {
 			changed_files: 5,
 		}),
 		repositories: new Map([
-			["/home/optimus-ide-collab/optimus-ide-collab", makeRepo({ branch: "fix/race-condition" })],
+			["/home/coder/coder", makeRepo({ branch: "fix/race-condition" })],
 		]),
 	},
 	beforeEach: () => {
@@ -179,7 +179,7 @@ export const MergedPullRequest: Story = {
 	args: {
 		prTab: { prNumber: 23000, chatId: "test-chat" },
 		remoteDiffStats: makePrStatus({
-			url: "https://github.com/optimus-ide-collab/optimus-ide-collab/pull/23000",
+			url: "https://github.com/coder/coder/pull/23000",
 			pull_request_title: "chore: update dependencies to latest",
 			pull_request_state: "merged",
 			head_branch: "chore/update-deps",
@@ -201,7 +201,7 @@ export const ClosedPullRequest: Story = {
 	args: {
 		prTab: { prNumber: 22800, chatId: "test-chat" },
 		remoteDiffStats: makePrStatus({
-			url: "https://github.com/optimus-ide-collab/optimus-ide-collab/pull/22800",
+			url: "https://github.com/coder/coder/pull/22800",
 			pull_request_title: "feat: experimental websocket transport",
 			pull_request_state: "closed",
 			head_branch: "feat/websocket-transport",
@@ -227,14 +227,14 @@ export const BranchOnly: Story = {
 			deletions: 7,
 			changed_files: 3,
 		},
-		repositories: new Map([["/home/optimus-ide-collab/optimus-ide-collab", makeRepo()]]),
+		repositories: new Map([["/home/coder/coder", makeRepo()]]),
 	},
 };
 
 /** Only local working changes, no remote/PR. */
 export const WorkingChangesOnly: Story = {
 	args: {
-		repositories: new Map([["/home/optimus-ide-collab/optimus-ide-collab", makeRepo()]]),
+		repositories: new Map([["/home/coder/coder", makeRepo()]]),
 	},
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
@@ -254,13 +254,13 @@ export const MultipleRepos: Story = {
 			changed_files: 8,
 		}),
 		repositories: new Map([
-			["/home/optimus-ide-collab/optimus-ide-collab", makeRepo()],
+			["/home/coder/coder", makeRepo()],
 			[
-				"/home/optimus-ide-collab/other-project",
+				"/home/coder/other-project",
 				makeRepo({
-					repo_root: "/home/optimus-ide-collab/other-project",
+					repo_root: "/home/coder/other-project",
 					branch: "main",
-					remote_origin: "https://github.com/optimus-ide-collab/other-project.git",
+					remote_origin: "https://github.com/coder/other-project.git",
 					unified_diff: secondRepoDiff,
 				}),
 			],
@@ -354,11 +354,11 @@ export const LargeDiff: Story = {
 	args: {
 		repositories: new Map([
 			[
-				"/home/optimus-ide-collab/large-project",
+				"/home/coder/large-project",
 				makeRepo({
-					repo_root: "/home/optimus-ide-collab/large-project",
+					repo_root: "/home/coder/large-project",
 					branch: "feat/large-refactor",
-					remote_origin: "https://github.com/optimus-ide-collab/large-project.git",
+					remote_origin: "https://github.com/coder/large-project.git",
 					unified_diff: generateLargeDiff(40, 60),
 				}),
 			],
@@ -375,9 +375,9 @@ export const LargeDiff: Story = {
 export const EverDirtyRepoGoneClean: Story = {
 	args: {
 		repositories: new Map([
-			["/home/optimus-ide-collab/optimus-ide-collab", makeRepo({ unified_diff: "" })],
+			["/home/coder/coder", makeRepo({ unified_diff: "" })],
 		]),
-		everDirty: new Set(["/home/optimus-ide-collab/optimus-ide-collab"]),
+		everDirty: new Set(["/home/coder/coder"]),
 	},
 	play: async ({ canvasElement }) => {
 		// The repo tab is still present (identified by the 'Working'
@@ -402,7 +402,7 @@ export const EverDirtyRepoGoneClean: Story = {
 export const CleanRepoFromStart: Story = {
 	args: {
 		repositories: new Map([
-			["/home/optimus-ide-collab/optimus-ide-collab", makeRepo({ unified_diff: "" })],
+			["/home/coder/coder", makeRepo({ unified_diff: "" })],
 		]),
 		everDirty: new Set(),
 	},

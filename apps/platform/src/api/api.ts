@@ -1,5 +1,5 @@
 /**
- * @file Optimus IDE Collab is starting to import the Optimus IDE Collab API file into more and more
+ * @file Coder is starting to import the Coder API file into more and more
  * external projects, as a "pseudo-SDK". We are not at a stage where we are
  * ready to commit to maintaining a public SDK, but we need equivalent
  * functionality in other places.
@@ -7,10 +7,10 @@
  * Message somebody from Team Blueberry if you need more context, but so far,
  * these projects are importing the file:
  *
- * - The Optimus IDE Collab VS Code extension
- *   @see {@link https://github.com/optimus-ide-collab/vscode-optimus-ide-collab}
- * - The Optimus IDE Collab Backstage plugin
- *   @see {@link https://github.com/optimus-ide-collab/backstage-plugins}
+ * - The Coder VS Code extension
+ *   @see {@link https://github.com/coder/vscode-coder}
+ * - The Coder Backstage plugin
+ *   @see {@link https://github.com/coder/backstage-plugins}
  *
  * It is important that this file not do any aliased imports, or else the other
  * consumers could break (particularly for platforms that limit how much you can
@@ -39,11 +39,11 @@ import type {
 import * as TypesGen from "./typesGenerated";
 
 /**
- * Originally from optimus-ide-collabsdk/client.go.
+ * Originally from codersdk/client.go.
  * The below declaration is required to stop Knip from complaining.
  * @public
  */
-export const SessionTokenCookie = "optimus-ide-collab_session_token";
+export const SessionTokenCookie = "coder_session_token";
 
 /**
  * @param agentId
@@ -1651,7 +1651,7 @@ class ApiMethods {
 	};
 
 	// API definition:
-	// https://github.com/optimus-ide-collab/optimus-ide-collab/blob/db665e7261f3c24a272ccec48233a3e276878239/optimus-ide-collabd/users.go#L33-L53
+	// https://github.com/coder/coder/blob/db665e7261f3c24a272ccec48233a3e276878239/coderd/users.go#L33-L53
 	hasFirstUser = async (): Promise<boolean> => {
 		try {
 			// If it is success, it is true
@@ -3969,7 +3969,7 @@ function getConfiguredAxiosInstance(): AxiosInstance {
 }
 
 /**
- * Utility function to help create a WebSocket connection with Optimus IDE Collab's API.
+ * Utility function to help create a WebSocket connection with Coder's API.
  */
 function createWebSocket(
 	path: string,
@@ -4016,11 +4016,11 @@ export class Api extends ApiMethods implements ClientApi {
 	};
 
 	setSessionToken = (token: string): void => {
-		this.axios.defaults.headers.common["Optimus IDE Collab-Session-Token"] = token;
+		this.axios.defaults.headers.common["Coder-Session-Token"] = token;
 	};
 
 	getSessionToken = (): string | undefined => {
-		return this.axios.defaults.headers.common["Optimus IDE Collab-Session-Token"] as
+		return this.axios.defaults.headers.common["Coder-Session-Token"] as
 			| string
 			| undefined;
 	};

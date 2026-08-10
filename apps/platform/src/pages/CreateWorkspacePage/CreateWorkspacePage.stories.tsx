@@ -108,7 +108,7 @@ export const MultipleExternalAuth: Story = {
  * that button. The other provider's button must remain enabled so the user
  * can authenticate with both without a page refresh.
  *
- * This is the regression test for optimus-ide-collab/optimus-ide-collab#22420.
+ * This is the regression test for coder/coder#22420.
  */
 export const ClickingOneAuthDoesNotDisableOthers: Story = {
 	// TODO: This story fails when pixel runs its play function. Fix it and remove the exclude.

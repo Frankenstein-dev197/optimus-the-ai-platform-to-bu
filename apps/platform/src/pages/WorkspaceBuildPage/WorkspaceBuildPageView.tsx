@@ -194,7 +194,7 @@ export const WorkspaceBuildPageView: FC<WorkspaceBuildPageViewProps> = ({
 								<TabsTrigger value="build">Build</TabsTrigger>
 								{agents.map((agent) => (
 									<TabsTrigger value={agent.id} key={agent.id}>
-										optimus-ide-collab_agent.{agent.name}
+										coder_agent.{agent.name}
 									</TabsTrigger>
 								))}
 							</TabsList>
@@ -222,7 +222,7 @@ export const WorkspaceBuildPageView: FC<WorkspaceBuildPageViewProps> = ({
 												The workspace may have failed to delete due to a
 												Terraform state mismatch. A template admin may run{" "}
 												<code className="font-semibold w-fit inline-block">
-													{`optimus-ide-collab rm ${`${build.workspace_owner_name}/${build.workspace_name}`} --orphan`}
+													{`coder rm ${`${build.workspace_owner_name}/${build.workspace_name}`} --orphan`}
 												</code>{" "}
 												to delete the workspace skipping resource destruction.
 											</div>
@@ -274,7 +274,7 @@ const ScrollArea: FC<HTMLProps<HTMLDivElement>> = ({ className, ...props }) => {
 	 * require significant refactoring of the layout components where we
 	 * currently use height and min-height set to 100%.
 	 *
-	 * @see {@link https://github.com/optimus-ide-collab/optimus-ide-collab/issues/9687}
+	 * @see {@link https://github.com/coder/coder/issues/9687}
 	 * @see {@link https://stackoverflow.com/questions/43381836/height100-works-in-chrome-but-not-in-safari}
 	 */
 	const contentRef = useRef<HTMLDivElement>(null);

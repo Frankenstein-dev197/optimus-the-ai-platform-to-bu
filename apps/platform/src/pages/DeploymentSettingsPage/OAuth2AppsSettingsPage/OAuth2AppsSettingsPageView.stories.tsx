@@ -123,7 +123,7 @@ export const DescriptionCoversSettingsWhenPermitted: Story = {
 
 		await expect(
 			canvas.getByText(
-				"Register applications to use Optimus IDE Collab as an OAuth2 provider, and configure how this deployment behaves as one.",
+				"Register applications to use Optimus as an OAuth2 provider, and configure how this deployment behaves as one.",
 			),
 		).toBeVisible();
 	},
@@ -144,7 +144,7 @@ export const SettingsTabHiddenWithoutPermission: Story = {
 		).not.toBeInTheDocument();
 		await expect(
 			canvas.getByText(
-				"Register applications to use Optimus IDE Collab as an OAuth2 provider.",
+				"Register applications to use Optimus as an OAuth2 provider.",
 			),
 		).toBeVisible();
 	},

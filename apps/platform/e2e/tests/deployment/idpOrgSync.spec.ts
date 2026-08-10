@@ -6,10 +6,10 @@ import {
 	setupApiCalls,
 } from "../../api";
 import { login, randomName, requiresLicense } from "../../helpers";
-import { beforeOptimus IDE CollabTest } from "../../hooks";
+import { beforeCoderTest } from "../../hooks";
 
 test.beforeEach(async ({ page }) => {
-	beforeOptimus IDE CollabTest(page);
+	beforeCoderTest(page);
 	await login(page);
 	await setupApiCalls(page);
 });
@@ -56,7 +56,7 @@ test.describe("IdP organization sync", () => {
 		).toBeVisible();
 	});
 
-	test("delete a IdP org to optimus-ide-collab org mapping row", async ({ page }) => {
+	test("delete a IdP org to coder org mapping row", async ({ page }) => {
 		await createOrganizationSyncSettings();
 		await page.goto("/deployment/idp-org-sync", {
 			waitUntil: "domcontentloaded",
@@ -155,7 +155,7 @@ test.describe("IdP organization sync", () => {
 		const idpOrgName = randomName();
 		await idpOrgInput.fill(idpOrgName);
 
-		// Select Optimus IDE Collab organization from combobox
+		// Select Coder organization from combobox
 		const orgSelector = page.getByPlaceholder("Select organization");
 		await expect(orgSelector).toBeAttached();
 		await expect(orgSelector).toBeVisible();

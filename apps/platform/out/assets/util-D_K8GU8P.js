@@ -1,1 +1,0 @@
-var e={gcTime:1/0,staleTime:1/0,refetchOnMount:!1,refetchOnReconnect:!1,refetchOnWindowFocus:!1};function t(t){let{metadata:n,...r}=t;return{...r,initialData:n.available?n.value:void 0,...n.available?e:{}}}export{e as n,t};

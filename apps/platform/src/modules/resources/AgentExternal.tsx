@@ -36,8 +36,8 @@ export const AgentExternal: FC<AgentExternalProps> = ({ agent, workspace }) => {
 			<CodeExample
 				code={credentials?.command ?? ""}
 				secret={false}
-				redactPattern={/OPTIMUS_IDE_COLLAB_AGENT_TOKEN="([^"]+)"/g}
-				redactReplacement={`OPTIMUS_IDE_COLLAB_AGENT_TOKEN="********"`}
+				redactPattern={/CODER_AGENT_TOKEN="([^"]+)"/g}
+				redactReplacement={`CODER_AGENT_TOKEN="********"`}
 				showRevealButton
 			/>
 		</section>

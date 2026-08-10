@@ -107,7 +107,7 @@ export const WithToolName: Story = {
 	args: {
 		input: JSON.stringify({
 			pattern: "UTC_OFFSET|timeZoneName|DateTimeFormat",
-			path: "/home/optimus-ide-collab/optimus-ide-collab/site/src/utils/time.ts",
+			path: "/home/coder/coder/site/src/utils/time.ts",
 			output_mode: "content",
 		}),
 		tool: "Grep",

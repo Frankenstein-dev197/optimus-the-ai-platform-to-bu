@@ -1,1 +1,0 @@
-import{v as e}from"./chunk-4ZMWKKQ3-DaN8GZSr.js";var t=t=>{let[n,r]=e(),{key:i,searchParams:a=n,defaultValue:o=``,replace:s=!0}=t;return{value:a.get(i)??o,setValue:e=>{a.set(i,e),r(a,{replace:s})},deleteValue:()=>{a.delete(i),r(a,{replace:s})}}};export{t};

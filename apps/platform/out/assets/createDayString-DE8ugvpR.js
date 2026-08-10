@@ -1,1 +1,0 @@
-import{o as e}from"./rolldown-runtime-DAXXjFlN.js";import{t}from"./dayjs.min-CLJsbTjh.js";import{t as n}from"./relativeTime-DPHPTKEN.js";var r=e(t()),i=e(n());r.default.extend(i.default);function a(e){return(0,r.default)().to((0,r.default)(e))}export{a as t};

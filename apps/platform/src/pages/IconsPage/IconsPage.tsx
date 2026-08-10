@@ -88,14 +88,14 @@ const IconsPage: FC = () => {
 					actions={
 						<Tooltip>
 							<TooltipTrigger asChild>
-								<Link href="https://github.com/optimus-ide-collab/optimus-ide-collab/tree/main/site/static/icon">
+								<Link href="https://github.com/coder/coder/tree/main/site/static/icon">
 									Suggest an icon
 								</Link>
 							</TooltipTrigger>
 							<TooltipContent side="bottom" align="end" className="max-w-xs">
 								You can suggest a new icon by submitting a Pull Request to our
 								public GitHub repository. Just keep in mind that it should be
-								relevant to many Optimus IDE Collab users, and redistributable under a
+								relevant to many Optimus users, and redistributable under a
 								permissive license.
 							</TooltipContent>
 						</Tooltip>
@@ -103,7 +103,7 @@ const IconsPage: FC = () => {
 				>
 					<PageHeaderTitle>Icons</PageHeaderTitle>
 					<PageHeaderSubtitle>
-						All of the icons included with Optimus IDE Collab
+						All of the icons included with Optimus
 					</PageHeaderSubtitle>
 				</PageHeader>
 				<div className="relative max-w-xs">

@@ -11,7 +11,7 @@ import {
 	updateWorkspaceParameters,
 	verifyParameters,
 } from "../../helpers";
-import { beforeOptimus IDE CollabTest } from "../../hooks";
+import { beforeCoderTest } from "../../hooks";
 import {
 	fifthParameter,
 	firstParameter,
@@ -22,7 +22,7 @@ import {
 import type { RichParameter } from "../../provisionerGenerated";
 
 test.beforeEach(async ({ page }) => {
-	beforeOptimus IDE CollabTest(page);
+	beforeCoderTest(page);
 });
 
 // TODO: this needs to be fixed for the new dynamic parameters flow which
@@ -54,7 +54,7 @@ test.skip("update workspace, new optional, immutable parameter added", async ({
 	const updatedRichParameters = [...richParameters, fifthParameter];
 	await updateTemplate(
 		page,
-		"optimus-ide-collab",
+		"coder",
 		template,
 		echoResponsesWithParameters(updatedRichParameters),
 	);
@@ -97,7 +97,7 @@ test("update workspace, new required, mutable parameter added", async ({
 	const updatedRichParameters = [...richParameters, sixthParameter];
 	await updateTemplate(
 		page,
-		"optimus-ide-collab",
+		"coder",
 		template,
 		echoResponsesWithParameters(updatedRichParameters),
 	);

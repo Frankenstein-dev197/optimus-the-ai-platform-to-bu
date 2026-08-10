@@ -342,7 +342,7 @@ const EVERY_TOOL_ASSISTANT_TURN = {
 			type: "tool-call",
 			tool_call_id: "every-execute",
 			tool_name: "execute",
-			args: { command: "go test ./optimus-ide-collabd/httpmw/..." },
+			args: { command: "go test ./coderd/httpmw/..." },
 		},
 		{
 			type: "tool-result",
@@ -350,8 +350,8 @@ const EVERY_TOOL_ASSISTANT_TURN = {
 			tool_name: "execute",
 			result: {
 				output: [
-					"ok  \tgithub.com/optimus-ide-collab/optimus-ide-collab/optimus-ide-collabd/httpmw\t1.842s",
-					"ok  \tgithub.com/optimus-ide-collab/optimus-ide-collab/optimus-ide-collabd/httpmw/auth\t0.612s",
+					"ok  \tgithub.com/coder/coder/coderd/httpmw\t1.842s",
+					"ok  \tgithub.com/coder/coder/coderd/httpmw/auth\t0.612s",
 				].join("\n"),
 				exit_code: 0,
 			},
@@ -397,7 +397,7 @@ const EVERY_TOOL_ASSISTANT_TURN = {
 			type: "tool-call",
 			tool_call_id: "every-read-file",
 			tool_name: "read_file",
-			args: { path: "optimus-ide-collabd/httpmw/apikey.go" },
+			args: { path: "coderd/httpmw/apikey.go" },
 		},
 		{
 			type: "tool-result",
@@ -420,7 +420,7 @@ const EVERY_TOOL_ASSISTANT_TURN = {
 			tool_call_id: "every-write-file",
 			tool_name: "write_file",
 			args: {
-				path: "optimus-ide-collabd/httpmw/auth/transport.go",
+				path: "coderd/httpmw/auth/transport.go",
 				content: [
 					"package auth",
 					"",
@@ -446,7 +446,7 @@ const EVERY_TOOL_ASSISTANT_TURN = {
 			args: {
 				files: [
 					{
-						path: "optimus-ide-collabd/optimus-ide-collabd.go",
+						path: "coderd/coderd.go",
 						edits: [
 							{
 								search: "httpmw.ExtractAPIKeyMW(opts)",
@@ -612,7 +612,7 @@ const EVERY_TOOL_ASSISTANT_TURN = {
 			type: "tool-call",
 			tool_call_id: "every-propose-plan",
 			tool_name: "propose_plan",
-			args: { path: "/home/optimus-ide-collab/.optimus-ide-collab/plans/AUTH_SPLIT.md" },
+			args: { path: "/home/coder/.coder/plans/AUTH_SPLIT.md" },
 		},
 		{
 			type: "tool-result",
@@ -624,7 +624,7 @@ const EVERY_TOOL_ASSISTANT_TURN = {
 					"# Auth Split Plan",
 					"",
 					"1. Carve transport, validation, and authz packages.",
-					"2. Update call sites in optimus-ide-collabd and enterprise/optimus-ide-collabd.",
+					"2. Update call sites in coderd and enterprise/coderd.",
 					"3. Add an incremental migration for session lookups.",
 					"4. Refresh the changelog and run the suite.",
 				].join("\n"),
@@ -994,17 +994,17 @@ export const WithMessageHistory: Story = {
 									"I have a lot of context I want to share so you can give me the best possible answer.",
 									"The current token validation is scattered across multiple files and it is really hard",
 									"to follow the flow from HTTP request to database lookup to response. The middleware in",
-									"optimus-ide-collabd/httpmw/apikey.go does way too much - it parses the token, validates the signature,",
+									"coderd/httpmw/apikey.go does way too much - it parses the token, validates the signature,",
 									"checks expiration, looks up the user, checks if the user is suspended, and then sets up",
 									"the context. That is at least 6 different responsibilities in a single middleware function.",
 									"",
 									"Here are the specific files I have been looking at:",
-									"- optimus-ide-collabd/httpmw/apikey.go (main middleware, ~400 lines)",
-									"- optimus-ide-collabd/httpmw/oauth2.go (OAuth2 token handling)",
-									"- optimus-ide-collabd/httpmw/session.go (session cookie management)",
-									"- optimus-ide-collabd/userauth.go (login/logout handlers)",
-									"- optimus-ide-collabd/apikey.go (API key CRUD operations)",
-									"- enterprise/optimus-ide-collabd/proxyhealth.go (proxy authentication)",
+									"- coderd/httpmw/apikey.go (main middleware, ~400 lines)",
+									"- coderd/httpmw/oauth2.go (OAuth2 token handling)",
+									"- coderd/httpmw/session.go (session cookie management)",
+									"- coderd/userauth.go (login/logout handlers)",
+									"- coderd/apikey.go (API key CRUD operations)",
+									"- enterprise/coderd/proxyhealth.go (proxy authentication)",
 									"",
 									"The problem is that ExtractAPIKeyMW is doing too many things at once:",
 									"1. Extracting the token from the request (cookie or header)",
@@ -1085,7 +1085,7 @@ export const WithMessageHistory: Story = {
 									"- [x] Extract `parseToken()` helper",
 									"- [x] Define sentinel error types",
 									"- [x] Add context parameter",
-									"- [ ] Update all callers in `optimus-ide-collabd/`",
+									"- [ ] Update all callers in `coderd/`",
 									"- [ ] Add table-driven unit tests",
 									"- [ ] Remove deprecated `ValidateAndRefresh`",
 								].join("\n"),
@@ -1414,7 +1414,7 @@ export const OtherUserChatWithMessages: Story = {
 								type: "tool-call",
 								tool_call_id: "other-user-plan",
 								tool_name: "propose_plan",
-								args: { path: "/home/optimus-ide-collab/PLAN.md" },
+								args: { path: "/home/coder/PLAN.md" },
 							},
 							{
 								type: "tool-result",
@@ -1573,7 +1573,7 @@ export const CompletedWithDiffPanel: Story = {
 				status: "waiting",
 			},
 			{ messages: [], queued_messages: [], has_more: false },
-			{ diffUrl: "https://github.com/optimus-ide-collab/optimus-ide-collab/pull/123" },
+			{ diffUrl: "https://github.com/coder/coder/pull/123" },
 		),
 	},
 	play: async ({ canvasElement }) => {
@@ -1974,7 +1974,7 @@ export const SidebarWithPRAndRepos: Story = {
 				status: "waiting",
 			},
 			{ messages: [], queued_messages: [], has_more: false },
-			{ diffUrl: "https://github.com/optimus-ide-collab/optimus-ide-collab/pull/456" },
+			{ diffUrl: "https://github.com/coder/coder/pull/456" },
 		),
 		webSocket: {
 			"/stream/git": [
@@ -1985,9 +1985,9 @@ export const SidebarWithPRAndRepos: Story = {
 						scanned_at: new Date().toISOString(),
 						repositories: [
 							{
-								repo_root: "/home/optimus-ide-collab/frontend",
+								repo_root: "/home/coder/frontend",
 								branch: "feat/ui-overhaul",
-								remote_origin: "https://github.com/optimus-ide-collab/frontend.git",
+								remote_origin: "https://github.com/coder/frontend.git",
 								unified_diff: [
 									"diff --git a/src/index.ts b/src/index.ts",
 									"index aaa1111..bbb2222 100644",
@@ -2037,9 +2037,9 @@ export const SidebarWithPRAndRepos: Story = {
 								].join("\n"),
 							},
 							{
-								repo_root: "/home/optimus-ide-collab/backend",
+								repo_root: "/home/coder/backend",
 								branch: "feat/api-v2",
-								remote_origin: "https://github.com/optimus-ide-collab/backend.git",
+								remote_origin: "https://github.com/coder/backend.git",
 								unified_diff: [
 									"diff --git a/cmd/server/main.go b/cmd/server/main.go",
 									"index ddd4444..eee5555 100644",
@@ -2094,9 +2094,9 @@ export const SidebarWithPRAndRepos: Story = {
 								].join("\n"),
 							},
 							{
-								repo_root: "/home/optimus-ide-collab/docs",
+								repo_root: "/home/coder/docs",
 								branch: "feat/ui-overhaul",
-								remote_origin: "https://github.com/optimus-ide-collab/docs.git",
+								remote_origin: "https://github.com/coder/docs.git",
 								unified_diff: [
 									"diff --git a/guides/setup.md b/guides/setup.md",
 									"index aaa1111..bbb2222 100644",
@@ -2105,8 +2105,8 @@ export const SidebarWithPRAndRepos: Story = {
 									"@@ -5,7 +5,9 @@ ## Installation",
 									" ",
 									" ```bash",
-									"-npm install @optimus-ide-collab/sdk",
-									"+npm install @optimus-ide-collab/sdk@latest",
+									"-npm install @coder/sdk",
+									"+npm install @coder/sdk@latest",
 									" ```",
 									" ",
 									"+> **Note:** Requires Node.js 18 or later.",
@@ -2166,9 +2166,9 @@ export const SidebarWithSingleRepo: Story = {
 						scanned_at: new Date().toISOString(),
 						repositories: [
 							{
-								repo_root: "/home/optimus-ide-collab/project",
+								repo_root: "/home/coder/project",
 								branch: "main",
-								remote_origin: "https://github.com/optimus-ide-collab/project.git",
+								remote_origin: "https://github.com/coder/project.git",
 								unified_diff: [
 									"diff --git a/src/app.ts b/src/app.ts",
 									"index aaa1111..bbb2222 100644",
@@ -2300,7 +2300,7 @@ export const WithEveryTool: Story = {
 								type: "tool-call",
 								tool_call_id: "call-read-apikey",
 								tool_name: "read_file",
-								args: { path: "optimus-ide-collabd/httpmw/apikey.go" },
+								args: { path: "coderd/httpmw/apikey.go" },
 							},
 							{
 								type: "tool-result",
@@ -2323,7 +2323,7 @@ export const WithEveryTool: Story = {
 								tool_call_id: "call-write-transport",
 								tool_name: "write_file",
 								args: {
-									path: "optimus-ide-collabd/httpmw/auth/transport.go",
+									path: "coderd/httpmw/auth/transport.go",
 									content: [
 										"package auth",
 										"",
@@ -2333,7 +2333,7 @@ export const WithEveryTool: Story = {
 										'    if h := r.Header.Get("Authorization"); h != "" {',
 										"        return Credential{Kind: KindBearer, Value: h}, nil",
 										"    }",
-										'    if c, err := r.Cookie("optimus-ide-collab_session_token"); err == nil {',
+										'    if c, err := r.Cookie("coder_session_token"); err == nil {',
 										"        return Credential{Kind: KindCookie, Value: c.Value}, nil",
 										"    }",
 										"    return Credential{}, ErrNoCredential",
@@ -2425,7 +2425,7 @@ export const WithEveryTool: Story = {
 									tool_call_id: "stream-read-validate",
 									tool_name: "read_file",
 									args_delta: JSON.stringify({
-										path: "optimus-ide-collabd/httpmw/validate.go",
+										path: "coderd/httpmw/validate.go",
 									}),
 								},
 							},
@@ -2440,7 +2440,7 @@ export const WithEveryTool: Story = {
 									tool_call_id: "stream-write-validation",
 									tool_name: "write_file",
 									args_delta: JSON.stringify({
-										path: "optimus-ide-collabd/httpmw/auth/validation.go",
+										path: "coderd/httpmw/auth/validation.go",
 										content: [
 											"package auth",
 											"",
@@ -2474,7 +2474,7 @@ export const WithEveryTool: Story = {
 									args_delta: JSON.stringify({
 										files: [
 											{
-												path: "optimus-ide-collabd/optimus-ide-collabd.go",
+												path: "coderd/coderd.go",
 												edits: [
 													{
 														search: "httpmw.ExtractAPIKeyMW(opts)",
@@ -2483,7 +2483,7 @@ export const WithEveryTool: Story = {
 												],
 											},
 											{
-												path: "enterprise/optimus-ide-collabd/optimus-ide-collabd.go",
+												path: "enterprise/coderd/coderd.go",
 												edits: [
 													{
 														search: "httpmw.ExtractAPIKeyMW(opts)",
@@ -2528,7 +2528,7 @@ export const WithEveryTool: Story = {
 											"## Unreleased",
 											"",
 											"- Split the auth middleware into transport, validation,",
-											"  and authorization layers under optimus-ide-collabd/httpmw/auth.",
+											"  and authorization layers under coderd/httpmw/auth.",
 										].join("\n"),
 									}),
 								},

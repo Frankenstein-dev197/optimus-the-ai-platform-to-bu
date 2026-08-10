@@ -4,7 +4,7 @@ import { getPrereleaseFlag } from "./buildInfo";
 const baseBuildInfo: BuildInfoResponse = {
 	agent_api_version: "1.0",
 	provisioner_api_version: "1.1",
-	external_url: "https://github.com/optimus-ide-collab/optimus-ide-collab",
+	external_url: "https://github.com/coder/coder",
 	version: "",
 	dashboard_url: "https://example.com",
 	workspace_proxy: false,

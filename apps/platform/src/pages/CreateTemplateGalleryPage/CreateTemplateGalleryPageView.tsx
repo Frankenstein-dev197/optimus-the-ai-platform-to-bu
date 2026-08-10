@@ -28,18 +28,18 @@ export const CreateTemplateGalleryPageView: FC<
 					<div className="flex flex-col items-end gap-2">
 						<Button asChild size="sm" variant="outline">
 							<a
-								href="https://registry.optimus-ide-collabidecollab.com/templates"
+								href="https://registry.coder.com/templates"
 								target="_blank"
 								rel="noopener noreferrer"
 								className="flex items-center"
 							>
-								Browse other Templates on the Optimus IDE Collab Registry
+								Browse other Templates on the Optimus Registry
 								<ExternalLinkIcon className="size-icon-sm ml-1" />
 							</a>
 						</Button>
 						<Button asChild size="sm" variant="outline">
 							<a
-								href="https://registry.optimus-ide-collabidecollab.com/skills/optimus-ide-collab-templates"
+								href="https://registry.coder.com/skills/coder-templates"
 								target="_blank"
 								rel="noopener noreferrer"
 								className="flex items-center"

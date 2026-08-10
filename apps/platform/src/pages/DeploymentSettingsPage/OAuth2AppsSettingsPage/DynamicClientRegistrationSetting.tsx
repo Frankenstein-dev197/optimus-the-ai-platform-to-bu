@@ -110,7 +110,7 @@ export const DynamicClientRegistrationSetting: FC<
 				}}
 				title="Enable Dynamic Client Registration?"
 				confirmText="Enable"
-				description="Any client that can reach this deployment will be able to register itself as an OAuth2 application, with no Optimus IDE Collab account and no administrator approval. Disabling later blocks new registrations but does not revoke clients that already registered."
+				description="Any client that can reach this deployment will be able to register itself as an OAuth2 application, with no Optimus account and no administrator approval. Disabling later blocks new registrations but does not revoke clients that already registered."
 			/>
 		</>
 	);

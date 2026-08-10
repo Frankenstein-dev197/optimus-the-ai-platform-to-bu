@@ -4,7 +4,7 @@ import type {
 	NotificationTemplate,
 } from "#/api/typesGenerated";
 
-// TODO: This should be provided by the auto generated types from optimus-ide-collabsdk
+// TODO: This should be provided by the auto generated types from codersdk
 const notificationMethods = ["smtp", "webhook"] as const;
 
 export type NotificationMethod = (typeof notificationMethods)[number];

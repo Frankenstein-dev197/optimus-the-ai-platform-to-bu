@@ -229,7 +229,7 @@ const BudgetSummary: FC<BudgetProps> = ({
  */
 const ReadOnlyBudget: FC<BudgetProps> = (props) => (
 	<p className="m-0 text-sm text-content-secondary">
-		<BudgetSummary {...props} /> To update this limit, contact a Optimus IDE Collab
+		<BudgetSummary {...props} /> To update this limit, contact a Optimus
 		administrator.
 	</p>
 );

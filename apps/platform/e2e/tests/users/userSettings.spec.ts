@@ -2,10 +2,10 @@ import { expect, type Page, test } from "@playwright/test";
 import { CONCRETE_THEMES } from "#/theme";
 import { users } from "../../constants";
 import { login } from "../../helpers";
-import { beforeOptimus IDE CollabTest } from "../../hooks";
+import { beforeCoderTest } from "../../hooks";
 
 test.beforeEach(({ page }) => {
-	beforeOptimus IDE CollabTest(page);
+	beforeCoderTest(page);
 });
 
 const rootClassNames = async (page: Page) => {

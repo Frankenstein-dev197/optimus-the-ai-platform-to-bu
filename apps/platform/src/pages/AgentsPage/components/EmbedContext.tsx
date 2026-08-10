@@ -50,9 +50,9 @@ const bootstrapChatEmbedSessionFn = async ({
 	queryClient: QueryClient;
 }) => {
 	// This is the token forwarded by the VS Code extension's
-	// ChatPanelProvider via the optimus-ide-collab:vscode-auth-bootstrap
+	// ChatPanelProvider via the coder:vscode-auth-bootstrap
 	// postMessage handshake. See chatPanelProvider.ts in
-	// optimus-ide-collab/vscode-optimus-ide-collab for the sending side.
+	// coder/vscode-coder for the sending side.
 	API.setSessionToken(token);
 	// Fetch user and permissions first, then set them in the cache
 	// atomically. This avoids a race where invalidating the "me"

@@ -23,10 +23,10 @@ export const WorkspaceWildcardWarning = () => {
 							<code className="py-px px-1 bg-surface-tertiary rounded-sm text-content-primary whitespace-nowrap">
 								--wildcard-access-url
 							</code>{" "}
-							flag when starting the Optimus IDE Collab server.
+							flag when starting the Optimus server.
 						</>
 					) : (
-						", which requires a Optimus IDE Collab deployment with a Wildcard Access URL configured. Please contact your administrator."
+						", which requires a Optimus deployment with a Wildcard Access URL configured. Please contact your administrator."
 					)}
 				</div>
 				<Button size="sm" variant="outline" asChild>

@@ -135,7 +135,7 @@ export const HealthLayout: FC = () => {
 									data-pixel="ignore"
 									className="text-content-secondary line-height-[150%]"
 								>
-									{healthStatus["optimus-ide-collab_version"]}
+									{healthStatus.coder_version}
 								</span>
 							</div>
 						</div>

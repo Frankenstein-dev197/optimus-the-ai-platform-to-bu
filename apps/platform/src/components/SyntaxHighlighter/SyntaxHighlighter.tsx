@@ -3,7 +3,7 @@ import Editor, { DiffEditor, loader } from "@monaco-editor/react";
 import type * as Monaco from "monaco-editor";
 import * as monaco from "monaco-editor";
 import { type ComponentProps, type FC, useCallback } from "react";
-import { useOptimusIDECollabTheme } from "./optimusIDECollabTheme";
+import { useOptimusTheme } from "./optimusTheme";
 
 loader.config({ monaco });
 
@@ -36,7 +36,7 @@ export const SyntaxHighlighter: FC<SyntaxHighlighterProps> = ({
 }) => {
 	const hasDiff = compareWith && value !== compareWith;
 	const theme = useTheme();
-	const optimusIDECollabTheme = useOptimusIDECollabTheme();
+	const optimusTheme = useOptimusTheme();
 
 	// Auto-scroll to first diff when the diff editor mounts and diffs are computed.
 	const handleDiffEditorMount = useCallback(
@@ -74,7 +74,7 @@ export const SyntaxHighlighter: FC<SyntaxHighlighterProps> = ({
 
 	const commonProps = {
 		language,
-		theme: optimusIDECollabTheme.name,
+		theme: optimusTheme.name,
 		height: 560,
 		options: {
 			minimap: {
@@ -86,7 +86,7 @@ export const SyntaxHighlighter: FC<SyntaxHighlighterProps> = ({
 		...editorProps,
 	};
 
-	if (optimusIDECollabTheme.isLoading) {
+	if (optimusTheme.isLoading) {
 		return null;
 	}
 

@@ -122,7 +122,7 @@ export const WorkspaceAppFrame: FC<WorkspaceAppFrameProps> = ({
 								</span>
 								See{" "}
 								<code className="font-mono text-content-primary select-all">
-									/tmp/optimus-ide-collab-agent.log
+									/tmp/coder-agent.log
 								</code>{" "}
 								inside your workspace "{workspace.name}" for more information.
 							</li>

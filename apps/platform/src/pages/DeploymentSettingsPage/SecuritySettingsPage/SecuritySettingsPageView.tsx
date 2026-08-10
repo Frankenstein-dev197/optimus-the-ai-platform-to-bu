@@ -38,7 +38,7 @@ export const SecuritySettingsPageView: FC<SecuritySettingsPageViewProps> = ({
 				<SettingsHeader>
 					<SettingsHeaderTitle>Security</SettingsHeaderTitle>
 					<SettingsHeaderDescription>
-						Ensure your Optimus IDE Collab deployment is secure.
+						Ensure your Optimus deployment is secure.
 					</SettingsHeaderDescription>
 				</SettingsHeader>
 
@@ -82,7 +82,7 @@ export const SecuritySettingsPageView: FC<SecuritySettingsPageViewProps> = ({
 							TLS
 						</SettingsHeaderTitle>
 						<SettingsHeaderDescription>
-							Ensure TLS is properly configured for your Optimus IDE Collab deployment.
+							Ensure TLS is properly configured for your Optimus deployment.
 						</SettingsHeaderDescription>
 					</SettingsHeader>
 

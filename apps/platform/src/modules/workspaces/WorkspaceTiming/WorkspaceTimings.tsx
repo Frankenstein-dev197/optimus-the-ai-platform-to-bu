@@ -21,7 +21,7 @@ import {
 	type TimeRange,
 } from "./Chart/utils";
 import {
-	isOptimusIDECollabResource,
+	isCoderResource,
 	isStageBoundary,
 	ResourcesChart,
 } from "./ResourcesChart";
@@ -69,7 +69,7 @@ export const WorkspaceTimings: FC<WorkspaceTimingsProps> = ({
 
 	// This is a workaround to deal with the BE returning multiple timings for a
 	// single agent script when it should return only one. Reference:
-	// https://github.com/optimus-ide-collab/optimus-ide-collab/issues/15413#issuecomment-2493663571
+	// https://github.com/coder/coder/issues/15413#issuecomment-2493663571
 	const uniqScriptTimings = sortBy(
 		uniqBy(
 			sortBy(agentScriptTimings, (t) => t.started_at).reverse(),
@@ -150,7 +150,7 @@ export const WorkspaceTimings: FC<WorkspaceTimingsProps> = ({
 											? undefined
 											: mergeTimeRanges(stageTimings.map(toTimeRange));
 
-									// Prevent users from inspecting internal optimus-ide-collab resources in
+									// Prevent users from inspecting internal coder resources in
 									// provisioner timings because they were not useful to the
 									// user and would add noise.
 									const visibleResources = stageTimings.filter((t) => {
@@ -163,7 +163,7 @@ export const WorkspaceTimings: FC<WorkspaceTimingsProps> = ({
 										}
 
 										return isProvisionerTiming
-											? !isOptimusIDECollabResource(t.resource)
+											? !isCoderResource(t.resource)
 											: true;
 									});
 

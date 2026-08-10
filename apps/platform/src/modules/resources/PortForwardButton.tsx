@@ -412,7 +412,7 @@ export const PortForwardPopoverView: FC<PortForwardPopoverViewProps> = ({
 				<HelpPopoverTitle>Shared Ports</HelpPopoverTitle>
 				<HelpPopoverText>
 					{canSharePorts
-						? "Ports can be shared with organization members, other Optimus IDE Collab users, or with the public."
+						? "Ports can be shared with organization members, other Optimus users, or with the public."
 						: "This workspace template does not allow sharing ports. Contact a template administrator to enable port sharing."}
 				</HelpPopoverText>
 				{canSharePorts && (

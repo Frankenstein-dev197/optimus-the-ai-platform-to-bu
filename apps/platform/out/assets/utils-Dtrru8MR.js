@@ -1,1 +1,0 @@
-import{t as e}from"./page-42DtUbtQ.js";var t=(t,n)=>e(`${n.display_name.length>0?n.display_name:n.name} · ${t}`);export{t};

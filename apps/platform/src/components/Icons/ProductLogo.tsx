@@ -4,8 +4,9 @@ import { cn } from "#/utils/cn";
 import { ExternalImage } from "../ExternalImage/ExternalImage";
 
 /**
- * Enterprise customers can set a custom logo for their Optimus IDE Collab application. Use
- * the custom logo wherever the Optimus IDE Collab logo is used, if a custom one is provided.
+ * Enterprise customers can set a custom logo for their Optimus application.
+ * Use the custom logo wherever the Optimus logo is used, if a custom one is
+ * provided.
  */
 export const ProductLogo: FC<{ className?: string }> = ({ className }) => {
 	const applicationName = getApplicationName();
@@ -26,11 +27,11 @@ export const ProductLogo: FC<{ className?: string }> = ({ className }) => {
 			className={cn("h-12 max-w-[200px] application-logo", className)}
 		/>
 	) : (
-		<OptimusIDECollabLogo className={cn("h-12", className)} />
+		<OptimusLogo className={cn("h-12", className)} />
 	);
 };
 
-const OptimusIDECollabLogo: FC<React.ComponentProps<"svg">> = ({
+const OptimusLogo: FC<React.ComponentProps<"svg">> = ({
 	className,
 	...props
 }) => (
@@ -40,10 +41,14 @@ const OptimusIDECollabLogo: FC<React.ComponentProps<"svg">> = ({
 		fill="currentColor"
 		{...props}
 		className={cn("h-7 aspect-square text-content-primary", className)}
-		viewBox="0 0 120 60"
+		viewBox="0 0 120 120"
 		xmlns="http://www.w3.org/2000/svg"
 	>
-		<title>Optimus IDE Collab logo</title>
-		<path d="M34.5381 0C54.5335 6.29882e-05 65.7432 10.1355 66.122 25.0544L48.853 25.6216C48.3984 17.3514 41.544 11.9189 34.5381 12.0809C24.919 12.2836 17.7989 19.1351 17.7988 29.9999C17.7988 40.8648 24.919 47.5951 34.5381 47.5951C41.544 47.5945 48.2468 42.4055 49.0043 34.1352L66.2733 34.5408C65.8189 49.7027 53.9276 60 34.5381 60C15.1484 60 0 48.2433 0 29.9999C7.1014e-05 11.6757 14.5426 0 34.5381 0ZM120 1.7728V58.5299H74.5559V1.7728H120Z" />
+		<title>Optimus logo</title>
+		<path
+			fillRule="evenodd"
+			d="M60 4.68 107.109 31.59 107.109 85.41 60 112.32 12.891 85.41 12.891 31.59 Z M60 23.4 90.397 40.95 90.397 76.05 60 93.6 29.603 76.05 29.603 40.95 Z"
+		/>
+		<path d="M60 50.31 67.093 54.405 67.093 62.595 60 66.69 52.907 62.595 52.907 54.405 Z" />
 	</svg>
 );

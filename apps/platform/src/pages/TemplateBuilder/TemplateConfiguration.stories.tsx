@@ -12,9 +12,9 @@ type Story = StoryObj<typeof TemplateConfiguration>;
 export const Default: Story = {
 	args: {
 		name: "Docker Containers",
-		description: "Provision Docker containers as Optimus IDE Collab workspaces.",
+		description: "Provision Docker containers as Optimus workspaces.",
 		iconUrl: "/icon/docker.svg",
-		detailsUrl: "https://registry.optimus-ide-collabidecollab.com/templates/docker",
+		detailsUrl: "https://registry.coder.com/templates/docker",
 		fields: [
 			{
 				type: "select",
@@ -35,9 +35,9 @@ export const Default: Story = {
 export const NoConfiguration: Story = {
 	args: {
 		name: "Kubernetes Pods",
-		description: "Provision Kubernetes pods as Optimus IDE Collab workspaces.",
+		description: "Provision Kubernetes pods as Optimus workspaces.",
 		iconUrl: "/icon/k8s.svg",
-		detailsUrl: "https://registry.optimus-ide-collabidecollab.com/templates/kubernetes",
+		detailsUrl: "https://registry.coder.com/templates/kubernetes",
 	},
 };
 
@@ -65,6 +65,6 @@ export const WithoutIcon: Story = {
 	args: {
 		name: "Unnamed Template",
 		description: "A template without an icon.",
-		detailsUrl: "https://registry.optimus-ide-collabidecollab.com",
+		detailsUrl: "https://registry.coder.com",
 	},
 };

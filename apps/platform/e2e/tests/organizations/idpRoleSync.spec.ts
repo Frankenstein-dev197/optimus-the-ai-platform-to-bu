@@ -6,11 +6,11 @@ import {
 	setupApiCalls,
 } from "../../api";
 import { login, randomName, requiresLicense } from "../../helpers";
-import { beforeOptimus IDE CollabTest } from "../../hooks";
+import { beforeCoderTest } from "../../hooks";
 
 test.beforeEach(async ({ page }) => {
 	requiresLicense();
-	beforeOptimus IDE CollabTest(page);
+	beforeCoderTest(page);
 	await login(page);
 	await setupApiCalls(page);
 });
@@ -57,7 +57,7 @@ test.describe("IdpRoleSyncPage", () => {
 		await deleteOrganization(org.name);
 	});
 
-	test("delete a IdP role to optimus-ide-collab role mapping row", async ({ page }) => {
+	test("delete a IdP role to coder role mapping row", async ({ page }) => {
 		const org = await createOrganizationWithName(randomName());
 		await createRoleSyncSettings(org.id);
 
@@ -135,7 +135,7 @@ test.describe("IdpRoleSyncPage", () => {
 		const idpRoleName = randomName();
 		await idpOrgInput.fill(idpRoleName);
 
-		// Select Optimus IDE Collab role from combobox
+		// Select Coder role from combobox
 		const roleSelector = page.getByPlaceholder("Select role");
 		await expect(roleSelector).toBeAttached();
 		await expect(roleSelector).toBeVisible();

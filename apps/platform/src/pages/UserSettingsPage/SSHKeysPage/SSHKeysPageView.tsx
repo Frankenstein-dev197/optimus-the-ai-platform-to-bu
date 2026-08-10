@@ -37,7 +37,7 @@ export const SSHKeysPageView: FC<SSHKeysPageViewProps> = ({
 					<p className="m-0 text-sm text-content-secondary">
 						The following public key is used to authenticate Git in workspaces.
 						You may add it to Git services (such as GitHub) that you need to
-						access from your workspace. Optimus IDE Collab configures authentication via{" "}
+						access from your workspace. Optimus configures authentication via{" "}
 						<code className="rounded-sm border border-border bg-surface-secondary px-1 py-0.5 text-xs text-content-primary">
 							$GIT_SSH_COMMAND
 						</code>

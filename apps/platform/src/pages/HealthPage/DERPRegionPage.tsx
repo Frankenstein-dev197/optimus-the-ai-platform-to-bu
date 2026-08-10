@@ -115,7 +115,7 @@ const DERPRegionPage: FC = () => {
 								</BooleanPill>
 							</TooltipTrigger>
 							<TooltipContent side="bottom">
-								Whether this region uses a relay server embedded in the Optimus IDE Collab
+								Whether this region uses a relay server embedded in the Optimus
 								deployment.
 							</TooltipContent>
 						</Tooltip>

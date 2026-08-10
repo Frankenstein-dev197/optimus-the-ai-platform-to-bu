@@ -37,8 +37,8 @@ export default function () {
 	}
 
 	if (!process.env.CI) {
-		console.info("==> make site/e2e/bin/optimus-ide-collab");
-		execSync("make site/e2e/bin/optimus-ide-collab", {
+		console.info("==> make site/e2e/bin/coder");
+		execSync("make site/e2e/bin/coder", {
 			cwd: path.join(__dirname, "../../../"),
 		});
 	}

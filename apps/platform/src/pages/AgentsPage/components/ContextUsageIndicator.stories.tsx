@@ -37,15 +37,15 @@ export const Clean: Story = {
 		const body = within(document.body);
 		await waitFor(() => expect(body.getByText("Context files")).toBeVisible());
 		// A single context root still shows its directory header.
-		expect(body.getByText("/home/optimus-ide-collab")).toBeVisible();
-		expect(body.getByText("/home/optimus-ide-collab/.optimus-ide-collab/skills")).toBeVisible();
+		expect(body.getByText("/home/coder")).toBeVisible();
+		expect(body.getByText("/home/coder/.coder/skills")).toBeVisible();
 		// The list is driven by the pinned resources.
 		expect(body.getByText("AGENTS.md")).toBeVisible();
 		expect(body.getByText("deploy")).toBeVisible();
 		// MCP configs are listed by full path (so multiple .mcp.json files stay
 		// distinct) and servers by name.
 		expect(body.getByText("MCP")).toBeVisible();
-		expect(body.getByText("/home/optimus-ide-collab/.mcp.json")).toBeVisible();
+		expect(body.getByText("/home/coder/.mcp.json")).toBeVisible();
 		expect(body.getByText("github")).toBeVisible();
 		// MCP server tools are listed under their server.
 		expect(body.getByText("search_issues")).toBeVisible();
@@ -59,7 +59,7 @@ export const Clean: Story = {
 		expect(body.getByText("Issues")).toBeVisible();
 		expect(
 			body.getByText(
-				'front-matter name "optimus-ide-collab-review" does not match directory "moo"',
+				'front-matter name "coder-review" does not match directory "moo"',
 			),
 		).toBeVisible();
 		// A clean pin offers no refresh affordance.
@@ -79,19 +79,19 @@ export const MultipleContextRoots: Story = {
 				dirty: false,
 				resources: [
 					{
-						source: "/home/optimus-ide-collab/AGENTS.md",
+						source: "/home/coder/AGENTS.md",
 						kind: "instruction_file",
 						size_bytes: 248,
 						status: "ok",
 					},
 					{
-						source: "/home/optimus-ide-collab/site/AGENTS.md",
+						source: "/home/coder/site/AGENTS.md",
 						kind: "instruction_file",
 						size_bytes: 512,
 						status: "ok",
 					},
 					{
-						source: "/home/optimus-ide-collab/.optimus-ide-collab/skills/deploy",
+						source: "/home/coder/.coder/skills/deploy",
 						kind: "skill",
 						size_bytes: 96,
 						status: "ok",
@@ -99,7 +99,7 @@ export const MultipleContextRoots: Story = {
 						skill_description: "Deploy the app to staging.",
 					},
 					{
-						source: "/home/optimus-ide-collab/.optimus-ide-collab/skills/migrate",
+						source: "/home/coder/.coder/skills/migrate",
 						kind: "skill",
 						size_bytes: 120,
 						status: "ok",
@@ -107,7 +107,7 @@ export const MultipleContextRoots: Story = {
 						skill_description: "Run database migrations.",
 					},
 					{
-						source: "/home/optimus-ide-collab/.agents/skills/review",
+						source: "/home/coder/.agents/skills/review",
 						kind: "skill",
 						size_bytes: 140,
 						status: "ok",
@@ -124,12 +124,12 @@ export const MultipleContextRoots: Story = {
 		const body = within(document.body);
 		// Both directories that contribute instruction files are listed, so the
 		// two AGENTS.md files are no longer ambiguous.
-		await waitFor(() => expect(body.getByText("/home/optimus-ide-collab")).toBeVisible());
-		expect(body.getByText("/home/optimus-ide-collab/site")).toBeVisible();
+		await waitFor(() => expect(body.getByText("/home/coder")).toBeVisible());
+		expect(body.getByText("/home/coder/site")).toBeVisible();
 		expect(body.getAllByText("AGENTS.md")).toHaveLength(2);
 		// Skills are grouped under each skill root.
-		expect(body.getByText("/home/optimus-ide-collab/.optimus-ide-collab/skills")).toBeVisible();
-		expect(body.getByText("/home/optimus-ide-collab/.agents/skills")).toBeVisible();
+		expect(body.getByText("/home/coder/.coder/skills")).toBeVisible();
+		expect(body.getByText("/home/coder/.agents/skills")).toBeVisible();
 		expect(body.getByText("deploy")).toBeVisible();
 		expect(body.getByText("migrate")).toBeVisible();
 		expect(body.getByText("review")).toBeVisible();
@@ -147,13 +147,13 @@ export const MultipleMcpConfigs: Story = {
 				dirty: false,
 				resources: [
 					{
-						source: "/home/optimus-ide-collab/.mcp.json",
+						source: "/home/coder/.mcp.json",
 						kind: "mcp_config",
 						size_bytes: 184,
 						status: "ok",
 					},
 					{
-						source: "/home/optimus-ide-collab/project/.mcp.json",
+						source: "/home/coder/project/.mcp.json",
 						kind: "mcp_config",
 						size_bytes: 256,
 						status: "ok",
@@ -167,10 +167,10 @@ export const MultipleMcpConfigs: Story = {
 		await userEvent.hover(button);
 		const body = within(document.body);
 		await waitFor(() =>
-			expect(body.getByText("/home/optimus-ide-collab/.mcp.json")).toBeVisible(),
+			expect(body.getByText("/home/coder/.mcp.json")).toBeVisible(),
 		);
 		// The two configs are distinguishable by their full path.
-		expect(body.getByText("/home/optimus-ide-collab/project/.mcp.json")).toBeVisible();
+		expect(body.getByText("/home/coder/project/.mcp.json")).toBeVisible();
 	},
 };
 

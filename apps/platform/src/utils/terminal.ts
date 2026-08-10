@@ -42,7 +42,7 @@ export const terminalWebsocketUrl = async (
 		url: url.toString(),
 		agentID: agentId,
 	});
-	query.set("optimus-ide-collab_signed_app_token_23db1dde", tokenRes.signed_token);
+	query.set("coder_signed_app_token_23db1dde", tokenRes.signed_token);
 	url.search = `?${query.toString()}`;
 
 	return url.toString();

@@ -55,7 +55,7 @@ describe("toolVisibility", () => {
 		it("uses message as an error fallback when error is blank", () => {
 			expect(
 				getExecuteRenderData(
-					{ command: "optimus-ide-collab login" },
+					{ command: "coder login" },
 					{ error: "  ", message: " auth required " },
 				).transcriptBlocks,
 			).toEqual([{ kind: "error", text: "auth required" }]);

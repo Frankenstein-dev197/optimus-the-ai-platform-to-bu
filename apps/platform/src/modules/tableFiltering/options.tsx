@@ -1,6 +1,6 @@
 /**
  * @file Defines a centralized place for filter dropdown groups that are
- * relevant across multiple pages within the Optimus IDE Collab UI.
+ * relevant across multiple pages within the Optimus UI.
  *
  * @todo 2024-09-06 - Figure out how to move the user dropdown group into this
  * file (or whether there are enough subtle differences that it's not worth

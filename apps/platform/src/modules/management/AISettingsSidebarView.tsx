@@ -54,8 +54,8 @@ const AISettingsSidebarView: FC<AISettingsSidebarViewProps> = ({
 				)}
 				{permissions.editDeploymentConfig && (
 					<>
-						<SidebarNavItem href="/ai/settings/optimus-ide-collab-agents">
-							Optimus IDE Collab Agents
+						<SidebarNavItem href="/ai/settings/optimus-agents">
+							Optimus Agents
 						</SidebarNavItem>
 						<div className="flex flex-col gap-1 ml-3 border-0 border-solid border-l border-l-border">
 							<SubNavItem href="/ai/settings/models">Models</SubNavItem>

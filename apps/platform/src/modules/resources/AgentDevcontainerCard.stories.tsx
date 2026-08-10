@@ -140,7 +140,7 @@ export const NoContainerOrAgentOrNameWithLongConfigPath: Story = {
 		devcontainer: {
 			...MockWorkspaceAgentDevcontainer,
 			config_path:
-				"/home/optimus-ide-collab/repos/optimus-ide-collab/optimus-ide-collab/.claude/worktrees/i-waited-for-some-things-and-i-got-some-banana-bread-at-work-today-dude/.devcontainer/devcontainer.json",
+				"/home/coder/repos/coder/coder/.claude/worktrees/i-waited-for-some-things-and-i-got-some-banana-bread-at-work-today-dude/.devcontainer/devcontainer.json",
 			container: undefined,
 			agent: undefined,
 			name: "",

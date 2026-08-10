@@ -634,7 +634,7 @@
 		{
 			"provider": "openrouter",
 			"modelIdentifier": "qwen/qwen3-coder-next",
-			"displayName": "Qwen3 Optimus Next",
+			"displayName": "Qwen3 Coder Next",
 			"aliases": [],
 			"contextLimit": 262144,
 			"maxOutputTokens": 262144,

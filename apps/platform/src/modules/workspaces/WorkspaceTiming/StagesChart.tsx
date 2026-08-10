@@ -236,7 +236,7 @@ export const provisioningStages: Stage[] = [
 		tooltip: {
 			heading: "Terraform graph",
 			description:
-				"List all resources in plan, used to update optimus-ide-collabd database.",
+				"List all resources in plan, used to update coderd database.",
 		},
 	},
 ];

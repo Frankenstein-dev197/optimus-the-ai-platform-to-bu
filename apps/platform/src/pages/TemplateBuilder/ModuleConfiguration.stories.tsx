@@ -28,7 +28,7 @@ export const Default: Story = {
 		name: "Claude Code",
 		description: "Run the Claude Code agent in your workspace.",
 		iconUrl: "/icon/claude.svg",
-		detailsUrl: "https://registry.optimus-ide-collabidecollab.com/modules/claude-code",
+		detailsUrl: "https://registry.coder.com/modules/claude-code",
 		fields: [
 			{
 				type: "text",
@@ -81,7 +81,7 @@ export const NoConfiguration: Story = {
 		name: "Git Clone",
 		description: "Clone a Git repository into your workspace on start.",
 		iconUrl: "/icon/git.svg",
-		detailsUrl: "https://registry.optimus-ide-collabidecollab.com/modules/git-clone",
+		detailsUrl: "https://registry.coder.com/modules/git-clone",
 	},
 };
 
@@ -107,7 +107,7 @@ export const WithoutIcon: Story = {
 	args: {
 		name: "Unnamed Module",
 		description: "A module without an icon.",
-		detailsUrl: "https://registry.optimus-ide-collabidecollab.com",
+		detailsUrl: "https://registry.coder.com",
 		fields: [
 			{ type: "switch", id: "enabled", label: "Enabled", defaultChecked: true },
 		],

@@ -115,7 +115,7 @@ export const WithOpenPR: Story = {
 	args: {
 		diffStatusData: {
 			chat_id: "chat-1",
-			url: "https://github.com/optimus-ide-collab/optimus-ide-collab/pull/123",
+			url: "https://github.com/coder/coder/pull/123",
 			pull_request_title: "fix: resolve race condition in workspace builds",
 			pull_request_draft: false,
 			changes_requested: false,
@@ -130,7 +130,7 @@ export const WithDraftPR: Story = {
 	args: {
 		diffStatusData: {
 			chat_id: "chat-1",
-			url: "https://github.com/optimus-ide-collab/optimus-ide-collab/pull/456",
+			url: "https://github.com/coder/coder/pull/456",
 			pull_request_title: "feat: add new notification system",
 			pull_request_draft: true,
 			changes_requested: false,
@@ -145,7 +145,7 @@ export const WithMergedPR: Story = {
 	args: {
 		diffStatusData: {
 			chat_id: "chat-1",
-			url: "https://github.com/optimus-ide-collab/optimus-ide-collab/pull/789",
+			url: "https://github.com/coder/coder/pull/789",
 			pull_request_title: "chore: update dependencies",
 			pull_request_state: "merged",
 			pull_request_draft: false,
@@ -161,7 +161,7 @@ export const WithClosedPR: Story = {
 	args: {
 		diffStatusData: {
 			chat_id: "chat-1",
-			url: "https://github.com/optimus-ide-collab/optimus-ide-collab/pull/101",
+			url: "https://github.com/coder/coder/pull/101",
 			pull_request_title: "fix: deprecated API cleanup",
 			pull_request_state: "closed",
 			pull_request_draft: false,
@@ -192,7 +192,7 @@ export const MobileWithOpenPR: Story = {
 	args: {
 		diffStatusData: {
 			chat_id: "chat-1",
-			url: "https://github.com/optimus-ide-collab/optimus-ide-collab/pull/123",
+			url: "https://github.com/coder/coder/pull/123",
 			pull_request_title: "fix: resolve race condition in workspace builds",
 			pull_request_draft: false,
 			changes_requested: false,
@@ -209,7 +209,7 @@ export const MobileWithDraftPR: Story = {
 	args: {
 		diffStatusData: {
 			chat_id: "chat-1",
-			url: "https://github.com/optimus-ide-collab/optimus-ide-collab/pull/456",
+			url: "https://github.com/coder/coder/pull/456",
 			pull_request_title: "feat: add new notification system",
 			pull_request_draft: true,
 			changes_requested: false,
@@ -226,7 +226,7 @@ export const MobileWithMergedPR: Story = {
 	args: {
 		diffStatusData: {
 			chat_id: "chat-1",
-			url: "https://github.com/optimus-ide-collab/optimus-ide-collab/pull/789",
+			url: "https://github.com/coder/coder/pull/789",
 			pull_request_title: "chore: update dependencies",
 			pull_request_state: "merged",
 			pull_request_draft: false,
@@ -244,7 +244,7 @@ export const MobileWithClosedPR: Story = {
 	args: {
 		diffStatusData: {
 			chat_id: "chat-1",
-			url: "https://github.com/optimus-ide-collab/optimus-ide-collab/pull/101",
+			url: "https://github.com/coder/coder/pull/101",
 			pull_request_title: "fix: deprecated API cleanup",
 			pull_request_state: "closed",
 			pull_request_draft: false,

@@ -55,7 +55,7 @@ export const Editable: Story = {
 			{
 				...MockUserOwner,
 				username: "John Doe",
-				email: "john.doe@optimus-ide-collabidecollab.com",
+				email: "john.doe@optimus.com",
 				roles: [
 					MockUserAdminRole,
 					MockTemplateAdminRole,
@@ -68,7 +68,7 @@ export const Editable: Story = {
 			{
 				...MockUserOwner,
 				username: "Roger Moore",
-				email: "roger.moore@optimus-ide-collabidecollab.com",
+				email: "roger.moore@optimus.com",
 				roles: [],
 				status: "suspended",
 				has_ai_seat: false,
@@ -76,7 +76,7 @@ export const Editable: Story = {
 			{
 				...MockUserOwner,
 				username: "OIDC User",
-				email: "oidc.user@optimus-ide-collabidecollab.com",
+				email: "oidc.user@optimus.com",
 				roles: [],
 				status: "active",
 				login_type: "oidc",
@@ -97,7 +97,7 @@ export const EditableWithAISeatColumn: Story = {
 			{
 				...MockUserOwner,
 				username: "John Doe",
-				email: "john.doe@optimus-ide-collabidecollab.com",
+				email: "john.doe@optimus.com",
 				roles: [
 					MockUserAdminRole,
 					MockTemplateAdminRole,
@@ -110,7 +110,7 @@ export const EditableWithAISeatColumn: Story = {
 			{
 				...MockUserOwner,
 				username: "Roger Moore",
-				email: "roger.moore@optimus-ide-collabidecollab.com",
+				email: "roger.moore@optimus.com",
 				roles: [],
 				status: "suspended",
 				has_ai_seat: false,
@@ -118,7 +118,7 @@ export const EditableWithAISeatColumn: Story = {
 			{
 				...MockUserOwner,
 				username: "OIDC User",
-				email: "oidc.user@optimus-ide-collabidecollab.com",
+				email: "oidc.user@optimus.com",
 				roles: [],
 				status: "active",
 				login_type: "oidc",

@@ -1719,7 +1719,7 @@ export const AgentChatInput: FC<AgentChatInputProps> = ({
 			<ConfirmDialog
 				open={mcpDisconnectTarget !== null}
 				title={`Disconnect ${mcpDisconnectTarget?.display_name ?? "MCP server"}?`}
-				description="This removes your credentials for this MCP server from Optimus IDE Collab. You can authenticate again later."
+				description="This removes your credentials for this MCP server from Optimus. You can authenticate again later."
 				type="delete"
 				confirmText="Disconnect"
 				confirmLoading={mcpDisconnectMutation.isPending}

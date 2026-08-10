@@ -50,7 +50,7 @@ export const Default: Story = {
 							Unlimited Git & external auth integrations
 						</PaywallFeature>
 					</PaywallFeatures>
-					<PaywallCTA href="https://optimus-ide-collabidecollab.com/pricing#compare-plans">
+					<PaywallCTA href="https://coder.com/pricing#compare-plans">
 						Learn about Premium
 					</PaywallCTA>
 				</PaywallStack>

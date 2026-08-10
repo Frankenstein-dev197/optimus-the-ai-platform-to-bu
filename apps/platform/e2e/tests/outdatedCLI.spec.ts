@@ -4,24 +4,24 @@ import { oldestSupportedCLIVersion } from "../constants";
 import {
 	createTemplate,
 	createWorkspace,
-	downloadOptimus IDE CollabVersion,
+	downloadCoderVersion,
 	login,
 	sshIntoWorkspace,
 	startAgent,
 	stopAgent,
 	stopWorkspace,
 } from "../helpers";
-import { beforeOptimus IDE CollabTest } from "../hooks";
+import { beforeCoderTest } from "../hooks";
 
 test.beforeEach(async ({ page }) => {
-	beforeOptimus IDE CollabTest(page);
+	beforeCoderTest(page);
 	await login(page);
 });
 
 test(`ssh with client ${oldestSupportedCLIVersion}`, async ({ page }) => {
-	// setup/downloadOptimus IDE CollabVersions.spec.ts normally has the binary cached by now,
+	// setup/downloadCoderVersions.spec.ts normally has the binary cached by now,
 	// leaving this a local-only test. The extra headroom covers the case where
-	// that prefetch failed and downloadOptimus IDE CollabVersion has to fetch it inline.
+	// that prefetch failed and downloadCoderVersion has to fetch it inline.
 	test.setTimeout(60_000);
 
 	const token = randomUUID();
@@ -45,7 +45,7 @@ test(`ssh with client ${oldestSupportedCLIVersion}`, async ({ page }) => {
 	});
 	const workspaceName = await createWorkspace(page, template);
 	const agent = await startAgent(page, token);
-	const binaryPath = await downloadOptimus IDE CollabVersion(oldestSupportedCLIVersion);
+	const binaryPath = await downloadCoderVersion(oldestSupportedCLIVersion);
 
 	const client = await sshIntoWorkspace(page, workspaceName, binaryPath);
 	await new Promise<void>((resolve, reject) => {

@@ -101,7 +101,7 @@ export const CreateOrganizationPageView: FC<
 					<div className="min-w-fit mx-auto">
 						<PaywallPremium
 							message="Organizations"
-							description="Create multiple organizations within a single Optimus IDE Collab deployment, allowing several platform teams to operate with isolated users, templates, and distinct underlying infrastructure."
+							description="Create multiple organizations within a single Optimus deployment, allowing several platform teams to operate with isolated users, templates, and distinct underlying infrastructure."
 							documentationLink={docs("/admin/users/organizations")}
 							canViewPremium={permissions.viewAllLicenses}
 						/>

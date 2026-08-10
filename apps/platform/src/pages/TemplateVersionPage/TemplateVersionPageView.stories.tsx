@@ -17,7 +17,7 @@ name:Template test
 ## Instructions
 You can add instructions here
 
-[Some link info](https://optimus-ide-collabidecollab.com)
+[Some link info](https://coder.com)
 \`\`\`
 # This is a really long sentence to test that the code block wraps into a new line properly.
 \`\`\``;

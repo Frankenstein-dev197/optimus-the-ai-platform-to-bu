@@ -1,9 +1,9 @@
 import * as fs from "node:fs/promises";
 import type { Reporter, TestCase, TestResult } from "@playwright/test/reporter";
 import { API } from "#/api/api";
-import { optimus-ide-collabdPProfPort } from "./constants";
+import { coderdPProfPort } from "./constants";
 
-class Optimus IDE CollabReporter implements Reporter {
+class CoderReporter implements Reporter {
 	async onTestEnd(test: TestCase, result: TestResult) {
 		if (test.expectedStatus === "skipped") {
 			return;
@@ -25,7 +25,7 @@ class Optimus IDE CollabReporter implements Reporter {
 const exportDebugPprof = async (outputFile: string) => {
 	const axiosInstance = API.getAxiosInstance();
 	const response = await axiosInstance.get(
-		`http://127.0.0.1:${optimus-ide-collabdPProfPort}/debug/pprof/goroutine?debug=1`,
+		`http://127.0.0.1:${coderdPProfPort}/debug/pprof/goroutine?debug=1`,
 	);
 
 	if (response.status !== 200) {
@@ -35,4 +35,4 @@ const exportDebugPprof = async (outputFile: string) => {
 	await fs.writeFile(outputFile, response.data);
 };
 
-export default Optimus IDE CollabReporter;
+export default CoderReporter;

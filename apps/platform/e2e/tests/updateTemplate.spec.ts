@@ -8,12 +8,12 @@ import {
 	requiresLicense,
 	updateTemplateSettings,
 } from "../helpers";
-import { beforeOptimus IDE CollabTest } from "../hooks";
+import { beforeCoderTest } from "../hooks";
 
 test.describe.configure({ mode: "parallel" });
 
 test.beforeEach(async ({ page }) => {
-	beforeOptimus IDE CollabTest(page);
+	beforeCoderTest(page);
 	await login(page, users.templateAdmin);
 });
 

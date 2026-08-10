@@ -4,8 +4,11 @@ This repository is organized as a pnpm workspace monorepo.
 
 ## Applications
 
-- `apps/web` — the existing Optimus landing page deployed on Vercel.
-- `apps/coder` — placeholder for a future second application. No Coder backend, services, engine, or server dependencies are included.
+- `apps/web` — the Optimus landing page (Next.js) deployed on Vercel.
+- `apps/platform` — the Optimus Platform UI (React/TypeScript, Vite), the fully
+  rebranded product frontend. It communicates with `optimus-platform-engine`
+  only via REST/WebSocket; no backend code is included in this repo. See
+  `apps/platform/OPTIMUS_UI_REBRANDING.md` for the rebranding details.
 
 ## Packages
 
@@ -19,10 +22,14 @@ This repository is organized as a pnpm workspace monorepo.
 Run commands from the repository root:
 
 ```bash
-pnpm dev
-pnpm build
-pnpm lint
-pnpm start
+pnpm dev            # landing page (apps/web)
+pnpm dev:platform   # platform UI (apps/platform)
+pnpm build          # landing page
+pnpm build:platform # platform UI
+pnpm lint           # landing page
+pnpm lint:platform  # platform UI (tsc)
 ```
 
-The root scripts delegate to `@optimus/web`, so the deployed project remains the existing web application.
+The root scripts delegate to the filtered workspace packages:
+`@optimus/web` (landing) and `@optimus/platform-ui` (platform). The deployed
+Vercel project remains the landing page (`apps/web`).

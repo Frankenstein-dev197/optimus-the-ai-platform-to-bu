@@ -29,13 +29,13 @@ function getKeyType(name: string) {
 const infoByType: Record<KeyType, ReactNode> = {
 	builtin: (
 		<>
-			These provisioners are running as part of a optimus-ide-collabd instance. Built-in
+			These provisioners are running as part of a coderd instance. Built-in
 			provisioners are only available for the default organization.{" "}
 		</>
 	),
 	userAuth: (
 		<>
-			These provisioners are connected by users using the <code>optimus-ide-collab</code>{" "}
+			These provisioners are connected by users using the <code>coder</code>{" "}
 			CLI, and are authorized by the users credentials. They can be tagged to
 			only run provisioner jobs for that user. User-authenticated provisioners
 			are only available for the default organization.

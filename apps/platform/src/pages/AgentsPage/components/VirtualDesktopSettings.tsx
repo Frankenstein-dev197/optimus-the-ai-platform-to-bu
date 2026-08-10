@@ -12,7 +12,7 @@ import {
 } from "#/components/Select/Select";
 import { Skeleton } from "#/components/Skeleton/Skeleton";
 import { useTemporarySavedState } from "#/components/TemporarySavedState/TemporarySavedState";
-import { AgentSettingLayout } from "#/pages/AISettingsPage/OptimusIDECollabAgentsPage/components/AgentSettingLayout";
+import { AgentSettingLayout } from "#/pages/AISettingsPage/OptimusAgentsPage/components/AgentSettingLayout";
 
 interface MutationCallbacks {
 	onSuccess?: () => void;
@@ -86,7 +86,7 @@ export const VirtualDesktopSettings: FC<VirtualDesktopSettingsProps> = ({
 					Allow agents to use a virtual, graphical desktop within workspaces.
 					Requires the{" "}
 					<Link
-						href="https://registry.optimus-ide-collabidecollab.com/modules/optimus-ide-collab/portabledesktop"
+						href="https://registry.coder.com/modules/coder/portabledesktop"
 						target="_blank"
 						size="sm"
 					>

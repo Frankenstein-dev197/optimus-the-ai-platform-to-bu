@@ -13,7 +13,7 @@ describe("PortForwardPopoverView", () => {
 	it("adds an accessible name to each shared-port delete button", () => {
 		render(
 			<PortForwardPopoverView
-				host="optimus-ide-collab.test"
+				host="coder.test"
 				workspace={MockWorkspace}
 				agent={MockWorkspaceAgent}
 				template={MockTemplate}

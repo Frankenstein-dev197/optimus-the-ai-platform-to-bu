@@ -26,7 +26,7 @@ export default function DesktopPopoutPage() {
 
 	// BroadcastChannel for parent window communication.
 	useEffect(() => {
-		const channel = new BroadcastChannel(`optimus-ide-collab-desktop-${agentId}`);
+		const channel = new BroadcastChannel(`coder-desktop-${agentId}`);
 
 		channel.postMessage({ type: "popout-opened" });
 

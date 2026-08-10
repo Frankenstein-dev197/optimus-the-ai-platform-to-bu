@@ -1,6 +1,0 @@
-{
-  "framework": null,
-  "installCommand": "echo skipping",
-  "buildCommand": "touch out/.vercel",
-  "outputDirectory": "out"
-}

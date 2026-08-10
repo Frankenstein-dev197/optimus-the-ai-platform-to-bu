@@ -166,7 +166,7 @@ export const EditOAuth2AppPageView: FC = () => {
 				</div>
 
 				<p className="text-sm text-content-secondary m-0">
-					Configure this application to use Optimus IDE Collab as an OAuth2 provider.
+					Configure this application to use Optimus as an OAuth2 provider.
 				</p>
 
 				{searchParams.has("created") && (

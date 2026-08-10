@@ -108,7 +108,7 @@ export const IdpOrgSyncPageView: FC<IdpSyncPageViewProps> = ({
 		onSubmit,
 		enableReinitialize: Boolean(organizationSyncSettings),
 	});
-	const [optimusIDECollabOrgs, setOptimusIDECollabOrgs] = useState<Option[]>([]);
+	const [coderOrgs, setCoderOrgs] = useState<Option[]>([]);
 	const [idpOrgName, setIdpOrgName] = useState("");
 	const [inputValue, setInputValue] = useState("");
 	const organizationMappingCount = form.values.mapping
@@ -282,16 +282,16 @@ export const IdpOrgSyncPageView: FC<IdpSyncPageViewProps> = ({
 								)}
 							</div>
 							<div className="grid items-center gap-1 flex-1">
-								<Label className="text-sm" htmlFor={`${id}-optimus-ide-collab-org`}>
-									Optimus IDE Collab organization
+								<Label className="text-sm" htmlFor={`${id}-coder-org`}>
+									Optimus organization
 								</Label>
 								<MultiSelectCombobox
 									inputProps={{
-										id: `${id}-optimus-ide-collab-org`,
+										id: `${id}-coder-org`,
 									}}
 									className="min-w-60 max-w-3xl"
-									value={optimusIDECollabOrgs}
-									onChange={setOptimusIDECollabOrgs}
+									value={coderOrgs}
+									onChange={setCoderOrgs}
 									options={organizations.map((org) => ({
 										label: org.display_name,
 										value: org.id,
@@ -310,19 +310,19 @@ export const IdpOrgSyncPageView: FC<IdpSyncPageViewProps> = ({
 								<Button
 									type="submit"
 									className="min-w-fit"
-									disabled={!idpOrgName || optimusIDECollabOrgs.length === 0}
+									disabled={!idpOrgName || coderOrgs.length === 0}
 									onClick={async () => {
 										const newSyncSettings = {
 											...form.values,
 											mapping: {
 												...form.values.mapping,
-												[idpOrgName]: optimusIDECollabOrgs.map((org) => org.value),
+												[idpOrgName]: coderOrgs.map((org) => org.value),
 											},
 										};
 										void form.setFieldValue("mapping", newSyncSettings.mapping);
 										form.handleSubmit();
 										setIdpOrgName("");
-										setOptimusIDECollabOrgs([]);
+										setCoderOrgs([]);
 									}}
 								>
 									<Spinner loading={form.isSubmitting}>
@@ -347,7 +347,7 @@ export const IdpOrgSyncPageView: FC<IdpSyncPageViewProps> = ({
 										<OrganizationRow
 											key={idpOrg}
 											idpOrg={idpOrg}
-											optimusIDECollabOrgs={getOrgNames(organizations)}
+											coderOrgs={getOrgNames(organizations)}
 											onDelete={handleDelete}
 											exists={claimFieldValues?.includes(idpOrg)}
 										/>
@@ -402,7 +402,7 @@ const IdpMappingTable: FC<IdpMappingTableProps> = ({ isEmpty, children }) => {
 			<TableHeader>
 				<TableRow>
 					<TableHead className="w-2/5">IdP organization</TableHead>
-					<TableHead className="w-3/5">Optimus IDE Collab organization</TableHead>
+					<TableHead className="w-3/5">Optimus organization</TableHead>
 					<TableHead className="w-auto" />
 				</TableRow>
 			</TableHeader>
@@ -428,14 +428,14 @@ const IdpMappingTable: FC<IdpMappingTableProps> = ({ isEmpty, children }) => {
 interface OrganizationRowProps {
 	idpOrg: string;
 	exists: boolean | undefined;
-	optimusIDECollabOrgs: readonly string[];
+	coderOrgs: readonly string[];
 	onDelete: (idpOrg: string) => void;
 }
 
 const OrganizationRow: FC<OrganizationRowProps> = ({
 	idpOrg,
 	exists = true,
-	optimusIDECollabOrgs,
+	coderOrgs,
 	onDelete,
 }) => {
 	return (
@@ -463,7 +463,7 @@ const OrganizationRow: FC<OrganizationRowProps> = ({
 				</div>
 			</TableCell>
 			<TableCell>
-				<OrganizationPills organizations={optimusIDECollabOrgs} />
+				<OrganizationPills organizations={coderOrgs} />
 			</TableCell>
 			<TableCell>
 				<Button

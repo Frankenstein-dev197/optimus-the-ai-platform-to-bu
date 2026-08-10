@@ -124,7 +124,7 @@ const TaskPromptEmpty: FC = () => {
 					No Task templates found
 				</h3>
 				<span className="text-content-secondary text-sm">
-					<Link href={docs("/ai-optimus-ide-collab/tasks")} target="_blank" rel="noreferrer">
+					<Link href={docs("/ai-coder/tasks")} target="_blank" rel="noreferrer">
 						Learn about Tasks
 					</Link>{" "}
 					to get started.

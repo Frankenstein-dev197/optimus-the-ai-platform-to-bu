@@ -255,12 +255,12 @@ export const TemplateVersionEditor: FC<TemplateVersionEditorProps> = ({
 						<span className="mr-2">
 							<Button asChild size="sm" variant="outline">
 								<a
-									href="https://registry.optimus-ide-collabidecollab.com"
+									href="https://registry.coder.com"
 									target="_blank"
 									rel="noopener noreferrer"
 									className="flex items-center"
 								>
-									Browse the Optimus IDE Collab Registry
+									Browse the Optimus Registry
 									<ExternalLinkIcon className="size-icon-sm ml-1" />
 								</a>
 							</Button>

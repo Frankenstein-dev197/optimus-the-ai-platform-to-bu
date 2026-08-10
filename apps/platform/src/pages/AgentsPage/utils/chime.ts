@@ -86,7 +86,7 @@ function playChime(chatID: string): void {
 		return;
 	}
 
-	const lockName = `optimus-ide-collab-agent-chime:${chatID}`;
+	const lockName = `coder-agent-chime:${chatID}`;
 
 	void navigator.locks.request(
 		lockName,

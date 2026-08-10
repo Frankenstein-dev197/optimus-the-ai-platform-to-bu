@@ -10,10 +10,10 @@ const meta: Meta<typeof OverviewPageView> = {
 			{
 				name: "Access URL",
 				description:
-					"The URL that users will use to access the Optimus IDE Collab deployment.",
+					"The URL that users will use to access the Optimus deployment.",
 				flag: "access-url",
 				flag_shorthand: "",
-				value: "https://dev.optimus-ide-collabidecollab.com",
+				value: "https://dev.coder.com",
 				hidden: false,
 			},
 			{
@@ -22,7 +22,7 @@ const meta: Meta<typeof OverviewPageView> = {
 					'Specifies the wildcard hostname to use for workspace applications in the form "*.example.com".',
 				flag: "wildcard-access-url",
 				flag_shorthand: "",
-				value: "*--apps.dev.optimus-ide-collabidecollab.com",
+				value: "*--apps.dev.coder.com",
 				hidden: false,
 			},
 			{
@@ -52,10 +52,10 @@ export const allExperimentsEnabled: Story = {
 			{
 				name: "Access URL",
 				description:
-					"The URL that users will use to access the Optimus IDE Collab deployment.",
+					"The URL that users will use to access the Optimus deployment.",
 				flag: "access-url",
 				flag_shorthand: "",
-				value: "https://dev.optimus-ide-collabidecollab.com",
+				value: "https://dev.coder.com",
 				hidden: false,
 			},
 			{
@@ -64,7 +64,7 @@ export const allExperimentsEnabled: Story = {
 					'Specifies the wildcard hostname to use for workspace applications in the form "*.example.com".',
 				flag: "wildcard-access-url",
 				flag_shorthand: "",
-				value: "*--apps.dev.optimus-ide-collabidecollab.com",
+				value: "*--apps.dev.coder.com",
 				hidden: false,
 			},
 			{
@@ -88,10 +88,10 @@ export const invalidExperimentsEnabled: Story = {
 			{
 				name: "Access URL",
 				description:
-					"The URL that users will use to access the Optimus IDE Collab deployment.",
+					"The URL that users will use to access the Optimus deployment.",
 				flag: "access-url",
 				flag_shorthand: "",
-				value: "https://dev.optimus-ide-collabidecollab.com",
+				value: "https://dev.coder.com",
 				hidden: false,
 			},
 			{
@@ -100,7 +100,7 @@ export const invalidExperimentsEnabled: Story = {
 					'Specifies the wildcard hostname to use for workspace applications in the form "*.example.com".',
 				flag: "wildcard-access-url",
 				flag_shorthand: "",
-				value: "*--apps.dev.optimus-ide-collabidecollab.com",
+				value: "*--apps.dev.coder.com",
 				hidden: false,
 			},
 			{

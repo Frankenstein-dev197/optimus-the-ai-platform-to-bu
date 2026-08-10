@@ -36,7 +36,7 @@ export const ExternalAuthSettingsPageView: FC<
 			>
 				<SettingsHeaderTitle>External Authentication</SettingsHeaderTitle>
 				<SettingsHeaderDescription>
-					Optimus IDE Collab integrates with GitHub, GitLab, BitBucket, Azure Repos, and
+					Optimus integrates with GitHub, GitLab, BitBucket, Azure Repos, and
 					OpenID Connect to authenticate developers with external services.
 				</SettingsHeaderDescription>
 			</SettingsHeader>

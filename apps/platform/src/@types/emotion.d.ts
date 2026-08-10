@@ -1,5 +1,5 @@
-import type { Theme as OptimusIDECollabTheme } from "#/theme";
+import type { Theme as CoderTheme } from "#/theme";
 
 declare module "@emotion/react" {
-        interface Theme extends OptimusIDECollabTheme {}
+	interface Theme extends CoderTheme {}
 }

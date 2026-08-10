@@ -23,8 +23,8 @@ export const OverLimit: Story = {
 			/110 \/ 100 AI Governance user seats \(10% over the limit\)/,
 		);
 		await expect(
-			canvas.getByRole("link", { name: "sales@optimus-ide-collabidecollab.com" }),
-		).toHaveAttribute("href", "mailto:sales@optimus-ide-collabidecollab.com");
+			canvas.getByRole("link", { name: "sales@optimus.com" }),
+		).toHaveAttribute("href", "mailto:sales@optimus.com");
 	},
 };
 

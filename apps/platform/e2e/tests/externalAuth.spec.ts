@@ -10,7 +10,7 @@ import {
 	echoResponsesWithExternalAuth,
 	login,
 } from "../helpers";
-import { beforeOptimus IDE CollabTest, resetExternalAuthKey } from "../hooks";
+import { beforeCoderTest, resetExternalAuthKey } from "../hooks";
 
 test.describe
 	.skip("externalAuth", () => {
@@ -42,7 +42,7 @@ test.describe
 		});
 
 		test.beforeEach(async ({ context, page }) => {
-			beforeOptimus IDE CollabTest(page);
+			beforeCoderTest(page);
 			await login(page);
 			await resetExternalAuthKey(context);
 		});
@@ -145,7 +145,7 @@ test.describe
 			type: "User",
 			site_admin: false,
 			name: "Kyle Carberry",
-			company: "@optimus-ide-collab",
+			company: "@coder",
 			blog: "https://carberry.com",
 			location: "Austin, TX",
 			email: "kyle@carberry.com",
@@ -168,7 +168,7 @@ test.describe
 						access_tokens_url: "",
 						account: ghUser,
 						app_id: 1,
-						app_slug: "optimus-ide-collab",
+						app_slug: "coder",
 						created_at: "2014-04-01T02:24:41Z",
 						events: [],
 						html_url: "",

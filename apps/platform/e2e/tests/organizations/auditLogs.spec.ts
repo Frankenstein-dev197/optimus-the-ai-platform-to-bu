@@ -6,7 +6,7 @@ import {
 } from "../../api";
 import { defaultPassword, users } from "../../constants";
 import { login, randomName, requiresLicense } from "../../helpers";
-import { beforeOptimus IDE CollabTest } from "../../hooks";
+import { beforeCoderTest } from "../../hooks";
 
 test.describe.configure({ mode: "parallel" });
 
@@ -15,11 +15,11 @@ const orgName = randomName();
 const orgAuditor = {
 	username: `org-auditor-${orgName}`,
 	password: defaultPassword,
-	email: `org-auditor-${orgName}@optimus-ide-collabidecollab.com`,
+	email: `org-auditor-${orgName}@coder.com`,
 };
 
 test.beforeEach(({ page }) => {
-	beforeOptimus IDE CollabTest(page);
+	beforeCoderTest(page);
 });
 
 test.describe("organization scoped audit logs", () => {

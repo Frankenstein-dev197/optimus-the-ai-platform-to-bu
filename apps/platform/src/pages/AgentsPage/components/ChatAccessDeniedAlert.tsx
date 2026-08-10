@@ -6,7 +6,7 @@ import { docs } from "#/utils/docs";
 
 export const ChatAccessDeniedAlert: FC = () => {
 	const docsLink = docs(
-		"/ai-optimus-ide-collab/agents/getting-started#step-3-grant-optimus-ide-collab-agents-user",
+		"/ai-coder/agents/getting-started#step-3-grant-coder-agents-user",
 	);
 
 	return (
@@ -20,7 +20,7 @@ export const ChatAccessDeniedAlert: FC = () => {
 		>
 			<AlertTitle>Permission required</AlertTitle>
 			<AlertDescription>
-				You don't have permission to use Optimus IDE Collab Agents. Contact your Optimus IDE Collab
+				You don't have permission to use Optimus Agents. Contact your Optimus
 				administrator for access. Refresh this page after access has been
 				granted.{" "}
 				<Link href={docsLink} target="_blank" rel="noreferrer">

@@ -1,1 +1,0 @@
-function e(){return!!navigator.platform.match(`Mac`)}function t(){return e()?`⌘`:`Ctrl`}export{e as n,t};

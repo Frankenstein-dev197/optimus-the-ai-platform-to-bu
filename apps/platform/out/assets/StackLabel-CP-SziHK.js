@@ -1,1 +1,0 @@
-import{t as e}from"./cn-CcU7hTTa.js";import{i as t}from"./emotion-Gs6oPiCL.js";var n=({className:n,...r})=>t(`div`,{className:e(`flex flex-col gap-1 pl-3 font-medium`,n),...r}),r=({className:n,...r})=>t(`p`,{className:e(`mt-0 text-xs text-content-secondary leading-[1.66] [&_strong]:text-content-primary`,n),...r});export{r as n,n as t};

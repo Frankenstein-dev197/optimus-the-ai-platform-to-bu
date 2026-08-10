@@ -23,7 +23,7 @@ export const ExecuteKilled: Story = {
 		args: { command: "make pre-push 2>&1" },
 		result: {
 			success: true,
-			output: "pre-push (/tmp/optimus-ide-collab-pre-push.CZ6K9A)\ntest + build site:",
+			output: "pre-push (/tmp/coder-pre-push.CZ6K9A)\ntest + build site:",
 			exit_code: -1,
 			wall_duration_ms: 45000,
 			background_process_id: PROCESS_ID,
@@ -99,7 +99,7 @@ export const ProcessOutputKilled: Story = {
 		killedBySignal: "kill",
 		args: { process_id: PROCESS_ID },
 		result: {
-			output: "pre-push (/tmp/optimus-ide-collab-pre-push.CZ6K9A)\ntest + build site:",
+			output: "pre-push (/tmp/coder-pre-push.CZ6K9A)\ntest + build site:",
 			exit_code: null,
 		},
 	},

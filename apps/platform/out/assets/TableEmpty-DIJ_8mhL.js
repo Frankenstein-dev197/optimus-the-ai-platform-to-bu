@@ -1,1 +1,0 @@
-import{i as e}from"./emotion-Gs6oPiCL.js";import{r as t,s as n}from"./Table-TzazD35V.js";import{t as r}from"./EmptyState-BMEUcxys.js";var i=i=>e(n,{children:e(t,{colSpan:999,className:`p-0!`,children:e(r,{...i})})});export{i as t};
